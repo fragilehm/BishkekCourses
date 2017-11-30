@@ -1,0 +1,580 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		84C714491FD00BB6007E640F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C714481FD00BB6007E640F /* AppDelegate.swift */; };
+		84C7144B1FD00BB6007E640F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7144A1FD00BB6007E640F /* ViewController.swift */; };
+		84C7144E1FD00BB6007E640F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C7144C1FD00BB6007E640F /* Main.storyboard */; };
+		84C714511FD00BB6007E640F /* BishkekCourses.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84C7144F1FD00BB6007E640F /* BishkekCourses.xcdatamodeld */; };
+		84C714531FD00BB6007E640F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84C714521FD00BB6007E640F /* Assets.xcassets */; };
+		84C714561FD00BB6007E640F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C714541FD00BB6007E640F /* LaunchScreen.storyboard */; };
+		84C714611FD00BB7007E640F /* BishkekCoursesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C714601FD00BB7007E640F /* BishkekCoursesTests.swift */; };
+		84C7146C1FD00BB7007E640F /* BishkekCoursesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7146B1FD00BB7007E640F /* BishkekCoursesUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		84C7145D1FD00BB7007E640F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84C7143D1FD00BB6007E640F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84C714441FD00BB6007E640F;
+			remoteInfo = BishkekCourses;
+		};
+		84C714681FD00BB7007E640F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 84C7143D1FD00BB6007E640F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 84C714441FD00BB6007E640F;
+			remoteInfo = BishkekCourses;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		84C714451FD00BB6007E640F /* BishkekCourses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BishkekCourses.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		84C714481FD00BB6007E640F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		84C7144A1FD00BB6007E640F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		84C7144D1FD00BB6007E640F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		84C714501FD00BB6007E640F /* BishkekCourses.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BishkekCourses.xcdatamodel; sourceTree = "<group>"; };
+		84C714521FD00BB6007E640F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		84C714551FD00BB6007E640F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		84C714571FD00BB6007E640F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84C7145C1FD00BB7007E640F /* BishkekCoursesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BishkekCoursesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84C714601FD00BB7007E640F /* BishkekCoursesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishkekCoursesTests.swift; sourceTree = "<group>"; };
+		84C714621FD00BB7007E640F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84C714671FD00BB7007E640F /* BishkekCoursesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BishkekCoursesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		84C7146B1FD00BB7007E640F /* BishkekCoursesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishkekCoursesUITests.swift; sourceTree = "<group>"; };
+		84C7146D1FD00BB7007E640F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		84C714421FD00BB6007E640F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84C714591FD00BB7007E640F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84C714641FD00BB7007E640F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		84C7143C1FD00BB6007E640F = {
+			isa = PBXGroup;
+			children = (
+				84C714471FD00BB6007E640F /* BishkekCourses */,
+				84C7145F1FD00BB7007E640F /* BishkekCoursesTests */,
+				84C7146A1FD00BB7007E640F /* BishkekCoursesUITests */,
+				84C714461FD00BB6007E640F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		84C714461FD00BB6007E640F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				84C714451FD00BB6007E640F /* BishkekCourses.app */,
+				84C7145C1FD00BB7007E640F /* BishkekCoursesTests.xctest */,
+				84C714671FD00BB7007E640F /* BishkekCoursesUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		84C714471FD00BB6007E640F /* BishkekCourses */ = {
+			isa = PBXGroup;
+			children = (
+				84C714481FD00BB6007E640F /* AppDelegate.swift */,
+				84C7144A1FD00BB6007E640F /* ViewController.swift */,
+				84C7144C1FD00BB6007E640F /* Main.storyboard */,
+				84C714521FD00BB6007E640F /* Assets.xcassets */,
+				84C714541FD00BB6007E640F /* LaunchScreen.storyboard */,
+				84C714571FD00BB6007E640F /* Info.plist */,
+				84C7144F1FD00BB6007E640F /* BishkekCourses.xcdatamodeld */,
+			);
+			path = BishkekCourses;
+			sourceTree = "<group>";
+		};
+		84C7145F1FD00BB7007E640F /* BishkekCoursesTests */ = {
+			isa = PBXGroup;
+			children = (
+				84C714601FD00BB7007E640F /* BishkekCoursesTests.swift */,
+				84C714621FD00BB7007E640F /* Info.plist */,
+			);
+			path = BishkekCoursesTests;
+			sourceTree = "<group>";
+		};
+		84C7146A1FD00BB7007E640F /* BishkekCoursesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				84C7146B1FD00BB7007E640F /* BishkekCoursesUITests.swift */,
+				84C7146D1FD00BB7007E640F /* Info.plist */,
+			);
+			path = BishkekCoursesUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		84C714441FD00BB6007E640F /* BishkekCourses */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84C714701FD00BB7007E640F /* Build configuration list for PBXNativeTarget "BishkekCourses" */;
+			buildPhases = (
+				84C714411FD00BB6007E640F /* Sources */,
+				84C714421FD00BB6007E640F /* Frameworks */,
+				84C714431FD00BB6007E640F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BishkekCourses;
+			productName = BishkekCourses;
+			productReference = 84C714451FD00BB6007E640F /* BishkekCourses.app */;
+			productType = "com.apple.product-type.application";
+		};
+		84C7145B1FD00BB7007E640F /* BishkekCoursesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84C714731FD00BB7007E640F /* Build configuration list for PBXNativeTarget "BishkekCoursesTests" */;
+			buildPhases = (
+				84C714581FD00BB7007E640F /* Sources */,
+				84C714591FD00BB7007E640F /* Frameworks */,
+				84C7145A1FD00BB7007E640F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84C7145E1FD00BB7007E640F /* PBXTargetDependency */,
+			);
+			name = BishkekCoursesTests;
+			productName = BishkekCoursesTests;
+			productReference = 84C7145C1FD00BB7007E640F /* BishkekCoursesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		84C714661FD00BB7007E640F /* BishkekCoursesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 84C714761FD00BB7007E640F /* Build configuration list for PBXNativeTarget "BishkekCoursesUITests" */;
+			buildPhases = (
+				84C714631FD00BB7007E640F /* Sources */,
+				84C714641FD00BB7007E640F /* Frameworks */,
+				84C714651FD00BB7007E640F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84C714691FD00BB7007E640F /* PBXTargetDependency */,
+			);
+			name = BishkekCoursesUITests;
+			productName = BishkekCoursesUITests;
+			productReference = 84C714671FD00BB7007E640F /* BishkekCoursesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		84C7143D1FD00BB6007E640F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = Khasanza;
+				TargetAttributes = {
+					84C714441FD00BB6007E640F = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+					84C7145B1FD00BB7007E640F = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 84C714441FD00BB6007E640F;
+					};
+					84C714661FD00BB7007E640F = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 84C714441FD00BB6007E640F;
+					};
+				};
+			};
+			buildConfigurationList = 84C714401FD00BB6007E640F /* Build configuration list for PBXProject "BishkekCourses" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 84C7143C1FD00BB6007E640F;
+			productRefGroup = 84C714461FD00BB6007E640F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				84C714441FD00BB6007E640F /* BishkekCourses */,
+				84C7145B1FD00BB7007E640F /* BishkekCoursesTests */,
+				84C714661FD00BB7007E640F /* BishkekCoursesUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		84C714431FD00BB6007E640F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84C714561FD00BB6007E640F /* LaunchScreen.storyboard in Resources */,
+				84C714531FD00BB6007E640F /* Assets.xcassets in Resources */,
+				84C7144E1FD00BB6007E640F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84C7145A1FD00BB7007E640F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84C714651FD00BB7007E640F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		84C714411FD00BB6007E640F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84C7144B1FD00BB6007E640F /* ViewController.swift in Sources */,
+				84C714491FD00BB6007E640F /* AppDelegate.swift in Sources */,
+				84C714511FD00BB6007E640F /* BishkekCourses.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84C714581FD00BB7007E640F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84C714611FD00BB7007E640F /* BishkekCoursesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84C714631FD00BB7007E640F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84C7146C1FD00BB7007E640F /* BishkekCoursesUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		84C7145E1FD00BB7007E640F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84C714441FD00BB6007E640F /* BishkekCourses */;
+			targetProxy = 84C7145D1FD00BB7007E640F /* PBXContainerItemProxy */;
+		};
+		84C714691FD00BB7007E640F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 84C714441FD00BB6007E640F /* BishkekCourses */;
+			targetProxy = 84C714681FD00BB7007E640F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		84C7144C1FD00BB6007E640F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84C7144D1FD00BB6007E640F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		84C714541FD00BB6007E640F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				84C714551FD00BB6007E640F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		84C7146E1FD00BB7007E640F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		84C7146F1FD00BB7007E640F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		84C714711FD00BB7007E640F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E3ZV847C68;
+				INFOPLIST_FILE = BishkekCourses/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neobis.BishkekCourses;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		84C714721FD00BB7007E640F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E3ZV847C68;
+				INFOPLIST_FILE = BishkekCourses/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neobis.BishkekCourses;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		84C714741FD00BB7007E640F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E3ZV847C68;
+				INFOPLIST_FILE = BishkekCoursesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neobis.BishkekCoursesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BishkekCourses.app/BishkekCourses";
+			};
+			name = Debug;
+		};
+		84C714751FD00BB7007E640F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E3ZV847C68;
+				INFOPLIST_FILE = BishkekCoursesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neobis.BishkekCoursesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BishkekCourses.app/BishkekCourses";
+			};
+			name = Release;
+		};
+		84C714771FD00BB7007E640F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E3ZV847C68;
+				INFOPLIST_FILE = BishkekCoursesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neobis.BishkekCoursesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BishkekCourses;
+			};
+			name = Debug;
+		};
+		84C714781FD00BB7007E640F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E3ZV847C68;
+				INFOPLIST_FILE = BishkekCoursesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.neobis.BishkekCoursesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BishkekCourses;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		84C714401FD00BB6007E640F /* Build configuration list for PBXProject "BishkekCourses" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84C7146E1FD00BB7007E640F /* Debug */,
+				84C7146F1FD00BB7007E640F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84C714701FD00BB7007E640F /* Build configuration list for PBXNativeTarget "BishkekCourses" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84C714711FD00BB7007E640F /* Debug */,
+				84C714721FD00BB7007E640F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84C714731FD00BB7007E640F /* Build configuration list for PBXNativeTarget "BishkekCoursesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84C714741FD00BB7007E640F /* Debug */,
+				84C714751FD00BB7007E640F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		84C714761FD00BB7007E640F /* Build configuration list for PBXNativeTarget "BishkekCoursesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				84C714771FD00BB7007E640F /* Debug */,
+				84C714781FD00BB7007E640F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		84C7144F1FD00BB6007E640F /* BishkekCourses.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				84C714501FD00BB6007E640F /* BishkekCourses.xcdatamodel */,
+			);
+			currentVersion = 84C714501FD00BB6007E640F /* BishkekCourses.xcdatamodel */;
+			path = BishkekCourses.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 84C7143D1FD00BB6007E640F /* Project object */;
+}
