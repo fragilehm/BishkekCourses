@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1340B1A410C7DF8BC566FC6C /* Pods_BishkekCourses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138857491ABE88B139087845 /* Pods_BishkekCourses.framework */; };
+		4A81873DC782617B06D8FB67 /* Pods_BishkekCoursesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C2947524281F15E93719D9 /* Pods_BishkekCoursesTests.framework */; };
 		84C714491FD00BB6007E640F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C714481FD00BB6007E640F /* AppDelegate.swift */; };
 		84C7144B1FD00BB6007E640F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7144A1FD00BB6007E640F /* ViewController.swift */; };
 		84C7144E1FD00BB6007E640F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C7144C1FD00BB6007E640F /* Main.storyboard */; };
@@ -15,6 +17,7 @@
 		84C714561FD00BB6007E640F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C714541FD00BB6007E640F /* LaunchScreen.storyboard */; };
 		84C714611FD00BB7007E640F /* BishkekCoursesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C714601FD00BB7007E640F /* BishkekCoursesTests.swift */; };
 		84C7146C1FD00BB7007E640F /* BishkekCoursesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7146B1FD00BB7007E640F /* BishkekCoursesUITests.swift */; };
+		AC43076CD7D73F465BBC561E /* Pods_BishkekCoursesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21CE33293F162420A42414CC /* Pods_BishkekCoursesUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		138857491ABE88B139087845 /* Pods_BishkekCourses.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BishkekCourses.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		21CE33293F162420A42414CC /* Pods_BishkekCoursesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BishkekCoursesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		397EBACCDA3EEB90F0E25B8A /* Pods-BishkekCoursesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BishkekCoursesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BishkekCoursesUITests/Pods-BishkekCoursesUITests.release.xcconfig"; sourceTree = "<group>"; };
+		54AE35D2AAA7B53DD7782AED /* Pods-BishkekCourses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BishkekCourses.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BishkekCourses/Pods-BishkekCourses.debug.xcconfig"; sourceTree = "<group>"; };
+		84C2947524281F15E93719D9 /* Pods_BishkekCoursesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BishkekCoursesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C714451FD00BB6007E640F /* BishkekCourses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BishkekCourses.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C714481FD00BB6007E640F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C7144A1FD00BB6007E640F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +57,10 @@
 		84C714671FD00BB7007E640F /* BishkekCoursesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BishkekCoursesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C7146B1FD00BB7007E640F /* BishkekCoursesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishkekCoursesUITests.swift; sourceTree = "<group>"; };
 		84C7146D1FD00BB7007E640F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C185D81873F73C4B9791507F /* Pods-BishkekCourses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BishkekCourses.release.xcconfig"; path = "Pods/Target Support Files/Pods-BishkekCourses/Pods-BishkekCourses.release.xcconfig"; sourceTree = "<group>"; };
+		C5C8FBBE69054AF9892B0CA6 /* Pods-BishkekCoursesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BishkekCoursesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BishkekCoursesTests/Pods-BishkekCoursesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E9BED3A4310422A3F0BEC78A /* Pods-BishkekCoursesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BishkekCoursesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BishkekCoursesTests/Pods-BishkekCoursesTests.release.xcconfig"; sourceTree = "<group>"; };
+		EF441B2E8AD7BE042BDCB3A5 /* Pods-BishkekCoursesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BishkekCoursesUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BishkekCoursesUITests/Pods-BishkekCoursesUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1340B1A410C7DF8BC566FC6C /* Pods_BishkekCourses.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A81873DC782617B06D8FB67 /* Pods_BishkekCoursesTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +84,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC43076CD7D73F465BBC561E /* Pods_BishkekCoursesUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0498E8FC0A3424ACE86DD7AE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				54AE35D2AAA7B53DD7782AED /* Pods-BishkekCourses.debug.xcconfig */,
+				C185D81873F73C4B9791507F /* Pods-BishkekCourses.release.xcconfig */,
+				C5C8FBBE69054AF9892B0CA6 /* Pods-BishkekCoursesTests.debug.xcconfig */,
+				E9BED3A4310422A3F0BEC78A /* Pods-BishkekCoursesTests.release.xcconfig */,
+				EF441B2E8AD7BE042BDCB3A5 /* Pods-BishkekCoursesUITests.debug.xcconfig */,
+				397EBACCDA3EEB90F0E25B8A /* Pods-BishkekCoursesUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		84C7143C1FD00BB6007E640F = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +111,8 @@
 				84C7145F1FD00BB7007E640F /* BishkekCoursesTests */,
 				84C7146A1FD00BB7007E640F /* BishkekCoursesUITests */,
 				84C714461FD00BB6007E640F /* Products */,
+				0498E8FC0A3424ACE86DD7AE /* Pods */,
+				D09A758C5C9F7629B5039411 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +158,16 @@
 			path = BishkekCoursesUITests;
 			sourceTree = "<group>";
 		};
+		D09A758C5C9F7629B5039411 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				138857491ABE88B139087845 /* Pods_BishkekCourses.framework */,
+				84C2947524281F15E93719D9 /* Pods_BishkekCoursesTests.framework */,
+				21CE33293F162420A42414CC /* Pods_BishkekCoursesUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +175,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84C714701FD00BB7007E640F /* Build configuration list for PBXNativeTarget "BishkekCourses" */;
 			buildPhases = (
+				FEAF10020E276118447C5B26 /* [CP] Check Pods Manifest.lock */,
 				84C714411FD00BB6007E640F /* Sources */,
 				84C714421FD00BB6007E640F /* Frameworks */,
 				84C714431FD00BB6007E640F /* Resources */,
+				8795EA54B44A7E86E1F0284D /* [CP] Embed Pods Frameworks */,
+				8778FA1E6348F1BC9B211D12 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +195,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84C714731FD00BB7007E640F /* Build configuration list for PBXNativeTarget "BishkekCoursesTests" */;
 			buildPhases = (
+				DD6130C273C0EAC76D22A9FC /* [CP] Check Pods Manifest.lock */,
 				84C714581FD00BB7007E640F /* Sources */,
 				84C714591FD00BB7007E640F /* Frameworks */,
 				84C7145A1FD00BB7007E640F /* Resources */,
+				AB560825CA307CC5443A6315 /* [CP] Embed Pods Frameworks */,
+				92DB86AE1B08A0EC03B4A632 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84C714761FD00BB7007E640F /* Build configuration list for PBXNativeTarget "BishkekCoursesUITests" */;
 			buildPhases = (
+				50B4C8B64DDEFC0FBCBAA7C3 /* [CP] Check Pods Manifest.lock */,
 				84C714631FD00BB7007E640F /* Sources */,
 				84C714641FD00BB7007E640F /* Frameworks */,
 				84C714651FD00BB7007E640F /* Resources */,
+				0A68935CBC3A023F20E9971A /* [CP] Embed Pods Frameworks */,
+				DED7F1335855AE4135C7364C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -256,6 +305,168 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A68935CBC3A023F20E9971A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BishkekCoursesUITests/Pods-BishkekCoursesUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		50B4C8B64DDEFC0FBCBAA7C3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BishkekCoursesUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8778FA1E6348F1BC9B211D12 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BishkekCourses/Pods-BishkekCourses-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8795EA54B44A7E86E1F0284D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BishkekCourses/Pods-BishkekCourses-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SJSegmentedScrollView/SJSegmentedScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SJSegmentedScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BishkekCourses/Pods-BishkekCourses-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92DB86AE1B08A0EC03B4A632 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BishkekCoursesTests/Pods-BishkekCoursesTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AB560825CA307CC5443A6315 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BishkekCoursesTests/Pods-BishkekCoursesTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DD6130C273C0EAC76D22A9FC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BishkekCoursesTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DED7F1335855AE4135C7364C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BishkekCoursesUITests/Pods-BishkekCoursesUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEAF10020E276118447C5B26 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BishkekCourses-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84C714411FD00BB6007E640F /* Sources */ = {
@@ -428,6 +639,7 @@
 		};
 		84C714711FD00BB7007E640F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 54AE35D2AAA7B53DD7782AED /* Pods-BishkekCourses.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -443,6 +655,7 @@
 		};
 		84C714721FD00BB7007E640F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C185D81873F73C4B9791507F /* Pods-BishkekCourses.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -458,6 +671,7 @@
 		};
 		84C714741FD00BB7007E640F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C5C8FBBE69054AF9892B0CA6 /* Pods-BishkekCoursesTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -475,6 +689,7 @@
 		};
 		84C714751FD00BB7007E640F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9BED3A4310422A3F0BEC78A /* Pods-BishkekCoursesTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -492,6 +707,7 @@
 		};
 		84C714771FD00BB7007E640F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF441B2E8AD7BE042BDCB3A5 /* Pods-BishkekCoursesUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -508,6 +724,7 @@
 		};
 		84C714781FD00BB7007E640F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 397EBACCDA3EEB90F0E25B8A /* Pods-BishkekCoursesUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
