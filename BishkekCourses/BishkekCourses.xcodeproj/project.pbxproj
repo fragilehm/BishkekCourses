@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		1340B1A410C7DF8BC566FC6C /* Pods_BishkekCourses.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 138857491ABE88B139087845 /* Pods_BishkekCourses.framework */; };
 		4A81873DC782617B06D8FB67 /* Pods_BishkekCoursesTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84C2947524281F15E93719D9 /* Pods_BishkekCoursesTests.framework */; };
+		8454AC361FD1C4830064689C /* Categories.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8454AC351FD1C4830064689C /* Categories.storyboard */; };
+		8454AC391FD1C4B40064689C /* CategoriesViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454AC381FD1C4B40064689C /* CategoriesViewViewController.swift */; };
+		8454AC3B1FD1D12D0064689C /* News.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8454AC3A1FD1D12D0064689C /* News.storyboard */; };
+		8454AC3E1FD1D13F0064689C /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454AC3D1FD1D13F0064689C /* NewsViewController.swift */; };
+		8454AC401FD1D1A30064689C /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8454AC3F1FD1D1A30064689C /* Favorite.storyboard */; };
+		8454AC431FD1D1B80064689C /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8454AC421FD1D1B80064689C /* FavoriteViewController.swift */; };
 		84C714491FD00BB6007E640F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C714481FD00BB6007E640F /* AppDelegate.swift */; };
 		84C7144B1FD00BB6007E640F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7144A1FD00BB6007E640F /* ViewController.swift */; };
 		84C7144E1FD00BB6007E640F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C7144C1FD00BB6007E640F /* Main.storyboard */; };
@@ -17,6 +23,9 @@
 		84C714561FD00BB6007E640F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C714541FD00BB6007E640F /* LaunchScreen.storyboard */; };
 		84C714611FD00BB7007E640F /* BishkekCoursesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C714601FD00BB7007E640F /* BishkekCoursesTests.swift */; };
 		84C7146C1FD00BB7007E640F /* BishkekCoursesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7146B1FD00BB7007E640F /* BishkekCoursesUITests.swift */; };
+		84FFD1621FD27FCF00F9E5C3 /* MainPageEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FFD1611FD27FCF00F9E5C3 /* MainPageEnum.swift */; };
+		84FFD1651FD2820400F9E5C3 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84FFD1641FD2820400F9E5C3 /* Search.storyboard */; };
+		84FFD1681FD2821E00F9E5C3 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84FFD1671FD2821E00F9E5C3 /* SearchViewController.swift */; };
 		AC43076CD7D73F465BBC561E /* Pods_BishkekCoursesUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21CE33293F162420A42414CC /* Pods_BishkekCoursesUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,6 +51,12 @@
 		21CE33293F162420A42414CC /* Pods_BishkekCoursesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BishkekCoursesUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		397EBACCDA3EEB90F0E25B8A /* Pods-BishkekCoursesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BishkekCoursesUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BishkekCoursesUITests/Pods-BishkekCoursesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		54AE35D2AAA7B53DD7782AED /* Pods-BishkekCourses.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BishkekCourses.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BishkekCourses/Pods-BishkekCourses.debug.xcconfig"; sourceTree = "<group>"; };
+		8454AC351FD1C4830064689C /* Categories.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Categories.storyboard; sourceTree = "<group>"; };
+		8454AC381FD1C4B40064689C /* CategoriesViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewViewController.swift; sourceTree = "<group>"; };
+		8454AC3A1FD1D12D0064689C /* News.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = News.storyboard; sourceTree = "<group>"; };
+		8454AC3D1FD1D13F0064689C /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		8454AC3F1FD1D1A30064689C /* Favorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
+		8454AC421FD1D1B80064689C /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		84C2947524281F15E93719D9 /* Pods_BishkekCoursesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BishkekCoursesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C714451FD00BB6007E640F /* BishkekCourses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BishkekCourses.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C714481FD00BB6007E640F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +72,9 @@
 		84C714671FD00BB7007E640F /* BishkekCoursesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BishkekCoursesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C7146B1FD00BB7007E640F /* BishkekCoursesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishkekCoursesUITests.swift; sourceTree = "<group>"; };
 		84C7146D1FD00BB7007E640F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84FFD1611FD27FCF00F9E5C3 /* MainPageEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageEnum.swift; sourceTree = "<group>"; };
+		84FFD1641FD2820400F9E5C3 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		84FFD1671FD2821E00F9E5C3 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C185D81873F73C4B9791507F /* Pods-BishkekCourses.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BishkekCourses.release.xcconfig"; path = "Pods/Target Support Files/Pods-BishkekCourses/Pods-BishkekCourses.release.xcconfig"; sourceTree = "<group>"; };
 		C5C8FBBE69054AF9892B0CA6 /* Pods-BishkekCoursesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BishkekCoursesTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BishkekCoursesTests/Pods-BishkekCoursesTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E9BED3A4310422A3F0BEC78A /* Pods-BishkekCoursesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BishkekCoursesTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BishkekCoursesTests/Pods-BishkekCoursesTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -104,6 +122,82 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8454AC2F1FD1C2820064689C /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				84FFD1601FD27FBD00F9E5C3 /* Plugins */,
+				8454AC341FD1C33F0064689C /* Controllers */,
+				84C7144C1FD00BB6007E640F /* Main.storyboard */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		8454AC301FD1C2950064689C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8454AC311FD1C29F0064689C /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				8454AC371FD1C4930064689C /* Controllers */,
+				8454AC351FD1C4830064689C /* Categories.storyboard */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		8454AC321FD1C2E60064689C /* News */ = {
+			isa = PBXGroup;
+			children = (
+				8454AC3C1FD1D1320064689C /* Controllers */,
+				8454AC3A1FD1D12D0064689C /* News.storyboard */,
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		8454AC331FD1C2EF0064689C /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				8454AC411FD1D1A70064689C /* Controllers */,
+				8454AC3F1FD1D1A30064689C /* Favorite.storyboard */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		8454AC341FD1C33F0064689C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84C7144A1FD00BB6007E640F /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8454AC371FD1C4930064689C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8454AC381FD1C4B40064689C /* CategoriesViewViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8454AC3C1FD1D1320064689C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8454AC3D1FD1D13F0064689C /* NewsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8454AC411FD1D1A70064689C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8454AC421FD1D1B80064689C /* FavoriteViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		84C7143C1FD00BB6007E640F = {
 			isa = PBXGroup;
 			children = (
@@ -129,9 +223,13 @@
 		84C714471FD00BB6007E640F /* BishkekCourses */ = {
 			isa = PBXGroup;
 			children = (
+				8454AC301FD1C2950064689C /* Supporting Files */,
+				8454AC2F1FD1C2820064689C /* Main */,
+				8454AC311FD1C29F0064689C /* Categories */,
+				8454AC321FD1C2E60064689C /* News */,
+				84FFD1631FD281CF00F9E5C3 /* Search */,
+				8454AC331FD1C2EF0064689C /* Favorite */,
 				84C714481FD00BB6007E640F /* AppDelegate.swift */,
-				84C7144A1FD00BB6007E640F /* ViewController.swift */,
-				84C7144C1FD00BB6007E640F /* Main.storyboard */,
 				84C714521FD00BB6007E640F /* Assets.xcassets */,
 				84C714541FD00BB6007E640F /* LaunchScreen.storyboard */,
 				84C714571FD00BB6007E640F /* Info.plist */,
@@ -156,6 +254,31 @@
 				84C7146D1FD00BB7007E640F /* Info.plist */,
 			);
 			path = BishkekCoursesUITests;
+			sourceTree = "<group>";
+		};
+		84FFD1601FD27FBD00F9E5C3 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				84FFD1611FD27FCF00F9E5C3 /* MainPageEnum.swift */,
+			);
+			path = Plugins;
+			sourceTree = "<group>";
+		};
+		84FFD1631FD281CF00F9E5C3 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				84FFD1661FD2821000F9E5C3 /* Controllers */,
+				84FFD1641FD2820400F9E5C3 /* Search.storyboard */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		84FFD1661FD2821000F9E5C3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84FFD1671FD2821E00F9E5C3 /* SearchViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		D09A758C5C9F7629B5039411 /* Frameworks */ = {
@@ -286,6 +409,10 @@
 			files = (
 				84C714561FD00BB6007E640F /* LaunchScreen.storyboard in Resources */,
 				84C714531FD00BB6007E640F /* Assets.xcassets in Resources */,
+				8454AC401FD1D1A30064689C /* Favorite.storyboard in Resources */,
+				8454AC3B1FD1D12D0064689C /* News.storyboard in Resources */,
+				84FFD1651FD2820400F9E5C3 /* Search.storyboard in Resources */,
+				8454AC361FD1C4830064689C /* Categories.storyboard in Resources */,
 				84C7144E1FD00BB6007E640F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,8 +601,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C7144B1FD00BB6007E640F /* ViewController.swift in Sources */,
+				8454AC391FD1C4B40064689C /* CategoriesViewViewController.swift in Sources */,
+				84FFD1681FD2821E00F9E5C3 /* SearchViewController.swift in Sources */,
 				84C714491FD00BB6007E640F /* AppDelegate.swift in Sources */,
+				8454AC3E1FD1D13F0064689C /* NewsViewController.swift in Sources */,
+				8454AC431FD1D1B80064689C /* FavoriteViewController.swift in Sources */,
 				84C714511FD00BB6007E640F /* BishkekCourses.xcdatamodeld in Sources */,
+				84FFD1621FD27FCF00F9E5C3 /* MainPageEnum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
