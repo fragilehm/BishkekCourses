@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Registration View Controller-->
+        <scene sceneID="a6X-ve-Z1d">
+            <objects>
+                <viewController storyboardIdentifier="RegistrationViewController" id="u5u-jZ-GCQ" customClass="RegistrationViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QPb-Jw-fsj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4z-kX-LhK">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Фамилия" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4X4-Ef-b3O" customClass="CustomTextField" customModule="BishkekCourses" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="32" width="326" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Имя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GuX-FL-1Uy" customClass="CustomTextField" customModule="BishkekCourses" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="64" width="326" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Телефон" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iO9-pD-HYD" customClass="CustomTextField" customModule="BishkekCourses" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="96" width="326" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Дата рождения" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TaC-1A-u2k" customClass="CustomTextField" customModule="BishkekCourses" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="128" width="326" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Адрес" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tXd-Rd-Wsu" customClass="CustomTextField" customModule="BishkekCourses" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="160" width="326" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Электронная почта" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J33-Ut-OIa" customClass="CustomTextField" customModule="BishkekCourses" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="192" width="326" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Имя пользователя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4pL-X1-92Q" customClass="CustomTextField" customModule="BishkekCourses" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="224" width="326" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Повторить пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Ff-76-342" customClass="CustomTextField" customModule="BishkekCourses" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="288" width="326" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="84v-bt-hba" customClass="CustomTextField" customModule="BishkekCourses" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="256" width="326" height="17"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7gV-V4-hna">
+                                        <rect key="frame" x="24" y="320" width="326" height="47"/>
+                                        <color key="backgroundColor" red="0.20392156859999999" green="0.2470588235" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="47" id="Lg6-vW-AMC"/>
+                                        </constraints>
+                                        <state key="normal" title="Зарегистрироваться">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="iO9-pD-HYD" firstAttribute="trailing" secondItem="4X4-Ef-b3O" secondAttribute="trailing" id="1ZJ-4R-MRt"/>
+                                    <constraint firstItem="J33-Ut-OIa" firstAttribute="trailing" secondItem="4X4-Ef-b3O" secondAttribute="trailing" id="2uT-HZ-AI0"/>
+                                    <constraint firstItem="GuX-FL-1Uy" firstAttribute="leading" secondItem="4X4-Ef-b3O" secondAttribute="leading" id="4cM-As-gqK"/>
+                                    <constraint firstItem="4X4-Ef-b3O" firstAttribute="leading" secondItem="e4z-kX-LhK" secondAttribute="leading" constant="24" id="6Od-jN-6fD"/>
+                                    <constraint firstAttribute="trailing" secondItem="4X4-Ef-b3O" secondAttribute="trailing" constant="24" id="7ok-nQ-uDx"/>
+                                    <constraint firstItem="TaC-1A-u2k" firstAttribute="trailing" secondItem="4X4-Ef-b3O" secondAttribute="trailing" id="8P3-2E-Le4"/>
+                                    <constraint firstItem="84v-bt-hba" firstAttribute="trailing" secondItem="4X4-Ef-b3O" secondAttribute="trailing" id="8jn-va-G5Z"/>
+                                    <constraint firstItem="tXd-Rd-Wsu" firstAttribute="leading" secondItem="4X4-Ef-b3O" secondAttribute="leading" id="Adw-bV-GqM"/>
+                                    <constraint firstAttribute="bottom" secondItem="7gV-V4-hna" secondAttribute="bottom" constant="24" id="Bdu-OL-qwr"/>
+                                    <constraint firstItem="7gV-V4-hna" firstAttribute="centerX" secondItem="e4z-kX-LhK" secondAttribute="centerX" id="CCV-7V-ubg"/>
+                                    <constraint firstItem="GuX-FL-1Uy" firstAttribute="top" secondItem="4X4-Ef-b3O" secondAttribute="bottom" constant="15" id="F5U-Co-ghm"/>
+                                    <constraint firstItem="4X4-Ef-b3O" firstAttribute="top" secondItem="e4z-kX-LhK" secondAttribute="top" constant="32" id="KPq-zj-a6n"/>
+                                    <constraint firstItem="4pL-X1-92Q" firstAttribute="top" secondItem="J33-Ut-OIa" secondAttribute="bottom" constant="15" id="MOc-xO-qna"/>
+                                    <constraint firstItem="84v-bt-hba" firstAttribute="top" secondItem="4pL-X1-92Q" secondAttribute="bottom" constant="15" id="MQH-Ga-5Jv"/>
+                                    <constraint firstItem="J33-Ut-OIa" firstAttribute="top" secondItem="tXd-Rd-Wsu" secondAttribute="bottom" constant="15" id="MwS-dB-t1R"/>
+                                    <constraint firstItem="5Ff-76-342" firstAttribute="top" secondItem="84v-bt-hba" secondAttribute="bottom" constant="15" id="V7q-FG-rj5"/>
+                                    <constraint firstItem="iO9-pD-HYD" firstAttribute="top" secondItem="GuX-FL-1Uy" secondAttribute="bottom" constant="15" id="VGO-GC-q9o"/>
+                                    <constraint firstItem="5Ff-76-342" firstAttribute="leading" secondItem="4X4-Ef-b3O" secondAttribute="leading" id="Vct-is-OXj"/>
+                                    <constraint firstItem="J33-Ut-OIa" firstAttribute="leading" secondItem="4X4-Ef-b3O" secondAttribute="leading" id="W1H-iH-dt4"/>
+                                    <constraint firstItem="4pL-X1-92Q" firstAttribute="trailing" secondItem="4X4-Ef-b3O" secondAttribute="trailing" id="Z7G-Vr-5oc"/>
+                                    <constraint firstItem="TaC-1A-u2k" firstAttribute="leading" secondItem="4X4-Ef-b3O" secondAttribute="leading" id="bkH-Yd-dWy"/>
+                                    <constraint firstItem="5Ff-76-342" firstAttribute="trailing" secondItem="4X4-Ef-b3O" secondAttribute="trailing" id="eti-to-4bQ"/>
+                                    <constraint firstItem="7gV-V4-hna" firstAttribute="top" secondItem="5Ff-76-342" secondAttribute="bottom" constant="15" id="fLb-t2-UCs"/>
+                                    <constraint firstItem="tXd-Rd-Wsu" firstAttribute="top" secondItem="TaC-1A-u2k" secondAttribute="bottom" constant="15" id="hIY-Lm-lmb"/>
+                                    <constraint firstItem="TaC-1A-u2k" firstAttribute="top" secondItem="iO9-pD-HYD" secondAttribute="bottom" constant="15" id="jd8-ov-kTT"/>
+                                    <constraint firstItem="iO9-pD-HYD" firstAttribute="leading" secondItem="4X4-Ef-b3O" secondAttribute="leading" id="kBT-1I-ANG"/>
+                                    <constraint firstItem="84v-bt-hba" firstAttribute="leading" secondItem="4X4-Ef-b3O" secondAttribute="leading" id="mSf-N8-YJx"/>
+                                    <constraint firstItem="4X4-Ef-b3O" firstAttribute="centerX" secondItem="e4z-kX-LhK" secondAttribute="centerX" id="nJ9-Y5-rwb"/>
+                                    <constraint firstItem="7gV-V4-hna" firstAttribute="trailing" secondItem="4X4-Ef-b3O" secondAttribute="trailing" id="nu0-Ss-itn"/>
+                                    <constraint firstItem="4pL-X1-92Q" firstAttribute="leading" secondItem="4X4-Ef-b3O" secondAttribute="leading" id="p6u-4N-gpn"/>
+                                    <constraint firstItem="7gV-V4-hna" firstAttribute="leading" secondItem="4X4-Ef-b3O" secondAttribute="leading" id="pOc-hp-D2s"/>
+                                    <constraint firstItem="tXd-Rd-Wsu" firstAttribute="trailing" secondItem="4X4-Ef-b3O" secondAttribute="trailing" id="tWk-vL-SW0"/>
+                                    <constraint firstItem="GuX-FL-1Uy" firstAttribute="trailing" secondItem="4X4-Ef-b3O" secondAttribute="trailing" id="vIe-8n-5bS"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="e4z-kX-LhK" firstAttribute="top" secondItem="2P2-Jw-m41" secondAttribute="top" id="0b7-n6-bpj"/>
+                            <constraint firstItem="e4z-kX-LhK" firstAttribute="leading" secondItem="2P2-Jw-m41" secondAttribute="leading" id="40J-Dk-vkP"/>
+                            <constraint firstItem="2P2-Jw-m41" firstAttribute="bottom" secondItem="e4z-kX-LhK" secondAttribute="bottom" id="Lo0-eT-kCu"/>
+                            <constraint firstItem="2P2-Jw-m41" firstAttribute="trailing" secondItem="e4z-kX-LhK" secondAttribute="trailing" id="rY3-gD-DdK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2P2-Jw-m41"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LxS-mf-hx7"/>
+                    <connections>
+                        <outlet property="addressTextField" destination="tXd-Rd-Wsu" id="rNl-NT-cgr"/>
+                        <outlet property="dateOfBirthTextField" destination="TaC-1A-u2k" id="Dl8-qx-fpa"/>
+                        <outlet property="emailTextField" destination="J33-Ut-OIa" id="MYt-rH-0ij"/>
+                        <outlet property="nameTextField" destination="GuX-FL-1Uy" id="DKe-PE-3xL"/>
+                        <outlet property="passwordRepeatTextField" destination="5Ff-76-342" id="4yw-4C-84l"/>
+                        <outlet property="passwordTextField" destination="84v-bt-hba" id="hEp-NN-Vba"/>
+                        <outlet property="phoneTextField" destination="iO9-pD-HYD" id="dup-r7-iEH"/>
+                        <outlet property="surnameTextField" destination="4X4-Ef-b3O" id="yQV-lx-koN"/>
+                        <outlet property="usernameTextField" destination="4pL-X1-92Q" id="tYB-3v-R4d"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TTe-8E-eWF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="396" y="159.67016491754123"/>
+        </scene>
+    </scenes>
+</document>

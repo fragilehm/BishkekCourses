@@ -23,6 +23,10 @@
 		84C399F41FD3082B00DD5D66 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C399F31FD3082B00DD5D66 /* DataManager.swift */; };
 		84C399F61FD3084E00DD5D66 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C399F51FD3084E00DD5D66 /* Constants.swift */; };
 		84C399F81FD3085900DD5D66 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C399F71FD3085900DD5D66 /* Colors.swift */; };
+		84C399FB1FD3213A00DD5D66 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C399FA1FD3213A00DD5D66 /* Login.storyboard */; };
+		84C399FE1FD324A500DD5D66 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C399FD1FD324A500DD5D66 /* LoginViewController.swift */; };
+		84C39A011FD33AEF00DD5D66 /* Registration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C39A001FD33AEF00DD5D66 /* Registration.storyboard */; };
+		84C39A041FD33B0500DD5D66 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C39A031FD33B0500DD5D66 /* RegistrationViewController.swift */; };
 		84C714491FD00BB6007E640F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C714481FD00BB6007E640F /* AppDelegate.swift */; };
 		84C7144B1FD00BB6007E640F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7144A1FD00BB6007E640F /* ViewController.swift */; };
 		84C7144E1FD00BB6007E640F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C7144C1FD00BB6007E640F /* Main.storyboard */; };
@@ -74,6 +78,10 @@
 		84C399F31FD3082B00DD5D66 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		84C399F51FD3084E00DD5D66 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		84C399F71FD3085900DD5D66 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		84C399FA1FD3213A00DD5D66 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		84C399FD1FD324A500DD5D66 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		84C39A001FD33AEF00DD5D66 /* Registration.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Registration.storyboard; sourceTree = "<group>"; };
+		84C39A031FD33B0500DD5D66 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		84C714451FD00BB6007E640F /* BishkekCourses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BishkekCourses.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C714481FD00BB6007E640F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C7144A1FD00BB6007E640F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +254,40 @@
 			path = ServerManager;
 			sourceTree = "<group>";
 		};
+		84C399F91FD3211200DD5D66 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				84C399FC1FD3249300DD5D66 /* Controllers */,
+				84C399FA1FD3213A00DD5D66 /* Login.storyboard */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		84C399FC1FD3249300DD5D66 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84C399FD1FD324A500DD5D66 /* LoginViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		84C399FF1FD33AC800DD5D66 /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				84C39A021FD33AF300DD5D66 /* Controllers */,
+				84C39A001FD33AEF00DD5D66 /* Registration.storyboard */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		84C39A021FD33AF300DD5D66 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84C39A031FD33B0500DD5D66 /* RegistrationViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		84C7143C1FD00BB6007E640F = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +319,8 @@
 				8454AC321FD1C2E60064689C /* News */,
 				84FFD1631FD281CF00F9E5C3 /* Search */,
 				8454AC331FD1C2EF0064689C /* Favorite */,
+				84C399F91FD3211200DD5D66 /* Login */,
+				84C399FF1FD33AC800DD5D66 /* Registration */,
 				84C714481FD00BB6007E640F /* AppDelegate.swift */,
 				84C714521FD00BB6007E640F /* Assets.xcassets */,
 				84C714541FD00BB6007E640F /* LaunchScreen.storyboard */,
@@ -455,6 +499,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84C399FB1FD3213A00DD5D66 /* Login.storyboard in Resources */,
+				84C39A011FD33AEF00DD5D66 /* Registration.storyboard in Resources */,
 				84C714561FD00BB6007E640F /* LaunchScreen.storyboard in Resources */,
 				84C714531FD00BB6007E640F /* Assets.xcassets in Resources */,
 				8454AC401FD1D1A30064689C /* Favorite.storyboard in Resources */,
@@ -660,7 +706,9 @@
 				84C399F81FD3085900DD5D66 /* Colors.swift in Sources */,
 				8454AC3E1FD1D13F0064689C /* NewsViewController.swift in Sources */,
 				84C399F21FD3082400DD5D66 /* Extensions.swift in Sources */,
+				84C39A041FD33B0500DD5D66 /* RegistrationViewController.swift in Sources */,
 				8454AC431FD1D1B80064689C /* FavoriteViewController.swift in Sources */,
+				84C399FE1FD324A500DD5D66 /* LoginViewController.swift in Sources */,
 				84C399EE1FD3081100DD5D66 /* HTTPStatusCode.swift in Sources */,
 				84C714511FD00BB6007E640F /* BishkekCourses.xcdatamodeld in Sources */,
 				84FFD1621FD27FCF00F9E5C3 /* MainPageEnum.swift in Sources */,

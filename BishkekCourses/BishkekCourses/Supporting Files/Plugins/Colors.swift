@@ -7,7 +7,6 @@
 //
 
 import Foundation
-
 /**
  Common colors in app
  */
