@@ -19,37 +19,53 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="t92-LN-tds">
-                                <rect key="frame" x="12" y="80" width="351" height="29"/>
+                                <rect key="frame" x="12" y="66" width="351" height="29"/>
                                 <segments>
                                     <segment title="Популярные"/>
                                     <segment title="Недавние"/>
                                 </segments>
                                 <color key="tintColor" red="0.20392156859999999" green="0.2470588235" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tQC-g8-DPa">
-                                <rect key="frame" x="0.0" y="110" width="375" height="508"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qGn-9K-lY1">
+                                <rect key="frame" x="0.0" y="96" width="375" height="522"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="tDI-qy-E0v">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XTK-Gh-0BE">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="Oat-ED-it1"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="5sJ-uG-ZFB"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="UQn-5r-DRJ"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="cvd-5d-Mj9"/>
                                 </connections>
-                            </tableView>
+                            </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.90843115482233505" green="0.90843115482233505" blue="0.90843115482233505" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="qGn-9K-lY1" firstAttribute="top" secondItem="t92-LN-tds" secondAttribute="bottom" constant="2" id="8TF-4j-NPp"/>
                             <constraint firstItem="t92-LN-tds" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="A2t-lM-1TR"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tQC-g8-DPa" secondAttribute="bottom" id="GgO-qs-pLc"/>
-                            <constraint firstItem="tQC-g8-DPa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ICc-e8-o1p"/>
-                            <constraint firstItem="tQC-g8-DPa" firstAttribute="top" secondItem="t92-LN-tds" secondAttribute="bottom" constant="2" id="SYM-Ek-2vc"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tQC-g8-DPa" secondAttribute="trailing" id="XYV-hy-ZH7"/>
-                            <constraint firstItem="t92-LN-tds" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="dlr-bO-JIB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qGn-9K-lY1" secondAttribute="bottom" id="Mlc-Ei-x3C"/>
+                            <constraint firstItem="qGn-9K-lY1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="O8i-mH-DWD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qGn-9K-lY1" secondAttribute="trailing" id="On9-IN-z8R"/>
+                            <constraint firstItem="t92-LN-tds" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="2" id="dlr-bO-JIB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t92-LN-tds" secondAttribute="trailing" constant="12" id="rMw-Lf-phI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="zbp-Aj-cep"/>
                     <connections>
-                        <outlet property="tableView" destination="tQC-g8-DPa" id="mZA-T3-23n"/>
+                        <outlet property="collectionView" destination="qGn-9K-lY1" id="r2A-gY-qjC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
