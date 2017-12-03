@@ -18,15 +18,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCf-qx-sIx">
-                                <rect key="frame" x="146" y="316" width="52" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <searchBar contentMode="redraw" placeholder="Найти" translatesAutoresizingMaskIntoConstraints="NO" id="u0b-qc-OC0">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <color key="barTintColor" red="0.20392156859999999" green="0.2470588235" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="u0b-qc-OC0" firstAttribute="top" secondItem="bWB-dF-Fwj" secondAttribute="top" id="9vq-E5-J2r"/>
+                            <constraint firstItem="u0b-qc-OC0" firstAttribute="trailing" secondItem="bWB-dF-Fwj" secondAttribute="trailing" id="Ilp-SO-H21"/>
+                            <constraint firstItem="u0b-qc-OC0" firstAttribute="leading" secondItem="bWB-dF-Fwj" secondAttribute="leading" id="ays-hG-GZO"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="bWB-dF-Fwj"/>
                     </view>
                     <navigationItem key="navigationItem" id="tdd-5M-hnc"/>

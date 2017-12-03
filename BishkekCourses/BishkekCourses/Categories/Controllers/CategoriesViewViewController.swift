@@ -13,7 +13,7 @@ class CategoriesViewViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        cofigureCollectionView()
+        configureCollectionView()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Категории"
@@ -21,7 +21,7 @@ class CategoriesViewViewController: UIViewController {
 
 }
 extension CategoriesViewViewController {
-    func cofigureCollectionView(){
+    func configureCollectionView(){
         collectionView.register(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
         collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
 
@@ -41,5 +41,9 @@ extension CategoriesViewViewController: UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 2)) / 2
         return CGSize(width: itemSize, height: itemSize)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let subCategoryVC = storyboard?.instantiateViewController(withIdentifier: "SubCategoriesViewController")
+        self.navigationController?.show(subCategoryVC!, sender: self)
     }
 }
