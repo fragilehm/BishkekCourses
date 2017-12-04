@@ -44,5 +44,9 @@ extension SubCategoriesViewController: UICollectionViewDataSource, UICollectionV
         let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
         return CGSize(width: itemSize, height: itemSize * 3 / 4)
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let courseVC = storyboard?.instantiateViewController(withIdentifier: "CoursesViewController")
+        self.navigationController?.show(courseVC!, sender: self)
+    }
 }
 
