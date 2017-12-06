@@ -12,6 +12,7 @@ class DetailedCourseViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var cellId = "DescriptionTableViewCell"
+    private var isFavorite = false
     @IBOutlet weak var backImageView: UIImageView!{
         didSet {
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(backTapped(tapGestureRecognizer:)))

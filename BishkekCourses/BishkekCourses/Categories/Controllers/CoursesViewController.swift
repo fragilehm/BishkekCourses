@@ -13,13 +13,23 @@ class CoursesViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setNavigationBarItems()
         configureCollectionView()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Курсы"
     }
-    
+//    private func setNavigationBarItems(){
+//        let backButton = UIButton.init(type: .system)
+//        backButton.setImage(#imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal), for: .normal)
+//        backButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+//        backButton.imageView?.contentMode = .scaleAspectFit
+//        backButton.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+//    }
+//    @objc func backPressed(_ button: UIButton) {
+//        self.navigationController?.popViewController(animated: true)
+//    }
 }
 
 extension CoursesViewController {
@@ -47,7 +57,6 @@ extension CoursesViewController: UICollectionViewDataSource, UICollectionViewDel
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard.init(name: "Course", bundle: nil)
         let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController")
-        //self.navigationController?.show(courseVC, sender: self)
         self.navigationController?.present(courseVC, animated: true, completion: nil)
     }
 }

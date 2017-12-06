@@ -49,7 +49,7 @@ extension ViewController {
     }
     func configureCollectionView(){
         collectionView.register(UINib(nibName: "MainCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MainCollectionViewCell")
-        collectionView?.contentInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        collectionView?.contentInset = UIEdgeInsets(top: 0, left: 12, bottom: 12, right: 12)
     }
     
 }

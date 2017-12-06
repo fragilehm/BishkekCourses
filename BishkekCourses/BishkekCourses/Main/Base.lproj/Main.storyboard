@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="t92-LN-tds">
-                                <rect key="frame" x="12" y="66" width="351" height="29"/>
+                                <rect key="frame" x="12" y="72" width="351" height="29"/>
                                 <segments>
                                     <segment title="Популярные"/>
                                     <segment title="Недавние"/>
@@ -27,7 +27,7 @@
                                 <color key="tintColor" red="0.20392156859999999" green="0.2470588235" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qGn-9K-lY1">
-                                <rect key="frame" x="0.0" y="96" width="375" height="522"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="510"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="tDI-qy-E0v">
                                     <size key="itemSize" width="50" height="50"/>
@@ -53,12 +53,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.90129945937752121" green="0.90129945937752121" blue="0.90129945937752121" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="qGn-9K-lY1" firstAttribute="top" secondItem="t92-LN-tds" secondAttribute="bottom" constant="2" id="8TF-4j-NPp"/>
+                            <constraint firstItem="qGn-9K-lY1" firstAttribute="top" secondItem="t92-LN-tds" secondAttribute="bottom" constant="8" id="8TF-4j-NPp"/>
                             <constraint firstItem="t92-LN-tds" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="A2t-lM-1TR"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qGn-9K-lY1" secondAttribute="bottom" id="Mlc-Ei-x3C"/>
                             <constraint firstItem="qGn-9K-lY1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="O8i-mH-DWD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qGn-9K-lY1" secondAttribute="trailing" id="On9-IN-z8R"/>
-                            <constraint firstItem="t92-LN-tds" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="2" id="dlr-bO-JIB"/>
+                            <constraint firstItem="t92-LN-tds" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="dlr-bO-JIB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t92-LN-tds" secondAttribute="trailing" constant="12" id="rMw-Lf-phI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

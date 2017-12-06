@@ -25,19 +25,48 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpz-N4-AVh">
                                 <rect key="frame" x="0.0" y="0.0" width="80" height="148"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="z7l-64-699">
-                                        <rect key="frame" x="10" y="44" width="60" height="60"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpQ-XE-ot8">
+                                        <rect key="frame" x="0.0" y="12.5" width="80" height="122"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="z7l-64-699">
+                                                <rect key="frame" x="10" y="10" width="60" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="LX3-RJ-ZNq"/>
+                                                    <constraint firstAttribute="width" constant="60" id="tUF-DW-Cqp"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.5" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5m-47-Sph">
+                                                <rect key="frame" x="28" y="96" width="25" height="21"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                                <color key="textColor" red="0.50980392159999999" green="0.74117647060000003" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XA-og-12E">
+                                                <rect key="frame" x="14" y="75" width="52" height="16"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="textColor" red="0.58823529409999997" green="0.62352941179999999" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="LX3-RJ-ZNq"/>
-                                            <constraint firstAttribute="width" constant="60" id="tUF-DW-Cqp"/>
+                                            <constraint firstItem="8XA-og-12E" firstAttribute="top" secondItem="z7l-64-699" secondAttribute="bottom" constant="5" id="08b-H9-Ttj"/>
+                                            <constraint firstItem="p5m-47-Sph" firstAttribute="top" secondItem="8XA-og-12E" secondAttribute="bottom" constant="5" id="5IG-s8-ikj"/>
+                                            <constraint firstItem="z7l-64-699" firstAttribute="leading" secondItem="vpQ-XE-ot8" secondAttribute="leading" constant="10" id="F0B-YL-KXb"/>
+                                            <constraint firstAttribute="bottom" secondItem="p5m-47-Sph" secondAttribute="bottom" constant="5" id="FDd-cx-BrR"/>
+                                            <constraint firstItem="p5m-47-Sph" firstAttribute="centerX" secondItem="vpQ-XE-ot8" secondAttribute="centerX" id="PmO-pc-xTn"/>
+                                            <constraint firstAttribute="trailing" secondItem="z7l-64-699" secondAttribute="trailing" constant="10" id="TFL-tr-SQE"/>
+                                            <constraint firstItem="p5m-47-Sph" firstAttribute="centerX" secondItem="vpQ-XE-ot8" secondAttribute="centerX" constant="0.5" id="ZnN-VE-jz1"/>
+                                            <constraint firstItem="8XA-og-12E" firstAttribute="centerX" secondItem="vpQ-XE-ot8" secondAttribute="centerX" id="vLT-mk-WwM"/>
+                                            <constraint firstItem="z7l-64-699" firstAttribute="top" secondItem="vpQ-XE-ot8" secondAttribute="top" constant="10" id="y00-gd-hnE"/>
                                         </constraints>
-                                    </imageView>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="z7l-64-699" firstAttribute="leading" secondItem="tpz-N4-AVh" secondAttribute="leading" constant="10" id="qeC-0k-YSv"/>
-                                    <constraint firstItem="z7l-64-699" firstAttribute="centerY" secondItem="tpz-N4-AVh" secondAttribute="centerY" id="sO4-4Y-Anm"/>
-                                    <constraint firstAttribute="trailing" secondItem="z7l-64-699" secondAttribute="trailing" constant="10" id="zcW-lI-8do"/>
+                                    <constraint firstAttribute="trailing" secondItem="vpQ-XE-ot8" secondAttribute="trailing" id="ZwU-IJ-Bdo"/>
+                                    <constraint firstItem="vpQ-XE-ot8" firstAttribute="centerY" secondItem="tpz-N4-AVh" secondAttribute="centerY" id="mCR-zu-ZhC"/>
+                                    <constraint firstItem="vpQ-XE-ot8" firstAttribute="leading" secondItem="tpz-N4-AVh" secondAttribute="leading" id="uaG-m0-7tr"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature" translatesAutoresizingMaskIntoConstraints="NO" id="aMG-56-xWV">
@@ -48,41 +77,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First International Yoga Day" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FR3-bl-bau">
-                                <rect key="frame" x="90" y="10" width="160" height="36"/>
+                                <rect key="frame" x="90" y="10" width="253" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jUX-e8-nw9" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="260" y="10" width="83" height="15"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="83" id="n5g-zC-ULq"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="starSize">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                        <real key="value" value="3.7000000000000002"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
-                                        <color key="value" red="0.24705882352941178" green="0.69803921568627447" blue="0.82352941176470584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
-                                        <color key="value" red="0.2470588235" green="0.69803921570000005" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
-                                        <color key="value" red="0.2470588235" green="0.69803921570000005" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Embassy of India, Bishkek in collaboration with UNDP, Kyrgyzstan is celebrating 1st International Day of Yoga on June 21" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcs-6P-e2T">
                                 <rect key="frame" x="90" y="106.5" width="253" height="31.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -100,16 +99,14 @@
                             <constraint firstItem="tpz-N4-AVh" firstAttribute="leading" secondItem="5O5-SC-1pW" secondAttribute="leading" id="BZ0-xr-ywb"/>
                             <constraint firstAttribute="bottom" secondItem="aMG-56-xWV" secondAttribute="bottom" id="DOH-4p-Pli"/>
                             <constraint firstAttribute="bottom" secondItem="bN3-5T-LPn" secondAttribute="bottom" id="I5J-6V-OrG"/>
-                            <constraint firstItem="jUX-e8-nw9" firstAttribute="leading" secondItem="FR3-bl-bau" secondAttribute="trailing" constant="10" id="LGG-3h-gEF"/>
                             <constraint firstItem="aMG-56-xWV" firstAttribute="top" secondItem="5O5-SC-1pW" secondAttribute="top" id="PYZ-8u-QQJ"/>
                             <constraint firstItem="FR3-bl-bau" firstAttribute="top" secondItem="5O5-SC-1pW" secondAttribute="top" constant="10" id="UO6-xz-bxI"/>
-                            <constraint firstItem="jUX-e8-nw9" firstAttribute="top" secondItem="5O5-SC-1pW" secondAttribute="top" constant="10" id="UWG-7u-Zxe"/>
                             <constraint firstAttribute="trailing" secondItem="aMG-56-xWV" secondAttribute="trailing" id="WwL-tW-gGB"/>
                             <constraint firstItem="Dcs-6P-e2T" firstAttribute="leading" secondItem="tpz-N4-AVh" secondAttribute="trailing" constant="10" id="Zyq-AU-Lxi"/>
+                            <constraint firstAttribute="trailing" secondItem="FR3-bl-bau" secondAttribute="trailing" constant="10" id="Zyx-zf-2gt"/>
                             <constraint firstItem="aMG-56-xWV" firstAttribute="leading" secondItem="tpz-N4-AVh" secondAttribute="trailing" id="e9A-a7-dPj"/>
                             <constraint firstAttribute="trailing" secondItem="Dcs-6P-e2T" secondAttribute="trailing" constant="10" id="tv2-Tw-Hfe"/>
                             <constraint firstItem="bN3-5T-LPn" firstAttribute="top" secondItem="5O5-SC-1pW" secondAttribute="top" id="xec-uu-pXF"/>
-                            <constraint firstAttribute="trailing" secondItem="jUX-e8-nw9" secondAttribute="trailing" constant="10" id="ypa-8q-DhL"/>
                             <constraint firstItem="FR3-bl-bau" firstAttribute="leading" secondItem="tpz-N4-AVh" secondAttribute="trailing" constant="10" id="zeF-x0-WRf"/>
                         </constraints>
                     </view>
@@ -128,7 +125,6 @@
                 <outlet property="descriptionLabel" destination="Dcs-6P-e2T" id="zt2-4y-izg"/>
                 <outlet property="logoImageView" destination="z7l-64-699" id="9Ye-7Q-I4V"/>
                 <outlet property="mainImageView" destination="aMG-56-xWV" id="qAX-uh-SoD"/>
-                <outlet property="startsView" destination="jUX-e8-nw9" id="a0q-5o-o3q"/>
                 <outlet property="titleLabel" destination="FR3-bl-bau" id="ffH-LB-AsO"/>
             </connections>
             <point key="canvasLocation" x="-45.5" y="25"/>

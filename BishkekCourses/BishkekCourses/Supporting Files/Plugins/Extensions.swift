@@ -31,6 +31,17 @@ extension UIViewController {
         alertController.addAction(OKAction)
         self.present(alertController, animated: true, completion: nil)
     }
+    func setNavigationBarItems(){
+        let backButton = UIButton.init(type: .system)
+        backButton.setImage(#imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal), for: .normal)
+        backButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        backButton.imageView?.contentMode = .scaleAspectFit
+        backButton.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+    }
+    @objc func backPressed(_ button: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
 }
 class CustomTextField: UITextField {
     required init?(coder aDecoder: NSCoder) {

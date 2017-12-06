@@ -14,6 +14,7 @@ class SubCategoriesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBarItems()
         configureCollectionView()
     }
     override func viewWillAppear(_ animated: Bool) {
