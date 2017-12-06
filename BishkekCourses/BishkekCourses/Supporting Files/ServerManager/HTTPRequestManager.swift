@@ -29,7 +29,7 @@ class HTTPRequestManager {
         if header != "" {
             head.updateValue(header, forKey: "language")
         }
-        Alamofire.request(apiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!, method: method, parameters: parameters, encoding: JSONEncoding.default , headers: head).responseJSON { (response:DataResponse<Any>) in
+    Alamofire.request(apiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!, method: method, parameters: parameters, encoding: JSONEncoding.default , headers: head).responseJSON { (response:DataResponse<Any>) in
             guard response.response != nil else {
                 error(Constants.Network.ErrorMessage.UNABLE_LOAD_DATA)
                 return

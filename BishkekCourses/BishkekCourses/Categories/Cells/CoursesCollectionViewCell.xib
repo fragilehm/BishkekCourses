@@ -25,7 +25,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpz-N4-AVh">
                                 <rect key="frame" x="0.0" y="0.0" width="80" height="148"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="z7l-64-699">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="z7l-64-699">
                                         <rect key="frame" x="10" y="44" width="60" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="LX3-RJ-ZNq"/>
@@ -40,7 +40,7 @@
                                     <constraint firstAttribute="trailing" secondItem="z7l-64-699" secondAttribute="trailing" constant="10" id="zcW-lI-8do"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature" translatesAutoresizingMaskIntoConstraints="NO" id="aMG-56-xWV">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature" translatesAutoresizingMaskIntoConstraints="NO" id="aMG-56-xWV">
                                 <rect key="frame" x="80" y="0.0" width="273" height="148"/>
                             </imageView>
                             <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bN3-5T-LPn">
@@ -53,7 +53,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jUX-e8-nw9" customClass="CosmosView" customModule="Cosmos">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jUX-e8-nw9" customClass="CosmosView" customModule="Cosmos">
                                 <rect key="frame" x="260" y="10" width="83" height="15"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -73,13 +73,13 @@
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="filledColor">
-                                        <color key="value" red="0.93844683088174863" green="0.96928537436548223" blue="0.5845861095809235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.24705882352941178" green="0.69803921568627447" blue="0.82352941176470584" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="emptyBorderColor">
-                                        <color key="value" red="0.93934912820000005" green="0.97021732230000002" blue="0.5851481771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.2470588235" green="0.69803921570000005" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="filledBorderColor">
-                                        <color key="value" red="0.93934912820000005" green="0.97021732230000002" blue="0.5851481771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="value" red="0.2470588235" green="0.69803921570000005" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>

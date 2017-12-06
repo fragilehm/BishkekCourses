@@ -44,5 +44,11 @@ extension CoursesViewController: UICollectionViewDataSource, UICollectionViewDel
         let itemSize = collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right)
         return CGSize(width: itemSize, height: itemSize / 2)
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard.init(name: "Course", bundle: nil)
+        let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController")
+        //self.navigationController?.show(courseVC, sender: self)
+        self.navigationController?.present(courseVC, animated: true, completion: nil)
+    }
 }
 
