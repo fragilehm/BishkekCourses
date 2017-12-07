@@ -18,7 +18,6 @@ class CategoriesViewViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Категории"
     }
-
 }
 extension CategoriesViewViewController {
     func configureCollectionView(){
