@@ -22,14 +22,15 @@ class HTTPRequestManager {
             return
         }
         let apiUrl = ApiAddressLink(endpoint: endpoint).getURLString()
-        var head: HTTPHeaders = [:]
-        if let token = UserDefaults.standard.string(forKey: "token") {
-            head = ["Authorization" : "Bearer \(token)"]
-        }
-        if header != "" {
-            head.updateValue(header, forKey: "language")
-        }
-    Alamofire.request(apiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!, method: method, parameters: parameters, encoding: JSONEncoding.default , headers: head).responseJSON { (response:DataResponse<Any>) in
+        let head: HTTPHeaders = [:]
+//        if let token = UserDefaults.standard.string(forKey: "token") {
+//            head = ["Authorization" : "Bearer \(token)"]
+//        }
+//        if header != "" {
+//            head.updateValue(header, forKey: "language")
+//        }
+        print(apiUrl)
+        Alamofire.request(apiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!, method: method, parameters: parameters, encoding: JSONEncoding.default , headers: head).responseJSON { (response:DataResponse<Any>) in
             guard response.response != nil else {
                 error(Constants.Network.ErrorMessage.UNABLE_LOAD_DATA)
                 return

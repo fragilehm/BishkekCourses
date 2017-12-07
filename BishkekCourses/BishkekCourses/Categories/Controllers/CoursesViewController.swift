@@ -11,25 +11,22 @@ import UIKit
 class CoursesViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    var subcategory_id = 0
+    var courses = Courses()
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBarItems()
         configureCollectionView()
+        ServerManager.shared.getCoursesBySubcategory(subcategory_id: subcategory_id, setCourses, error: showErrorAlert)
+        
+    }
+    func setCourses(courses: Courses){
+        self.courses = courses
+        self.collectionView.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Курсы"
     }
-//    private func setNavigationBarItems(){
-//        let backButton = UIButton.init(type: .system)
-//        backButton.setImage(#imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal), for: .normal)
-//        backButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
-//        backButton.imageView?.contentMode = .scaleAspectFit
-//        backButton.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
-//    }
-//    @objc func backPressed(_ button: UIButton) {
-//        self.navigationController?.popViewController(animated: true)
-//    }
 }
 
 extension CoursesViewController {
@@ -44,10 +41,16 @@ extension CoursesViewController: UICollectionViewDataSource, UICollectionViewDel
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return courses.array.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoursesCollectionViewCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoursesCollectionViewCell", for: indexPath) as! CoursesCollectionViewCell
+        cell.titleLabel.text = courses.array[indexPath.row].title
+        cell.descriptionLabel.text = courses.array[indexPath.row].description
+//        let logo_url = URL(string: courses.array[indexPath.row].images.array[0].logo_image_url)
+//        cell.logoImageView.kf.setImage(with: logo_url)
+//        let background_url = URL(string: courses.array[indexPath.row].images.array[0].background_image_url)
+//        cell.mainImageView.kf.setImage(with: background_url)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -56,7 +59,9 @@ extension CoursesViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard.init(name: "Course", bundle: nil)
-        let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController")
+        let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
+        courseVC.course_id = courses.array[indexPath.row].id
+        print(courses.array[indexPath.row].id)
         self.navigationController?.present(courseVC, animated: true, completion: nil)
     }
 }

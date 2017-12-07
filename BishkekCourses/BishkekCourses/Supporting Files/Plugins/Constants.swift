@@ -26,9 +26,16 @@ struct Constants {
             static let NO_HTTP_STATUS_CODE = "Unable to get response HTTP status code"
             static let UNAUTHORIZED = "Unauthorized error"
         }
-        
         struct EndPoints {
             static let Token_auth = "api/token-auth"
+            static let Categories = "categories"
+            static let SubCategories = "category"
+            static let CoursesBySubcategory = "subcategory"
+            static let CourseDetails = "course"
+
+
+            
+
         }
     }
 

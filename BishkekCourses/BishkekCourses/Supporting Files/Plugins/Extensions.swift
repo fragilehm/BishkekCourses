@@ -34,7 +34,8 @@ extension UIViewController {
     func setNavigationBarItems(){
         let backButton = UIButton.init(type: .system)
         backButton.setImage(#imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal), for: .normal)
-        backButton.frame = CGRect(x: 0, y: 0, width: 34, height: 34)
+        backButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        backButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 12)
         backButton.imageView?.contentMode = .scaleAspectFit
         backButton.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)

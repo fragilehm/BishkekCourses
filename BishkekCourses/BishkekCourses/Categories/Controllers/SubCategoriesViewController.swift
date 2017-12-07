@@ -11,16 +11,21 @@ import UIKit
 class SubCategoriesViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    var category_id = 0
+    var subcategories = SubCategories()
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBarItems()
         configureCollectionView()
+        ServerManager.shared.getSubcategories(category_id: category_id, setSubcategories, error: showErrorAlert)
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Подкатегории"
     }
-
+    func setSubcategories(subcategories: SubCategories){
+        self.subcategories = subcategories
+        self.collectionView.reloadData()
+    }
     
 }
 extension SubCategoriesViewController {
@@ -35,10 +40,13 @@ extension SubCategoriesViewController: UICollectionViewDataSource, UICollectionV
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return subcategories.array.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubCategoriesCollectionViewCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubCategoriesCollectionViewCell", for: indexPath) as! SubCategoriesCollectionViewCell
+        cell.titleLabel.text = self.subcategories.array[indexPath.row].title
+        let url = URL(string: subcategories.array[indexPath.row].subcategory_image_url)
+        cell.subCategoriesImageView.kf.setImage(with: url)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -46,8 +54,9 @@ extension SubCategoriesViewController: UICollectionViewDataSource, UICollectionV
         return CGSize(width: itemSize, height: itemSize * 3 / 4)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let courseVC = storyboard?.instantiateViewController(withIdentifier: "CoursesViewController")
-        self.navigationController?.show(courseVC!, sender: self)
+        let courseVC = storyboard?.instantiateViewController(withIdentifier: "CoursesViewController") as! CoursesViewController
+        courseVC.subcategory_id = subcategories.array[indexPath.row].id
+        self.navigationController?.show(courseVC, sender: self)
     }
 }
 

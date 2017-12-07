@@ -23,6 +23,7 @@ class HeaderTableViewCell: UITableViewCell {
         }
     }
     @IBOutlet weak var raitingLabel: UILabel!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var savesLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var starsView: CosmosView! {

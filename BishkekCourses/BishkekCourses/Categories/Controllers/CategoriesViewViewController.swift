@@ -7,16 +7,22 @@
 //
 
 import UIKit
-
+import Kingfisher
 class CategoriesViewViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    var categories = Categories()
     override func viewDidLoad() {
         super.viewDidLoad()
+        ServerManager.shared.getCategories(setCategories, error: showErrorAlert)
         configureCollectionView()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Категории"
+    }
+    func setCategories(categories: Categories){
+        self.categories = categories
+        self.collectionView.reloadData()
     }
 }
 extension CategoriesViewViewController {
@@ -31,10 +37,13 @@ extension CategoriesViewViewController: UICollectionViewDataSource, UICollection
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return categories.array.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCollectionViewCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCollectionViewCell", for: indexPath) as! CategoriesCollectionViewCell
+        cell.titleLabel.text = categories.array[indexPath.row].title
+        let url = URL(string: categories.array[indexPath.row].category_image_url)
+        cell.categoriesImageView.kf.setImage(with: url)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -42,7 +51,8 @@ extension CategoriesViewViewController: UICollectionViewDataSource, UICollection
         return CGSize(width: itemSize, height: itemSize)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let subCategoryVC = storyboard?.instantiateViewController(withIdentifier: "SubCategoriesViewController")
-        self.navigationController?.show(subCategoryVC!, sender: self)
+        let subCategoryVC = storyboard?.instantiateViewController(withIdentifier: "SubCategoriesViewController") as! SubCategoriesViewController
+        subCategoryVC.category_id = categories.array[indexPath.row].id
+        self.navigationController?.show(subCategoryVC, sender: self)
     }
 }
