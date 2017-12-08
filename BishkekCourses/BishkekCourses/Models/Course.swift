@@ -16,17 +16,22 @@ struct Course {
     var description: String
     var contacts: Contacts
     var branches: Branches
-    var images: Imagess
     var services: Services
-    
+    var main_image_url: String
+    var logo_image_url: String
+    var background_image_url: String
+
+
     init() {
         id = 0
         subcategory = 0
         title = ""
         description = ""
+        main_image_url = ""
+        logo_image_url = ""
+        background_image_url = ""
         contacts = Contacts()
         branches = Branches()
-        images = Imagess()
         services = Services()
     }
     init(json: JSON) {
@@ -36,7 +41,9 @@ struct Course {
         description = json["description"].stringValue
         contacts = Contacts(json: json["contacts"])
         branches = Branches(json: json["branches"])
-        images = Imagess(json: json["images"])
+        main_image_url = json["main_image_url"].stringValue
+        logo_image_url = json["logo_image_url"].stringValue
+        background_image_url = json["background_image_url"].stringValue
         services = Services(json: json["services"])
     }
 }

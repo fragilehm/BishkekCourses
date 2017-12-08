@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K33-lu-4bx">
                         <rect key="frame" x="0.0" y="0.0" width="512" height="553"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tree" translatesAutoresizingMaskIntoConstraints="NO" id="yJK-Hp-1r4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="art" translatesAutoresizingMaskIntoConstraints="NO" id="yJK-Hp-1r4">
                                 <rect key="frame" x="0.0" y="0.0" width="512" height="553"/>
                             </imageView>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NEI-QI-2Qz">
@@ -102,6 +102,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="tree" width="960" height="854"/>
+        <image name="art" width="393" height="394"/>
     </resources>
 </document>

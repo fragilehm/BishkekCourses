@@ -38,6 +38,11 @@ class ServerManager: HTTPRequestManager  {
             completion(Course(json: json))
         }, error: error)
     }
+    func getRecentCourses(_ completion: @escaping (Courses)-> Void, error: @escaping (String)-> Void) {
+        self.get(endpoint: "\(Constants.Network.EndPoints.CoursesRecent)", completion: { (json) in
+            completion(Courses(json: json))
+        }, error: error)
+    }
     
     
 }

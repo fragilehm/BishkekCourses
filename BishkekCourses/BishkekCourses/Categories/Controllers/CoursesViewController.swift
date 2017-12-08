@@ -47,10 +47,10 @@ extension CoursesViewController: UICollectionViewDataSource, UICollectionViewDel
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CoursesCollectionViewCell", for: indexPath) as! CoursesCollectionViewCell
         cell.titleLabel.text = courses.array[indexPath.row].title
         cell.descriptionLabel.text = courses.array[indexPath.row].description
-//        let logo_url = URL(string: courses.array[indexPath.row].images.array[0].logo_image_url)
-//        cell.logoImageView.kf.setImage(with: logo_url)
-//        let background_url = URL(string: courses.array[indexPath.row].images.array[0].background_image_url)
-//        cell.mainImageView.kf.setImage(with: background_url)
+        let logo_url = URL(string: courses.array[indexPath.row].logo_image_url)
+        cell.logoImageView.kf.setImage(with: logo_url)
+        let background_url = URL(string: courses.array[indexPath.row].background_image_url)
+        cell.mainImageView.kf.setImage(with: background_url)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

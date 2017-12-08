@@ -119,13 +119,10 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell", for: indexPath) as! HeaderTableViewCell
             cell.nameLabel.text = course.title
-            if course.images.array.count != 0 {
-                let logo_url = URL(string: course.images.array[0].logo_image_url)
-                cell.logoImageView.kf.setImage(with: logo_url)
-                let background_url = URL(string: course.images.array[0].background_image_url)
-                cell.backgroundImageView.kf.setImage(with: background_url)
-
-            }
+            let logo_url = URL(string: course.logo_image_url)
+            cell.logoImageView.kf.setImage(with: logo_url)
+            let background_url = URL(string: course.background_image_url)
+            cell.backgroundImageView.kf.setImage(with: background_url)
             cell.cellDelegate = self
             return cell
         }
@@ -151,6 +148,7 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
             else if cellId == "ContactsTableViewCell" {
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ContactsTableViewCell
                 cell.contactLabel.text = course.contacts.array[indexPath.row].contact
+                cell.contactImageView.image = getContactIcon(type: course.contacts.array[indexPath.row].type)
                 return cell
                 
             }
@@ -167,6 +165,23 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    func getContactIcon(type: String) -> UIImage {
+        var icon: UIImage?
+        switch type {
+        case "PHONE":
+            icon = #imageLiteral(resourceName: "phone")
+        case "EMAIL":
+            icon = #imageLiteral(resourceName: "email")
+        case "FACEBOOK":
+            icon = #imageLiteral(resourceName: "facebook")
+        case "WHATSAPP":
+            icon = #imageLiteral(resourceName: "whatsapp")
+        default:
+            icon = #imageLiteral(resourceName: "website")
+            
+        }
+        return icon!
     }
     func iconPressed(_ index: Int) {
         if index == 0 {

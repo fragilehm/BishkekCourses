@@ -32,6 +32,8 @@ struct Constants {
             static let SubCategories = "category"
             static let CoursesBySubcategory = "subcategory"
             static let CourseDetails = "course"
+            static let CoursesRecent = "courses/recent"
+
 
 
             

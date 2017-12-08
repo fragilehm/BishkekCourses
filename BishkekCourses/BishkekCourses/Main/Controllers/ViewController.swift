@@ -11,14 +11,19 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    var recentCourses = Courses()
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabBar()
         configureCollectionView()
-        //self.navigationItem.title = "Главная"
+        ServerManager.shared.getRecentCourses(setRecentCourses, error: showErrorAlert)
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Главная"
+    }
+    func setRecentCourses(courses: Courses) {
+        self.recentCourses = courses
+        collectionView.reloadData()
     }
 }
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -26,15 +31,18 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return self.recentCourses.array.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as! MainCollectionViewCell
+        cell.titleLabel.text = recentCourses.array[indexPath.row].title
+        cell.decriptionLabel.text = recentCourses.array[indexPath.row].description
+        let url = URL(string: recentCourses.array[indexPath.row].main_image_url)
+        cell.mainImageView.kf.setImage(with: url)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right))
-        //print(itemSize, "  000")
         return CGSize(width: itemSize, height: itemSize)
     }
 }
@@ -51,5 +59,4 @@ extension ViewController {
         collectionView.register(UINib(nibName: "MainCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MainCollectionViewCell")
         collectionView?.contentInset = UIEdgeInsets(top: 0, left: 12, bottom: 12, right: 12)
     }
-    
 }

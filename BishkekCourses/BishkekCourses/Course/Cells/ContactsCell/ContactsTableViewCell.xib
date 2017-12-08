@@ -54,6 +54,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="contactImageView" destination="2DZ-Fi-JqZ" id="0pE-EF-7vk"/>
                 <outlet property="contactLabel" destination="Zqx-Zf-kPk" id="zL6-Y7-gvE"/>
             </connections>
             <point key="canvasLocation" x="52.5" y="55.5"/>
