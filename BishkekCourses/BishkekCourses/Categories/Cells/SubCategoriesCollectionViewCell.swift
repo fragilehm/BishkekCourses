@@ -20,5 +20,10 @@ class SubCategoriesCollectionViewCell: UICollectionViewCell {
         cardView.layer.cornerRadius = 5
         cardView.layer.masksToBounds = true
     }
+    func fillCell(subcategory: SubCategory){
+        titleLabel.text = subcategory.title
+        let url = URL(string: subcategory.subcategory_image_url)
+        subCategoriesImageView.kf.setImage(with: url)
+    }
 }
 

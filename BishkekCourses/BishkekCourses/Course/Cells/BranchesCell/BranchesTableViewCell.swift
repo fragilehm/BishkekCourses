@@ -15,5 +15,7 @@ class BranchesTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
+    func fillCell(branch: Branch) {
+        addressLabel.text = branch.address
+    }
 }

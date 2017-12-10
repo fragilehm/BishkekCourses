@@ -28,9 +28,9 @@ class ServerManager: HTTPRequestManager  {
             completion(SubCategories(json: json))
         }, error: error)
     }
-    func getCoursesBySubcategory(subcategory_id: Int,_ completion: @escaping (Courses)-> Void, error: @escaping (String)-> Void) {
+    func getCoursesBySubcategory(subcategory_id: Int,_ completion: @escaping (SimplifiedCourses)-> Void, error: @escaping (String)-> Void) {
         self.get(endpoint: "\(Constants.Network.EndPoints.CoursesBySubcategory)/\(subcategory_id)", completion: { (json) in
-            completion(Courses(json: json))
+            completion(SimplifiedCourses(json: json))
         }, error: error)
     }
     func getCourseDetails(course_id: Int,_ completion: @escaping (Course)-> Void, error: @escaping (String)-> Void) {
@@ -38,9 +38,9 @@ class ServerManager: HTTPRequestManager  {
             completion(Course(json: json))
         }, error: error)
     }
-    func getRecentCourses(_ completion: @escaping (Courses)-> Void, error: @escaping (String)-> Void) {
+    func getRecentCourses(_ completion: @escaping (SimplifiedCourses)-> Void, error: @escaping (String)-> Void) {
         self.get(endpoint: "\(Constants.Network.EndPoints.CoursesRecent)", completion: { (json) in
-            completion(Courses(json: json))
+            completion(SimplifiedCourses(json: json))
         }, error: error)
     }
     

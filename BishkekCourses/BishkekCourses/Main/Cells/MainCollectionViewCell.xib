@@ -96,6 +96,7 @@
                 <outlet property="cardView" destination="K33-lu-4bx" id="kun-v5-aGh"/>
                 <outlet property="decriptionLabel" destination="5zF-W0-Ewr" id="fSl-WI-daW"/>
                 <outlet property="mainImageView" destination="yJK-Hp-1r4" id="l9C-DQ-x4B"/>
+                <outlet property="subcategoryLabel" destination="7vz-oU-iKP" id="hS5-Mv-9Wc"/>
                 <outlet property="titleLabel" destination="VMX-Nx-Imd" id="Bnt-bM-Fcl"/>
             </connections>
             <point key="canvasLocation" x="152" y="125.5"/>

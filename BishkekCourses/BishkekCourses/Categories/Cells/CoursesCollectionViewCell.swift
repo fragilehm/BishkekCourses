@@ -32,5 +32,12 @@ class CoursesCollectionViewCell: UICollectionViewCell {
         cardView.layer.masksToBounds = true
         // Initialization code
     }
-
+    func fillCell(course: SimplifiedCourse){
+        titleLabel.text = course.title
+        descriptionLabel.text = course.description
+        let logo_url = URL(string: course.logo_image_url)
+        logoImageView.kf.setImage(with: logo_url)
+        let background_url = URL(string: course.background_image_url)
+        mainImageView.kf.setImage(with: background_url)
+    }
 }

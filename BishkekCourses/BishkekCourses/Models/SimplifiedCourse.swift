@@ -9,30 +9,36 @@
 import Foundation
 import SwiftyJSON
 
+
 struct SimplifiedCourse {
     var id: Int
+    var subcategory: String
     var title: String
     var description: String
-    var image_url: String
-    var is_favorite: Bool
+    var main_image_url: String
+    var logo_image_url: String
+    var background_image_url: String
+    
     
     init() {
-        self.id = 0
-        self.title = ""
-        self.description = ""
-        self.image_url = ""
-        self.is_favorite = false
+        id = 0
+        subcategory = ""
+        title = ""
+        description = ""
+        main_image_url = ""
+        logo_image_url = ""
+        background_image_url = ""
     }
-    
     init(json: JSON) {
         id = json["id"].intValue
+        subcategory = json["subcategory"].stringValue
         title = json["title"].stringValue
         description = json["description"].stringValue
-        image_url = json["image_url"].stringValue
-        is_favorite = json["is_favorite"].boolValue
+        main_image_url = json["main_image_url"].stringValue
+        logo_image_url = json["logo_image_url"].stringValue
+        background_image_url = json["background_image_url"].stringValue
     }
 }
-
 class SimplifiedCourses: NSObject {
     var array: Array = Array<SimplifiedCourse>()
     override init() {
@@ -45,4 +51,3 @@ class SimplifiedCourses: NSObject {
         }
     }
 }
-

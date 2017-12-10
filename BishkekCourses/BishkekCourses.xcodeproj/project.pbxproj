@@ -49,7 +49,6 @@
 		849D8DCF1FD4888D00F507A4 /* SubCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D8DCE1FD4888D00F507A4 /* SubCategoriesViewController.swift */; };
 		849D8DD21FD488FA00F507A4 /* SubCategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D8DD01FD488FA00F507A4 /* SubCategoriesCollectionViewCell.swift */; };
 		849D8DD31FD488FA00F507A4 /* SubCategoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849D8DD11FD488FA00F507A4 /* SubCategoriesCollectionViewCell.xib */; };
-		84C26DCD1FDA66C3005BE560 /* ContactsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C26DCC1FDA66C3005BE560 /* ContactsEnum.swift */; };
 		84C399EA1FD3080400DD5D66 /* ApiAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C399E91FD3080400DD5D66 /* ApiAddress.swift */; };
 		84C399EC1FD3080A00DD5D66 /* HTTPRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C399EB1FD3080A00DD5D66 /* HTTPRequestManager.swift */; };
 		84C399EE1FD3081100DD5D66 /* HTTPStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C399ED1FD3081100DD5D66 /* HTTPStatusCode.swift */; };
@@ -138,7 +137,6 @@
 		849D8DCE1FD4888D00F507A4 /* SubCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesViewController.swift; sourceTree = "<group>"; };
 		849D8DD01FD488FA00F507A4 /* SubCategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		849D8DD11FD488FA00F507A4 /* SubCategoriesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubCategoriesCollectionViewCell.xib; sourceTree = "<group>"; };
-		84C26DCC1FDA66C3005BE560 /* ContactsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsEnum.swift; sourceTree = "<group>"; };
 		84C2947524281F15E93719D9 /* Pods_BishkekCoursesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BishkekCoursesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C399E91FD3080400DD5D66 /* ApiAddress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiAddress.swift; sourceTree = "<group>"; };
 		84C399EB1FD3080A00DD5D66 /* HTTPRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTPRequestManager.swift; sourceTree = "<group>"; };
@@ -413,7 +411,6 @@
 		84C26DCB1FDA66A8005BE560 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				84C26DCC1FDA66C3005BE560 /* ContactsEnum.swift */,
 			);
 			path = Plugins;
 			sourceTree = "<group>";
@@ -529,15 +526,15 @@
 			isa = PBXGroup;
 			children = (
 				844E780D1FD691C400368CFA /* Course */,
-				846C02751FD3ED280039C085 /* Models */,
-				8454AC301FD1C2950064689C /* Supporting Files */,
-				8454AC2F1FD1C2820064689C /* Main */,
-				8454AC311FD1C29F0064689C /* Categories */,
-				8454AC321FD1C2E60064689C /* News */,
-				84FFD1631FD281CF00F9E5C3 /* Search */,
 				8454AC331FD1C2EF0064689C /* Favorite */,
+				84FFD1631FD281CF00F9E5C3 /* Search */,
+				8454AC321FD1C2E60064689C /* News */,
+				8454AC311FD1C29F0064689C /* Categories */,
+				8454AC2F1FD1C2820064689C /* Main */,
 				84C399F91FD3211200DD5D66 /* Login */,
 				84C399FF1FD33AC800DD5D66 /* Registration */,
+				846C02751FD3ED280039C085 /* Models */,
+				8454AC301FD1C2950064689C /* Supporting Files */,
 				84C714481FD00BB6007E640F /* AppDelegate.swift */,
 				84C714521FD00BB6007E640F /* Assets.xcassets */,
 				84C714541FD00BB6007E640F /* LaunchScreen.storyboard */,
@@ -964,7 +961,6 @@
 				842CA5881FD7C0710051C610 /* HeaderTableViewCell.swift in Sources */,
 				842CA5851FD7C0070051C610 /* DetailedCourseViewController.swift in Sources */,
 				84FFD1621FD27FCF00F9E5C3 /* MainPageEnum.swift in Sources */,
-				84C26DCD1FDA66C3005BE560 /* ContactsEnum.swift in Sources */,
 				849D8DCF1FD4888D00F507A4 /* SubCategoriesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

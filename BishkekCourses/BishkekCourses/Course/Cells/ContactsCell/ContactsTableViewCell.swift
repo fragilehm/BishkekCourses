@@ -22,5 +22,11 @@ class ContactsTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
+    func fillCell(contact: Contact){
+        contactLabel.text = contact.contact
+        contactImageView.image = getContactIcon(type: contact.type)
+    }
+    func getContactIcon(type: String) -> UIImage {
+        return UIImage.init(named: type)!
+    }
 }

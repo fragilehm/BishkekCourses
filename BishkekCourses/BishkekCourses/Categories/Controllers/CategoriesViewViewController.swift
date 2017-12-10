@@ -41,9 +41,7 @@ extension CategoriesViewViewController: UICollectionViewDataSource, UICollection
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCollectionViewCell", for: indexPath) as! CategoriesCollectionViewCell
-        cell.titleLabel.text = categories.array[indexPath.row].title
-        let url = URL(string: categories.array[indexPath.row].category_image_url)
-        cell.categoriesImageView.kf.setImage(with: url)
+        cell.fillCell(category: categories.array[indexPath.row])
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

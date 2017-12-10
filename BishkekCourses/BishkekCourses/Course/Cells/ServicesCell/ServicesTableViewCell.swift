@@ -17,5 +17,9 @@ class ServicesTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    func fillCell(service: Service){
+        titleLabel.text = service.title
+        descriptionLabel.text = service.description
+        priceLabel.text = "\(service.price)"
+    }
 }

@@ -44,9 +44,7 @@ extension SubCategoriesViewController: UICollectionViewDataSource, UICollectionV
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubCategoriesCollectionViewCell", for: indexPath) as! SubCategoriesCollectionViewCell
-        cell.titleLabel.text = self.subcategories.array[indexPath.row].title
-        let url = URL(string: subcategories.array[indexPath.row].subcategory_image_url)
-        cell.subCategoriesImageView.kf.setImage(with: url)
+        cell.fillCell(subcategory: subcategories.array[indexPath.row])
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

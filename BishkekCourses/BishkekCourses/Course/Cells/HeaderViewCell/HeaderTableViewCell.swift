@@ -124,10 +124,12 @@ class HeaderTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func fillCell(course: Course){
+        nameLabel.text = course.title
+        let logo_url = URL(string: course.logo_image_url)
+        logoImageView.kf.setImage(with: logo_url)
+        let background_url = URL(string: course.background_image_url)
+        backgroundImageView.kf.setImage(with: background_url)
     }
     
 }

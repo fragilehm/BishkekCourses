@@ -15,5 +15,7 @@ class DescriptionTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
+    func fillCell(course: Course){
+        descriptionLabel.text = course.description
+    }
 }

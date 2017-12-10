@@ -11,7 +11,7 @@ import SwiftyJSON
 
 struct Course {
     var id: Int
-    var subcategory: Int
+    var subcategory: String
     var title: String
     var description: String
     var contacts: Contacts
@@ -24,7 +24,7 @@ struct Course {
 
     init() {
         id = 0
-        subcategory = 0
+        subcategory = ""
         title = ""
         description = ""
         main_image_url = ""
@@ -36,7 +36,7 @@ struct Course {
     }
     init(json: JSON) {
         id = json["id"].intValue
-        subcategory = json["subcategory"].intValue
+        subcategory = json["subcategory"].stringValue
         title = json["title"].stringValue
         description = json["description"].stringValue
         contacts = Contacts(json: json["contacts"])
