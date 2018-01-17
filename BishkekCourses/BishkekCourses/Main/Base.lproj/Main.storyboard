@@ -21,8 +21,8 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="t92-LN-tds">
                                 <rect key="frame" x="12" y="72" width="351" height="29"/>
                                 <segments>
-                                    <segment title="Популярные"/>
                                     <segment title="Недавние"/>
+                                    <segment title="Популярные"/>
                                 </segments>
                                 <color key="tintColor" red="0.20392156859999999" green="0.2470588235" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>

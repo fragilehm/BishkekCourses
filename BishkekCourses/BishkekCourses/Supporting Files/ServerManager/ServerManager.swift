@@ -44,5 +44,4 @@ class ServerManager: HTTPRequestManager  {
         }, error: error)
     }
     
-    
 }

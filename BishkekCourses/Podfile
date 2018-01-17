@@ -13,6 +13,7 @@ target 'BishkekCourses' do
   pod 'ImageSlideshow/Kingfisher'
   pod 'SJSegmentedScrollView'
   pod 'Cosmos'
+  pod 'HGPlaceholders'
 
   # Pods for BishkekCourses
 

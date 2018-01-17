@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-
+import HGPlaceholders
 extension UIColor {
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
@@ -63,3 +63,64 @@ class CustomTextField: UITextField {
     
 }
 
+extension PlaceholdersProvider {
+    static var summer: PlaceholdersProvider {
+        var commonStyle = PlaceholderStyle()
+        commonStyle.backgroundColor = UIColor.white
+        commonStyle.actionBackgroundColor = .black
+        commonStyle.actionTitleColor = .white
+        commonStyle.titleColor = .black
+        commonStyle.isAnimated = false
+//        commonStyle.
+//        commonStyle.titleColor = UIFont(name: "AvenirNextCondensed-HeavyItalic", size: 19)!
+//        commonStyle.subtitleColor = UIFont(name: "AvenirNextCondensed-Italic", size: 19)!
+//        commonStyle.actionTitleColor = UIFont(name: "AvenirNextCondensed-Heavy", size: 19)!
+//
+        var loadingStyle = commonStyle
+        loadingStyle.actionBackgroundColor = .clear
+        loadingStyle.actionTitleColor = .gray
+        
+        var loadingData: PlaceholderData = .loading
+        loadingData.image = #imageLiteral(resourceName: "hg-loading")
+        let loading = Placeholder(data: loadingData, style: loadingStyle, key: .loadingKey)
+        
+        var errorData: PlaceholderData = .error
+        errorData.image = #imageLiteral(resourceName: "hg-error")
+        let error = Placeholder(data: errorData, style: commonStyle, key: .errorKey)
+        
+        var noResultsData: PlaceholderData = .noResults
+        noResultsData.image = #imageLiteral(resourceName: "hg-no_results")
+        let noResults = Placeholder(data: noResultsData, style: commonStyle, key: .noResultsKey)
+        
+        var noConnectionData: PlaceholderData = .noConnection
+        noConnectionData.image = #imageLiteral(resourceName: "hg-no_connection")
+        let noConnection = Placeholder(data: noConnectionData, style: commonStyle, key: .noConnectionKey)
+        
+        let placeholdersProvider = PlaceholdersProvider(loading: loading, error: error, noResults: noResults, noConnection: noConnection)
+        
+        let xibPlaceholder = Placeholder(cellIdentifier: "CustomPlaceholderCell", key: PlaceholderKey.custom(key: "XIB"))
+        
+        placeholdersProvider.add(placeholders: PlaceholdersProvider.starWarsPlaceholder, xibPlaceholder)
+        
+        return placeholdersProvider
+    }
+    
+    private static var starWarsPlaceholder: Placeholder {
+        var starwarsStyle = PlaceholderStyle()
+        starwarsStyle.backgroundColor = .white
+        starwarsStyle.actionBackgroundColor = .clear
+        starwarsStyle.actionTitleColor = .black
+        starwarsStyle.titleColor = .black
+        starwarsStyle.isAnimated = false
+        
+        var starwarsData = PlaceholderData()
+        starwarsData.title = NSLocalizedString("\"Coming Soon!!!\"", comment: "")
+        starwarsData.subtitle = NSLocalizedString("", comment: "")
+        starwarsData.image = #imageLiteral(resourceName: "mind")
+        starwarsData.action = NSLocalizedString("OK!", comment: "")
+        
+        let placeholder = Placeholder(data: starwarsData, style: starwarsStyle, key: PlaceholderKey.custom(key: "starWars"))
+        
+        return placeholder
+    }
+}

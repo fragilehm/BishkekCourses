@@ -7,12 +7,13 @@
 //
 
 import UIKit
-
+import HGPlaceholders
 class SearchViewController: UIViewController {
 
+    @IBOutlet weak var collectionView: CollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        configureCollectionView()
         // Do any additional setup after loading the view.
     }
 
@@ -21,3 +22,42 @@ class SearchViewController: UIViewController {
     }
 
 }
+extension SearchViewController {
+    func configureCollectionView(){
+        collectionView.register(UINib(nibName: "SearchCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SearchCollectionViewCell")
+        collectionView?.contentInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        collectionView.placeholderDelegate = self
+        //collectionView.showErrorPlaceholder()
+        collectionView.placeholdersProvider = .summer
+        let key = PlaceholderKey.custom(key: "starWars")
+        collectionView?.showCustomPlaceholder(with: key)
+    }
+}
+extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 0
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchCollectionViewCell", for: indexPath)
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemSize = collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 2)
+        return CGSize(width: itemSize, height: 142)
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //        let vc = self.storyboard?.instantiateViewController(withIdentifier: "NewsTableViewController")
+        //        self.navigationController?.show(vc!, sender: self)
+    }
+}
+extension SearchViewController: PlaceholderDelegate {
+    
+    func view(_ view: Any, actionButtonTappedFor placeholder: Placeholder) {
+        //(view as? CollectionView)?.showDefault()
+    }
+}
+
+
