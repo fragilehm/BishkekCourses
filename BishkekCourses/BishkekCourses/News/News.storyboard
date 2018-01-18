@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="s5O-Hz-S6b" customClass="CollectionView" customModule="HGPlaceholders">
-                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7Oh-dU-4K7">
                                     <size key="itemSize" width="50" height="50"/>
@@ -42,20 +42,13 @@
                                     <outlet property="delegate" destination="LBN-QV-iVT" id="f39-AM-VMM"/>
                                 </connections>
                             </collectionView>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Найти" translatesAutoresizingMaskIntoConstraints="NO" id="2jV-QD-Otl">
-                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="2jV-QD-Otl" firstAttribute="top" secondItem="gpe-ga-4XQ" secondAttribute="top" id="5Da-cU-HcU"/>
-                            <constraint firstItem="2jV-QD-Otl" firstAttribute="trailing" secondItem="gpe-ga-4XQ" secondAttribute="trailing" id="LhL-yy-5LB"/>
+                            <constraint firstItem="s5O-Hz-S6b" firstAttribute="top" secondItem="gpe-ga-4XQ" secondAttribute="top" id="Imz-CF-suR"/>
                             <constraint firstItem="s5O-Hz-S6b" firstAttribute="leading" secondItem="gpe-ga-4XQ" secondAttribute="leading" id="bhq-JN-KxL"/>
-                            <constraint firstItem="2jV-QD-Otl" firstAttribute="leading" secondItem="gpe-ga-4XQ" secondAttribute="leading" id="hak-Ow-vF7"/>
                             <constraint firstItem="gpe-ga-4XQ" firstAttribute="trailing" secondItem="s5O-Hz-S6b" secondAttribute="trailing" id="l4H-Y0-iEL"/>
                             <constraint firstItem="gpe-ga-4XQ" firstAttribute="bottom" secondItem="s5O-Hz-S6b" secondAttribute="bottom" id="wnx-wL-dyZ"/>
-                            <constraint firstItem="s5O-Hz-S6b" firstAttribute="top" secondItem="2jV-QD-Otl" secondAttribute="bottom" id="x4j-Zo-2EJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gpe-ga-4XQ"/>
                     </view>

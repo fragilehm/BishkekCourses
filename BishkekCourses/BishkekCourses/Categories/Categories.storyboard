@@ -94,7 +94,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.9012994594" green="0.9012994594" blue="0.9012994594" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XjV-qU-D6S" firstAttribute="trailing" secondItem="7SM-tT-Vzj" secondAttribute="trailing" id="3Ug-3Y-2SY"/>
                             <constraint firstItem="XjV-qU-D6S" firstAttribute="bottom" secondItem="7SM-tT-Vzj" secondAttribute="bottom" id="7vd-4z-dIE"/>
@@ -144,7 +144,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" red="0.9012994594" green="0.9012994594" blue="0.9012994594" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="yUE-PY-S6d" firstAttribute="top" secondItem="92p-bw-qCm" secondAttribute="top" id="1uE-Dc-6JX"/>
                             <constraint firstItem="92p-bw-qCm" firstAttribute="bottom" secondItem="yUE-PY-S6d" secondAttribute="bottom" id="k6X-AF-6AR"/>
@@ -160,6 +160,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJM-2D-UVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1141" y="827"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="kwl-iO-jd2">
+            <objects>
+                <viewController id="T7O-hP-xos" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="E30-Uz-fx4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="47c-Vf-YGE"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="fqH-IN-vfW" id="oCH-eW-zxR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PfE-Fi-2jX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="fqH-IN-vfW">
+                    <connections>
+                        <outlet property="delegate" destination="T7O-hP-xos" id="z7L-nu-IWa"/>
+                        <outlet property="searchContentsController" destination="T7O-hP-xos" id="6K3-He-hUM"/>
+                        <outlet property="searchResultsDataSource" destination="T7O-hP-xos" id="l9l-Q2-3Id"/>
+                        <outlet property="searchResultsDelegate" destination="T7O-hP-xos" id="XxQ-nW-iSH"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="2234" y="154"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7EH-Ps-bf4">

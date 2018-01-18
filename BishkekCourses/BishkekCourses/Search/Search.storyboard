@@ -18,13 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Найти" translatesAutoresizingMaskIntoConstraints="NO" id="u0b-qc-OC0">
-                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
-                                <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qRu-Iv-XRA" customClass="CollectionView" customModule="HGPlaceholders">
-                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Xq6-aW-qqA">
                                     <size key="itemSize" width="50" height="50"/>
@@ -50,12 +45,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="u0b-qc-OC0" firstAttribute="top" secondItem="bWB-dF-Fwj" secondAttribute="top" id="9vq-E5-J2r"/>
                             <constraint firstItem="qRu-Iv-XRA" firstAttribute="leading" secondItem="bWB-dF-Fwj" secondAttribute="leading" id="EN6-kg-JCx"/>
-                            <constraint firstItem="u0b-qc-OC0" firstAttribute="trailing" secondItem="bWB-dF-Fwj" secondAttribute="trailing" id="Ilp-SO-H21"/>
                             <constraint firstItem="bWB-dF-Fwj" firstAttribute="trailing" secondItem="qRu-Iv-XRA" secondAttribute="trailing" id="auZ-MF-IfF"/>
-                            <constraint firstItem="u0b-qc-OC0" firstAttribute="leading" secondItem="bWB-dF-Fwj" secondAttribute="leading" id="ays-hG-GZO"/>
-                            <constraint firstItem="qRu-Iv-XRA" firstAttribute="top" secondItem="u0b-qc-OC0" secondAttribute="bottom" id="mgj-3x-T6c"/>
+                            <constraint firstItem="qRu-Iv-XRA" firstAttribute="top" secondItem="bWB-dF-Fwj" secondAttribute="top" id="cgb-ec-p36"/>
                             <constraint firstItem="bWB-dF-Fwj" firstAttribute="bottom" secondItem="qRu-Iv-XRA" secondAttribute="bottom" id="wtz-1Y-LK2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bWB-dF-Fwj"/>

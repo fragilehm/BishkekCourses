@@ -13,10 +13,18 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var collectionView: CollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBar()
         configureCollectionView()
         // Do any additional setup after loading the view.
     }
-
+    func setNavigationBar() {
+        let searchBar = UISearchBar()
+        searchBar.delegate = self
+        searchBar.searchBarStyle = .minimal
+        searchBar.placeholder = "Поиск"
+        searchBar.returnKeyType = .search
+        navigationItem.titleView = searchBar
+    }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Поиск"
     }
@@ -59,5 +67,16 @@ extension SearchViewController: PlaceholderDelegate {
         //(view as? CollectionView)?.showDefault()
     }
 }
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.setShowsCancelButton(true, animated: true)
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.endEditing(true)
+        searchBar.setShowsCancelButton(false, animated: true)
+    }
+}
+
 
 
