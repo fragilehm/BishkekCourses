@@ -53,6 +53,7 @@ class HeaderTableViewCell: UITableViewCell {
     }
     @objc func commentsTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
+        //commentsImageView.tintColor = UIColor.black
         setSelected(imageName: "comments_selected", imageIndex: 1, image: commentsImageView)
     }
     @IBOutlet weak var locationsImageView: UIImageView!{

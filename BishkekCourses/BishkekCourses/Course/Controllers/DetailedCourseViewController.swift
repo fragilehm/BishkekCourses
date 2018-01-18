@@ -98,19 +98,16 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
             return 1
         }
         else {
-            if cellId == "DescriptionTableViewCell" {
+            switch cellId {
+            case "DescriptionTableViewCell":
                 return 1
-            }
-            else if cellId == "CommentsTableViewCell" {
+            case "CommentsTableViewCell":
                 return 0
-            }
-            else if cellId == "BranchesTableViewCell" {
+            case "BranchesTableViewCell":
                 return course.branches.array.count
-            }
-            else if cellId == "ContactsTableViewCell" {
+            case "ContactsTableViewCell":
                 return course.contacts.array.count
-            }
-            else {
+            default:
                 return course.services.array.count
             }
         }
@@ -123,30 +120,26 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
             return cell
         }
         else {
-            
-            if cellId == "DescriptionTableViewCell" {
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! DescriptionTableViewCell
-                cell.fillCell(course: course)
+            switch cellId {
+            case "DescriptionTableViewCell":
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as!
+                DescriptionTableViewCell
+                cell.fillCell(description: course.description)
                 return cell
-            }
-            else if cellId == "CommentsTableViewCell" {
+            case "CommentsTableViewCell":
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as!
                 CommentsTableViewCell
                 //cell.fillCell(course: course)
                 return cell
-            }
-            else if cellId == "BranchesTableViewCell" {
+            case "BranchesTableViewCell":
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! BranchesTableViewCell
                 cell.fillCell(branch: course.branches.array[indexPath.row])
                 return cell
-            }
-            else if cellId == "ContactsTableViewCell" {
+            case "ContactsTableViewCell":
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ContactsTableViewCell
                 cell.fillCell(contact: course.contacts.array[indexPath.row])
                 return cell
-                
-            }
-            else {
+            default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ServicesTableViewCell
                 cell.fillCell(service: course.services.array[indexPath.row])
                 return cell
@@ -160,41 +153,33 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            if cellId == "DescriptionTableViewCell" {
-                print("DescriptionTableViewCell")
-            }
-            else if cellId == "CommentsTableViewCell" {
-                print("CommentsTableViewCell")
-            }
-            else if cellId == "BranchesTableViewCell" {
-                print("BranchesTableViewCell")
-                let mapVC = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
-                self.navigationController?.show(mapVC, sender: self)
-            }
-            else if cellId == "ContactsTableViewCell" {
-                print("ContactsTableViewCell")
-            }
-            else {
-                print("ServicesTableViewCell")
-
+            switch cellId {
+            case "DescriptionTableViewCell":
+                print("description")
+            case "CommentsTableViewCell":
+                print("comments")
+            case "BranchesTableViewCell":
+                print("branches")
+            case "ContactsTableViewCell":
+                print("contacts")
+            default:
+                print("services")
             }
         }
     }
     func iconPressed(_ index: Int) {
-        if index == 0 {
+        switch index {
+        case 0:
             cellId = "DescriptionTableViewCell"
-        }
-        else if index == 1 {
+        case 1:
             cellId = "CommentsTableViewCell"
-        }
-        else if index == 2 {
+        case 2:
             cellId = "BranchesTableViewCell"
-        }
-        else if index == 3 {
+        case 3:
             cellId = "ContactsTableViewCell"
-        }
-        else if index == 4 {
+        default:
             cellId = "ServicesTableViewCell"
+
         }
         tableView.reloadData()
     }
