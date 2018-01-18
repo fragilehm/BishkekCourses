@@ -34,10 +34,15 @@ struct Constants {
             static let CourseDetails = "course"
             static let CoursesRecent = "courses/recent"
 
-
-
-            
-
+        }
+    }
+    struct Hint {
+        struct Refresh {
+            static let pull_to_refresh = "Потяните"
+            static let relase_to_refresh = "Отпустите"
+            static let success = "Обновление выполнено"
+            static let refreshing = "Обновляется"
+            static let failed = "Не удалось обновить"            
         }
     }
 

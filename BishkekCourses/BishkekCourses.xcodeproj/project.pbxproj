@@ -13,6 +13,7 @@
 		840DC214200F668E00C87994 /* SearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DC212200F668E00C87994 /* SearchCollectionViewCell.xib */; };
 		840DC218200F681200C87994 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DC216200F681200C87994 /* FavoriteCollectionViewCell.swift */; };
 		840DC219200F681200C87994 /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DC217200F681200C87994 /* FavoriteCollectionViewCell.xib */; };
+		840DC21B200FBB7400C87994 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DC21A200FBB7400C87994 /* MapViewController.swift */; };
 		8413803F1FD9BDE900710969 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413803E1FD9BDE900710969 /* Category.swift */; };
 		841380411FD9BE4B00710969 /* SubCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841380401FD9BE4B00710969 /* SubCategory.swift */; };
 		841380431FD9BFD000710969 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841380421FD9BFD000710969 /* Contact.swift */; };
@@ -105,6 +106,7 @@
 		840DC212200F668E00C87994 /* SearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCollectionViewCell.xib; sourceTree = "<group>"; };
 		840DC216200F681200C87994 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		840DC217200F681200C87994 /* FavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
+		840DC21A200FBB7400C87994 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		8413803E1FD9BDE900710969 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		841380401FD9BE4B00710969 /* SubCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategory.swift; sourceTree = "<group>"; };
 		841380421FD9BFD000710969 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				842CA5841FD7C0070051C610 /* DetailedCourseViewController.swift */,
+				840DC21A200FBB7400C87994 /* MapViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -846,6 +849,7 @@
 				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/PKHUD/PKHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/PullToRefreshKit/PullToRefreshKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SJSegmentedScrollView/SJSegmentedScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -858,6 +862,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PKHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PullToRefreshKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SJSegmentedScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -965,6 +970,7 @@
 				84226BE81FD52FF80043D68F /* CoursesViewController.swift in Sources */,
 				84C399F41FD3082B00DD5D66 /* DataManager.swift in Sources */,
 				84C714491FD00BB6007E640F /* AppDelegate.swift in Sources */,
+				840DC21B200FBB7400C87994 /* MapViewController.swift in Sources */,
 				841380411FD9BE4B00710969 /* SubCategory.swift in Sources */,
 				841C91EC1FD7C6960040C2A8 /* CommentsTableViewCell.swift in Sources */,
 				84C399F61FD3084E00DD5D66 /* Constants.swift in Sources */,
@@ -1170,7 +1176,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = neobis.com.bishkekcourses;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1187,7 +1193,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = neobis.com.bishkekcourses;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

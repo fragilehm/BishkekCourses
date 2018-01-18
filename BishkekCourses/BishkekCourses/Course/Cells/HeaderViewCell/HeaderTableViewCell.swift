@@ -26,11 +26,11 @@ class HeaderTableViewCell: UITableViewCell {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var savesLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var starsView: CosmosView! {
-        didSet {
-            starsView.settings.starMargin = 15
-        }
-    }
+//    @IBOutlet weak var starsView: CosmosView! {
+//        didSet {
+//            starsView.settings.starMargin = 15
+//        }
+//    }
     var selections = [true, false, false,
                       false, false]
     @IBOutlet weak var descriptionImageView: UIImageView! {

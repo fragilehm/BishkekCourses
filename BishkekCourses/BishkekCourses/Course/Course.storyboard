@@ -13,7 +13,7 @@
         <!--Detailed Course View Controller-->
         <scene sceneID="hiF-u8-xdc">
             <objects>
-                <viewController storyboardIdentifier="DetailedCourseViewController" id="q0b-fs-gtN" customClass="DetailedCourseViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailedCourseViewController" automaticallyAdjustsScrollViewInsets="NO" id="q0b-fs-gtN" customClass="DetailedCourseViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fNz-Xg-HY4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -53,6 +53,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJX-cx-jyu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="991.20000000000005" y="146.17691154422789"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="gJD-Fu-feH">
+            <objects>
+                <viewController storyboardIdentifier="MapViewController" id="6Ke-R3-Gtu" customClass="MapViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5ez-t2-LtA">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZWl-P1-BHl">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="GJv-Ht-Jum" firstAttribute="trailing" secondItem="ZWl-P1-BHl" secondAttribute="trailing" id="A53-aH-Xk9"/>
+                            <constraint firstItem="ZWl-P1-BHl" firstAttribute="top" secondItem="GJv-Ht-Jum" secondAttribute="top" id="Ly9-Vf-DWO"/>
+                            <constraint firstItem="ZWl-P1-BHl" firstAttribute="leading" secondItem="GJv-Ht-Jum" secondAttribute="leading" id="ZOv-sL-bvx"/>
+                            <constraint firstItem="GJv-Ht-Jum" firstAttribute="bottom" secondItem="ZWl-P1-BHl" secondAttribute="bottom" id="tWT-ac-6QP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GJv-Ht-Jum"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="ZWl-P1-BHl" id="ybP-A3-jVm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="puQ-G6-hmu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1909.5999999999999" y="144.3778110944528"/>
         </scene>
     </scenes>
 </document>

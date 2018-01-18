@@ -9,6 +9,7 @@ PODS:
   - IQKeyboardManagerSwift (5.0.4)
   - Kingfisher (4.2.0)
   - PKHUD (5.0.0)
+  - PullToRefreshKit (0.8.2)
   - SJSegmentedScrollView (1.3.8)
   - SwiftyJSON (3.1.4)
 
@@ -20,6 +21,7 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - Kingfisher
   - PKHUD
+  - PullToRefreshKit
   - SJSegmentedScrollView
   - SwiftyJSON
 
@@ -31,9 +33,10 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: a0592bb636b10a9a1cf75d2b2c61144226226c84
   Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
   PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
+  PullToRefreshKit: 0a2a019bf094b8beba18c8a1bedfb1fb67ee70fd
   SJSegmentedScrollView: 2308af5e7dbbbcbf7042efd47128f162186ed078
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 9fb0cb779cd692b1b6a455b3a15ed547297e2129
+PODFILE CHECKSUM: 771a3492b639bc92deb1a87093c73c8b60911246
 
 COCOAPODS: 1.3.1

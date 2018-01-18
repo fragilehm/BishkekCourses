@@ -102,7 +102,7 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
                 return 1
             }
             else if cellId == "CommentsTableViewCell" {
-                return 4
+                return 0
             }
             else if cellId == "BranchesTableViewCell" {
                 return course.branches.array.count
@@ -158,7 +158,28 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            if cellId == "DescriptionTableViewCell" {
+                print("DescriptionTableViewCell")
+            }
+            else if cellId == "CommentsTableViewCell" {
+                print("CommentsTableViewCell")
+            }
+            else if cellId == "BranchesTableViewCell" {
+                print("BranchesTableViewCell")
+                let mapVC = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+                self.navigationController?.show(mapVC, sender: self)
+            }
+            else if cellId == "ContactsTableViewCell" {
+                print("ContactsTableViewCell")
+            }
+            else {
+                print("ServicesTableViewCell")
 
+            }
+        }
+    }
     func iconPressed(_ index: Int) {
         if index == 0 {
             cellId = "DescriptionTableViewCell"

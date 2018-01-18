@@ -7,15 +7,23 @@
 //
 
 import UIKit
+import PullToRefreshKit
 
 class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    private let refreshControl = UIRefreshControl()
     var recentCourses = SimplifiedCourses()
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabBar()
         configureCollectionView()
+        getRecentData()
+    }
+    @objc private func getNewData(_ sender: Any){
+        getRecentData()
+    }
+    func getRecentData(){
         ServerManager.shared.getRecentCourses(setRecentCourses, error: showErrorAlert)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -24,7 +32,9 @@ class ViewController: UIViewController {
     func setRecentCourses(courses: SimplifiedCourses) {
         self.recentCourses = courses
         collectionView.reloadData()
+        self.collectionView.switchRefreshHeader(to: .normal(.none, 0.0))
     }
+    
 }
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -64,5 +74,17 @@ extension ViewController {
     func configureCollectionView(){
         collectionView.register(UINib(nibName: "MainCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MainCollectionViewCell")
         collectionView?.contentInset = UIEdgeInsets(top: 0, left: 12, bottom: 12, right: 12)
+        let header = DefaultRefreshHeader.header()
+        header.setText(Constants.Hint.Refresh.pull_to_refresh, mode: .pullToRefresh)
+        header.setText(Constants.Hint.Refresh.relase_to_refresh, mode: .releaseToRefresh)
+        header.setText(Constants.Hint.Refresh.success, mode: .refreshSuccess)
+        header.setText(Constants.Hint.Refresh.refreshing, mode: .refreshing)
+        header.setText(Constants.Hint.Refresh.failed, mode: .refreshFailure)
+        header.imageRenderingWithTintColor = true
+        header.durationWhenHide = 0.4
+        collectionView.configRefreshHeader(with: header, action: { [weak self] in
+            self?.getRecentData()
+        })
     }
+    
 }
