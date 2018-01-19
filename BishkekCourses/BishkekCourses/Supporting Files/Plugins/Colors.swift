@@ -11,7 +11,7 @@ import Foundation
  Common colors in app
  */
 struct Colors {
-    static let darkGray = 0x343F4B
+    static let darkPurple = 0x343F4B
     static let lightGray = 0x969FAA
     static let palceholder = 0x8190A5
 }

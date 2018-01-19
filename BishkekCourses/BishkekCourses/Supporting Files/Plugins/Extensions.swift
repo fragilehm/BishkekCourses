@@ -50,15 +50,15 @@ class CustomTextField: UITextField {
     }
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         return UIEdgeInsetsInsetRect(bounds, 
-                                     UIEdgeInsetsMake(15, 15, 15, 15))
+                                     UIEdgeInsetsMake(12, 12, 12, 12))
     }
     override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return UIEdgeInsetsInsetRect(bounds, 
-                                     UIEdgeInsetsMake(15, 15, 15, 15))
+                                     UIEdgeInsetsMake(12, 12, 12, 12))
     }
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return UIEdgeInsetsInsetRect(bounds,
-                                     UIEdgeInsetsMake(15, 15, 15, 15))
+                                     UIEdgeInsetsMake(12, 12, 12, 12))
     }
     
 }

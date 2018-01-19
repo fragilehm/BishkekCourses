@@ -73,7 +73,8 @@ extension CoursesViewController: UICollectionViewDataSource, UICollectionViewDel
         let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
         courseVC.course_id = courses.array[indexPath.row].id
         print(courses.array[indexPath.row].id)
-        self.navigationController?.present(courseVC, animated: true, completion: nil)
+        let navController = UINavigationController(rootViewController: courseVC)
+        self.navigationController?.present(navController, animated: true, completion: nil)
     }
 }
 

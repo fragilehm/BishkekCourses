@@ -9,28 +9,88 @@
 import UIKit
 import MapKit
 class MapViewController: UIViewController {
-
+    private let locationManager = CLLocationManager()
+    private let regionRadius: CLLocationDistance = 1000
     @IBOutlet weak var mapView: MKMapView!
+    var branches = Branches()
+    var branch_id = 0
+    var branch_title = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupMapKit()
+        
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewDidAppear(_ animated: Bool) {
+        enableLocationServices()
+    }
+    func setupMapKit(){
+        mapView.mapType = .standard
+        //let locationOfBishkek = CLLocation(latitude: 42.874722, longitude: 74.612222)
+        mapView.delegate = self
+        //let annotationId = "AnnotationIdentifier"
+        for (index, branch) in branches.array.enumerated() {
+            let address = CourseAddress(title: branch.address, locationName: "", coordinate: CLLocationCoordinate2D(latitude: (branch.latitude as NSString).doubleValue , longitude: (branch.longitude as NSString).doubleValue))
+            if index == branch_id {
+                centerMapOnLocation(location: CLLocation(latitude: (branch.latitude as NSString).doubleValue, longitude: (branch.longitude as NSString).doubleValue))
+            }
+            mapView.addAnnotation(address)
+        }
+    }
+    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
+                                                                  regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    func enableLocationServices() {
+        locationManager.delegate = self
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            // Request when-in-use authorization initially
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.startUpdatingLocation()
+            break
+        case .restricted, .denied:
+            // Disable location features
+            print("disableMyLocationBasedFeatures()")
+            break
+            
+        case .authorizedWhenInUse:
+            // Enable basic location features
+            mapView.showsUserLocation = true
+            print("enableMyWhenInUseFeatures()")
+            break
+            
+        case .authorizedAlways:
+            // Enable any of your app's location features
+            print("enableMyAlwaysFeatures()")
+            break
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+}
+extension MapViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.mapView.showsUserLocation = true
     }
-    */
-
+}
+extension MapViewController: MKMapViewDelegate{
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let annotation = annotation as? CourseAddress {
+            let annotation_id = "pin"
+            var view: MKPinAnnotationView
+            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: annotation_id) as? MKPinAnnotationView {
+                dequeuedView.annotation = annotation
+                view = dequeuedView
+            }
+            else {
+                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation_id)
+                view.canShowCallout = true
+                view.calloutOffset = CGPoint(x: -5, y: 5)
+                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
+            }
+            return view
+        }
+        return nil
+    }
 }

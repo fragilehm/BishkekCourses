@@ -11,7 +11,6 @@ import UIKit
 class DetailedCourseViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var navBar: UINavigationBar!
     var cellId = "DescriptionTableViewCell"
     var course_id = 0
     var course = Course()
@@ -35,30 +34,30 @@ class DetailedCourseViewController: UIViewController {
     }
     func setCourse(course: Course){
         self.course = course
-        self.navBar.items![0].title = course.title
+        self.navigationItem.title = course.title
         tableView.reloadData()
     }
     func setNavBarItems(){
-        let navigationItem = UINavigationItem()
         let backButton = UIButton.init(type: .system)
         backButton.setImage(#imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal), for: .normal)
         backButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         backButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 12)
         backButton.imageView?.contentMode = .scaleAspectFit
         backButton.addTarget(self, action: #selector(dissmis(_:)), for: .touchUpInside)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: getRightItem(image: #imageLiteral(resourceName: "bookmark")))
-        self.navBar.setItems([navigationItem], animated: false)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: getRightItem(image: #imageLiteral(resourceName: "bookmark")))
+        //self.navigationItem.
+        //self.navBar.setItems([navigationItem], animated: false)
     }
     @objc func dissmis(_ button: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
     @objc func favoritePressed(_ button: UIButton) {
         if !isFavorite {
-            self.navBar.items![0].rightBarButtonItem?.customView = getRightItem(image: #imageLiteral(resourceName: "favorite"))
+            self.navigationController?.navigationBar.items![0].rightBarButtonItem?.customView = getRightItem(image: #imageLiteral(resourceName: "favorite"))
         }
         else {
-            self.navBar.items![0].rightBarButtonItem?.customView = getRightItem(image: #imageLiteral(resourceName: "bookmark"))
+            self.navigationController?.navigationBar.items![0].rightBarButtonItem?.customView = getRightItem(image: #imageLiteral(resourceName: "bookmark"))
         }
         isFavorite = !isFavorite
     }
@@ -160,6 +159,12 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
                 print("comments")
             case "BranchesTableViewCell":
                 print("branches")
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+                vc.branches = self.course.branches
+                vc.branch_id = indexPath.row
+                vc.branch_title = self.course.title
+                //print(self.navigationController?.isNavigationBarHidden)
+                self.navigationController?.show(vc, sender: self)
             case "ContactsTableViewCell":
                 print("contacts")
             default:

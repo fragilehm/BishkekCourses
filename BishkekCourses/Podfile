@@ -15,6 +15,7 @@ target 'BishkekCourses' do
   pod 'Cosmos'
   pod 'HGPlaceholders'
   pod 'PullToRefreshKit'
+  pod 'M13Checkbox'
 
   # Pods for BishkekCourses
 

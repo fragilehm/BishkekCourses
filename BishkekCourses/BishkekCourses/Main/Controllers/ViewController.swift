@@ -57,7 +57,8 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
         courseVC.course_id = recentCourses.array[indexPath.row].id
         print(recentCourses.array[indexPath.row].id)
-        self.navigationController?.present(courseVC, animated: true, completion: nil)
+        let navController = UINavigationController(rootViewController: courseVC)
+        self.navigationController?.present(navController, animated: true, completion: nil)
     }
 }
 extension ViewController {
@@ -68,7 +69,7 @@ extension ViewController {
             bar.image = MainPageItems(rawValue: index)?.getImage()
             bar.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         }
-        self.tabBarController?.tabBar.tintColor = UIColor.init(netHex: Colors.darkGray)
+        self.tabBarController?.tabBar.tintColor = UIColor.init(netHex: Colors.darkPurple)
         //self.tabBarController?.tabBar.barTintColor = UIColor.cyan
     }
     func configureCollectionView(){

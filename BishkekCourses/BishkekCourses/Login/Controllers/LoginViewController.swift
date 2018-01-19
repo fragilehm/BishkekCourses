@@ -7,23 +7,38 @@
 //
 
 import UIKit
-
+import M13Checkbox
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var loginTextField: CustomTextField! {
         didSet {
-            loginTextField.layer.borderWidth = 1
+            loginTextField.layer.borderWidth = 0.5
             loginTextField.layer.borderColor = UIColor.init(netHex: Colors.lightGray).cgColor
-            print(loginTextField.frame.size.height)
+            loginTextField.layer.cornerRadius = 4
+        }
+    }
+    @IBOutlet weak var rememberCheckbox: M13Checkbox? {
+        didSet {
+            //print(rememberCheckbox?.checkState.hashValue)
+            //rememberCheckbox.boxLineWidth = 1
+            rememberCheckbox?.boxType = .square
+            rememberCheckbox?.markType = .checkmark
+            rememberCheckbox?.tintColor = UIColor(netHex: Colors.darkPurple)
         }
     }
     @IBOutlet weak var passwordTextField: CustomTextField! {
         didSet {
-            passwordTextField.layer.borderWidth = 1
+            passwordTextField.layer.borderWidth = 0.5
             passwordTextField.layer.borderColor = UIColor.init(netHex: Colors.lightGray).cgColor
+            passwordTextField.layer.cornerRadius = 4
+
         }
     }
-    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton! {
+        didSet {
+            loginButton.layer.cornerRadius = 4
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Авторизация"
