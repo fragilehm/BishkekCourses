@@ -10,62 +10,46 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="ViewController" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="ViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="MainViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="t92-LN-tds">
-                                <rect key="frame" x="12" y="72" width="351" height="29"/>
+                                <rect key="frame" x="4" y="68" width="367" height="29"/>
                                 <segments>
                                     <segment title="Недавние"/>
                                     <segment title="Популярные"/>
                                 </segments>
                                 <color key="tintColor" red="0.20392156859999999" green="0.2470588235" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </segmentedControl>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qGn-9K-lY1">
-                                <rect key="frame" x="0.0" y="108" width="375" height="510"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="0.0" id="tDI-qy-E0v">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XTK-Gh-0BE">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rzz-Y3-mau">
+                                <rect key="frame" x="0.0" y="100" width="375" height="518"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="UQn-5r-DRJ"/>
-                                    <outlet property="delegate" destination="BYZ-38-t0r" id="cvd-5d-Mj9"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="d9A-uy-yM8"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="rus-Va-WQH"/>
                                 </connections>
-                            </collectionView>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="qGn-9K-lY1" firstAttribute="top" secondItem="t92-LN-tds" secondAttribute="bottom" constant="8" id="8TF-4j-NPp"/>
-                            <constraint firstItem="t92-LN-tds" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="A2t-lM-1TR"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qGn-9K-lY1" secondAttribute="bottom" id="Mlc-Ei-x3C"/>
-                            <constraint firstItem="qGn-9K-lY1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="O8i-mH-DWD"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qGn-9K-lY1" secondAttribute="trailing" id="On9-IN-z8R"/>
-                            <constraint firstItem="t92-LN-tds" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="dlr-bO-JIB"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t92-LN-tds" secondAttribute="trailing" constant="12" id="rMw-Lf-phI"/>
+                            <constraint firstItem="t92-LN-tds" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="A2t-lM-1TR"/>
+                            <constraint firstItem="Rzz-Y3-mau" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BFX-Tz-Ezs"/>
+                            <constraint firstItem="Rzz-Y3-mau" firstAttribute="top" secondItem="t92-LN-tds" secondAttribute="bottom" constant="4" id="R0W-2V-OIF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rzz-Y3-mau" secondAttribute="trailing" id="SCb-ZO-nBP"/>
+                            <constraint firstItem="t92-LN-tds" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="4" id="dlr-bO-JIB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Rzz-Y3-mau" secondAttribute="bottom" id="l5v-Bt-vg7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t92-LN-tds" secondAttribute="trailing" constant="4" id="rMw-Lf-phI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="zbp-Aj-cep"/>
                     <connections>
-                        <outlet property="collectionView" destination="qGn-9K-lY1" id="r2A-gY-qjC"/>
+                        <outlet property="tableView" destination="Rzz-Y3-mau" id="r35-LM-1bd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -115,7 +99,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="E4D-0C-X67">
             <objects>
-                <tabBarController storyboardIdentifier="MainViewController" automaticallyAdjustsScrollViewInsets="NO" id="N3b-nx-saj" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainRootViewController" automaticallyAdjustsScrollViewInsets="NO" id="N3b-nx-saj" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tbp-eM-dFY">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

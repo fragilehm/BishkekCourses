@@ -1,25 +1,27 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  BishkekCourses
 //
-//  Created by Khasanza on 11/30/17.
-//  Copyright © 2017 Khasanza. All rights reserved.
+//  Created by Khasanza on 1/20/18.
+//  Copyright © 2018 Khasanza. All rights reserved.
 //
 
 import UIKit
 import PullToRefreshKit
+class MainViewController: UIViewController {
 
-class ViewController: UIViewController {
-
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     private let refreshControl = UIRefreshControl()
     var recentCourses = SimplifiedCourses()
+    var images = ["coding", "art", "cat", "nature", "tree"]
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabBar()
-        configureCollectionView()
+        configureTableView()
         getRecentData()
+        // Do any additional setup after loading the view.
     }
+
     @objc private func getNewData(_ sender: Any){
         getRecentData()
     }
@@ -31,37 +33,35 @@ class ViewController: UIViewController {
     }
     func setRecentCourses(courses: SimplifiedCourses) {
         self.recentCourses = courses
-        collectionView.reloadData()
-        self.collectionView.switchRefreshHeader(to: .normal(.none, 0.0))
+        tableView.reloadData()
+        self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
     }
-    
 }
-extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.recentCourses.array.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return images.count
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as! MainCollectionViewCell
-        cell.fillCell(course: recentCourses.array[indexPath.row])
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! MainTableViewCell
+        cell.mainImageView.image = UIImage(named: images[indexPath.item])
+
         return cell
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right))
-        return CGSize(width: itemSize, height: itemSize)
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard.init(name: "Course", bundle: nil)
         let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
         courseVC.course_id = recentCourses.array[indexPath.row].id
-        print(recentCourses.array[indexPath.row].id)
         let navController = UINavigationController(rootViewController: courseVC)
         self.navigationController?.present(navController, animated: true, completion: nil)
     }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
 }
-extension ViewController {
+extension MainViewController {
     func configureTabBar(){
         let bars = self.tabBarController?.tabBar.items
         for (index, bar) in bars!.enumerated() {
@@ -72,9 +72,12 @@ extension ViewController {
         self.tabBarController?.tabBar.tintColor = UIColor.init(netHex: Colors.darkPurple)
         //self.tabBarController?.tabBar.barTintColor = UIColor.cyan
     }
-    func configureCollectionView(){
-        collectionView.register(UINib(nibName: "MainCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "MainCollectionViewCell")
-        collectionView?.contentInset = UIEdgeInsets(top: 0, left: 12, bottom: 12, right: 12)
+    func configureTableView(){
+        tableView.tableFooterView = UIView()
+        tableView.estimatedRowHeight = 100
+        tableView.reloadData()
+        tableView.register(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
+        //tableView.View?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         let header = DefaultRefreshHeader.header()
         header.setText(Constants.Hint.Refresh.pull_to_refresh, mode: .pullToRefresh)
         header.setText(Constants.Hint.Refresh.relase_to_refresh, mode: .releaseToRefresh)
@@ -83,7 +86,7 @@ extension ViewController {
         header.setText(Constants.Hint.Refresh.failed, mode: .refreshFailure)
         header.imageRenderingWithTintColor = true
         header.durationWhenHide = 0.4
-        collectionView.configRefreshHeader(with: header, action: { [weak self] in
+        tableView.configRefreshHeader(with: header, action: { [weak self] in
             self?.getRecentData()
         })
     }

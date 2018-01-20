@@ -54,7 +54,7 @@ class LoginViewController: UIViewController {
     }
     @IBAction func loginPressed(_ sender: Any) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let mainVC = storyboard.instantiateViewController(withIdentifier: "MainViewController")
+        let mainVC = storyboard.instantiateViewController(withIdentifier: "MainRootViewController")
         self.navigationController?.present(mainVC, animated: false, completion: nil)
         
     }

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainTableViewCell" rowHeight="361" id="KGk-i7-Jjw" customClass="MainTableViewCell" customModule="BishkekCourses" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="430" height="361"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="430" height="360.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Knl-SW-DWO">
+                        <rect key="frame" x="0.0" y="0.0" width="430" height="360.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English zone, interesting courses!!!!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPc-bA-bN2">
+                                <rect key="frame" x="58" y="22" width="362" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="wLD-TS-wL3">
+                                <rect key="frame" x="10" y="10.5" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="pOH-qm-1L1"/>
+                                    <constraint firstAttribute="height" constant="40" id="qZv-ly-Xe3"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coding" translatesAutoresizingMaskIntoConstraints="NO" id="q4e-ra-ZdZ">
+                                <rect key="frame" x="0.0" y="61" width="430" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="yzJ-Y1-iEY"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="252" text="Категория:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30b-Pn-ObZ">
+                                <rect key="frame" x="10" y="271" width="76" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wA2-rU-IMG">
+                                <rect key="frame" x="90" y="271.5" width="330" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Xd-L9-ob5">
+                                <rect key="frame" x="10" y="298" width="410" height="52.5"/>
+                                <string key="text">This is the first english course in bihskek which will be teached by native english speaker and also not expensive for students, this course is planning to be the most effective and helpful for students</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1h-ls-DxL">
+                                <rect key="frame" x="0.0" y="60.5" width="430" height="0.5"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" id="hYK-uA-HHV"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cLw-PG-Vis">
+                                <rect key="frame" x="0.0" y="0.0" width="430" height="0.5"/>
+                                <color key="backgroundColor" red="0.81391004789999999" green="0.81391004789999999" blue="0.81391004789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.69999999999999996" id="wIq-SL-7wV"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="30b-Pn-ObZ" firstAttribute="top" secondItem="q4e-ra-ZdZ" secondAttribute="bottom" constant="10" id="0eK-tj-1pT"/>
+                            <constraint firstItem="8Xd-L9-ob5" firstAttribute="top" secondItem="30b-Pn-ObZ" secondAttribute="bottom" constant="10" id="2ef-Y2-ESj"/>
+                            <constraint firstItem="30b-Pn-ObZ" firstAttribute="leading" secondItem="Knl-SW-DWO" secondAttribute="leading" constant="10" id="3wn-7O-OVl"/>
+                            <constraint firstItem="q4e-ra-ZdZ" firstAttribute="leading" secondItem="Knl-SW-DWO" secondAttribute="leading" id="4fV-zN-iii"/>
+                            <constraint firstItem="g1h-ls-DxL" firstAttribute="leading" secondItem="Knl-SW-DWO" secondAttribute="leading" id="AIM-UR-qjP"/>
+                            <constraint firstItem="wA2-rU-IMG" firstAttribute="centerY" secondItem="30b-Pn-ObZ" secondAttribute="centerY" id="C9G-bI-5cZ"/>
+                            <constraint firstAttribute="trailing" secondItem="g1h-ls-DxL" secondAttribute="trailing" id="Drt-m8-tci"/>
+                            <constraint firstItem="g1h-ls-DxL" firstAttribute="top" secondItem="wLD-TS-wL3" secondAttribute="bottom" constant="10" id="E2T-Zl-BQ7"/>
+                            <constraint firstItem="cLw-PG-Vis" firstAttribute="leading" secondItem="Knl-SW-DWO" secondAttribute="leading" id="Ffi-gL-TNH"/>
+                            <constraint firstItem="wLD-TS-wL3" firstAttribute="leading" secondItem="Knl-SW-DWO" secondAttribute="leading" constant="10" id="G5T-cy-Jbv"/>
+                            <constraint firstItem="q4e-ra-ZdZ" firstAttribute="top" secondItem="g1h-ls-DxL" secondAttribute="bottom" id="HF4-ce-UHc"/>
+                            <constraint firstItem="iPc-bA-bN2" firstAttribute="leading" secondItem="wLD-TS-wL3" secondAttribute="trailing" constant="8" id="JfN-hq-V1Z"/>
+                            <constraint firstItem="wA2-rU-IMG" firstAttribute="leading" secondItem="30b-Pn-ObZ" secondAttribute="trailing" constant="4" id="SPA-HK-F6d"/>
+                            <constraint firstItem="8Xd-L9-ob5" firstAttribute="leading" secondItem="Knl-SW-DWO" secondAttribute="leading" constant="10" id="UgD-aC-LQm"/>
+                            <constraint firstAttribute="trailing" secondItem="8Xd-L9-ob5" secondAttribute="trailing" constant="10" id="bt2-fj-agX"/>
+                            <constraint firstItem="cLw-PG-Vis" firstAttribute="top" secondItem="Knl-SW-DWO" secondAttribute="top" id="fGU-lu-BSl"/>
+                            <constraint firstAttribute="trailing" secondItem="wA2-rU-IMG" secondAttribute="trailing" constant="10" id="gsD-kW-Yge"/>
+                            <constraint firstAttribute="trailing" secondItem="q4e-ra-ZdZ" secondAttribute="trailing" id="jEj-sY-FwX"/>
+                            <constraint firstAttribute="trailing" secondItem="cLw-PG-Vis" secondAttribute="trailing" id="jhj-72-cCm"/>
+                            <constraint firstItem="wLD-TS-wL3" firstAttribute="top" secondItem="cLw-PG-Vis" secondAttribute="bottom" constant="10" id="kxV-sp-yaS"/>
+                            <constraint firstAttribute="bottom" secondItem="8Xd-L9-ob5" secondAttribute="bottom" constant="10" id="ocn-xJ-oXm"/>
+                            <constraint firstAttribute="trailing" secondItem="iPc-bA-bN2" secondAttribute="trailing" constant="10" id="qNF-6D-yLU"/>
+                            <constraint firstItem="iPc-bA-bN2" firstAttribute="centerY" secondItem="wLD-TS-wL3" secondAttribute="centerY" id="sJp-WT-Q41"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="Knl-SW-DWO" secondAttribute="bottom" id="63H-al-Mgo"/>
+                    <constraint firstItem="Knl-SW-DWO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KGW-mX-yCh"/>
+                    <constraint firstAttribute="trailing" secondItem="Knl-SW-DWO" secondAttribute="trailing" id="O1c-ds-Lsv"/>
+                    <constraint firstItem="Knl-SW-DWO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xWh-PZ-AGg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cardView" destination="Knl-SW-DWO" id="xID-FQ-8ES"/>
+                <outlet property="decriptionLabel" destination="8Xd-L9-ob5" id="Zhv-ut-V1d"/>
+                <outlet property="logoImageView" destination="wLD-TS-wL3" id="suK-RV-Htj"/>
+                <outlet property="mainImageView" destination="q4e-ra-ZdZ" id="BPD-Tj-7pK"/>
+                <outlet property="subcategoryLabel" destination="wA2-rU-IMG" id="nNk-nU-fF4"/>
+                <outlet property="titleLabel" destination="iPc-bA-bN2" id="RYX-rZ-jS6"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="216.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="coding" width="960" height="640"/>
+        <image name="logo" width="1024" height="1024"/>
+    </resources>
+</document>
