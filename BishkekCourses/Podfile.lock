@@ -11,6 +11,9 @@ PODS:
   - M13Checkbox (3.2.1)
   - PKHUD (5.0.0)
   - PullToRefreshKit (0.8.2)
+  - SDWebImage (4.2.2):
+    - SDWebImage/Core (= 4.2.2)
+  - SDWebImage/Core (4.2.2)
   - SJSegmentedScrollView (1.3.8)
   - SwiftyJSON (3.1.4)
 
@@ -24,6 +27,7 @@ DEPENDENCIES:
   - M13Checkbox
   - PKHUD
   - PullToRefreshKit
+  - SDWebImage
   - SJSegmentedScrollView
   - SwiftyJSON
 
@@ -37,9 +41,10 @@ SPEC CHECKSUMS:
   M13Checkbox: 12376f5b128189432508c240e4a36dc945ab7e4e
   PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
   PullToRefreshKit: 0a2a019bf094b8beba18c8a1bedfb1fb67ee70fd
+  SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   SJSegmentedScrollView: 2308af5e7dbbbcbf7042efd47128f162186ed078
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: e745a390d466f5d2ef4c33504653f95b590913b0
+PODFILE CHECKSUM: 8749b4cbafc94e0e0eae3a76274b7d9e49d5c92b
 
 COCOAPODS: 1.3.1

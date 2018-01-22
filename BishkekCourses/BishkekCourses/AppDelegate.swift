@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //window?.rootViewController = swipingController
     
         let navigationBarAppearace = UINavigationBar.appearance()
-        navigationBarAppearace.tintColor = UIColor.black
+        navigationBarAppearace.tintColor = UIColor.init(netHex: Colors.darkPurple)
         navigationBarAppearace.barTintColor = UIColor.white
         // Override point for customization after application launch.
         return true

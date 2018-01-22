@@ -18,8 +18,6 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMapKit()
-        
-        // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
         enableLocationServices()
@@ -36,6 +34,8 @@ class MapViewController: UIViewController {
             }
             mapView.addAnnotation(address)
         }
+        let currentLocationButton = MKUserTrackingBarButtonItem(mapView: mapView)
+        self.navigationItem.rightBarButtonItem = currentLocationButton
     }
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
@@ -44,6 +44,7 @@ class MapViewController: UIViewController {
     }
     func enableLocationServices() {
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             // Request when-in-use authorization initially
@@ -58,6 +59,8 @@ class MapViewController: UIViewController {
         case .authorizedWhenInUse:
             // Enable basic location features
             mapView.showsUserLocation = true
+            locationManager.startUpdatingLocation()
+
             print("enableMyWhenInUseFeatures()")
             break
             
@@ -78,19 +81,42 @@ extension MapViewController: MKMapViewDelegate{
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let annotation = annotation as? CourseAddress {
             let annotation_id = "pin"
-            var view: MKPinAnnotationView
-            if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: annotation_id) as? MKPinAnnotationView {
-                dequeuedView.annotation = annotation
-                view = dequeuedView
+            if #available(iOS 11.0, *) {
+                var view: MKMarkerAnnotationView
+
+                if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: annotation_id) as? MKMarkerAnnotationView{
+                    dequeuedView.annotation = annotation
+                    view = dequeuedView
+                }
+                else {
+                    
+                    view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: annotation_id)
+                    view.canShowCallout = true
+                    view.calloutOffset = CGPoint(x: -5, y: 5)
+                    view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
+                }
+                return view
+            } else {
+                var view: MKPinAnnotationView
+
+                if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: annotation_id) as? MKPinAnnotationView{
+                    dequeuedView.annotation = annotation
+                    view = dequeuedView
+                }
+                else {
+                    view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation_id)
+                    view.canShowCallout = true
+                    view.calloutOffset = CGPoint(x: -5, y: 5)
+                    view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
+                }
+                // Fallback on earlier versions
             }
-            else {
-                view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: annotation_id)
-                view.canShowCallout = true
-                view.calloutOffset = CGPoint(x: -5, y: 5)
-                view.rightCalloutAccessoryView = UIButton(type: .detailDisclosure) as UIView
-            }
-            return view
         }
         return nil
+    }
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let location = view.annotation as! CourseAddress
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+        location.mapItem().openInMaps(launchOptions: launchOptions)
     }
 }

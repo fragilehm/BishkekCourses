@@ -13,6 +13,7 @@ import SwiftyJSON
 struct SimplifiedCourse {
     var id: Int
     var subcategory: String
+    var subcategory_id: Int
     var title: String
     var description: String
     var main_image_url: String
@@ -28,10 +29,12 @@ struct SimplifiedCourse {
         main_image_url = ""
         logo_image_url = ""
         background_image_url = ""
+        subcategory_id = 0
     }
     init(json: JSON) {
         id = json["id"].intValue
-        subcategory = json["subcategory"].stringValue
+        subcategory = "hey"
+        subcategory_id = 0
         title = json["title"].stringValue
         description = json["description"].stringValue
         main_image_url = json["main_image_url"].stringValue

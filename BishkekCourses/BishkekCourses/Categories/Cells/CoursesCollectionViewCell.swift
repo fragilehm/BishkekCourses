@@ -17,12 +17,12 @@ class CoursesCollectionViewCell: UICollectionViewCell {
         }
     }
     @IBOutlet weak var mainImageView: UIImageView!
-    @IBOutlet weak var startsView: CosmosView! {
-        didSet {
-            startsView.settings.updateOnTouch = false
-            startsView.settings.starMargin = 2
-        }
-    }
+//    @IBOutlet weak var startsView: CosmosView! {
+//        didSet {
+//            startsView.settings.updateOnTouch = false
+//            startsView.settings.starMargin = 2
+//        }
+//    }
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var cardView: UIView!

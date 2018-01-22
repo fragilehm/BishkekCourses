@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Kingfisher
+import SDWebImage
 
 class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var mainImageView: UIImageView! {
@@ -40,7 +42,13 @@ class MainTableViewCell: UITableViewCell {
         decriptionLabel.text = course.description
         let url = URL(string: course.main_image_url)
         mainImageView.kf.setImage(with: url)
+        
+//        mainImageView.sd_setShowActivityIndicatorView(true)
+//        mainImageView.sd_setIndicatorStyle(.gray)
+//        mainImageView.sd_setImage(with: url, placeholderImage: UIImage(named: ""), options: [SDWebImageOptions.progressiveDownload, SDWebImageOptions.allowInvalidSSLCertificates], progress: nil, completed: nil)
         subcategoryLabel.text = course.subcategory
+        let logo_url = URL(string: course.logo_image_url)
+        logoImageView.kf.setImage(with: logo_url)
     }
     
 }

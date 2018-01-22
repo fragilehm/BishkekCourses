@@ -29,9 +29,9 @@ struct Constants {
         struct EndPoints {
             static let Token_auth = "api/token-auth"
             static let Categories = "categories"
-            static let SubCategories = "category"
-            static let CoursesBySubcategory = "subcategory"
-            static let CourseDetails = "course"
+            static let SubCategories = "categories"
+            static let CoursesBySubcategory = "subcategories"
+            static let CourseDetails = "courses"
             static let CoursesRecent = "courses/recent"
 
         }

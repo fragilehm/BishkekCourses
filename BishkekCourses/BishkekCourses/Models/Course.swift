@@ -36,7 +36,8 @@ struct Course {
     }
     init(json: JSON) {
         id = json["id"].intValue
-        subcategory = json["subcategory"].stringValue
+        //subcategory = json["subcategories"].stringValue
+        subcategory = ""
         title = json["title"].stringValue
         description = json["description"].stringValue
         contacts = Contacts(json: json["contacts"])
