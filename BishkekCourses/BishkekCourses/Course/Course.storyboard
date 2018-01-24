@@ -13,7 +13,7 @@
         <!--Detailed Course View Controller-->
         <scene sceneID="hiF-u8-xdc">
             <objects>
-                <viewController storyboardIdentifier="DetailedCourseViewController" automaticallyAdjustsScrollViewInsets="NO" id="q0b-fs-gtN" customClass="DetailedCourseViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailedCourseViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="q0b-fs-gtN" customClass="DetailedCourseViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fNz-Xg-HY4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

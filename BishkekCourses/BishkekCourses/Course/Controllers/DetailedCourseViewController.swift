@@ -15,17 +15,17 @@ class DetailedCourseViewController: UIViewController {
     var course_id = 0
     var course = Course()
     private var isFavorite = false
-    @IBOutlet weak var backImageView: UIImageView!{
-        didSet {
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(backTapped(tapGestureRecognizer:)))
-            backImageView.isUserInteractionEnabled = true
-            backImageView.addGestureRecognizer(tapGestureRecognizer)
-        }
-    }
-    @objc func backTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-        self.dismiss(animated: true, completion: nil)
-    }
+//    @IBOutlet weak var backImageView: UIImageView!{
+//        didSet {
+//            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(backTapped(tapGestureRecognizer:)))
+//            backImageView.isUserInteractionEnabled = true
+//            backImageView.addGestureRecognizer(tapGestureRecognizer)
+//        }
+//    }
+//    @objc func backTapped(tapGestureRecognizer: UITapGestureRecognizer)
+//    {
+//        self.navigationController?.popViewController(animated: false)
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -50,7 +50,7 @@ class DetailedCourseViewController: UIViewController {
         //self.navBar.setItems([navigationItem], animated: false)
     }
     @objc func dissmis(_ button: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     @objc func favoritePressed(_ button: UIButton) {
         if !isFavorite {

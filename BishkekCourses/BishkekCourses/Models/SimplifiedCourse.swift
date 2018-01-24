@@ -20,7 +20,6 @@ struct SimplifiedCourse {
     var logo_image_url: String
     var background_image_url: String
     
-    
     init() {
         id = 0
         subcategory = ""
@@ -33,7 +32,16 @@ struct SimplifiedCourse {
     }
     init(json: JSON) {
         id = json["id"].intValue
-        subcategory = "hey"
+        subcategory = ""
+        let subcategories = json["subcategories"].arrayValue
+        let last_index = subcategories.count
+        for (index, subcategory_name) in json["subcategories"].arrayValue.enumerated() {
+            subcategory.append(subcategory_name["title"].stringValue)
+            if index < last_index - 1 {
+                subcategory.append(", ")
+            }
+        }
+        //subcategory = json["subcategories"]
         subcategory_id = 0
         title = json["title"].stringValue
         description = json["description"].stringValue

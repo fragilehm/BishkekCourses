@@ -54,8 +54,7 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let storyboard = UIStoryboard.init(name: "Course", bundle: nil)
         let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
         courseVC.course_id = recentCourses.array[indexPath.row].id
-        let navController = UINavigationController(rootViewController: courseVC)
-        self.navigationController?.present(navController, animated: true, completion: nil)
+        self.navigationController?.show(courseVC, sender: self)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
