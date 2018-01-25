@@ -18,8 +18,8 @@ class HeaderTableViewCell: UITableViewCell {
         didSet {
             logoImageView.layer.cornerRadius = 35
             logoImageView.layer.masksToBounds = true
-            logoImageView.layer.borderWidth = 2
-            logoImageView.layer.borderColor = UIColor.white.cgColor
+            logoImageView.layer.borderWidth = 0.7
+            logoImageView.layer.borderColor = UIColor.lightGray.cgColor
         }
     }
     @IBOutlet weak var raitingLabel: UILabel!

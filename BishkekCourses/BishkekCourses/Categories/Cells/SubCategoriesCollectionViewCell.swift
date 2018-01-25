@@ -23,7 +23,8 @@ class SubCategoriesCollectionViewCell: UICollectionViewCell {
     func fillCell(subcategory: SubCategory){
         titleLabel.text = subcategory.title
         let url = URL(string: subcategory.subcategory_image_url)
-        subCategoriesImageView.kf.setImage(with: url)
+         subCategoriesImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
+        //subCategoriesImageView.kf.setImage(with: url)
     }
 }
 

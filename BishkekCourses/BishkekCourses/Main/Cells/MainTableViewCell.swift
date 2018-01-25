@@ -21,6 +21,8 @@ class MainTableViewCell: UITableViewCell {
         didSet {
             logoImageView.layer.masksToBounds = true
             logoImageView.layer.cornerRadius = 20
+            logoImageView.layer.borderWidth = 0.7
+            logoImageView.layer.borderColor = UIColor.lightGray.cgColor
         }
     }
     @IBOutlet weak var subcategoryLabel: UILabel!
@@ -41,14 +43,16 @@ class MainTableViewCell: UITableViewCell {
         titleLabel.text = course.title
         decriptionLabel.text = course.description
         let url = URL(string: course.main_image_url)
-        mainImageView.kf.setImage(with: url)
-        
+        //mainImageView.kf.setImage(with: url)
+        mainImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
 //        mainImageView.sd_setShowActivityIndicatorView(true)
 //        mainImageView.sd_setIndicatorStyle(.gray)
 //        mainImageView.sd_setImage(with: url, placeholderImage: UIImage(named: ""), options: [SDWebImageOptions.progressiveDownload, SDWebImageOptions.allowInvalidSSLCertificates], progress: nil, completed: nil)
         subcategoryLabel.text = course.subcategory
         let logo_url = URL(string: course.logo_image_url)
         logoImageView.kf.setImage(with: logo_url)
+        logoImageView.kf.setImage(with: logo_url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
+        
     }
     
 }

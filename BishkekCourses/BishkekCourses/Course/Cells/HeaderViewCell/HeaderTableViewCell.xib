@@ -33,6 +33,7 @@
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ICW-AX-q6G">
                         <rect key="frame" x="0.0" y="0.0" width="417" height="180"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="180" id="vyV-dn-UQz"/>
                         </constraints>
@@ -125,6 +126,7 @@
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DuB-NU-bMH">
                         <rect key="frame" x="173.5" y="145" width="70" height="70"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="70" id="fNU-Mx-Yw7"/>
                             <constraint firstAttribute="width" constant="70" id="pDs-MY-pxq"/>

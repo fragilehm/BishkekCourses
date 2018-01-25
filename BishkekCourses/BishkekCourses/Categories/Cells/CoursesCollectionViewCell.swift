@@ -14,6 +14,8 @@ class CoursesCollectionViewCell: UICollectionViewCell {
         didSet {
             logoImageView.layer.cornerRadius = 30
             logoImageView.layer.masksToBounds = true
+            logoImageView.layer.borderWidth = 0.7
+            logoImageView.layer.borderColor = UIColor.lightGray.cgColor
         }
     }
     @IBOutlet weak var mainImageView: UIImageView!
@@ -36,8 +38,11 @@ class CoursesCollectionViewCell: UICollectionViewCell {
         titleLabel.text = course.title
         descriptionLabel.text = course.description
         let logo_url = URL(string: course.logo_image_url)
-        logoImageView.kf.setImage(with: logo_url)
+       
+        //logoImageView.kf.setImage(with: logo_url)
+        logoImageView.kf.setImage(with: logo_url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
         let background_url = URL(string: course.background_image_url)
-        mainImageView.kf.setImage(with: background_url)
+        //mainImageView.kf.setImage(with: background_url)
+        mainImageView.kf.setImage(with: background_url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
     }
 }

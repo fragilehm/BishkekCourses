@@ -46,7 +46,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! MainTableViewCell
-        cell.mainImageView.image = UIImage(named: images[indexPath.item])
         cell.fillCell(course: recentCourses.array[indexPath.row])
         return cell
     }
