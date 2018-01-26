@@ -12,9 +12,13 @@ class CoursesViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var subcategory_id = 0
+    var insets: CGFloat = 12
     var courses = SimplifiedCourses()
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            insets = 24
+        }
         setNavigationBarItems()
         configureCollectionView()
         getRecentData()
@@ -37,7 +41,7 @@ class CoursesViewController: UIViewController {
 extension CoursesViewController {
     func configureCollectionView(){
         collectionView.register(UINib(nibName: "CoursesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CoursesCollectionViewCell")
-        collectionView?.contentInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        collectionView?.contentInset = UIEdgeInsets(top: insets, left: insets, bottom: insets, right: insets)
         let header = DefaultRefreshHeader.header()
         header.setText(Constants.Hint.Refresh.pull_to_refresh, mode: .pullToRefresh)
         header.setText(Constants.Hint.Refresh.relase_to_refresh, mode: .releaseToRefresh)
@@ -73,6 +77,9 @@ extension CoursesViewController: UICollectionViewDataSource, UICollectionViewDel
         let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
         courseVC.course_id = courses.array[indexPath.row].id
         self.navigationController?.show(courseVC, sender: self)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return insets
     }
 }
 

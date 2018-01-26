@@ -12,9 +12,13 @@ class SubCategoriesViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var category_id = 0
+    var insets: CGFloat = 12
     var subcategories = SubCategories()
     override func viewDidLoad() {
         super.viewDidLoad()
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            insets = 24
+        }
         setNavigationBarItems()
         configureCollectionView()
         ServerManager.shared.getSubcategories(category_id: category_id, setSubcategories, error: showErrorAlert)
@@ -31,7 +35,7 @@ class SubCategoriesViewController: UIViewController {
 extension SubCategoriesViewController {
     func configureCollectionView(){
         collectionView.register(UINib(nibName: "SubCategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SubCategoriesCollectionViewCell")
-        collectionView?.contentInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        collectionView?.contentInset = UIEdgeInsets(top: insets, left: insets, bottom: insets, right: insets)
         
     }
 }
@@ -48,8 +52,11 @@ extension SubCategoriesViewController: UICollectionViewDataSource, UICollectionV
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 10)) / 2
+        let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + insets)) / 2
         return CGSize(width: itemSize, height: itemSize * 3 / 4)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return insets
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let courseVC = storyboard?.instantiateViewController(withIdentifier: "CoursesViewController") as! CoursesViewController

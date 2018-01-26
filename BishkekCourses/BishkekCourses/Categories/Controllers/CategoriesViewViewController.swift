@@ -45,7 +45,13 @@ extension CategoriesViewViewController: UICollectionViewDataSource, UICollection
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + 2)) / 2
+        var insets = 2
+        var numOfColumns = 2
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            insets = 4
+            numOfColumns = 3
+        }
+        let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + CGFloat(insets))) / CGFloat(numOfColumns)
         return CGSize(width: itemSize, height: itemSize)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

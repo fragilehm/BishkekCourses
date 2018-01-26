@@ -17,9 +17,12 @@ class MainTableViewCell: UITableViewCell {
             //print(mainImageView.frame.height)
         }
     }
+    @IBOutlet weak var topViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var cardViewBottom: NSLayoutConstraint!
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var logoImageView: UIImageView! {
         didSet {
+            
             logoImageView.layer.masksToBounds = true
             logoImageView.layer.cornerRadius = 20
             logoImageView.layer.borderWidth = 0.7
@@ -32,7 +35,17 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var cardView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            //print("cardviewawakefromnib")
+            topViewHeight.constant = 0
+            cardViewBottom.constant = 16
+            cardView.layer.masksToBounds = true
+            cardView.layer.cornerRadius = 10
+            cardView.layer.borderWidth = 0.5
+            cardView.layer.borderColor = UIColor.black.cgColor
+        }
         
+
         // Initialization code
     }
 
@@ -61,7 +74,7 @@ class MainTableViewCell: UITableViewCell {
             //print(url?.absoluteString)
         }
         mainImageView.heightAnchor.constraint(equalToConstant: halfScreenHeight).isActive = true
-        print("hi my dear")
+        //print("hi my dear")
 //        mainImageView.sd_setShowActivityIndicatorView(true)
 //        mainImageView.sd_setIndicatorStyle(.gray)
 //        mainImageView.sd_setImage(with: url, placeholderImage: UIImage(named: ""), options: [SDWebImageOptions.progressiveDownload, SDWebImageOptions.allowInvalidSSLCertificates], progress: nil, completed: nil)

@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="430" height="360.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Knl-SW-DWO">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Knl-SW-DWO">
                         <rect key="frame" x="0.0" y="0.0" width="430" height="360.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English zone, interesting courses!!!!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPc-bA-bN2">
@@ -27,6 +27,9 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="wLD-TS-wL3">
                                 <rect key="frame" x="10" y="10.5" width="40" height="40"/>
@@ -45,12 +48,18 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wA2-rU-IMG">
                                 <rect key="frame" x="90" y="273.5" width="330" height="16"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Xd-L9-ob5">
                                 <rect key="frame" x="10" y="300" width="410" height="50.5"/>
@@ -58,6 +67,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                </variation>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1h-ls-DxL">
                                 <rect key="frame" x="0.0" y="60.5" width="430" height="0.5"/>
@@ -112,11 +124,13 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cardView" destination="Knl-SW-DWO" id="xID-FQ-8ES"/>
+                <outlet property="cardViewBottom" destination="63H-al-Mgo" id="LFK-oD-ot6"/>
                 <outlet property="decriptionLabel" destination="8Xd-L9-ob5" id="Zhv-ut-V1d"/>
                 <outlet property="logoImageView" destination="wLD-TS-wL3" id="suK-RV-Htj"/>
                 <outlet property="mainImageView" destination="q4e-ra-ZdZ" id="BPD-Tj-7pK"/>
                 <outlet property="subcategoryLabel" destination="wA2-rU-IMG" id="nNk-nU-fF4"/>
                 <outlet property="titleLabel" destination="iPc-bA-bN2" id="RYX-rZ-jS6"/>
+                <outlet property="topViewHeight" destination="wIq-SL-7wV" id="jm7-lb-Y0a"/>
             </connections>
             <point key="canvasLocation" x="139" y="216.5"/>
         </tableViewCell>

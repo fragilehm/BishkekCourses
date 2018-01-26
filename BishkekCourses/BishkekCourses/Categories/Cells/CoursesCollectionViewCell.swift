@@ -12,7 +12,14 @@ class CoursesCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var logoImageView: UIImageView! {
         didSet {
-            logoImageView.layer.cornerRadius = 30
+            var logoHeight = ((UIScreen.main.bounds.width - 12) * 2) / 15
+
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                logoHeight = (((4 * UIScreen.main.bounds.width / 5) - 24) * 2) / 15
+
+            }
+            //print(logoHeight)
+            logoImageView.layer.cornerRadius = logoHeight / 2
             logoImageView.layer.masksToBounds = true
             logoImageView.layer.borderWidth = 0.7
             logoImageView.layer.borderColor = UIColor.lightGray.cgColor
@@ -30,7 +37,8 @@ class CoursesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cardView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        cardView.layer.cornerRadius = 5
+        //print(logoImageView.frame.height, " dsdskdks")
+        cardView.layer.cornerRadius = 10
         cardView.layer.masksToBounds = true
         // Initialization code
     }
@@ -38,7 +46,7 @@ class CoursesCollectionViewCell: UICollectionViewCell {
         titleLabel.text = course.title
         descriptionLabel.text = course.description
         let logo_url = URL(string: course.logo_image_url)
-       
+        //print(logoImageView.frame.height, " dsdskdkssdsdsdsdsds")
         //logoImageView.kf.setImage(with: logo_url)
         logoImageView.kf.setImage(with: logo_url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
         let background_url = URL(string: course.background_image_url)

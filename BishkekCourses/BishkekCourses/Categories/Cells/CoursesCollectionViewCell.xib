@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,16 +25,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="353" height="148"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tpz-N4-AVh">
-                                <rect key="frame" x="0.0" y="0.0" width="80" height="148"/>
+                                <rect key="frame" x="0.0" y="0.0" width="70.5" height="148"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vpQ-XE-ot8">
-                                        <rect key="frame" x="0.0" y="12.5" width="80" height="122"/>
+                                        <rect key="frame" x="0.0" y="19" width="70.5" height="109"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="z7l-64-699">
-                                                <rect key="frame" x="10" y="10" width="60" height="60"/>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z7l-64-699">
+                                                <rect key="frame" x="12" y="10" width="47" height="47"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="LX3-RJ-ZNq"/>
-                                                    <constraint firstAttribute="width" constant="60" id="tUF-DW-Cqp"/>
+                                                    <constraint firstAttribute="width" secondItem="z7l-64-699" secondAttribute="height" multiplier="1:1" id="A88-DN-oZ7"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
@@ -40,27 +41,33 @@
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p5m-47-Sph">
-                                                <rect key="frame" x="36.5" y="96" width="8" height="21"/>
+                                                <rect key="frame" x="32" y="83" width="8" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                 <color key="textColor" red="0.50980392159999999" green="0.74117647060000003" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                                </variation>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Рейтинг" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8XA-og-12E">
-                                                <rect key="frame" x="14" y="75" width="52" height="16"/>
+                                                <rect key="frame" x="9.5" y="62" width="52" height="16"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                 <color key="textColor" red="0.58823529409999997" green="0.62352941179999999" blue="0.66666666669999997" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                </variation>
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="8XA-og-12E" firstAttribute="top" secondItem="z7l-64-699" secondAttribute="bottom" constant="5" id="08b-H9-Ttj"/>
                                             <constraint firstItem="p5m-47-Sph" firstAttribute="top" secondItem="8XA-og-12E" secondAttribute="bottom" constant="5" id="5IG-s8-ikj"/>
-                                            <constraint firstItem="z7l-64-699" firstAttribute="leading" secondItem="vpQ-XE-ot8" secondAttribute="leading" constant="10" id="F0B-YL-KXb"/>
+                                            <constraint firstItem="z7l-64-699" firstAttribute="width" secondItem="vpQ-XE-ot8" secondAttribute="width" multiplier="2:3" id="ADv-sY-loM"/>
                                             <constraint firstAttribute="bottom" secondItem="p5m-47-Sph" secondAttribute="bottom" constant="5" id="FDd-cx-BrR"/>
                                             <constraint firstItem="p5m-47-Sph" firstAttribute="centerX" secondItem="vpQ-XE-ot8" secondAttribute="centerX" id="PmO-pc-xTn"/>
-                                            <constraint firstAttribute="trailing" secondItem="z7l-64-699" secondAttribute="trailing" constant="10" id="TFL-tr-SQE"/>
                                             <constraint firstItem="p5m-47-Sph" firstAttribute="centerX" secondItem="vpQ-XE-ot8" secondAttribute="centerX" constant="0.5" id="ZnN-VE-jz1"/>
+                                            <constraint firstItem="8XA-og-12E" firstAttribute="centerX" secondItem="z7l-64-699" secondAttribute="centerX" id="nZW-9D-8oW"/>
                                             <constraint firstItem="8XA-og-12E" firstAttribute="centerX" secondItem="vpQ-XE-ot8" secondAttribute="centerX" id="vLT-mk-WwM"/>
                                             <constraint firstItem="z7l-64-699" firstAttribute="top" secondItem="vpQ-XE-ot8" secondAttribute="top" constant="10" id="y00-gd-hnE"/>
                                         </constraints>
@@ -74,27 +81,33 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nature" translatesAutoresizingMaskIntoConstraints="NO" id="aMG-56-xWV">
-                                <rect key="frame" x="80" y="0.0" width="273" height="148"/>
+                                <rect key="frame" x="70.5" y="0.0" width="282.5" height="148"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bN3-5T-LPn">
-                                <rect key="frame" x="80" y="0.0" width="273" height="148"/>
+                            <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bN3-5T-LPn">
+                                <rect key="frame" x="70.5" y="0.0" width="282.5" height="148"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First International Yoga Day" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FR3-bl-bau">
-                                <rect key="frame" x="90" y="10" width="253" height="18"/>
+                                <rect key="frame" x="80.5" y="10" width="262.5" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Embassy of India, Bishkek in collaboration with UNDP, Kyrgyzstan is celebrating 1st International Day of Yoga on June 21" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dcs-6P-e2T">
-                                <rect key="frame" x="90" y="106.5" width="253" height="31.5"/>
+                                <rect key="frame" x="80.5" y="106.5" width="262.5" height="31.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                </variation>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -110,6 +123,7 @@
                             <constraint firstItem="aMG-56-xWV" firstAttribute="top" secondItem="5O5-SC-1pW" secondAttribute="top" id="PYZ-8u-QQJ"/>
                             <constraint firstItem="FR3-bl-bau" firstAttribute="top" secondItem="5O5-SC-1pW" secondAttribute="top" constant="10" id="UO6-xz-bxI"/>
                             <constraint firstAttribute="trailing" secondItem="aMG-56-xWV" secondAttribute="trailing" id="WwL-tW-gGB"/>
+                            <constraint firstItem="tpz-N4-AVh" firstAttribute="width" secondItem="5O5-SC-1pW" secondAttribute="width" multiplier="1:5" id="XAX-Wf-dde"/>
                             <constraint firstItem="Dcs-6P-e2T" firstAttribute="leading" secondItem="tpz-N4-AVh" secondAttribute="trailing" constant="10" id="Zyq-AU-Lxi"/>
                             <constraint firstAttribute="trailing" secondItem="FR3-bl-bau" secondAttribute="trailing" constant="10" id="Zyx-zf-2gt"/>
                             <constraint firstItem="aMG-56-xWV" firstAttribute="leading" secondItem="tpz-N4-AVh" secondAttribute="trailing" id="e9A-a7-dPj"/>
@@ -139,7 +153,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="logo" width="1024" height="1024"/>
         <image name="nature" width="820" height="546"/>
     </resources>
 </document>
