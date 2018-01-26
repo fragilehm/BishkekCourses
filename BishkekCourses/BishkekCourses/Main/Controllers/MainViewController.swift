@@ -46,6 +46,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! MainTableViewCell
+       // print(self.tableView.frame.height)
+//        cell.mainImageView.translatesAutoresizingMaskIntoConstraints = false
+//        cell.mainImageView.heightAnchor.constraint(lessThanOrEqualTo: self.tableView.heightAnchor, multiplier: 0.5).isActive = true
         cell.fillCell(course: recentCourses.array[indexPath.row])
         return cell
     }

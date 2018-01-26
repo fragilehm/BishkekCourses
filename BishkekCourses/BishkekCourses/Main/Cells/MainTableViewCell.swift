@@ -13,10 +13,11 @@ import SDWebImage
 class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var mainImageView: UIImageView! {
         didSet {
-            //            mainImageView.layer.masksToBounds = true
-            //            mainImageView.layer.cornerRadius = 10
+            mainImageView.translatesAutoresizingMaskIntoConstraints = false
+            //print(mainImageView.frame.height)
         }
     }
+    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var logoImageView: UIImageView! {
         didSet {
             logoImageView.layer.masksToBounds = true
@@ -31,6 +32,7 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var cardView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
     }
 
@@ -44,7 +46,22 @@ class MainTableViewCell: UITableViewCell {
         decriptionLabel.text = course.description
         let url = URL(string: course.main_image_url)
         //mainImageView.kf.setImage(with: url)
-        mainImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
+        //mainImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
+        let halfScreenHeight = UIScreen.main.bounds.height / 2
+
+        mainImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil) { (image, error, cache, url) in
+//            let mainImageViewHeight = { () -> CGFloat in
+//                let imageHeight = image?.cgImage?.height
+//                let screenHeight = UIScreen.main.bounds.height / 2
+//                return imageHeight == nil ? (screenHeight * 2) / 3 : CGFloat(imageHeight!) <= screenHeight ? CGFloat(imageHeight!) : screenHeight
+//            }()
+//            //self.imageHeightConstraint.constant = mainImageViewHeight
+//           self.mainImageView.heightAnchor.constraint(equalToConstant: mainImageViewHeight).isActive = true
+//            print(mainImageViewHeight, " hello")
+            //print(url?.absoluteString)
+        }
+        mainImageView.heightAnchor.constraint(equalToConstant: halfScreenHeight).isActive = true
+        print("hi my dear")
 //        mainImageView.sd_setShowActivityIndicatorView(true)
 //        mainImageView.sd_setIndicatorStyle(.gray)
 //        mainImageView.sd_setImage(with: url, placeholderImage: UIImage(named: ""), options: [SDWebImageOptions.progressiveDownload, SDWebImageOptions.allowInvalidSSLCertificates], progress: nil, completed: nil)
