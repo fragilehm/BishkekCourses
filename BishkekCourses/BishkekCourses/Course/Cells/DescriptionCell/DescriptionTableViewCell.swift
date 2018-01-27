@@ -8,11 +8,12 @@
 
 import UIKit
 
-class DescriptionTableViewCell: UITableViewCell {
+class DescriptionTableViewCell: CustomCell {
 
     @IBOutlet weak var descriptionLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        //self.
         // Initialization code
     }
     func fillCell(description: String){

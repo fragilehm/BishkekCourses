@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CommentsTableViewCell: UITableViewCell {
+class CommentsTableViewCell: CustomCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

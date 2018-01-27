@@ -16,16 +16,41 @@ class HeaderTableViewCell: UITableViewCell {
 
     @IBOutlet weak var logoImageView: UIImageView! {
         didSet {
-            logoImageView.layer.cornerRadius = 35
+            //logoImageView.layer.cornerRadius = 35
             logoImageView.layer.masksToBounds = true
             logoImageView.layer.borderWidth = 0.7
             logoImageView.layer.borderColor = UIColor.lightGray.cgColor
         }
     }
+    @IBOutlet weak var logoImageViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var logoBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var backgroundImageViewHeight: NSLayoutConstraint!
     @IBOutlet weak var raitingLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var savesLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descriptionButton: UIButton!
+    @IBOutlet weak var commentsButton: UIButton!
+    @IBOutlet weak var locationsButton: UIButton!
+    @IBOutlet weak var contactsButton: UIButton!
+    @IBOutlet weak var servicesButton: UIButton!
+    
+    
+    @IBAction func descriptionButtonPressed(_ sender: Any) {
+        setSelectedButton(imageName: "description_selected", buttonIndex: 0, button: descriptionButton)
+    }
+    @IBAction func commentsButtonPressed(_ sender: Any) {
+         setSelectedButton(imageName: "comments_selected", buttonIndex: 1, button: commentsButton)
+    }
+    @IBAction func locationsButtonPressed(_ sender: Any) {
+         setSelectedButton(imageName: "locations_selected", buttonIndex: 2, button: locationsButton)
+    }
+    @IBAction func contactsButtonPressed(_ sender: Any) {
+         setSelectedButton(imageName: "contacts_selected", buttonIndex: 3, button: contactsButton)
+    }
+    @IBAction func servicesButtonPressed(_ sender: Any) {
+         setSelectedButton(imageName: "services_selected", buttonIndex: 4, button: servicesButton)
+    }
 //    @IBOutlet weak var starsView: CosmosView! {
 //        didSet {
 //            starsView.settings.starMargin = 15
@@ -33,88 +58,29 @@ class HeaderTableViewCell: UITableViewCell {
 //    }
     var selections = [true, false, false,
                       false, false]
-    @IBOutlet weak var descriptionImageView: UIImageView! {
-        didSet {
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(descriptionTapped(tapGestureRecognizer:)))
-            descriptionImageView.isUserInteractionEnabled = true
-            descriptionImageView.addGestureRecognizer(tapGestureRecognizer)
+    func resetSelected(index: Int){
+        switch index {
+        case 0:
+            descriptionButton.setImage(UIImage(named: "description"), for: .normal)
+        case 1:
+            commentsButton.setImage(UIImage(named: "comments"), for: .normal)
+        case 2:
+            locationsButton.setImage(UIImage(named: "locations"), for: .normal)
+        case 3:
+            contactsButton.setImage(UIImage(named: "contacts"), for: .normal)
+        default:
+            servicesButton.setImage(UIImage(named: "services"), for: .normal)
         }
     }
-    @objc func descriptionTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-        setSelected(imageName: "description_selected", imageIndex: 0, image: descriptionImageView)
-    }
-    @IBOutlet weak var commentsImageView: UIImageView!{
-        didSet {
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(commentsTapped(tapGestureRecognizer:)))
-            commentsImageView.isUserInteractionEnabled = true
-            commentsImageView.addGestureRecognizer(tapGestureRecognizer)
-        }
-    }
-    @objc func commentsTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-        //commentsImageView.tintColor = UIColor.black
-        setSelected(imageName: "comments_selected", imageIndex: 1, image: commentsImageView)
-    }
-    @IBOutlet weak var locationsImageView: UIImageView!{
-        didSet {
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(locationsTapped(tapGestureRecognizer:)))
-            locationsImageView.isUserInteractionEnabled = true
-            locationsImageView.addGestureRecognizer(tapGestureRecognizer)
-        }
-    }
-    @objc func locationsTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-        setSelected(imageName: "locations_selected", imageIndex: 2, image: locationsImageView)
-    }
-    @IBOutlet weak var contactsImageView: UIImageView!{
-        didSet {
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(contactsTapped(tapGestureRecognizer:)))
-            contactsImageView.isUserInteractionEnabled = true
-            contactsImageView.addGestureRecognizer(tapGestureRecognizer)
-        }
-    }
-    @objc func contactsTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-        setSelected(imageName: "contacts_selected", imageIndex: 3, image: contactsImageView)
-    }
-    @IBOutlet weak var servicesImageView: UIImageView!{
-        didSet {
-            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(servicesTapped(tapGestureRecognizer:)))
-            servicesImageView.isUserInteractionEnabled = true
-            servicesImageView.addGestureRecognizer(tapGestureRecognizer)
-        }
-    }
-    @objc func servicesTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
-        setSelected(imageName: "services_selected", imageIndex: 4, image: servicesImageView)
-    }
-    func resetSelected(){
-        if selections[0] == false {
-            descriptionImageView.image = UIImage(named: "description")
-        }
-        if selections[1] == false {
-            commentsImageView.image = UIImage(named: "comments")
-        }
-        if selections[2] == false {
-            locationsImageView.image = UIImage(named: "locations")
-        }
-        if selections[3] == false{
-            contactsImageView.image = UIImage(named: "contacts")
-        }
-        if selections[4] == false{
-            servicesImageView.image = UIImage(named: "services")
-        }
-    }
-    func setSelected(imageName: String, imageIndex: Int,image: UIImageView){
+    func setSelectedButton(imageName: String, buttonIndex: Int,button: UIButton){
         for (index, selection) in selections.enumerated() {
-            if index != imageIndex {
+            if index != buttonIndex {
                 if selection == true {
-                    selections[imageIndex] = true
+                    selections[buttonIndex] = true
                     selections[index] = false
-                    resetSelected()
-                    image.image = UIImage(named: imageName)
-                    cellDelegate?.iconPressed(imageIndex)
+                    resetSelected(index: index)
+                    button.setImage(UIImage(named: imageName), for: .normal)
+                    cellDelegate?.iconPressed(buttonIndex)
                     break
                 }
             }
@@ -122,6 +88,14 @@ class HeaderTableViewCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
+        let height = UIScreen.main.bounds.height
+        let backgroundImageHeight = height / 3
+        let logoImageHeight = backgroundImageHeight / 3
+        let bottomConstraint = logoImageHeight / 2
+        backgroundImageViewHeight.constant = backgroundImageHeight
+        logoImageViewHeight.constant = logoImageHeight
+        logoImageView.layer.cornerRadius = bottomConstraint
+        logoBottomConstraint.constant = -bottomConstraint
         // Initialization code
     }
 

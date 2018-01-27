@@ -114,6 +114,7 @@
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Knl-SW-DWO" secondAttribute="bottom" id="63H-al-Mgo"/>
                     <constraint firstItem="Knl-SW-DWO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="KGW-mX-yCh"/>
@@ -121,6 +122,7 @@
                     <constraint firstItem="Knl-SW-DWO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="xWh-PZ-AGg"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cardView" destination="Knl-SW-DWO" id="xID-FQ-8ES"/>

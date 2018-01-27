@@ -30,6 +30,11 @@ class DetailedCourseViewController: UIViewController {
         super.viewDidLoad()
         configureTableView()
         setNavBarItems()
+        //
+//        if UIDevice.current.userInterfaceIdiom == .pad {
+//            tableView.separatorStyle = .none
+//            //tableView.separatorInset = UIEdgeInsets(top: 100, left: 0, bottom: 100, right: 0)
+//        }
         ServerManager.shared.getCourseDetails(course_id: course_id, setCourse, error: showErrorAlert)
     }
     func setCourse(course: Course){
@@ -116,6 +121,7 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell", for: indexPath) as! HeaderTableViewCell
             cell.fillCell(course: course)
             cell.cellDelegate = self
+            
             return cell
         }
         else {
@@ -147,6 +153,7 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
         }
         
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }

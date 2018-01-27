@@ -38,11 +38,11 @@ class MainTableViewCell: UITableViewCell {
         if UIDevice.current.userInterfaceIdiom == .pad {
             //print("cardviewawakefromnib")
             topViewHeight.constant = 0
-            cardViewBottom.constant = 16
+            cardViewBottom.constant = 24
             cardView.layer.masksToBounds = true
             cardView.layer.cornerRadius = 10
-            cardView.layer.borderWidth = 0.5
-            cardView.layer.borderColor = UIColor.black.cgColor
+//            cardView.layer.borderWidth = 0.5
+//            cardView.layer.borderColor = UIColor.black.cgColor
         }
         
 

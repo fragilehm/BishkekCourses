@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ServicesTableViewCell: UITableViewCell {
+class ServicesTableViewCell: CustomCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!

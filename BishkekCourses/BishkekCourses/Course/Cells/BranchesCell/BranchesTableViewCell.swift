@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BranchesTableViewCell: UITableViewCell {
+class BranchesTableViewCell: CustomCell {
 
     @IBOutlet weak var addressLabel: UILabel!
     override func awakeFromNib() {
