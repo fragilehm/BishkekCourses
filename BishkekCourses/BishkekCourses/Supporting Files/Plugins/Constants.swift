@@ -25,6 +25,10 @@ struct Constants {
             static let UNABLE_LOAD_DATA = "Unable load data"
             static let NO_HTTP_STATUS_CODE = "Unable to get response HTTP status code"
             static let UNAUTHORIZED = "Unauthorized error"
+            static let NOT_FOUND_ERROR = "Unable to connect to server"
+            static let CANT_PARSE_DATA = "Unable to parse data"
+
+
         }
         struct EndPoints {
             static let Token_auth = "api/token-auth"

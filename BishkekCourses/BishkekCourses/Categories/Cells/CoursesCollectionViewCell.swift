@@ -42,7 +42,7 @@ class CoursesCollectionViewCell: UICollectionViewCell {
         cardView.layer.masksToBounds = true
         // Initialization code
     }
-    func fillCell(course: SimplifiedCourse){
+    func fillCell(course: SimpleCourse){
         titleLabel.text = course.title
         descriptionLabel.text = course.description
         let logo_url = URL(string: course.logo_image_url)

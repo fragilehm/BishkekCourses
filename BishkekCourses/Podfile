@@ -11,12 +11,15 @@ target 'BishkekCourses' do
   pod 'IQKeyboardManagerSwift'
   pod 'Kingfisher'
   pod 'ImageSlideshow/Kingfisher'
-  pod 'SJSegmentedScrollView'
   pod 'Cosmos'
   pod 'HGPlaceholders'
   pod 'PullToRefreshKit'
   pod 'M13Checkbox'
-
+  pod 'RxSwift'
+  pod 'RxCocoa'
+  pod 'RxOptional'
+  pod 'Moya-ModelMapper'
+  pod 'Moya'
   # Pods for BishkekCourses
 
   target 'BishkekCoursesTests' do
@@ -30,3 +33,15 @@ target 'BishkekCourses' do
   end
 
 end
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        if target.name == 'RxSwift'
+            target.build_configurations.each do |config|
+                if config.name == 'Debug'
+                    config.build_settings['OTHER_SWIFT_FLAGS'] ||= ['-D', 'TRACE_RESOURCES']
+                end
+            end
+        end
+    end
+end
+

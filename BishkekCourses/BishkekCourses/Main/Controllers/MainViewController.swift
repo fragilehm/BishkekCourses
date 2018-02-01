@@ -8,62 +8,62 @@
 
 import UIKit
 import PullToRefreshKit
+import Moya_ModelMapper
+import RxCocoa
+import RxSwift
+import Moya
 class MainViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     private let refreshControl = UIRefreshControl()
-    var recentCourses = SimplifiedCourses()
-    var images = ["coding", "art", "cat", "nature", "tree"]
+    private let disposeBag = DisposeBag()
+    private var viewModel =  SimpleCourseViewModel()
+    var recentCourses: Variable<[SimpleCourse]> = Variable([])
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabBar()
         configureTableView()
-        getRecentData()
-        // Do any additional setup after loading the view.
+        getData()
+        bindTableView()
+        bindTableViewSelected()
     }
-
-    @objc private func getNewData(_ sender: Any){
-        getRecentData()
+    func bindTableView(){
+        viewModel.simpleCourses.asObservable().bind(to: tableView.rx.items(cellIdentifier: "MainTableViewCell", cellType: MainTableViewCell.self)) { row, element, cell in
+            cell.fillCell(course: element)
+            }.disposed(by: disposeBag)
+        viewModel.error?.asObservable().subscribe(onNext: { [weak self] (message) in
+            self?.showErrorAlert(message: message)
+        }).disposed(by: disposeBag)
+        viewModel.simpleCourses.asObservable().subscribe(onNext: { [weak self] (message) in
+            self?.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
+        }).disposed(by: disposeBag)
+        
     }
-    func getRecentData(){
-        ServerManager.shared.getRecentCourses(setRecentCourses, error: showErrorAlert)
+    func bindTableViewSelected(){
+        tableView.rx.modelSelected(SimpleCourse.self).subscribe(onNext: {[weak self] element in
+            guard let strongSelf = self else {return}
+            let storyboard = UIStoryboard.init(name: "Course", bundle: nil)
+            let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
+            courseVC.course_id = element.id
+            strongSelf.navigationController?.show(courseVC, sender: self)
+        }).disposed(by: disposeBag)
+    }
+    func getData(){
+        viewModel.fetchData()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Главная"
+        print("MainViewController resources: \(RxSwift.Resources.total)")
+
     }
-    func setRecentCourses(courses: SimplifiedCourses) {
-        self.recentCourses = courses
-        tableView.reloadData()
-        self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
+    deinit {
+        print("deinit MainViewController resources: \(RxSwift.Resources.total)")
     }
 }
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recentCourses.array.count
-    }
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath) as! MainTableViewCell
-       // print(self.tableView.frame.height)
-//        cell.mainImageView.translatesAutoresizingMaskIntoConstraints = false
-//        cell.mainImageView.heightAnchor.constraint(lessThanOrEqualTo: self.tableView.heightAnchor, multiplier: 0.5).isActive = true
-        cell.fillCell(course: recentCourses.array[indexPath.row])
-        return cell
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard.init(name: "Course", bundle: nil)
-        let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
-        courseVC.course_id = recentCourses.array[indexPath.row].id
-        self.navigationController?.show(courseVC, sender: self)
-    }
+extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-//        return 10
-//    }
 }
 extension MainViewController {
     func configureTabBar(){
@@ -75,13 +75,12 @@ extension MainViewController {
         }
         self.tabBarController?.tabBar.tintColor = UIColor.black
         //self.tabBarController?.tabBar.unselectedItemTintColor = UIColor.black
-
         //self.tabBarController?.tabBar.barTintColor = UIColor.cyan
     }
     func configureTableView(){
         tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 100
-        tableView.reloadData()
+        tableView.rx.setDelegate(self as UIScrollViewDelegate).disposed(by: disposeBag)
         tableView.register(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
         //tableView.View?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         let header = DefaultRefreshHeader.header()
@@ -93,8 +92,7 @@ extension MainViewController {
         header.imageRenderingWithTintColor = true
         header.durationWhenHide = 0.4
         tableView.configRefreshHeader(with: header, action: { [weak self] in
-            self?.getRecentData()
+            self?.getData()
         })
     }
-    
 }

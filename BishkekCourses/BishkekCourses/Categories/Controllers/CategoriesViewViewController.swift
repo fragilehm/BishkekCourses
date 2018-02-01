@@ -8,42 +8,57 @@
 
 import UIKit
 import Kingfisher
+import Moya
+import RxCocoa
+import RxSwift
+import Moya_ModelMapper
 class CategoriesViewViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    var categories = Categories()
+    var categories: Variable<[Category]> = Variable([])
+    let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
-        ServerManager.shared.getCategories(setCategories, error: showErrorAlert)
         configureCollectionView()
+        getData()
+        bindCollectionView()
+        bindCollectionViewSelected()
+    }
+    func bindCollectionView(){
+        categories.asObservable().bind(to: collectionView.rx.items(cellIdentifier: "CategoriesCollectionViewCell", cellType: CategoriesCollectionViewCell.self)) { row, element, cell in
+            cell.fillCell(category: element)
+            }.disposed(by: disposeBag)
+    }
+    func bindCollectionViewSelected(){
+        collectionView.rx.modelSelected(Category.self).subscribe(onNext: {[weak self] element in
+            guard let strongSelf = self else {return}
+            let subCategoryVC = strongSelf.storyboard?.instantiateViewController(withIdentifier: "SubCategoriesViewController") as! SubCategoriesViewController
+            subCategoryVC.category_id = element.id
+            strongSelf.navigationController?.show(subCategoryVC, sender: self)
+        }).disposed(by: disposeBag)
+    }
+    func getData(){
+        ServerAPIManager.sharedAPI.getCategories(setCategories, showError: showErrorAlert)
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Категории"
+        print("CategoriesViewController resources: \(RxSwift.Resources.total)")
     }
-    func setCategories(categories: Categories){
-        self.categories = categories
-        self.collectionView.reloadData()
+    func setCategories(categories: [Category]){
+        self.categories.value = categories
+    }
+    deinit {
+        print("deinit CategoriesViewController resources: \(RxSwift.Resources.total)")
     }
 }
 extension CategoriesViewViewController {
     func configureCollectionView(){
+        collectionView.rx.setDelegate(self as UIScrollViewDelegate).disposed(by: disposeBag)
         collectionView.register(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
         collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-
     }
 }
-extension CategoriesViewViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.array.count
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCollectionViewCell", for: indexPath) as! CategoriesCollectionViewCell
-        cell.fillCell(category: categories.array[indexPath.row])
-        return cell
-    }
+extension CategoriesViewViewController:  UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var insets = 2
         var numOfColumns = 2
@@ -53,10 +68,5 @@ extension CategoriesViewViewController: UICollectionViewDataSource, UICollection
         }
         let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + CGFloat(insets))) / CGFloat(numOfColumns)
         return CGSize(width: itemSize, height: itemSize)
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let subCategoryVC = storyboard?.instantiateViewController(withIdentifier: "SubCategoriesViewController") as! SubCategoriesViewController
-        subCategoryVC.category_id = categories.array[indexPath.row].id
-        self.navigationController?.show(subCategoryVC, sender: self)
     }
 }

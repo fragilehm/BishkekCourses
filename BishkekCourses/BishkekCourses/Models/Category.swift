@@ -7,37 +7,16 @@
 //
 
 import Foundation
-import SwiftyJSON
+import Mapper
 
-struct Category {
+class Category: Mappable {
     var id: Int
     var title: String
     var category_image_url: String
     
-    init() {
-        self.id = 0
-        self.title = ""
-        category_image_url = ""
-    }
-    
-    init(json: JSON) {
-        id = json["id"].intValue
-        title = json["title"].stringValue
-        category_image_url = json["category_image_url"].stringValue
+    required init(map: Mapper) throws {
+        try id = map.from("id")
+        try title = map.from("title")
+        try category_image_url = map.from("category_image_url")
     }
 }
-
-class Categories: NSObject {
-    var array: Array = Array<Category>()
-    override init() {
-    }
-    init(json: JSON) {
-        let jsonArr:[JSON] = json.arrayValue
-        for json in jsonArr {
-            let tempObject = Category(json:json)
-            array.append(tempObject)
-        }
-    }
-}
-
-

@@ -9,12 +9,29 @@ PODS:
   - IQKeyboardManagerSwift (5.0.4)
   - Kingfisher (4.2.0)
   - M13Checkbox (3.2.1)
+  - ModelMapper (7.4.0)
+  - Moya (10.0.1):
+    - Moya/Core (= 10.0.1)
+  - Moya-ModelMapper (6.0.0):
+    - Moya-ModelMapper/Core (= 6.0.0)
+  - Moya-ModelMapper/Core (6.0.0):
+    - ModelMapper
+    - Moya (~> 10.0)
+  - Moya/Core (10.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 3.0)
   - PKHUD (5.0.0)
   - PullToRefreshKit (0.8.2)
+  - Result (3.2.4)
+  - RxCocoa (4.0.0):
+    - RxSwift (~> 4.0)
+  - RxOptional (3.3.0):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+  - RxSwift (4.0.0)
   - SDWebImage (4.2.2):
     - SDWebImage/Core (= 4.2.2)
   - SDWebImage/Core (4.2.2)
-  - SJSegmentedScrollView (1.3.8)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
@@ -25,10 +42,14 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - Kingfisher
   - M13Checkbox
+  - Moya
+  - Moya-ModelMapper
   - PKHUD
   - PullToRefreshKit
+  - RxCocoa
+  - RxOptional
+  - RxSwift
   - SDWebImage
-  - SJSegmentedScrollView
   - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -39,12 +60,18 @@ SPEC CHECKSUMS:
   IQKeyboardManagerSwift: a0592bb636b10a9a1cf75d2b2c61144226226c84
   Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
   M13Checkbox: 12376f5b128189432508c240e4a36dc945ab7e4e
+  ModelMapper: 467f49f6f187b4e6cde2599e7cc5968cefa3f19b
+  Moya: 9e621707ff754eeb51ff3ec51a3d54e517c0733a
+  Moya-ModelMapper: c59c0bbd042cf9d1d9b0acf38c5f930956bebed8
   PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
   PullToRefreshKit: 0a2a019bf094b8beba18c8a1bedfb1fb67ee70fd
+  Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
+  RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
+  RxOptional: e5448d3e21024489e07c31f6a262f2b50c975367
+  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
-  SJSegmentedScrollView: 2308af5e7dbbbcbf7042efd47128f162186ed078
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 8749b4cbafc94e0e0eae3a76274b7d9e49d5c92b
+PODFILE CHECKSUM: 1ade5d832c32514e1bd2a052d33207b96dccd397
 
 COCOAPODS: 1.3.1

@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 import SDWebImage
-
+import RxSwift
 class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var mainImageView: UIImageView! {
         didSet {
@@ -48,13 +48,12 @@ class MainTableViewCell: UITableViewCell {
 
         // Initialization code
     }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
-    func fillCell(course: SimplifiedCourse){
+    func fillCell(course: SimpleCourse){
         titleLabel.text = course.title
         decriptionLabel.text = course.description
         let url = URL(string: course.main_image_url)
@@ -78,7 +77,15 @@ class MainTableViewCell: UITableViewCell {
 //        mainImageView.sd_setShowActivityIndicatorView(true)
 //        mainImageView.sd_setIndicatorStyle(.gray)
 //        mainImageView.sd_setImage(with: url, placeholderImage: UIImage(named: ""), options: [SDWebImageOptions.progressiveDownload, SDWebImageOptions.allowInvalidSSLCertificates], progress: nil, completed: nil)
-        subcategoryLabel.text = course.subcategory
+        var subcategories = ""
+        let last_index = course.subcategories.count
+        for (index, simpleSubcategory) in course.subcategories.enumerated() {
+            subcategories.append(simpleSubcategory.title)
+            if index < last_index - 1 {
+                subcategories.append(", ")
+            }
+        }
+        subcategoryLabel.text = subcategories
         let logo_url = URL(string: course.logo_image_url)
         logoImageView.kf.setImage(with: logo_url)
         logoImageView.kf.setImage(with: logo_url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
