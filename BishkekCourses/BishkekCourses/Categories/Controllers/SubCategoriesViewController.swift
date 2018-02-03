@@ -39,9 +39,13 @@ class SubCategoriesViewController: UIViewController {
     func bindCollectionViewSelected() {
         collectionView.rx.modelSelected(Subcategory.self).subscribe(onNext: {[weak self] element in
             guard let strongSelf = self else {return}
-            let courseVC = strongSelf.storyboard?.instantiateViewController(withIdentifier: "CoursesViewController") as! CoursesViewController
+            let courseVC = strongSelf.storyboard?.instantiateViewController(withIdentifier: "CoursesBySubcategoryViewController") as! CoursesBySubcategoryViewController
+            courseVC.backImage = element.subcategory_image_url
+            courseVC.subcategoryName = element.title
             courseVC.subcategory_id = element.id
-            strongSelf.navigationController?.show(courseVC, sender: self)
+            strongSelf.navigationController?.present(courseVC, animated: true, completion: nil)
+            //strongSelf.navigationController?.pushViewController(courseVC, animated: true)
+            //strongSelf.navigationController?.show(courseVC, sender: self)
             
         }).disposed(by: disposeBag)
     }

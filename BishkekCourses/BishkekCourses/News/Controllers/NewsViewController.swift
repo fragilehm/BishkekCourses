@@ -32,11 +32,13 @@ class NewsViewController: UIViewController {
 }
 extension NewsViewController {
     func configureCollectionView(){
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.register(UINib(nibName: "NewsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "NewsCollectionViewCell")
         collectionView?.contentInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         collectionView.placeholderDelegate = self
         //collectionView.showErrorPlaceholder()
-        collectionView.placeholdersProvider = .summer
+//        collectionView.placeholdersProvider = .summer
         let key = PlaceholderKey.custom(key: "starWars")
         collectionView?.showCustomPlaceholder(with: key)
     }

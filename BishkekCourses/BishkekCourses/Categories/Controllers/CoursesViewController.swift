@@ -28,7 +28,6 @@ class CoursesViewController: UIViewController {
         getData()
         bindCollectionView()
         bindCollectionViewSelected()
-        
     }
     func getData() {
         ServerAPIManager.sharedAPI.getCoursesBySubcategory(subcategory_id: self.subcategory_id, setCourses, showError: showErrorAlert)

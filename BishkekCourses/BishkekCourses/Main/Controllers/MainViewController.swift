@@ -18,7 +18,6 @@ class MainViewController: UIViewController {
     private let refreshControl = UIRefreshControl()
     private let disposeBag = DisposeBag()
     private var viewModel =  SimpleCourseViewModel()
-    var recentCourses: Variable<[SimpleCourse]> = Variable([])
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabBar()

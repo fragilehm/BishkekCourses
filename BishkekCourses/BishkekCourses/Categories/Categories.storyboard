@@ -166,6 +166,40 @@
             </objects>
             <point key="canvasLocation" x="1822" y="146"/>
         </scene>
+        <!--Courses By Subcategory View Controller-->
+        <scene sceneID="Msp-uT-PTi">
+            <objects>
+                <viewController storyboardIdentifier="CoursesBySubcategoryViewController" id="Q0u-6q-ieF" customClass="CoursesBySubcategoryViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="we8-F2-WoK">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kvu-xd-fLa">
+                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Q0u-6q-ieF" id="AxU-Mw-oqz"/>
+                                    <outlet property="delegate" destination="Q0u-6q-ieF" id="dhS-gM-m9h"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gfS-EE-tII" firstAttribute="trailing" secondItem="kvu-xd-fLa" secondAttribute="trailing" id="2ln-RA-3gr"/>
+                            <constraint firstItem="kvu-xd-fLa" firstAttribute="top" secondItem="gfS-EE-tII" secondAttribute="top" id="Kyn-da-j5S"/>
+                            <constraint firstItem="gfS-EE-tII" firstAttribute="bottom" secondItem="kvu-xd-fLa" secondAttribute="bottom" id="PWY-lL-2rn"/>
+                            <constraint firstItem="kvu-xd-fLa" firstAttribute="leading" secondItem="gfS-EE-tII" secondAttribute="leading" id="aqo-G0-GyW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gfS-EE-tII"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="kvu-xd-fLa" id="MoD-OL-SD7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g09-34-6VQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2733.3333333333335" y="132.88043478260872"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="7EH-Ps-bf4">
             <objects>

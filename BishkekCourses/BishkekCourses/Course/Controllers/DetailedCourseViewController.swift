@@ -15,26 +15,10 @@ class DetailedCourseViewController: UIViewController {
     var course_id = 0
     var course = Course()
     private var isFavorite = false
-//    @IBOutlet weak var backImageView: UIImageView!{
-//        didSet {
-//            let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(backTapped(tapGestureRecognizer:)))
-//            backImageView.isUserInteractionEnabled = true
-//            backImageView.addGestureRecognizer(tapGestureRecognizer)
-//        }
-//    }
-//    @objc func backTapped(tapGestureRecognizer: UITapGestureRecognizer)
-//    {
-//        self.navigationController?.popViewController(animated: false)
-//    }
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         setNavBarItems()
-        //
-//        if UIDevice.current.userInterfaceIdiom == .pad {
-//            tableView.separatorStyle = .none
-//            //tableView.separatorInset = UIEdgeInsets(top: 100, left: 0, bottom: 100, right: 0)
-//        }
         ServerManager.shared.getCourseDetails(course_id: course_id, setCourse, error: showErrorAlert)
     }
     func setCourse(course: Course){
@@ -59,7 +43,7 @@ class DetailedCourseViewController: UIViewController {
     }
     @objc func favoritePressed(_ button: UIButton) {
         if !isFavorite {
-            self.navigationController?.navigationBar.items![0].rightBarButtonItem?.customView = getRightItem(image: #imageLiteral(resourceName: "favorite"))
+            self.navigationController?.navigationBar.items![0].rightBarButtonItem?.customView = getRightItem(image: #imageLiteral(resourceName: "favorite_selected"))
         }
         else {
             self.navigationController?.navigationBar.items![0].rightBarButtonItem?.customView = getRightItem(image: #imageLiteral(resourceName: "bookmark"))
@@ -191,8 +175,7 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
             cellId = "ContactsTableViewCell"
         default:
             cellId = "ServicesTableViewCell"
-
         }
-        tableView.reloadData()
+        tableView.reloadSections(IndexSet.init(integer: 1), with: .fade)
     }
 }

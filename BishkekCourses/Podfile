@@ -20,6 +20,7 @@ target 'BishkekCourses' do
   pod 'RxOptional'
   pod 'Moya-ModelMapper'
   pod 'Moya'
+  pod 'ParallaxHeader'
   # Pods for BishkekCourses
 
   target 'BishkekCoursesTests' do

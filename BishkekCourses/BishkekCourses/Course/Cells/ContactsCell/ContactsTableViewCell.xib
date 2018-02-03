@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,8 +23,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="enA-s3-ppW">
                         <rect key="frame" x="8" y="8" width="360" height="76.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0553005355" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqx-Zf-kPk">
-                                <rect key="frame" x="70" y="28" width="274" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="0553005355" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqx-Zf-kPk">
+                                <rect key="frame" x="70" y="28" width="247.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.50588235290000005" green="0.56470588239999997" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -61,13 +62,22 @@
                                     <constraint firstItem="2DZ-Fi-JqZ" firstAttribute="top" secondItem="Uq0-hL-5do" secondAttribute="top" id="zyF-4N-YAk"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="1gA-Cl-7pt">
+                                <rect key="frame" x="325.5" y="26" width="24.5" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Otu-cw-Ipt"/>
+                                    <constraint firstAttribute="width" secondItem="1gA-Cl-7pt" secondAttribute="height" multiplier="1:1" id="w2n-VF-Mjl"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="1gA-Cl-7pt" secondAttribute="trailing" constant="10" id="Kq5-03-7pZ"/>
                             <constraint firstItem="Zqx-Zf-kPk" firstAttribute="leading" secondItem="Uq0-hL-5do" secondAttribute="trailing" constant="4" id="NFL-zx-aqe"/>
+                            <constraint firstItem="1gA-Cl-7pt" firstAttribute="leading" secondItem="Zqx-Zf-kPk" secondAttribute="trailing" constant="8" id="RGU-Hp-a3T"/>
                             <constraint firstAttribute="bottom" secondItem="Uq0-hL-5do" secondAttribute="bottom" constant="8" id="SDw-hC-VzF"/>
-                            <constraint firstAttribute="trailing" secondItem="Zqx-Zf-kPk" secondAttribute="trailing" constant="16" id="fbz-JI-9iU"/>
                             <constraint firstItem="Uq0-hL-5do" firstAttribute="top" secondItem="enA-s3-ppW" secondAttribute="top" constant="8" id="gMi-MF-w7O"/>
+                            <constraint firstItem="1gA-Cl-7pt" firstAttribute="centerY" secondItem="Zqx-Zf-kPk" secondAttribute="centerY" id="r1q-rO-rNq"/>
                             <constraint firstItem="Zqx-Zf-kPk" firstAttribute="centerY" secondItem="Uq0-hL-5do" secondAttribute="centerY" id="wgm-rd-J54"/>
                             <constraint firstItem="Uq0-hL-5do" firstAttribute="leading" secondItem="enA-s3-ppW" secondAttribute="leading" constant="16" id="zyv-vW-GC1"/>
                         </constraints>
@@ -111,5 +121,6 @@
     </objects>
     <resources>
         <image name="phone" width="64" height="64"/>
+        <image name="right-arrow" width="64" height="64"/>
     </resources>
 </document>

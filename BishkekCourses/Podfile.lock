@@ -20,6 +20,7 @@ PODS:
   - Moya/Core (10.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
+  - ParallaxHeader (2.0.0)
   - PKHUD (5.0.0)
   - PullToRefreshKit (0.8.2)
   - Result (3.2.4)
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - M13Checkbox
   - Moya
   - Moya-ModelMapper
+  - ParallaxHeader
   - PKHUD
   - PullToRefreshKit
   - RxCocoa
@@ -63,6 +65,7 @@ SPEC CHECKSUMS:
   ModelMapper: 467f49f6f187b4e6cde2599e7cc5968cefa3f19b
   Moya: 9e621707ff754eeb51ff3ec51a3d54e517c0733a
   Moya-ModelMapper: c59c0bbd042cf9d1d9b0acf38c5f930956bebed8
+  ParallaxHeader: fb6ee97915626454f3c029a97b424f79a777c642
   PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
   PullToRefreshKit: 0a2a019bf094b8beba18c8a1bedfb1fb67ee70fd
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
@@ -72,6 +75,6 @@ SPEC CHECKSUMS:
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 1ade5d832c32514e1bd2a052d33207b96dccd397
+PODFILE CHECKSUM: e0ed6e75d0c2ac1785d7cbca86e346bace0ca7ea
 
 COCOAPODS: 1.3.1
