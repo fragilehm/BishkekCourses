@@ -8,47 +8,68 @@
 
 import UIKit
 import Moya
-
+import PullToRefreshKit
 class CoursesBySubcategoryViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+
     var subcategory_id = 0
     var subcategoryName = ""
     var backImage = ""
     var simpleCourses = [SimpleCourse]()
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavBarItems()
+        //setNavBarItems()
         configureTableView()
-        //let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView
-        //statusBar?.backgroundColor = UIColor.clear
-//        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        self.navigationController!.navigationBar.shadowImage = UIImage()
-//        self.navigationController!.navigationBar.isTranslucent = true
         getData()
-        // Do any additional setup after loading the view.
+ 
     }
     func configureTableView(){
+        //tableView.bounces = false
+        if getDeviceName() == "iPhone 5.8" {
+            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: -44).isActive = true
+        }
+        else {
+            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: -20).isActive = true
+        }
         tableView.tableFooterView = UIView()
         tableView.register(UINib.init(nibName: "CoursesHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "CoursesHeaderTableViewCell")
         tableView.register(UINib.init(nibName: "CoursesBySubcategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CoursesBySubcategoryTableViewCell")
         tableView.estimatedRowHeight = 44
+        tableView.bounces = false
+//        let header = DefaultRefreshHeader.header()
+//        header.setText(Constants.Hint.Refresh.pull_to_refresh, mode: .pullToRefresh)
+//        header.setText(Constants.Hint.Refresh.relase_to_refresh, mode: .releaseToRefresh)
+//        header.setText(Constants.Hint.Refresh.success, mode: .refreshSuccess)
+//        header.setText(Constants.Hint.Refresh.refreshing, mode: .refreshing)
+//        header.setText(Constants.Hint.Refresh.failed, mode: .refreshFailure)
+//        header.imageRenderingWithTintColor = true
+//        header.durationWhenHide = 0.4
+//        tableView.configRefreshHeader(with: header, action: { [weak self] in
+//            self?.getData()
+//        })
     }
     func getData() {
         ServerAPIManager.sharedAPI.getCoursesBySubcategory(subcategory_id: self.subcategory_id, setCourses, showError: showErrorAlert)
+        //self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
+
     }
     func setCourses(courses: [SimpleCourse]){
         self.simpleCourses = courses
         self.tableView.reloadData()
         //self.collectionView.switchRefreshHeader(to: .normal(.none, 0.0))
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        //UIApplication.shared.statusBarFrame =
-//        self.navigationController?.navigationBar.barStyle = .blackOpaque
-//    }
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//        return .lightContent
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        UIApplication.shared.statusBarStyle = .default
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     func setNavBarItems(){
         let backButton = UIButton.init(type: .system)
         backButton.setImage(#imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal), for: .normal)
@@ -57,14 +78,16 @@ class CoursesBySubcategoryViewController: UIViewController {
         backButton.imageView?.contentMode = .scaleAspectFit
         backButton.addTarget(self, action: #selector(dissmis(_:)), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
-        //self.navigationController?.navigationBar.backgroundColor = .clear
     }
     @objc func dissmis(_ button: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
 }
 
-extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDataSource {
+extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDataSource, BackButtonDelegate {
+    func back_tapper() {
+        self.navigationController?.popViewController(animated: true)
+    }
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -74,6 +97,7 @@ extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CoursesHeaderTableViewCell", for: indexPath) as! CoursesHeaderTableViewCell
+            cell.buttonDelegate = self
             cell.fillCell(imageString: backImage, title: subcategoryName)
             return cell
         }
@@ -85,5 +109,24 @@ extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDa
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            let storyboard = UIStoryboard.init(name: "Course", bundle: nil)
+            let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
+            courseVC.course_id = simpleCourses[indexPath.row].id
+            self.navigationController?.show(courseVC, sender: self)
+        }
+    }
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 84 {
+            UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
+        }
+        else
+        {
+            UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
+        }
+
     }
 }

@@ -13,12 +13,13 @@ import Moya
 import Moya_ModelMapper
 class SimpleCourseViewModel {
     let simpleCourses = Variable<[SimpleCourse]>([])
-    let error: Variable<String>? = nil
+    let error = PublishSubject<String>()
+    //let error = Variable<String>("")
     func fetchData () {
         ServerAPIManager.sharedAPI.getRecentCourses({ [weak self] (recentCourses) in
             self?.simpleCourses.value = recentCourses
         }) { (errorMessage) in
-            self.error?.value = errorMessage
+            self.error.onNext(errorMessage)
         }
     }
 }

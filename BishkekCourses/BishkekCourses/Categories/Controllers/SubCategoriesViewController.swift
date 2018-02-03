@@ -26,7 +26,6 @@ class SubCategoriesViewController: UIViewController {
         getData()
         bindCollectionView()
         bindCollectionViewSelected()
-        
     }
     func getData(){
         ServerAPIManager.sharedAPI.getSubcategories(category_id: self.category_id, setSubcategories, showError: showErrorAlert)
@@ -43,9 +42,9 @@ class SubCategoriesViewController: UIViewController {
             courseVC.backImage = element.subcategory_image_url
             courseVC.subcategoryName = element.title
             courseVC.subcategory_id = element.id
-            strongSelf.navigationController?.present(courseVC, animated: true, completion: nil)
+            //strongSelf.navigationController?.present(courseVC, animated: true, completion: nil)
             //strongSelf.navigationController?.pushViewController(courseVC, animated: true)
-            //strongSelf.navigationController?.show(courseVC, sender: self)
+            strongSelf.navigationController?.show(courseVC, sender: self)
             
         }).disposed(by: disposeBag)
     }

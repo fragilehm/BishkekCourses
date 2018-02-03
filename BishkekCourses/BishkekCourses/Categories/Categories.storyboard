@@ -61,7 +61,7 @@
         <!--Sub Categories View Controller-->
         <scene sceneID="w6K-22-r6L">
             <objects>
-                <viewController storyboardIdentifier="SubCategoriesViewController" automaticallyAdjustsScrollViewInsets="NO" id="hTf-h4-4o8" customClass="SubCategoriesViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SubCategoriesViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="hTf-h4-4o8" customClass="SubCategoriesViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E6U-FK-hmj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -169,13 +169,13 @@
         <!--Courses By Subcategory View Controller-->
         <scene sceneID="Msp-uT-PTi">
             <objects>
-                <viewController storyboardIdentifier="CoursesBySubcategoryViewController" id="Q0u-6q-ieF" customClass="CoursesBySubcategoryViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CoursesBySubcategoryViewController" hidesBottomBarWhenPushed="YES" id="Q0u-6q-ieF" customClass="CoursesBySubcategoryViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="we8-F2-WoK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kvu-xd-fLa">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kvu-xd-fLa">
+                                <rect key="frame" x="0.0" y="-20" width="414" height="756"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Q0u-6q-ieF" id="AxU-Mw-oqz"/>
@@ -183,10 +183,9 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gfS-EE-tII" firstAttribute="trailing" secondItem="kvu-xd-fLa" secondAttribute="trailing" id="2ln-RA-3gr"/>
-                            <constraint firstItem="kvu-xd-fLa" firstAttribute="top" secondItem="gfS-EE-tII" secondAttribute="top" id="Kyn-da-j5S"/>
                             <constraint firstItem="gfS-EE-tII" firstAttribute="bottom" secondItem="kvu-xd-fLa" secondAttribute="bottom" id="PWY-lL-2rn"/>
                             <constraint firstItem="kvu-xd-fLa" firstAttribute="leading" secondItem="gfS-EE-tII" secondAttribute="leading" id="aqo-G0-GyW"/>
                         </constraints>

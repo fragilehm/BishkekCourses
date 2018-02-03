@@ -7,11 +7,14 @@
 //
 
 import UIKit
-
+protocol BackButtonDelegate : class {
+    func back_tapper()
+}
 class CoursesHeaderTableViewCell: UITableViewCell {
 
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var title: UILabel!
+    weak var buttonDelegate: BackButtonDelegate?
     override func awakeFromNib() {
         super.awakeFromNib()
         backImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -19,7 +22,10 @@ class CoursesHeaderTableViewCell: UITableViewCell {
             backImageView.heightAnchor.constraint(equalToConstant: screenHeight * 2 / 5).isActive = true
         // Initialization code
     }
-
+    
+    @IBAction func buttonTapped(_ sender: Any) {
+        buttonDelegate?.back_tapper()
+    }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

@@ -43,6 +43,36 @@ extension UIViewController {
     @objc func backPressed(_ button: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
+    func getDeviceName() -> String {
+        if UIDevice().userInterfaceIdiom == .phone {
+            switch UIScreen.main.nativeBounds.height {
+            case 1136:
+                return "iPhone 4"
+            case 1334:
+                return "iPhone 4.7"
+            case 2208:
+                return "iPhone 5.5"
+            case 2436:
+                return "iPhone 5.8"
+            default:
+                return "unknown"
+            }
+        }
+        else if UIDevice().userInterfaceIdiom == .pad {
+            switch UIScreen.main.nativeBounds.height {
+            case 2732:
+                return "ipad 12.9"
+            case 2224:
+                return "ipad 10.5"
+            case 2048:
+                return "ipad 9.7"
+            default:
+                return "unknown"
+            }
+        }
+        return "unknown"
+    }
+    
 }
 class CustomTextField: UITextField {
     required init?(coder aDecoder: NSCoder) {
@@ -123,4 +153,11 @@ extension PlaceholdersProvider {
         
         return placeholder
     }
+}
+extension UIApplication {
+    
+    var statusBarView: UIView? {
+        return value(forKey: "statusBar") as? UIView
+    }
+    
 }

@@ -22,21 +22,20 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         configureTabBar()
         configureTableView()
-        getData()
         bindTableView()
+        getData()
         bindTableViewSelected()
     }
     func bindTableView(){
         viewModel.simpleCourses.asObservable().bind(to: tableView.rx.items(cellIdentifier: "MainTableViewCell", cellType: MainTableViewCell.self)) { row, element, cell in
             cell.fillCell(course: element)
             }.disposed(by: disposeBag)
-        viewModel.error?.asObservable().subscribe(onNext: { [weak self] (message) in
+        viewModel.error.asObservable().subscribe(onNext: { [weak self] (message) in            self?.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
             self?.showErrorAlert(message: message)
         }).disposed(by: disposeBag)
         viewModel.simpleCourses.asObservable().subscribe(onNext: { [weak self] (message) in
             self?.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
         }).disposed(by: disposeBag)
-        
     }
     func bindTableViewSelected(){
         tableView.rx.modelSelected(SimpleCourse.self).subscribe(onNext: {[weak self] element in
