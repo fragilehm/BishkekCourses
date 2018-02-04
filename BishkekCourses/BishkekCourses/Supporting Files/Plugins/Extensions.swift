@@ -40,6 +40,13 @@ extension UIViewController {
         backButton.addTarget(self, action: #selector(backPressed(_:)), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
     }
+    func setSwipeLeftAction(){
+        let swipe: UIGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeLeft))
+        self.view.addGestureRecognizer(swipe)
+    }
+    @objc func swipeLeft(){
+        self.navigationController?.popViewController(animated: true)
+    }
     @objc func backPressed(_ button: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }

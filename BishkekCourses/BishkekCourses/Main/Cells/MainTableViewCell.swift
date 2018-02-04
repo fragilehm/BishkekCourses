@@ -36,13 +36,10 @@ class MainTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         if UIDevice.current.userInterfaceIdiom == .pad {
-            //print("cardviewawakefromnib")
             topViewHeight.constant = 0
             cardViewBottom.constant = 24
             cardView.layer.masksToBounds = true
             cardView.layer.cornerRadius = 10
-//            cardView.layer.borderWidth = 0.5
-//            cardView.layer.borderColor = UIColor.black.cgColor
         }
         
 
@@ -57,26 +54,10 @@ class MainTableViewCell: UITableViewCell {
         titleLabel.text = course.title
         decriptionLabel.text = course.description
         let url = URL(string: course.main_image_url)
-        //mainImageView.kf.setImage(with: url)
-        //mainImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
-        let halfScreenHeight = UIScreen.main.bounds.height / 2
-
+        let halfScreenHeight = Constants.SCREEN_HEIGHT / 2
         mainImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil) { (image, error, cache, url) in
-//            let mainImageViewHeight = { () -> CGFloat in
-//                let imageHeight = image?.cgImage?.height
-//                let screenHeight = UIScreen.main.bounds.height / 2
-//                return imageHeight == nil ? (screenHeight * 2) / 3 : CGFloat(imageHeight!) <= screenHeight ? CGFloat(imageHeight!) : screenHeight
-//            }()
-//            //self.imageHeightConstraint.constant = mainImageViewHeight
-//           self.mainImageView.heightAnchor.constraint(equalToConstant: mainImageViewHeight).isActive = true
-//            print(mainImageViewHeight, " hello")
-            //print(url?.absoluteString)
         }
         mainImageView.heightAnchor.constraint(equalToConstant: halfScreenHeight).isActive = true
-        //print("hi my dear")
-//        mainImageView.sd_setShowActivityIndicatorView(true)
-//        mainImageView.sd_setIndicatorStyle(.gray)
-//        mainImageView.sd_setImage(with: url, placeholderImage: UIImage(named: ""), options: [SDWebImageOptions.progressiveDownload, SDWebImageOptions.allowInvalidSSLCertificates], progress: nil, completed: nil)
         var subcategories = ""
         let last_index = course.subcategories.count
         for (index, simpleSubcategory) in course.subcategories.enumerated() {
@@ -89,7 +70,6 @@ class MainTableViewCell: UITableViewCell {
         let logo_url = URL(string: course.logo_image_url)
         logoImageView.kf.setImage(with: logo_url)
         logoImageView.kf.setImage(with: logo_url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
-        
     }
     
 }

@@ -7,35 +7,14 @@
 //
 
 import Foundation
-import SwiftyJSON
+import Mapper
 
-struct Contact {
+struct Contact: Mappable {
     var type: String
     var contact: String
     
-    init() {
-        type = ""
-        contact = ""
-    }
-    
-    init(json: JSON) {
-        type = json["type"].stringValue
-        contact = json["contact"].stringValue
+    init(map: Mapper) throws {
+        try type = map.from("type")
+        try contact = map.from("contact")
     }
 }
-
-class Contacts: NSObject {
-    var array: Array = Array<Contact>()
-    override init() {
-    }
-    init(json: JSON) {
-        let jsonArr:[JSON] = json.arrayValue
-        for json in jsonArr {
-            let tempObject = Contact(json:json)
-            array.append(tempObject)
-        }
-    }
-}
-
-
-

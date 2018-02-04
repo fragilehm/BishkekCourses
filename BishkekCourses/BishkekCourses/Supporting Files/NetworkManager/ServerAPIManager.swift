@@ -51,11 +51,18 @@ class ServerAPIManager: NetworkAdapter  {
             }
         }, error: showError)
     }
-//    func getCourseDetails(course_id: Int,_ completion: @escaping (Course)-> Void, error: @escaping (String)-> Void) {
-//        self.get(endpoint: "\(Constants.Network.EndPoints.CourseDetails)/\(course_id)", completion: { (json) in
-//            completion(Course(json: json))
-//        }, error: error)
-//    }
+    func getCourseDetails(course_id: Int,_ completion: @escaping (DetailedCourse)-> Void, showError: @escaping (String)-> Void) {
+        self.request(target: NetworkManager.courseDetails(courseId: course_id), success: { (response) in
+            do {
+                print(JSON(response.data))
+                let course: DetailedCourse = try response.map(to: DetailedCourse.self)
+                completion(course)
+            }
+            catch {
+                showError(Constants.Network.ErrorMessage.CANT_PARSE_DATA)
+            }
+        }, error: showError)
+    }
     func getRecentCourses(_ completion: @escaping ([SimpleCourse])-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.courseRecent, success: { (response) in
             do {

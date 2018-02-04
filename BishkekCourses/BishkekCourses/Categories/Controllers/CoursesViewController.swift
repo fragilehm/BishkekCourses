@@ -42,9 +42,7 @@ class CoursesViewController: UIViewController {
             guard let strongSelf = self else {return}
             let storyboard = UIStoryboard.init(name: "Course", bundle: nil)
             let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
-            courseVC.course_id = element.id
             strongSelf.navigationController?.show(courseVC, sender: self)
-            
         }).disposed(by: disposeBag)
     }
     func setCourses(courses: [SimpleCourse]){

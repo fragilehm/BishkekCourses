@@ -38,9 +38,9 @@ extension NewsViewController {
         collectionView?.contentInset = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         collectionView.placeholderDelegate = self
         //collectionView.showErrorPlaceholder()
-//        collectionView.placeholdersProvider = .summer
-        let key = PlaceholderKey.custom(key: "starWars")
-        collectionView?.showCustomPlaceholder(with: key)
+        collectionView.placeholdersProvider = .summer
+//        let key = PlaceholderKey.custom(key: "starWars")
+//        collectionView?.showCustomPlaceholder(with: key)
     }
 }
 extension NewsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -67,6 +67,7 @@ extension NewsViewController: PlaceholderDelegate {
     
     func view(_ view: Any, actionButtonTappedFor placeholder: Placeholder) {
         //(view as? CollectionView)?.showDefault()
+        print("action")
     }
 }
 extension NewsViewController: UISearchBarDelegate {

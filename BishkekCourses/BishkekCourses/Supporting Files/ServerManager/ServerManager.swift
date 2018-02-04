@@ -33,11 +33,11 @@ class ServerManager: HTTPRequestManager  {
 //            completion(SimplifiedCourses(json: json))
 //        }, error: error)
 //    }
-    func getCourseDetails(course_id: Int,_ completion: @escaping (Course)-> Void, error: @escaping (String)-> Void) {
-        self.get(endpoint: "\(Constants.Network.EndPoints.CourseDetails)/\(course_id)", completion: { (json) in
-            completion(Course(json: json))
-        }, error: error)
-    }
+//    func getCourseDetails(course_id: Int,_ completion: @escaping (Course)-> Void, error: @escaping (String)-> Void) {
+//        self.get(endpoint: "\(Constants.Network.EndPoints.CourseDetails)/\(course_id)", completion: { (json) in
+//            completion(Course(json: json))
+//        }, error: error)
+//    }
 //    func getRecentCourses(_ completion: @escaping (SimplifiedCourses)-> Void, error: @escaping (String)-> Void) {
 //        self.get(endpoint: "\(Constants.Network.EndPoints.CoursesRecent)", completion: { (json) in
 //            completion(SimplifiedCourses(json: json))

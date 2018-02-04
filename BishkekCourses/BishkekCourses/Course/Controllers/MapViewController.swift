@@ -12,7 +12,7 @@ class MapViewController: UIViewController {
     private let locationManager = CLLocationManager()
     private let regionRadius: CLLocationDistance = 1000
     @IBOutlet weak var mapView: MKMapView!
-    var branches = Branches()
+    var branches = [Branch]()
     var branch_id = 0
     var branch_title = ""
     override func viewDidLoad() {
@@ -27,7 +27,7 @@ class MapViewController: UIViewController {
         //let locationOfBishkek = CLLocation(latitude: 42.874722, longitude: 74.612222)
         mapView.delegate = self
         //let annotationId = "AnnotationIdentifier"
-        for (index, branch) in branches.array.enumerated() {
+        for (index, branch) in branches.enumerated() {
             let address = CourseAddress(title: branch.address, locationName: "", coordinate: CLLocationCoordinate2D(latitude: (branch.latitude as NSString).doubleValue , longitude: (branch.longitude as NSString).doubleValue))
             if index == branch_id {
                 centerMapOnLocation(location: CLLocation(latitude: (branch.latitude as NSString).doubleValue, longitude: (branch.longitude as NSString).doubleValue))

@@ -99,7 +99,7 @@ class HeaderTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    func fillCell(course: Course){
+    func fillCell(course: SimpleCourse){
         nameLabel.text = course.title
         let logo_url = URL(string: course.logo_image_url)
         logoImageView.kf.setImage(with: logo_url)

@@ -21,12 +21,14 @@ class SubCategoriesViewController: UIViewController {
         if UIDevice.current.userInterfaceIdiom == .pad {
             insets = 24
         }
+        setSwipeLeftAction()
         setNavigationBarItems()
         configureCollectionView()
         getData()
         bindCollectionView()
         bindCollectionViewSelected()
     }
+   
     func getData(){
         ServerAPIManager.sharedAPI.getSubcategories(category_id: self.category_id, setSubcategories, showError: showErrorAlert)
     }

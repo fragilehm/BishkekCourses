@@ -7,36 +7,16 @@
 //
 
 import Foundation
-import SwiftyJSON
+import Mapper
 
-struct Branch {
+struct Branch: Mappable{
     var address: String
     var latitude: String
     var longitude: String
 
-    init() {
-        address = ""
-        latitude = ""
-        longitude = ""
-    }
-    
-    init(json: JSON) {
-        address = json["address"].stringValue
-        latitude = json["latitude"].stringValue
-        longitude = json["longitude"].stringValue
+    init(map: Mapper) throws {
+        try address = map.from("address")
+        try latitude = map.from("latitude")
+        try longitude = map.from("longitude")
     }
 }
-
-class Branches: NSObject {
-    var array: Array = Array<Branch>()
-    override init() {
-    }
-    init(json: JSON) {
-        let jsonArr:[JSON] = json.arrayValue
-        for json in jsonArr {
-            let tempObject = Branch(json:json)
-            array.append(tempObject)
-        }
-    }
-}
-

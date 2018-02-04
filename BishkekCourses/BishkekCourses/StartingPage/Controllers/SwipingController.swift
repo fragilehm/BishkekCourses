@@ -34,16 +34,17 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
         return button
     }()
-    @objc private func handlePrevious(){
-        let previousIndex = max(0, pageControl.currentPage - 1)
-        let indexPath = IndexPath(item: previousIndex, section: 0)
-        pageControl.currentPage = previousIndex
-        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-    }
+    
     @objc private func handleNext(){
         let nextIndex = min(pageControl.currentPage + 1, pages.count - 1)
         let indexPath = IndexPath(item: nextIndex, section: 0)
         pageControl.currentPage = nextIndex
+        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    @objc private func handlePrevious(){
+        let previousIndex = max(0, pageControl.currentPage - 1)
+        let indexPath = IndexPath(item: previousIndex, section: 0)
+        pageControl.currentPage = previousIndex
         collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     lazy var pageControl: UIPageControl = {

@@ -7,24 +7,32 @@
 //
 
 import UIKit
-
+import Moya_ModelMapper
+import Moya
 class DetailedCourseViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var cellId = "DescriptionTableViewCell"
-    var course_id = 0
-    var course = Course()
+    private var course = DetailedCourse()
+    var simpleCourse: SimpleCourse!
     private var isFavorite = false
     override func viewDidLoad() {
         super.viewDidLoad()
+        setSwipeLeftAction()
         configureTableView()
         setNavBarItems()
-        ServerManager.shared.getCourseDetails(course_id: course_id, setCourse, error: showErrorAlert)
+        getData()
     }
-    func setCourse(course: Course){
+    func getData(){
+        ServerAPIManager.sharedAPI.getCourseDetails(course_id: simpleCourse.id, setCourse, showError: showErrorAlert)
+    }
+    func setCourse(course: DetailedCourse){
         self.course = course
-        self.navigationItem.title = course.title
         tableView.reloadData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
+        self.navigationItem.title = simpleCourse.title
     }
     func setNavBarItems(){
         let backButton = UIButton.init(type: .system)
@@ -92,20 +100,19 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
             case "CommentsTableViewCell":
                 return 0
             case "BranchesTableViewCell":
-                return course.branches.array.count
+                return course.branches.count
             case "ContactsTableViewCell":
-                return course.contacts.array.count
+                return course.contacts.count
             default:
-                return course.services.array.count
+                return course.services.count
             }
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell", for: indexPath) as! HeaderTableViewCell
-            cell.fillCell(course: course)
+            cell.fillCell(course: simpleCourse)
             cell.cellDelegate = self
-            
             return cell
         }
         else {
@@ -122,15 +129,15 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
                 return cell
             case "BranchesTableViewCell":
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! BranchesTableViewCell
-                cell.fillCell(branch: course.branches.array[indexPath.row])
+                cell.fillCell(branch: course.branches[indexPath.row])
                 return cell
             case "ContactsTableViewCell":
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ContactsTableViewCell
-                cell.fillCell(contact: course.contacts.array[indexPath.row])
+                cell.fillCell(contact: course.contacts[indexPath.row])
                 return cell
             default:
                 let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ServicesTableViewCell
-                cell.fillCell(service: course.services.array[indexPath.row])
+                cell.fillCell(service: course.services[indexPath.row])
                 return cell
             }
             

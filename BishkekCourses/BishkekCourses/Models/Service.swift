@@ -6,37 +6,16 @@
 //  Copyright © 2017 Khasanza. All rights reserved.
 //
 import Foundation
-import SwiftyJSON
+import Mapper
 
-struct Service {
+struct Service: Mappable {
     var title: String
     var description: String
     var price: Int
     
-    init() {
-        title = ""
-        description = ""
-        price = 0
-    }
-    
-    init(json: JSON) {
-        title = json["title"].stringValue
-        description = json["description"].stringValue
-        price = json["price"].intValue
+    init(map: Mapper) throws {
+        try title = map.from("title")
+        try description = map.from("description")
+        try price = map.from("price")
     }
 }
-
-class Services: NSObject {
-    var array: Array = Array<Service>()
-    override init() {
-    }
-    init(json: JSON) {
-        let jsonArr:[JSON] = json.arrayValue
-        for json in jsonArr {
-            let tempObject = Service(json:json)
-            array.append(tempObject)
-        }
-    }
-}
-
-

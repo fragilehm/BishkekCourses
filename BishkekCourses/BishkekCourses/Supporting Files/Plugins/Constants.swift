@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import UIKit
 struct Constants {
     
     static var lang: String?
@@ -49,6 +49,9 @@ struct Constants {
             static let failed = "Не удалось обновить"            
         }
     }
+    static let SCREEN_WIDTH = UIScreen.main.bounds.width
+    static let SCREEN_HEIGHT = UIScreen.main.bounds.height
+
 
 }
 

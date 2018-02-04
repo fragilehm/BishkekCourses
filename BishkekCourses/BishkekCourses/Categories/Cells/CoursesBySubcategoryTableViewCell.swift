@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CoursesBySubcategoryTableViewCell: UITableViewCell {
+class CoursesBySubcategoryTableViewCell: CustomCell {
 
     @IBOutlet weak var logoImageView: UIImageView! {
         didSet {
@@ -16,6 +16,9 @@ class CoursesBySubcategoryTableViewCell: UITableViewCell {
             logoImageView.layer.borderColor = UIColor.lightGray.cgColor
         }
     }
+    @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var topViewheightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var backImageView: UIImageView!
@@ -25,6 +28,12 @@ class CoursesBySubcategoryTableViewCell: UITableViewCell {
         backImageView.translatesAutoresizingMaskIntoConstraints = false
         backImageView.heightAnchor.constraint(equalToConstant: labelHeight + 4).isActive = true
         // Initialization code
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            topViewheightConstraint.constant = 0
+            cardViewTopConstraint.constant = 24
+            cardView.layer.masksToBounds = true
+            cardView.layer.cornerRadius = 10
+        }
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
