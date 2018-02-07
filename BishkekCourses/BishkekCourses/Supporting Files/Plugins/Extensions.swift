@@ -79,6 +79,17 @@ extension UIViewController {
         }
         return "unknown"
     }
+    func getRefreshHeader() -> DefaultRefreshHeader {
+        let header = DefaultRefreshHeader.header()
+        header.setText(Constants.Hint.Refresh.pull_to_refresh, mode: .pullToRefresh)
+        header.setText(Constants.Hint.Refresh.relase_to_refresh, mode: .releaseToRefresh)
+        header.setText(Constants.Hint.Refresh.success, mode: .refreshSuccess)
+        header.setText(Constants.Hint.Refresh.refreshing, mode: .refreshing)
+        header.setText(Constants.Hint.Refresh.failed, mode: .refreshFailure)
+        header.imageRenderingWithTintColor = true
+        header.durationWhenHide = 0.4
+        return header
+    }
     
 }
 class CustomTextField: UITextField {

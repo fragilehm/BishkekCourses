@@ -30,3 +30,10 @@ enum MainPageItems: Int {
         }
     }
 }
+enum ContactTypes: String {
+    case PHONE
+    case WEBSITE
+    case EMAIL
+    case WHATSAPP
+    case FACEBOOK
+}

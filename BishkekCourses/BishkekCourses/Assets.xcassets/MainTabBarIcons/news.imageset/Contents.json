@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "SelectedNews-4.png",
+      "filename" : "list-4.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "SelectedNews-3.png",
+      "filename" : "list-3.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "SelectedNews-2.png",
+      "filename" : "list-2.png",
       "scale" : "3x"
     }
   ],

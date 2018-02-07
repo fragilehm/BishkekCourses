@@ -22,6 +22,7 @@ class MapViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         enableLocationServices()
     }
+    
     func setupMapKit(){
         mapView.mapType = .standard
         //let locationOfBishkek = CLLocation(latitude: 42.874722, longitude: 74.612222)

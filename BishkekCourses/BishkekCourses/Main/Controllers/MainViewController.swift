@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private let refreshControl = UIRefreshControl()
     private let disposeBag = DisposeBag()
+
     private var viewModel =  SimpleCourseViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,7 @@ class MainViewController: UIViewController {
         getData()
         bindTableViewSelected()
     }
+   
     func bindTableView(){
         viewModel.simpleCourses.asObservable().bind(to: tableView.rx.items(cellIdentifier: "MainTableViewCell", cellType: MainTableViewCell.self)) { row, element, cell in
             cell.fillCell(course: element)
@@ -89,7 +91,7 @@ extension MainViewController {
         header.setText(Constants.Hint.Refresh.failed, mode: .refreshFailure)
         header.imageRenderingWithTintColor = true
         header.durationWhenHide = 0.4
-        tableView.configRefreshHeader(with: header, action: { [weak self] in
+        tableView.configRefreshHeader(with: getRefreshHeader(), action: { [weak self] in
             self?.getData()
         })
     }

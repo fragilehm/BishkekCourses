@@ -23,7 +23,7 @@
                         <rect key="frame" x="8" y="8" width="345" height="79"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пр. Чуй 265 А, ул. Ахунбаева 119А, Bishkek 720071" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffz-Kg-qKI">
-                                <rect key="frame" x="16" y="8" width="287" height="63"/>
+                                <rect key="frame" x="16" y="8" width="291" height="63"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.50588235290000005" green="0.56470588239999997" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -32,10 +32,10 @@
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Eqf-Dv-DZT">
-                                <rect key="frame" x="311" y="27" width="24" height="24"/>
+                                <rect key="frame" x="315" y="29" width="20" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="2gh-Ut-2eP"/>
-                                    <constraint firstAttribute="height" constant="24" id="XLd-Aa-KaP"/>
+                                    <constraint firstAttribute="width" constant="20" id="2gh-Ut-2eP"/>
+                                    <constraint firstAttribute="height" constant="20" id="XLd-Aa-KaP"/>
                                 </constraints>
                             </imageView>
                         </subviews>

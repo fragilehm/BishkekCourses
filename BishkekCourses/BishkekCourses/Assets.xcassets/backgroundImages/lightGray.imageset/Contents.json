@@ -2,17 +2,15 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "magnifying-glass-2.png",
+      "filename" : "0f05274b1bdc8feed70822513cd7a903.jpg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "magnifying-glass-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "magnifying-glass.png",
       "scale" : "3x"
     }
   ],

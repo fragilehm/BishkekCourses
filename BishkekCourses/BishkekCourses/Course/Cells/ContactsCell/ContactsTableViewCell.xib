@@ -24,7 +24,7 @@
                         <rect key="frame" x="8" y="8" width="360" height="76.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="0553005355" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqx-Zf-kPk">
-                                <rect key="frame" x="70" y="28" width="247.5" height="21"/>
+                                <rect key="frame" x="70" y="28" width="252.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.50588235290000005" green="0.56470588239999997" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -63,9 +63,9 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="251" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="1gA-Cl-7pt">
-                                <rect key="frame" x="325.5" y="26" width="24.5" height="25"/>
+                                <rect key="frame" x="330.5" y="28.5" width="19.5" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="Otu-cw-Ipt"/>
+                                    <constraint firstAttribute="height" constant="20" id="Otu-cw-Ipt"/>
                                     <constraint firstAttribute="width" secondItem="1gA-Cl-7pt" secondAttribute="height" multiplier="1:1" id="w2n-VF-Mjl"/>
                                 </constraints>
                             </imageView>

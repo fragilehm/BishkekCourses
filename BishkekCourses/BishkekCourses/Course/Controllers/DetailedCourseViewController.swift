@@ -9,12 +9,27 @@
 import UIKit
 import Moya_ModelMapper
 import Moya
+import PullToRefreshKit
 class DetailedCourseViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     private var cellId = "DescriptionTableViewCell"
     private var isFavorite = false
     private var course = DetailedCourse()
+    private var isBottomPopupCompleted = true
+    private let popupLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Номер скопирован."
+        label.textColor = .white
+        return label
+    }()
+    private let bottomPopupView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(netHex: Colors.darkPurple)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     var simpleCourse: SimpleCourse!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +37,32 @@ class DetailedCourseViewController: UIViewController {
         configureTableView()
         setNavBarItems()
         getData()
+        addPopupView()
+    }
+    func addPopupView() {
+        bottomPopupView.addSubview(popupLabel)
+        popupLabel.centerXAnchor.constraint(equalTo: bottomPopupView.centerXAnchor).isActive = true
+        popupLabel.centerYAnchor.constraint(equalTo: bottomPopupView.centerYAnchor).isActive = true
+        self.view.addSubview(bottomPopupView)
+        //self.view.insertSubview(bottomPopupView, aboveSubview: tableView)
+        bottomPopupView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        bottomPopupView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        bottomPopupView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        bottomPopupView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        
+        
+        //view.bringSubview(toFront: bottomPopupView)
+        //self.view.layoutSubviews()
+
     }
     func getData(){
         ServerAPIManager.sharedAPI.getCourseDetails(course_id: simpleCourse.id, setCourse, showError: showErrorAlert)
     }
     func setCourse(course: DetailedCourse){
         self.course = course
+        self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
         tableView.reloadData()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
@@ -82,6 +116,9 @@ extension DetailedCourseViewController {
         tableView.estimatedRowHeight = 44
         tableView.reloadData()
         addHeaderView()
+        tableView.configRefreshHeader(with: getRefreshHeader(), action: { [weak self] in
+            self?.getData()
+        })
         
     }
     func addHeaderView(){
@@ -172,9 +209,69 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
                 //print(self.navigationController?.isNavigationBarHidden)
                 self.navigationController?.show(vc, sender: self)
             case "ContactsTableViewCell":
-                print("contacts")
+                let contactType: ContactTypes = ContactTypes(rawValue: course.contacts[indexPath.row].type)!
+                let contactValue = course.contacts[indexPath.row].contact
+                switch contactType {
+                case .EMAIL:
+                    mailTo(mail: contactValue)
+                case .PHONE:
+                    callToPhone(number: contactValue)
+                case .FACEBOOK, .WEBSITE:
+                    openLink(link: contactValue)
+                case .WHATSAPP:
+                    copyNumber()
+                }
             default:
                 print("services")
+            }
+        }
+    }
+    private func copyNumber(){
+        if isBottomPopupCompleted {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.bottomPopupView.frame.origin.y -= 50
+            }, completion: { (completed) in
+                print(completed)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    UIView.animate(withDuration: 0.5, animations: {
+                        //self.bottomPopupView.alpha = 0
+                        self.bottomPopupView.frame.origin.y += 50
+                        //self.view.layoutIfNeeded()
+                    }, completion: { (completed) in
+                        self.isBottomPopupCompleted = true
+                    })
+                })
+            })
+            isBottomPopupCompleted = false
+        }
+
+    }
+    private func openLink(link: String){
+        if let url = URL(string: link) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:])
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+    }
+    private func mailTo(mail: String){
+        if let url = URL(string: "mailto:\(mail)") {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+    }
+    
+    private func callToPhone(number: String){
+        let temp = self.returnNumber(number: number)
+        if let url = NSURL(string: "telprompt:\(temp)"){
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+            } else {
+                
             }
         }
     }
@@ -192,6 +289,18 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
             cellId = "ServicesTableViewCell"
         }
         tableView.reloadSections(IndexSet.init(integer: 0), with: .fade)
+    }
+    private func returnNumber(number: String) -> String {
+        var ans = [Character]()
+        for char in number {
+            if ((String(char).rangeOfCharacter(from: CharacterSet.alphanumerics.inverted)) == nil) {
+                ans.append(char)
+            }
+            else if (String(char) == "+"){
+                ans.append(char)
+            }
+        }
+        return String(ans)
     }
 }
 
