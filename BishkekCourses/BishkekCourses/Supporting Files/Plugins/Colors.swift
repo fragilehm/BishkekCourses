@@ -14,5 +14,6 @@ struct Colors {
     static let darkPurple = 0x343F4B
     static let lightGray = 0x969FAA
     static let palceholder = 0x8190A5
+    static let lightBlue  = 0x3399ff
 }
 

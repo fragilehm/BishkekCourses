@@ -18,42 +18,7 @@ class CoursesBySubcategoryViewController: UIViewController {
     var backImage = ""
     private var simpleCourses = [SimpleCourse]()
     private var backColor: UIColor?
-    private let backImageView: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "coding").withRenderingMode(.alwaysOriginal))
-        imageView.contentMode = .scaleAspectFill
-        imageView.clipsToBounds = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-    private let contentView: UIView = {
-        let containerView = UIView()
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        return containerView
-    }()
-    private let back: UIButton = {
-        let button = UIButton(type: .system)
-        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 12)
-        button.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
-        button.setImage(#imageLiteral(resourceName: "back-white").withRenderingMode(.alwaysOriginal), for: .normal)
-        return button
-    }()
-    private let blurView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .black
-        view.alpha = 0.5
-        return view
-    }()
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.boldSystemFont(ofSize: 19)
-        label.textColor = .white
-        label.numberOfLines = 1
-        return label
-    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //setNavBarItems()
@@ -71,6 +36,7 @@ class CoursesBySubcategoryViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.register(UINib.init(nibName: "CoursesBySubcategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CoursesBySubcategoryTableViewCell")
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
+        tableView.bounces = false
         //tableView.bounces = false
 //        let header = DefaultRefreshHeader.header()
 //        header.setText(Constants.Hint.Refresh.pull_to_refresh, mode: .pullToRefresh)
@@ -86,35 +52,20 @@ class CoursesBySubcategoryViewController: UIViewController {
         addHeaderView()
     }
     func addHeaderView() {
-        contentView.addSubview(backImageView)
-        contentView.addSubview(blurView)
-        contentView.addSubview(back)
-        contentView.addSubview(titleLabel)
+        let headerView: SubcategoryHeaderView = {
+            let view = SubcategoryHeaderView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.back.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
+            return view
+        }()
         let url = URL(string: backImage)
-        backImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
-        titleLabel.text = subcategoryName
-        blurView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        blurView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        blurView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        blurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16).isActive = true
-        var backButtonTopConstraint = 32
-        if self.getDeviceName() == "iPhone 5.8" {
-            backButtonTopConstraint = 56
-        }
-        back.topAnchor.constraint(equalTo: contentView.topAnchor, constant: CGFloat(backButtonTopConstraint)).isActive = true
-        back.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-        backImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        backImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-        backImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        backImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        self.tableView.tableHeaderView = contentView
-        contentView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
-        contentView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
-        contentView.topAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
-        contentView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 2 / 5).isActive = true
+        headerView.backImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
+        headerView.titleLabel.text = subcategoryName
+        self.tableView.tableHeaderView = headerView
+        headerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
+        headerView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
+        headerView.topAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
+        headerView.heightAnchor.constraint(equalToConstant: Constants.SCREEN_HEIGHT * 2 / 5).isActive = true
         self.tableView.tableHeaderView?.layoutIfNeeded()
         self.tableView.tableHeaderView = self.tableView.tableHeaderView
     }

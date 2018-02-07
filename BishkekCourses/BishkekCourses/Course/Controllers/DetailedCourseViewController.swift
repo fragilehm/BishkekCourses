@@ -12,10 +12,10 @@ import Moya
 class DetailedCourseViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var cellId = "DescriptionTableViewCell"
+    private var cellId = "DescriptionTableViewCell"
+    private var isFavorite = false
     private var course = DetailedCourse()
     var simpleCourse: SimpleCourse!
-    private var isFavorite = false
     override func viewDidLoad() {
         super.viewDidLoad()
         setSwipeLeftAction()
@@ -70,6 +70,7 @@ class DetailedCourseViewController: UIViewController {
 
 extension DetailedCourseViewController {
     func configureTableView(){
+       
         tableView.tableFooterView = UIView()
         registerCell(nibName: "HeaderTableViewCell")
         registerCell(nibName: "CommentsTableViewCell")
@@ -80,67 +81,74 @@ extension DetailedCourseViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
         tableView.reloadData()
+        addHeaderView()
+        
+    }
+    func addHeaderView(){
+        let headerView = HeaderView()
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.tableHeaderView = headerView
+        headerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
+        headerView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
+        headerView.topAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
+        headerView.heightAnchor.constraint(equalToConstant: Constants.SCREEN_HEIGHT * 1 / 2).isActive = true
+        tableView.layoutIfNeeded()
+        headerView.menuBarView.cellDelegate = self
+        tableView.tableHeaderView = tableView.tableHeaderView
+        let mainImageUrl = URL(string: self.simpleCourse.main_image_url)
+        headerView.mainImageView.kf.setImage(with: mainImageUrl)
+        let logoImageUrl = URL(string: self.simpleCourse.logo_image_url)
+        headerView.logoImageView.kf.setImage(with: logoImageUrl)
+        headerView.titleLabel.text = self.simpleCourse.title
     }
     func registerCell(nibName: String){
         tableView.register(UINib.init(nibName: nibName, bundle: nil), forCellReuseIdentifier: nibName)
     }
 }
-extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSource, ButtonDelegate {
+
+extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSource, MenuBarDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+
+        switch cellId {
+        case "DescriptionTableViewCell":
             return 1
-        }
-        else {
-            switch cellId {
-            case "DescriptionTableViewCell":
-                return 1
-            case "CommentsTableViewCell":
-                return 0
-            case "BranchesTableViewCell":
-                return course.branches.count
-            case "ContactsTableViewCell":
-                return course.contacts.count
-            default:
-                return course.services.count
-            }
+        case "CommentsTableViewCell":
+            return 0
+        case "BranchesTableViewCell":
+            return course.branches.count
+        case "ContactsTableViewCell":
+            return course.contacts.count
+        default:
+            return course.services.count
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "HeaderTableViewCell", for: indexPath) as! HeaderTableViewCell
-            cell.fillCell(course: simpleCourse)
-            cell.cellDelegate = self
+        switch cellId {
+        case "DescriptionTableViewCell":
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as!
+            DescriptionTableViewCell
+            cell.fillCell(description: course.description)
             return cell
-        }
-        else {
-            switch cellId {
-            case "DescriptionTableViewCell":
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as!
-                DescriptionTableViewCell
-                cell.fillCell(description: course.description)
-                return cell
-            case "CommentsTableViewCell":
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as!
-                CommentsTableViewCell
-                //cell.fillCell(course: course)
-                return cell
-            case "BranchesTableViewCell":
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! BranchesTableViewCell
-                cell.fillCell(branch: course.branches[indexPath.row])
-                return cell
-            case "ContactsTableViewCell":
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ContactsTableViewCell
-                cell.fillCell(contact: course.contacts[indexPath.row])
-                return cell
-            default:
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ServicesTableViewCell
-                cell.fillCell(service: course.services[indexPath.row])
-                return cell
-            }
-            
+        case "CommentsTableViewCell":
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as!
+            CommentsTableViewCell
+            //cell.fillCell(course: course)
+            return cell
+        case "BranchesTableViewCell":
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! BranchesTableViewCell
+            cell.fillCell(branch: course.branches[indexPath.row])
+            return cell
+        case "ContactsTableViewCell":
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ContactsTableViewCell
+            cell.fillCell(contact: course.contacts[indexPath.row])
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ServicesTableViewCell
+            cell.fillCell(service: course.services[indexPath.row])
+            return cell
         }
         
     }
@@ -149,7 +157,7 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
         return UITableViewAutomaticDimension
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
             switch cellId {
             case "DescriptionTableViewCell":
                 print("description")
@@ -183,6 +191,7 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
         default:
             cellId = "ServicesTableViewCell"
         }
-        tableView.reloadSections(IndexSet.init(integer: 1), with: .fade)
+        tableView.reloadSections(IndexSet.init(integer: 0), with: .fade)
     }
 }
+
