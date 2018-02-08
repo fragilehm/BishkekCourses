@@ -62,7 +62,6 @@ class DetailedCourseViewController: UIViewController {
         self.course = course
         self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
         tableView.reloadData()
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.white

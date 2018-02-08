@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,53 +18,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="t92-LN-tds">
-                                <rect key="frame" x="4" y="68" width="367" height="29"/>
-                                <segments>
-                                    <segment title="Недавние"/>
-                                    <segment title="Популярные"/>
-                                </segments>
-                                <color key="tintColor" red="0.20392156859999999" green="0.2470588235" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rzz-Y3-mau">
-                                <rect key="frame" x="0.0" y="100" width="375" height="518"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rzz-Y3-mau">
+                                <rect key="frame" x="0.0" y="112" width="375" height="506"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <sections/>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="t92-LN-tds" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="A2t-lM-1TR"/>
                             <constraint firstItem="Rzz-Y3-mau" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="BFX-Tz-Ezs"/>
-                            <constraint firstItem="t92-LN-tds" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="3:4" id="ECn-Vg-4N0"/>
-                            <constraint firstItem="t92-LN-tds" firstAttribute="leading" secondItem="Rzz-Y3-mau" secondAttribute="leading" id="LM2-nk-Uqc"/>
-                            <constraint firstItem="t92-LN-tds" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="QIH-oy-GAe"/>
-                            <constraint firstItem="Rzz-Y3-mau" firstAttribute="top" secondItem="t92-LN-tds" secondAttribute="bottom" constant="4" id="R0W-2V-OIF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Rzz-Y3-mau" secondAttribute="trailing" id="SCb-ZO-nBP"/>
-                            <constraint firstItem="t92-LN-tds" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="4" id="dlr-bO-JIB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Rzz-Y3-mau" secondAttribute="bottom" id="l5v-Bt-vg7"/>
-                            <constraint firstItem="t92-LN-tds" firstAttribute="trailing" secondItem="Rzz-Y3-mau" secondAttribute="trailing" id="lNM-PK-I6k"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t92-LN-tds" secondAttribute="trailing" constant="4" id="rMw-Lf-phI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="ECn-Vg-4N0"/>
-                                <exclude reference="LM2-nk-Uqc"/>
-                                <exclude reference="QIH-oy-GAe"/>
-                                <exclude reference="lNM-PK-I6k"/>
-                            </mask>
-                        </variation>
                         <variation key="heightClass=regular-widthClass=regular">
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <mask key="constraints">
                                 <exclude reference="SCb-ZO-nBP"/>
-                                <exclude reference="rMw-Lf-phI"/>
-                                <exclude reference="A2t-lM-1TR"/>
-                                <include reference="ECn-Vg-4N0"/>
-                                <include reference="LM2-nk-Uqc"/>
-                                <include reference="QIH-oy-GAe"/>
-                                <include reference="lNM-PK-I6k"/>
                                 <exclude reference="BFX-Tz-Ezs"/>
                             </mask>
                         </variation>
@@ -78,6 +47,29 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1637.5999999999999" y="115.59220389805098"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="W79-iy-6YA">
+            <objects>
+                <viewController id="B57-P8-5jl" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X7X-eV-aQk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjW-wz-DRh">
+                                <rect key="frame" x="214" y="126" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="iz9-i3-y1v"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xsb-ZH-yaE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3386.4000000000001" y="134.48275862068968"/>
         </scene>
         <!--CategoriesNav-->
         <scene sceneID="lSD-ff-p31">

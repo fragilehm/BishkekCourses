@@ -179,3 +179,14 @@ extension UIApplication {
     }
     
 }
+extension UIColor {
+    func as1ptImage() -> UIImage {
+        UIGraphicsBeginImageContext(CGSize(width: 0.3, height: 0.3))
+        setFill()
+        UIGraphicsGetCurrentContext()?.fill(CGRect(x: 0, y: 0, width: 0.3, height: 0.3))
+        let image = UIGraphicsGetImageFromCurrentImageContext() ?? UIImage()
+        UIGraphicsEndImageContext()
+        return image
+    }
+}
+

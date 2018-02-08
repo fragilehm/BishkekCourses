@@ -25,8 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //window?.rootViewController = swipingController
     
         let navigationBarAppearace = UINavigationBar.appearance()
-        navigationBarAppearace.tintColor = UIColor.init(netHex: Colors.darkPurple)
-        navigationBarAppearace.barTintColor = UIColor.white
+        //application.statusBarStyle = .lightContent
+        navigationBarAppearace.tintColor = UIColor(netHex: Colors.darkPurple)
+        navigationBarAppearace.barTintColor = UIColor(netHex: Colors.darkBlue)
+        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+        navigationBarAppearace.titleTextAttributes = textAttributes
         // Override point for customization after application launch.
         return true
     }

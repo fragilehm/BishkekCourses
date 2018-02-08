@@ -17,7 +17,12 @@ class MainViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     private let refreshControl = UIRefreshControl()
     private let disposeBag = DisposeBag()
-
+    let segmentView: SegmentView = {
+        let segmentView = SegmentView()
+        segmentView.translatesAutoresizingMaskIntoConstraints = false
+        return segmentView
+    }()
+    
     private var viewModel =  SimpleCourseViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +31,11 @@ class MainViewController: UIViewController {
         bindTableView()
         getData()
         bindTableViewSelected()
+        addSegmetView()
     }
-   
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.shadowImage = nil
+    }
     func bindTableView(){
         viewModel.simpleCourses.asObservable().bind(to: tableView.rx.items(cellIdentifier: "MainTableViewCell", cellType: MainTableViewCell.self)) { row, element, cell in
             cell.fillCell(course: element)
@@ -51,8 +59,49 @@ class MainViewController: UIViewController {
     func getData(){
         viewModel.fetchData()
     }
+    func addSegmetView(){
+        segmentView.popularButton.addTarget(self, action: #selector(popularPressed), for: .touchUpInside)
+        segmentView.recentButton.addTarget(self, action: #selector(recentPressed), for: .touchUpInside)
+
+        self.view.addSubview(segmentView)
+        if #available(iOS 11.0, *) {
+            segmentView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        } else {
+            segmentView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        }
+        NSLayoutConstraint.activate([
+            segmentView.bottomAnchor.constraint(equalTo: tableView.topAnchor),
+            segmentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            segmentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            segmentView.heightAnchor.constraint(equalToConstant: 44)
+        ])
+    }
+    @objc func popularPressed(){
+        if segmentView.bottomView.frame.origin.x == 0 {
+            segmentView.recentButton.isEnabled = true
+            segmentView.popularButton.isEnabled = false
+            UIView.animate(withDuration: 0.3) {
+                self.segmentView.recentButton.setTitleColor(.lightGray, for: .normal)
+                self.segmentView.popularButton.setTitleColor(.black, for: .normal)
+                self.segmentView.bottomView.frame.origin.x += Constants.SCREEN_WIDTH / 2
+            }
+        }
+    }
+    @objc func recentPressed(){
+        if segmentView.bottomView.frame.origin.x == Constants.SCREEN_WIDTH / 2 {
+            segmentView.popularButton.isEnabled = true
+            segmentView.recentButton.isEnabled = false
+            UIView.animate(withDuration: 0.3) {
+                self.segmentView.popularButton.setTitleColor(.lightGray, for: .normal)
+                self.segmentView.recentButton.setTitleColor(.black, for: .normal)
+                self.segmentView.bottomView.frame.origin.x -= Constants.SCREEN_WIDTH / 2
+            }
+       }
+    }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Главная"
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        //self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         print("MainViewController resources: \(RxSwift.Resources.total)")
 
     }

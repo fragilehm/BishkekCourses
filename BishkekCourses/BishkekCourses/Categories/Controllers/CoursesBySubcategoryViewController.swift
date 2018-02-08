@@ -92,7 +92,7 @@ class CoursesBySubcategoryViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         UIApplication.shared.statusBarStyle = .default
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
+        UIApplication.shared.statusBarView?.backgroundColor = nil
         self.navigationController?.navigationBar.isHidden = false
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
