@@ -12,7 +12,7 @@ import Moya_ModelMapper
 import RxCocoa
 import RxSwift
 import Moya
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     private let refreshControl = UIRefreshControl()
@@ -39,6 +39,7 @@ class MainViewController: UIViewController {
     func bindTableView(){
         viewModel.simpleCourses.asObservable().bind(to: tableView.rx.items(cellIdentifier: "MainTableViewCell", cellType: MainTableViewCell.self)) { row, element, cell in
             cell.fillCell(course: element)
+            cell.textView.delegate = self
             }.disposed(by: disposeBag)
         viewModel.error.asObservable().subscribe(onNext: { [weak self] (message) in            self?.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
             self?.showErrorAlert(message: message)
@@ -77,26 +78,22 @@ class MainViewController: UIViewController {
         ])
     }
     @objc func popularPressed(){
-        if segmentView.bottomView.frame.origin.x == 0 {
-            segmentView.recentButton.isEnabled = true
-            segmentView.popularButton.isEnabled = false
-            UIView.animate(withDuration: 0.3) {
-                self.segmentView.recentButton.setTitleColor(.lightGray, for: .normal)
-                self.segmentView.popularButton.setTitleColor(.black, for: .normal)
-                self.segmentView.bottomView.frame.origin.x += Constants.SCREEN_WIDTH / 2
-            }
+        segmentView.recentButton.isEnabled = true
+        segmentView.popularButton.isEnabled = false
+        UIView.animate(withDuration: 0.3) {
+            self.segmentView.recentButton.setTitleColor(.lightGray, for: .normal)
+            self.segmentView.popularButton.setTitleColor(.black, for: .normal)
+            self.segmentView.bottomView.frame.origin.x += Constants.SCREEN_WIDTH / 2
         }
     }
     @objc func recentPressed(){
-        if segmentView.bottomView.frame.origin.x == Constants.SCREEN_WIDTH / 2 {
-            segmentView.popularButton.isEnabled = true
-            segmentView.recentButton.isEnabled = false
-            UIView.animate(withDuration: 0.3) {
-                self.segmentView.popularButton.setTitleColor(.lightGray, for: .normal)
-                self.segmentView.recentButton.setTitleColor(.black, for: .normal)
-                self.segmentView.bottomView.frame.origin.x -= Constants.SCREEN_WIDTH / 2
-            }
-       }
+        segmentView.popularButton.isEnabled = true
+        segmentView.recentButton.isEnabled = false
+        UIView.animate(withDuration: 0.3) {
+            self.segmentView.popularButton.setTitleColor(.lightGray, for: .normal)
+            self.segmentView.recentButton.setTitleColor(.black, for: .normal)
+            self.segmentView.bottomView.frame.origin.x -= Constants.SCREEN_WIDTH / 2
+        }
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Главная"
@@ -107,6 +104,23 @@ class MainViewController: UIViewController {
     }
     deinit {
         print("deinit MainViewController resources: \(RxSwift.Resources.total)")
+    }
+    @available(iOS 10.0, *)
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        print(URL.absoluteString)
+        let subCategoryVC = UIStoryboard.init(name: "Categories", bundle: nil).instantiateViewController(withIdentifier: "CoursesBySubcategoryViewController") as! CoursesBySubcategoryViewController
+        print(URL.absoluteString.removingPercentEncoding!)
+        let seperatedString =  URL.absoluteString.removingPercentEncoding?.components(separatedBy: " ")
+        subCategoryVC.subcategory_id = Int(seperatedString![0])!
+        subCategoryVC.subcategoryName = seperatedString![1]
+        //subCategoryVC.title = seperatedString[1]
+        self.navigationController?.show(subCategoryVC, sender: self)
+        //UIApplication.shared.open(URL, options: [:])
+        return false
+    }
+    func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
+        print(textAttachment)
+        return false
     }
 }
 extension MainViewController: UITableViewDelegate {

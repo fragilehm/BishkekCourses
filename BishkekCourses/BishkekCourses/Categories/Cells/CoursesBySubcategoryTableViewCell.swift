@@ -24,9 +24,9 @@ class CoursesBySubcategoryTableViewCell: CustomCell {
     @IBOutlet weak var backImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        let labelHeight = descriptionLabel.frame.height
-        backImageView.translatesAutoresizingMaskIntoConstraints = false
-        backImageView.heightAnchor.constraint(equalToConstant: labelHeight + 4).isActive = true
+//        let labelHeight = descriptionLabel.frame.height
+//        backImageView.translatesAutoresizingMaskIntoConstraints = false
+//        backImageView.heightAnchor.constraint(equalToConstant: labelHeight + 4).isActive = true
         // Initialization code
         if UIDevice.current.userInterfaceIdiom == .pad {
             topViewheightConstraint.constant = 0

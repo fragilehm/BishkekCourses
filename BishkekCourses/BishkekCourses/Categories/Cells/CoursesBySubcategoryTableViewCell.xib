@@ -31,7 +31,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="eK9-DB-7eJ">
-                                <rect key="frame" x="16" y="12.5" width="35" height="35"/>
+                                <rect key="frame" x="16" y="10.5" width="35" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="35" id="NJH-P2-sXs"/>
                                     <constraint firstAttribute="height" constant="35" id="YDh-4N-8nI"/>
@@ -44,28 +44,29 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="American courses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cr0-Cd-4M4">
-                                <rect key="frame" x="59" y="18.5" width="323" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <rect key="frame" x="59" y="20" width="323" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2U-EP-nld">
-                                <rect key="frame" x="16" y="55.5" width="374" height="58"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m2U-EP-nld">
+                                <rect key="frame" x="16" y="51.5" width="294.5" height="62"/>
                                 <string key="text">Коммуникативная методика обучения - это разговорная практика уже с первого урока, а также ролевые игры, дискуссии, обсуждения и презентации актуальных и современных тем с самыми опытными преподавателями.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.50588235290000005" green="0.56470588239999997" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark" translatesAutoresizingMaskIntoConstraints="NO" id="hHC-Yk-QQt">
-                                <rect key="frame" x="382" y="20" width="20" height="20"/>
+                                <rect key="frame" x="382" y="18" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Fxg-gR-2nQ"/>
                                     <constraint firstAttribute="width" constant="20" id="a8L-kZ-gdP"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="O1B-ZQ-J00">
-                                <rect key="frame" x="402" y="55.5" width="0.0" height="0.0"/>
+                                <rect key="frame" x="322.5" y="51.5" width="79.5" height="64"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="Esn-jH-ecU"/>
                                     <constraint firstAttribute="width" secondItem="O1B-ZQ-J00" secondAttribute="height" multiplier="5:4" id="WtB-MU-CnX"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -82,7 +83,7 @@
                             <constraint firstItem="O1B-ZQ-J00" firstAttribute="top" secondItem="m2U-EP-nld" secondAttribute="top" id="4hd-Rj-nRw"/>
                             <constraint firstItem="cr0-Cd-4M4" firstAttribute="centerY" secondItem="eK9-DB-7eJ" secondAttribute="centerY" id="D3X-cM-bzd"/>
                             <constraint firstItem="m2U-EP-nld" firstAttribute="leading" secondItem="nlS-zV-kvI" secondAttribute="leading" constant="16" id="KUq-W2-EEd"/>
-                            <constraint firstItem="eK9-DB-7eJ" firstAttribute="top" secondItem="QdI-ed-tpJ" secondAttribute="bottom" constant="12" id="QTI-wF-B3P"/>
+                            <constraint firstItem="eK9-DB-7eJ" firstAttribute="top" secondItem="QdI-ed-tpJ" secondAttribute="bottom" constant="10" id="QTI-wF-B3P"/>
                             <constraint firstItem="QdI-ed-tpJ" firstAttribute="top" secondItem="nlS-zV-kvI" secondAttribute="top" id="R9F-2t-d05"/>
                             <constraint firstItem="cr0-Cd-4M4" firstAttribute="leading" secondItem="eK9-DB-7eJ" secondAttribute="trailing" constant="8" id="U2E-oB-xnm"/>
                             <constraint firstAttribute="bottom" secondItem="m2U-EP-nld" secondAttribute="bottom" constant="24" id="V5Q-NV-Y6s"/>
@@ -91,7 +92,7 @@
                             <constraint firstAttribute="trailing" secondItem="O1B-ZQ-J00" secondAttribute="trailing" constant="16" id="jp4-iV-EeK"/>
                             <constraint firstAttribute="trailing" secondItem="QdI-ed-tpJ" secondAttribute="trailing" id="noT-VV-KNz"/>
                             <constraint firstAttribute="trailing" secondItem="hHC-Yk-QQt" secondAttribute="trailing" constant="16" id="vFI-RX-Pu0"/>
-                            <constraint firstItem="m2U-EP-nld" firstAttribute="top" secondItem="eK9-DB-7eJ" secondAttribute="bottom" constant="8" id="wND-Cu-ELa"/>
+                            <constraint firstItem="m2U-EP-nld" firstAttribute="top" secondItem="eK9-DB-7eJ" secondAttribute="bottom" constant="6" id="wND-Cu-ELa"/>
                             <constraint firstItem="O1B-ZQ-J00" firstAttribute="leading" secondItem="m2U-EP-nld" secondAttribute="trailing" constant="12" id="xAp-xh-Jgo"/>
                             <constraint firstItem="hHC-Yk-QQt" firstAttribute="leading" secondItem="cr0-Cd-4M4" secondAttribute="trailing" id="xey-Ro-UcT"/>
                         </constraints>

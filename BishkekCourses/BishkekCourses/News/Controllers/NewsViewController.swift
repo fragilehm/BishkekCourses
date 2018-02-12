@@ -15,7 +15,6 @@ class NewsViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBar()
         configureCollectionView()
-        // Do any additional setup after loading the view.
     }
     func setNavigationBar() {
         let searchBar = UISearchBar()
@@ -28,7 +27,6 @@ class NewsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Лента"
     }
-
 }
 extension NewsViewController {
     func configureCollectionView(){

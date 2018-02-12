@@ -18,7 +18,12 @@ class CoursesBySubcategoryViewController: UIViewController {
     var backImage = ""
     private var simpleCourses = [SimpleCourse]()
     private var backColor: UIColor?
-    
+    private let headerView: SubcategoryHeaderView = {
+        let view = SubcategoryHeaderView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.back.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
+        return view
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         //setNavBarItems()
@@ -52,12 +57,7 @@ class CoursesBySubcategoryViewController: UIViewController {
         addHeaderView()
     }
     func addHeaderView() {
-        let headerView: SubcategoryHeaderView = {
-            let view = SubcategoryHeaderView()
-            view.translatesAutoresizingMaskIntoConstraints = false
-            view.back.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
-            return view
-        }()
+        
         let url = URL(string: backImage)
         headerView.backImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
         headerView.titleLabel.text = subcategoryName

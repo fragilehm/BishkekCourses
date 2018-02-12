@@ -10,11 +10,17 @@ import UIKit
 import Kingfisher
 import SDWebImage
 import RxSwift
-class MainTableViewCell: UITableViewCell {
+class MainTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var mainImageView: UIImageView! {
         didSet {
             mainImageView.translatesAutoresizingMaskIntoConstraints = false
             //print(mainImageView.frame.height)
+        }
+    }
+    @IBOutlet weak var textView: UITextView! {
+        didSet {
+            textView.textContainerInset = UIEdgeInsets.zero
+            //textView.delegate = self
         }
     }
     @IBOutlet weak var topViewHeight: NSLayoutConstraint!
@@ -22,7 +28,6 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var logoImageView: UIImageView! {
         didSet {
-            
             logoImageView.layer.masksToBounds = true
             logoImageView.layer.cornerRadius = 20
             logoImageView.layer.borderWidth = 0.7
@@ -59,14 +64,24 @@ class MainTableViewCell: UITableViewCell {
         }
         mainImageView.heightAnchor.constraint(equalToConstant: halfScreenHeight).isActive = true
         var subcategories = ""
-        let last_index = course.subcategories.count
-        for (index, simpleSubcategory) in course.subcategories.enumerated() {
+        
+        for simpleSubcategory in course.subcategories {
+            
+            subcategories.append(" #")
             subcategories.append(simpleSubcategory.title)
-            if index < last_index - 1 {
-                subcategories.append(", ")
-            }
         }
-        subcategoryLabel.text = subcategories
+        
+        let attributedString = NSMutableAttributedString(string: subcategories, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)])
+        let attr = NSMutableAttributedString(string: "Категори\(course.subcategories.count > 1 ? "и" : "я"): ", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+        attr.append(attributedString)
+        var indexCount = 11
+        for simpleSubcategory in course.subcategories {
+            print(simpleSubcategory.title)
+            let url = NSURL(string: "\(simpleSubcategory.id) \(simpleSubcategory.title)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+            attr.addAttribute(.link, value: url ?? "", range: NSRange(location: indexCount, length: simpleSubcategory.title.count + 2))
+            indexCount += simpleSubcategory.title.count + 2
+        }
+        textView.attributedText = attr
         let logo_url = URL(string: course.logo_image_url)
         logoImageView.kf.setImage(with: logo_url)
         logoImageView.kf.setImage(with: logo_url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
