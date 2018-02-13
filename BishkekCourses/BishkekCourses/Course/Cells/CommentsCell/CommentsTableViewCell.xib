@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad10_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,10 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H9x-l6-cmb">
-                        <rect key="frame" x="8" y="8" width="393" height="80.5"/>
+                        <rect key="frame" x="0.0" y="0.0" width="409" height="88.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" The earliest forms of English, a set of Anglo-Frisian dialects brought" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rd-ec-KkO">
-                                <rect key="frame" x="16" y="33" width="361" height="39.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text=" The earliest forms of English, a set of Anglo-Frisian dialects brought" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Rd-ec-KkO">
+                                <rect key="frame" x="16" y="37" width="377" height="39.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.50588235294117645" green="0.56470588235294117" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -32,7 +32,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="251" text="01.01.01" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mej-QI-nRw">
-                                <rect key="frame" x="325.5" y="8" width="51.5" height="17"/>
+                                <rect key="frame" x="335" y="8" width="58" height="19.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.50588235294117645" green="0.56470588235294117" blue="0.6470588235294118" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -40,8 +40,8 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="aidai_kazybekova" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vA-MF-2nR">
-                                <rect key="frame" x="16" y="8" width="297.5" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" text="aidai_kazybekova" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5vA-MF-2nR">
+                                <rect key="frame" x="16" y="12" width="307" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.20392156862745098" green="0.24705882352941178" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -54,28 +54,22 @@
                         <constraints>
                             <constraint firstItem="mej-QI-nRw" firstAttribute="leading" secondItem="5vA-MF-2nR" secondAttribute="trailing" constant="12" id="8BI-B2-4Eh"/>
                             <constraint firstItem="8Rd-ec-KkO" firstAttribute="top" secondItem="5vA-MF-2nR" secondAttribute="bottom" constant="8" id="J1q-CO-mBm"/>
-                            <constraint firstItem="5vA-MF-2nR" firstAttribute="top" secondItem="H9x-l6-cmb" secondAttribute="top" constant="8" id="U5K-6S-v86"/>
+                            <constraint firstItem="5vA-MF-2nR" firstAttribute="top" secondItem="H9x-l6-cmb" secondAttribute="top" constant="12" id="U5K-6S-v86"/>
                             <constraint firstItem="5vA-MF-2nR" firstAttribute="leading" secondItem="H9x-l6-cmb" secondAttribute="leading" constant="16" id="WaB-Ox-bKN"/>
                             <constraint firstAttribute="trailing" secondItem="mej-QI-nRw" secondAttribute="trailing" constant="16" id="cjm-rh-W1V"/>
                             <constraint firstAttribute="trailing" secondItem="8Rd-ec-KkO" secondAttribute="trailing" constant="16" id="dXm-YK-ihq"/>
                             <constraint firstItem="8Rd-ec-KkO" firstAttribute="leading" secondItem="H9x-l6-cmb" secondAttribute="leading" constant="16" id="v0Q-2H-3ua"/>
                             <constraint firstItem="mej-QI-nRw" firstAttribute="top" secondItem="H9x-l6-cmb" secondAttribute="top" constant="8" id="xnb-Fn-RQ8"/>
-                            <constraint firstAttribute="bottom" secondItem="8Rd-ec-KkO" secondAttribute="bottom" constant="8" id="yjm-bM-Ink"/>
+                            <constraint firstAttribute="bottom" secondItem="8Rd-ec-KkO" secondAttribute="bottom" constant="12" id="yjm-bM-Ink"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="10"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="H9x-l6-cmb" secondAttribute="bottom" id="9AC-ie-IrT"/>
-                    <constraint firstItem="H9x-l6-cmb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="YF5-OM-f43"/>
-                    <constraint firstAttribute="trailing" secondItem="H9x-l6-cmb" secondAttribute="trailing" constant="8" id="jcw-3U-Yle"/>
-                    <constraint firstItem="H9x-l6-cmb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="s3w-7r-OT0"/>
+                    <constraint firstItem="H9x-l6-cmb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="YF5-OM-f43"/>
+                    <constraint firstAttribute="trailing" secondItem="H9x-l6-cmb" secondAttribute="trailing" id="jcw-3U-Yle"/>
+                    <constraint firstItem="H9x-l6-cmb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="s3w-7r-OT0"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

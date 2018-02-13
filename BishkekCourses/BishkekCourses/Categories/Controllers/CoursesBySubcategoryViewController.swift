@@ -57,7 +57,6 @@ class CoursesBySubcategoryViewController: UIViewController {
         addHeaderView()
     }
     func addHeaderView() {
-        
         let url = URL(string: backImage)
         headerView.backImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
         headerView.titleLabel.text = subcategoryName
@@ -125,10 +124,8 @@ extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDa
         return UITableViewAutomaticDimension
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard.init(name: "Course", bundle: nil)
-        let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
-        courseVC.simpleCourse = simpleCourses[indexPath.row]
-        self.navigationController?.show(courseVC, sender: self)
+        let course = simpleCourses[indexPath.row]
+        openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.background_image_url)
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > 84 {

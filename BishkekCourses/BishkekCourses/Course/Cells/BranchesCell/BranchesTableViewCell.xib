@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad10_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -20,10 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIA-1w-AuQ">
-                        <rect key="frame" x="8" y="8" width="345" height="79"/>
+                        <rect key="frame" x="0.0" y="0.0" width="361" height="87"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Пр. Чуй 265 А, ул. Ахунбаева 119А, Bishkek 720071" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffz-Kg-qKI">
-                                <rect key="frame" x="16" y="8" width="291" height="63"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bishkek" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ffz-Kg-qKI">
+                                <rect key="frame" x="16" y="12" width="274" height="63"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.50588235290000005" green="0.56470588239999997" blue="0.64705882349999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -31,31 +31,25 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 </variation>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="Eqf-Dv-DZT">
-                                <rect key="frame" x="315" y="29" width="20" height="20"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="MAP" translatesAutoresizingMaskIntoConstraints="NO" id="SwH-je-Yyu">
+                                <rect key="frame" x="320" y="31" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="2gh-Ut-2eP"/>
-                                    <constraint firstAttribute="height" constant="20" id="XLd-Aa-KaP"/>
+                                    <constraint firstAttribute="height" constant="25" id="3do-8j-Pic"/>
+                                    <constraint firstAttribute="width" constant="25" id="9qK-W2-7Oo"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Eqf-Dv-DZT" firstAttribute="centerY" secondItem="ffz-Kg-qKI" secondAttribute="centerY" id="9Db-GL-2Se"/>
+                            <constraint firstAttribute="trailing" secondItem="SwH-je-Yyu" secondAttribute="trailing" constant="16" id="IEY-ve-rW1"/>
                             <constraint firstItem="ffz-Kg-qKI" firstAttribute="top" secondItem="bIA-1w-AuQ" secondAttribute="top" constant="12" id="KhL-Su-LZk"/>
-                            <constraint firstAttribute="bottom" secondItem="ffz-Kg-qKI" secondAttribute="bottom" constant="8" id="aMf-kR-BZq"/>
-                            <constraint firstItem="ffz-Kg-qKI" firstAttribute="top" secondItem="bIA-1w-AuQ" secondAttribute="top" constant="8" id="cyM-dA-42a"/>
-                            <constraint firstItem="Eqf-Dv-DZT" firstAttribute="leading" secondItem="ffz-Kg-qKI" secondAttribute="trailing" constant="8" id="eKB-Jw-FM5"/>
-                            <constraint firstAttribute="trailing" secondItem="Eqf-Dv-DZT" secondAttribute="trailing" constant="10" id="hDk-F2-9EW"/>
+                            <constraint firstAttribute="bottom" secondItem="ffz-Kg-qKI" secondAttribute="bottom" constant="12" id="aMf-kR-BZq"/>
+                            <constraint firstItem="ffz-Kg-qKI" firstAttribute="top" secondItem="bIA-1w-AuQ" secondAttribute="top" constant="12" id="cyM-dA-42a"/>
+                            <constraint firstItem="SwH-je-Yyu" firstAttribute="leading" secondItem="ffz-Kg-qKI" secondAttribute="trailing" constant="30" id="luZ-fD-ghm"/>
                             <constraint firstItem="ffz-Kg-qKI" firstAttribute="leading" secondItem="bIA-1w-AuQ" secondAttribute="leading" constant="16" id="mMA-UK-quX"/>
+                            <constraint firstItem="SwH-je-Yyu" firstAttribute="centerY" secondItem="ffz-Kg-qKI" secondAttribute="centerY" id="xRI-xX-Ivh"/>
                             <constraint firstAttribute="bottom" secondItem="ffz-Kg-qKI" secondAttribute="bottom" constant="12" id="yhG-UP-tWY"/>
                         </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                <integer key="value" value="10"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="KhL-Su-LZk"/>
@@ -75,10 +69,10 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="bIA-1w-AuQ" secondAttribute="bottom" id="8gF-C0-ZlA"/>
-                    <constraint firstAttribute="trailing" secondItem="bIA-1w-AuQ" secondAttribute="trailing" constant="8" id="8lg-qB-sSu"/>
-                    <constraint firstItem="bIA-1w-AuQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Arl-6C-bZL"/>
-                    <constraint firstItem="bIA-1w-AuQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="rcw-lg-Ywx"/>
-                    <constraint firstItem="bIA-1w-AuQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="wht-vc-SnS"/>
+                    <constraint firstAttribute="trailing" secondItem="bIA-1w-AuQ" secondAttribute="trailing" id="8lg-qB-sSu"/>
+                    <constraint firstItem="bIA-1w-AuQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Arl-6C-bZL"/>
+                    <constraint firstItem="bIA-1w-AuQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="rcw-lg-Ywx"/>
+                    <constraint firstItem="bIA-1w-AuQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="wht-vc-SnS"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
@@ -101,6 +95,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="right-arrow" width="64" height="64"/>
+        <image name="MAP" width="64" height="64"/>
     </resources>
 </document>

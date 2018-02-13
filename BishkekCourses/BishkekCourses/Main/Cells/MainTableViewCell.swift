@@ -19,6 +19,8 @@ class MainTableViewCell: UITableViewCell, UITextViewDelegate {
     }
     @IBOutlet weak var textView: UITextView! {
         didSet {
+            textView.contentMode = .left
+            //textView.textContainer.lineBreakMode = .
             textView.textContainerInset = UIEdgeInsets.zero
             //textView.delegate = self
         }
@@ -67,20 +69,27 @@ class MainTableViewCell: UITableViewCell, UITextViewDelegate {
         
         for simpleSubcategory in course.subcategories {
             
-            subcategories.append(" #")
+            subcategories.append("#")
             subcategories.append(simpleSubcategory.title)
         }
-        
-        let attributedString = NSMutableAttributedString(string: subcategories, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)])
-        let attr = NSMutableAttributedString(string: "Категори\(course.subcategories.count > 1 ? "и" : "я"): ", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+        let paragraph = NSMutableParagraphStyle()
+        paragraph.lineBreakMode = .byCharWrapping
+        paragraph.alignment = .left
+        let attributedString = NSMutableAttributedString(string: subcategories, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.black])
+        let attr = NSMutableAttributedString(string: "Категори\(course.subcategories.count > 1 ? "и" : "я"): ", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.paragraphStyle: paragraph])
         attr.append(attributedString)
+        //let a = kCTFontAttributeName
         var indexCount = 11
         for simpleSubcategory in course.subcategories {
             print(simpleSubcategory.title)
-            let url = NSURL(string: "\(simpleSubcategory.id) \(simpleSubcategory.title)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
-            attr.addAttribute(.link, value: url ?? "", range: NSRange(location: indexCount, length: simpleSubcategory.title.count + 2))
-            indexCount += simpleSubcategory.title.count + 2
+            let url = NSURL(string: "\(simpleSubcategory.id) \(simpleSubcategory.subcategory_image_url) \(simpleSubcategory.title)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+            attr.addAttribute(.link, value: url ?? "", range: NSRange(location: indexCount, length: simpleSubcategory.title.count + 1))
+            indexCount += simpleSubcategory.title.count + 1
         }
+        let linkAttributes: [String : Any] = [
+            NSAttributedStringKey.foregroundColor.rawValue: UIColor(netHex: Colors.HASHTAG)
+        ]
+        textView.linkTextAttributes = linkAttributes
         textView.attributedText = attr
         let logo_url = URL(string: course.logo_image_url)
         logoImageView.kf.setImage(with: logo_url)

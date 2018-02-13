@@ -32,10 +32,12 @@ struct SimpleCourse: Mappable {
 struct SimpleSubcategory: Mappable {
     let title: String
     let id: Int
+    let subcategory_image_url: String
     
     init(map: Mapper) throws {
         try title = map.from("title")
         try id = map.from("id")
+        try subcategory_image_url = map.from("subcategory_image_url")
     }
     
 }

@@ -26,7 +26,7 @@ class ContactsTableViewCell: CustomCell {
     func fillCell(contact: Contact){
         contactLabel.text = contact.contact
         contactImageView.image = getContactIcon(type: contact.type)
-        contactTypeLabel.text = contact.type.lowercased()
+        //contactTypeLabel.text = contact.type.lowercased()
     }
     func getContactIcon(type: String) -> UIImage {
         return UIImage.init(named: type)!

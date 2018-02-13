@@ -74,5 +74,16 @@ class ServerAPIManager: NetworkAdapter  {
             }
         }, error: showError)
     }
+    func getActions(_ completion: @escaping ([Promotion])-> Void, showError: @escaping (String)-> Void) {
+        self.request(target: NetworkManager.actions, success: { (response) in
+            do {
+                let promotions: [Promotion] = try response.map(to: [Promotion].self)
+                completion(promotions)
+            }
+            catch {
+                showError(Constants.Network.ErrorMessage.CANT_PARSE_DATA)
+            }
+        }, error: showError)
+    }
 }
 

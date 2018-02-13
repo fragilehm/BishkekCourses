@@ -49,12 +49,16 @@ class MainViewController: UIViewController, UITextViewDelegate {
         }).disposed(by: disposeBag)
     }
     func bindTableViewSelected(){
-        tableView.rx.modelSelected(SimpleCourse.self).subscribe(onNext: {[weak self] element in
+        tableView.rx.modelSelected(SimpleCourse.self).subscribe(onNext: {[weak self] course in
             guard let strongSelf = self else {return}
             let storyboard = UIStoryboard.init(name: "Course", bundle: nil)
             let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
-            courseVC.simpleCourse = element
-            strongSelf.navigationController?.show(courseVC, sender: self)
+            strongSelf.openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.background_image_url)
+//            courseVC.course_id = element.id
+//            courseVC.courseName = element.title
+//            courseVC.courseLogo = element.logo_image_url
+//            courseVC.courseBackImage = element.background_image_url
+//            strongSelf.navigationController?.show(courseVC, sender: self)
         }).disposed(by: disposeBag)
     }
     func getData(){
@@ -111,8 +115,16 @@ class MainViewController: UIViewController, UITextViewDelegate {
         let subCategoryVC = UIStoryboard.init(name: "Categories", bundle: nil).instantiateViewController(withIdentifier: "CoursesBySubcategoryViewController") as! CoursesBySubcategoryViewController
         print(URL.absoluteString.removingPercentEncoding!)
         let seperatedString =  URL.absoluteString.removingPercentEncoding?.components(separatedBy: " ")
+        var name = ""
+        for index in 2..<seperatedString!.count{
+            name.append(seperatedString![index])
+            if index < seperatedString!.count {
+                name.append(" ")
+            }
+        }
         subCategoryVC.subcategory_id = Int(seperatedString![0])!
-        subCategoryVC.subcategoryName = seperatedString![1]
+        subCategoryVC.subcategoryName = name
+        subCategoryVC.backImage = seperatedString![1]
         //subCategoryVC.title = seperatedString[1]
         self.navigationController?.show(subCategoryVC, sender: self)
         //UIApplication.shared.open(URL, options: [:])

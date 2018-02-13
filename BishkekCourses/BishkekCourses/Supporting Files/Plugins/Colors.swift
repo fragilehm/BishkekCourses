@@ -17,5 +17,7 @@ struct Colors {
     static let lightBlue  = 0x2998FF
     static let blue = 0x33CCFF
     static let darkBlue = 0xffffff
+    static let HASHTAG = 0x466996
+    static let LINE_COLOR = 0xCBCBCB
 }
 

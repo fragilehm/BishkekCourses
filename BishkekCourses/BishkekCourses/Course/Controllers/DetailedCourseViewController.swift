@@ -17,6 +17,11 @@ class DetailedCourseViewController: UIViewController {
     private var isFavorite = false
     private var course = DetailedCourse()
     private var isBottomPopupCompleted = true
+    var course_id = 0
+    var courseName = ""
+    var courseBackImage = ""
+    var courseLogo = ""
+    private let headerView = HeaderView()
     private let popupLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -30,7 +35,7 @@ class DetailedCourseViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    var simpleCourse: SimpleCourse!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setSwipeLeftAction()
@@ -56,16 +61,20 @@ class DetailedCourseViewController: UIViewController {
 
     }
     func getData(){
-        ServerAPIManager.sharedAPI.getCourseDetails(course_id: simpleCourse.id, setCourse, showError: showErrorAlert)
+        ServerAPIManager.sharedAPI.getCourseDetails(course_id: course_id, setCourse, showError: showErrorAlert)
     }
     func setCourse(course: DetailedCourse){
+        
         self.course = course
         self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
         tableView.reloadData()
     }
+    func setHeaderData(main: String, logo: String, title: String){
+        
+    }
     override func viewWillAppear(_ animated: Bool) {
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
-        self.navigationItem.title = simpleCourse.title
+        self.navigationItem.title = courseName
     }
     func setNavBarItems(){
         let backButton = UIButton.init(type: .system)
@@ -121,7 +130,6 @@ extension DetailedCourseViewController {
         
     }
     func addHeaderView(){
-        let headerView = HeaderView()
         headerView.translatesAutoresizingMaskIntoConstraints = false
         tableView.tableHeaderView = headerView
         headerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
@@ -131,11 +139,11 @@ extension DetailedCourseViewController {
         tableView.layoutIfNeeded()
         headerView.menuBarView.cellDelegate = self
         tableView.tableHeaderView = tableView.tableHeaderView
-        let mainImageUrl = URL(string: self.simpleCourse.main_image_url)
+        let mainImageUrl = URL(string: courseBackImage)
         headerView.mainImageView.kf.setImage(with: mainImageUrl)
-        let logoImageUrl = URL(string: self.simpleCourse.logo_image_url)
+        let logoImageUrl = URL(string: courseLogo)
         headerView.logoImageView.kf.setImage(with: logoImageUrl)
-        headerView.titleLabel.text = self.simpleCourse.title
+        headerView.titleLabel.text = courseName
     }
     func registerCell(nibName: String){
         tableView.register(UINib.init(nibName: nibName, bundle: nil), forCellReuseIdentifier: nibName)
@@ -168,6 +176,7 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
             DescriptionTableViewCell
             cell.fillCell(description: course.description)
             return cell
+            //tableView.separatorStyle = .none
         case "CommentsTableViewCell":
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as!
             CommentsTableViewCell
@@ -205,7 +214,6 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
                 vc.branches = self.course.branches
                 vc.branch_id = indexPath.row
                 vc.branch_title = self.course.title
-                //print(self.navigationController?.isNavigationBarHidden)
                 self.navigationController?.show(vc, sender: self)
             case "ContactsTableViewCell":
                 let contactType: ContactTypes = ContactTypes(rawValue: course.contacts[indexPath.row].type)!
@@ -243,25 +251,40 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
             })
             isBottomPopupCompleted = false
         }
-
     }
     private func openLink(link: String){
-        if let url = URL(string: link) {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url, options: [:])
-            } else {
-                // Fallback on earlier versions
+        let alertController = UIAlertController(title: "Открыть в браузере?", message: "\(link)", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            if let url = URL(string: link) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:])
+                } else {
+                    // Fallback on earlier versions
+                }
             }
         }
+        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+        
     }
     private func mailTo(mail: String){
-        if let url = URL(string: "mailto:\(mail)") {
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
-            } else {
-                // Fallback on earlier versions
+        let alertController = UIAlertController(title: "Написать на почту?", message: "\(mail)", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            if let url = URL(string: "mailto:\(mail)") {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+                } else {
+                    // Fallback on earlier versions
+                }
             }
         }
+        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
+        
     }
     
     private func callToPhone(number: String){

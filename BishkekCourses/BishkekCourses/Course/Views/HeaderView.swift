@@ -65,7 +65,7 @@ class HeaderView: UIView {
     }()
     let lineView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor.groupTableViewBackground
+        view.backgroundColor = UIColor(netHex: Colors.LINE_COLOR)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -75,11 +75,16 @@ class HeaderView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    private let lineView2: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(netHex: Colors.LINE_COLOR)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
         addSubview(menuBarView)
-        menuBarView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         menuBarView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         menuBarView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         menuBarView.heightAnchor.constraint(equalToConstant: 50).isActive = true
@@ -87,7 +92,7 @@ class HeaderView: UIView {
         lineView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         lineView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         lineView.bottomAnchor.constraint(equalTo: menuBarView.topAnchor).isActive = true
-        lineView.heightAnchor.constraint(equalToConstant: 0.7).isActive = true
+        lineView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         addSubview(titleLabel)
         titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: lineView.topAnchor, constant: -12).isActive = true
@@ -117,7 +122,13 @@ class HeaderView: UIView {
         lineView1.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         lineView1.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         lineView1.topAnchor.constraint(equalTo: mainImageView.bottomAnchor).isActive = true
-        lineView1.heightAnchor.constraint(equalToConstant: 0.7).isActive = true
+        lineView1.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        addSubview(lineView2)
+        lineView2.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        lineView2.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        lineView2.topAnchor.constraint(equalTo: menuBarView.bottomAnchor).isActive = true
+        lineView2.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        lineView2.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         self.bringSubview(toFront: logoImageView)
     }
     

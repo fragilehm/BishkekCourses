@@ -205,6 +205,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="L7u-aU-hlA"/>
                     </view>
+                    <connections>
+                        <outlet property="actionDescriptionLabel" destination="u6k-Kg-L7U" id="gig-4u-2TS"/>
+                        <outlet property="actionTitleLabel" destination="eX8-nI-ZXc" id="F4u-A4-wjt"/>
+                        <outlet property="backImageView" destination="jqO-ov-gPr" id="qU3-gQ-DPM"/>
+                        <outlet property="courseLogoImageView" destination="RST-OT-BZn" id="iQj-3D-MgP"/>
+                        <outlet property="courseNameLabel" destination="bdg-PO-cWl" id="cqr-aX-NEE"/>
+                        <outlet property="endDateLabel" destination="37y-Xi-tnb" id="Lc4-eM-iKJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Skf-XM-jGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

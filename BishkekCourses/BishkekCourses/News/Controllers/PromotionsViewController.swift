@@ -11,12 +11,21 @@ import PullToRefreshKit
 class PromotionsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    private var actions = [Promotion]()
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        getData()
         // Do any additional setup after loading the view.
     }
-    
+    func getData(){
+        ServerAPIManager.sharedAPI.getActions(setActions, showError: showErrorAlert)
+    }
+    func setActions(actions: [Promotion]){
+        self.actions = actions
+        tableView.reloadData()
+        self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
+    }
     override func viewWillAppear(_ animated: Bool) {
         //self.navigationController?.title = "Акции"
         self.navigationItem.title = "Акции"
@@ -35,30 +44,42 @@ class PromotionsViewController: UIViewController {
         header.imageRenderingWithTintColor = true
         header.durationWhenHide = 0.4
         tableView.configRefreshHeader(with: getRefreshHeader(), action: { [weak self] in
-            self?.tableView.reloadData()
-            self?.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
+            self?.getData()
         })
     }
-
 }
-extension PromotionsViewController: UITableViewDelegate, UITableViewDataSource {
+extension PromotionsViewController: UITableViewDelegate, UITableViewDataSource, ActionsTableViewCellDelegate {
+    
+   
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return actions.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
-        cell.backImageView.image = UIImage(named: "coding")
+        cell.fillCell(action: actions[indexPath.row], index: indexPath.row)
+        cell.delegate = self
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let courseVC = storyboard?.instantiateViewController(withIdentifier: "PromotionsDetailViewController") as! PromotionsDetailViewController
-        self.navigationController?.show(courseVC, sender: self)
+        let promotionVC = storyboard?.instantiateViewController(withIdentifier: "PromotionsDetailViewController") as! PromotionsDetailViewController
+        promotionVC.action = self.actions[indexPath.row]
+        self.navigationController?.show(promotionVC, sender: self)
     }
-    
+    func ActionsTableViewCellDidTapCourse(_ row: Int) {
+        let course = actions[row].course
+        openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.background_image_url)
+//        let courseVC = UIStoryboard.init(name: "Course", bundle: nil).instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
+//        courseVC.courseName = course.title
+//        courseVC.courseBackImage = course.background_image_url
+//        courseVC.courseLogo = course.logo_image_url
+//        courseVC.course_id = course.id
+//        self.navigationController?.show(courseVC, sender: self)
+        //print(actions[courseId].course.title)
+    }
 }
