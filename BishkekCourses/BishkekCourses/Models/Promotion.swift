@@ -37,12 +37,14 @@ struct CourseHeader: Mappable {
     var id: Int
     var title: String
     var logo_image_url: String
-    var background_image_url: String
+    var main_image_url: String
+    var description: String
     init(map: Mapper) throws {
         try id = map.from("id")
         try title = map.from("title")
         try logo_image_url = map.from("logo_image_url")
-        try background_image_url = map.from("background_image_url")
+        try main_image_url = map.from("main_image_url")
+        try description = map.from("description")
     }
     
 }

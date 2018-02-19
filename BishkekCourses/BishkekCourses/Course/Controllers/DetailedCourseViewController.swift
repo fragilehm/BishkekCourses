@@ -13,6 +13,8 @@ import PullToRefreshKit
 class DetailedCourseViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    var panGR: UIPanGestureRecognizer!
+
     private var cellId = "DescriptionTableViewCell"
     private var isFavorite = false
     private var course = DetailedCourse()
@@ -21,6 +23,7 @@ class DetailedCourseViewController: UIViewController {
     var courseName = ""
     var courseBackImage = ""
     var courseLogo = ""
+    var courseDescription = ""
     private let headerView = HeaderView()
     private let popupLabel: UILabel = {
         let label = UILabel()
@@ -43,6 +46,26 @@ class DetailedCourseViewController: UIViewController {
         setNavBarItems()
         getData()
         addPopupView()
+        //setupPanGesture()
+        self.isHeroEnabled = true
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
+        self.navigationItem.title = courseName
+    }
+    func setupPanGesture(){
+        panGR = UIPanGestureRecognizer(target: self,
+                                       action: #selector(handlePan(gestureRecognizer:)))
+        view.addGestureRecognizer(panGR)
+    }
+    @objc func handlePan(gestureRecognizer:UIPanGestureRecognizer) {
+        switch panGR.state {
+        case .began:
+            // begin the transition as normal
+            dismiss(animated: true, completion: nil)
+        default:
+            break
+        }
     }
     func addPopupView() {
         bottomPopupView.addSubview(popupLabel)
@@ -71,10 +94,6 @@ class DetailedCourseViewController: UIViewController {
     }
     func setHeaderData(main: String, logo: String, title: String){
         
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
-        self.navigationItem.title = courseName
     }
     func setNavBarItems(){
         let backButton = UIButton.init(type: .system)
@@ -124,9 +143,9 @@ extension DetailedCourseViewController {
         tableView.estimatedRowHeight = 44
         tableView.reloadData()
         addHeaderView()
-        tableView.configRefreshHeader(with: getRefreshHeader(), action: { [weak self] in
-            self?.getData()
-        })
+        //tableView.configRefreshHeader(with: getRefreshHeader(), action: { [weak self] in
+//            self?.getData()
+//        })
         
     }
     func addHeaderView(){
@@ -141,6 +160,22 @@ extension DetailedCourseViewController {
         tableView.tableHeaderView = tableView.tableHeaderView
         let mainImageUrl = URL(string: courseBackImage)
         headerView.mainImageView.kf.setImage(with: mainImageUrl)
+        headerView.mainImageView.heroID = "\(courseName)_image"
+        headerView.mainImageView.heroModifiers = [.zPosition(2)]
+        headerView.logoImageView.heroID = "\(courseName)_logo"
+        headerView.logoImageView.heroModifiers = [.beginWith([.zPosition(5), .useGlobalCoordinateSpace])]
+        headerView.titleLabel.heroID = "\(courseName)_name"
+        headerView.titleLabel.heroModifiers = [.zPosition(10)]
+//        nameLabel.text = name
+//        nameLabel.heroID = "\(name)_name"
+//        nameLabel.heroModifiers = [.zPosition(4)]
+//        imageView.image = city.image
+//        imageView.heroID = "\(name)_image"
+//        imageView.heroModifiers = [.zPosition(2)]
+//        descriptionLabel.heroID = "\(name)_description"
+//        descriptionLabel.heroModifiers = [.zPosition(4)]
+//        descriptionLabel.text = city.description
+        
         let logoImageUrl = URL(string: courseLogo)
         headerView.logoImageView.kf.setImage(with: logoImageUrl)
         headerView.titleLabel.text = courseName
@@ -174,7 +209,7 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
         case "DescriptionTableViewCell":
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as!
             DescriptionTableViewCell
-            cell.fillCell(description: course.description)
+            cell.fillCell(description: courseDescription)
             return cell
             //tableView.separatorStyle = .none
         case "CommentsTableViewCell":

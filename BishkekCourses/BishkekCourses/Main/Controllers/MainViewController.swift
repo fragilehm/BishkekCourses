@@ -12,6 +12,7 @@ import Moya_ModelMapper
 import RxCocoa
 import RxSwift
 import Moya
+import Hero
 class MainViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -26,12 +27,21 @@ class MainViewController: UIViewController, UITextViewDelegate {
     private var viewModel =  SimpleCourseViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        addSegmetView()
         configureTabBar()
         configureTableView()
         bindTableView()
         getData()
         bindTableViewSelected()
-        addSegmetView()
+        self.isHeroEnabled = true
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.heroNavigationAnimationType = .fade
+        self.navigationItem.title = "Главная"
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        //self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        print("MainViewController resources: \(RxSwift.Resources.total)")
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.shadowImage = nil
@@ -51,14 +61,15 @@ class MainViewController: UIViewController, UITextViewDelegate {
     func bindTableViewSelected(){
         tableView.rx.modelSelected(SimpleCourse.self).subscribe(onNext: {[weak self] course in
             guard let strongSelf = self else {return}
-            let storyboard = UIStoryboard.init(name: "Course", bundle: nil)
-            let courseVC = storyboard.instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
-            strongSelf.openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.background_image_url)
-//            courseVC.course_id = element.id
-//            courseVC.courseName = element.title
-//            courseVC.courseLogo = element.logo_image_url
-//            courseVC.courseBackImage = element.background_image_url
-//            strongSelf.navigationController?.show(courseVC, sender: self)
+            //let storyboard = UIStoryboard.init(name: "Course", bundle: nil)
+            let courseVC = UIStoryboard.init(name: "Course", bundle: nil).instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
+            //strongSelf.openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.main_image_url)
+            courseVC.course_id = course.id
+            courseVC.courseDescription = course.description
+            courseVC.courseName = course.title
+            courseVC.courseLogo = course.logo_image_url
+            courseVC.courseBackImage = course.main_image_url
+            strongSelf.navigationController?.show(courseVC, sender: self)
         }).disposed(by: disposeBag)
     }
     func getData(){
@@ -99,13 +110,7 @@ class MainViewController: UIViewController, UITextViewDelegate {
             self.segmentView.bottomView.frame.origin.x -= Constants.SCREEN_WIDTH / 2
         }
     }
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = "Главная"
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        //self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        print("MainViewController resources: \(RxSwift.Resources.total)")
-
-    }
+    
     deinit {
         print("deinit MainViewController resources: \(RxSwift.Resources.total)")
     }

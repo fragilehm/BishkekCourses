@@ -12,6 +12,7 @@ import Moya
 import RxCocoa
 import RxSwift
 import Moya_ModelMapper
+import Hero
 class CategoriesViewViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -20,6 +21,8 @@ class CategoriesViewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        //self.hero =
+//        self.navigationController?.heroNavigationAnimationType  = .selectBy(presenting:.zoom, dismissing:.zoomOut)
         getData()
         bindCollectionView()
         bindCollectionViewSelected()

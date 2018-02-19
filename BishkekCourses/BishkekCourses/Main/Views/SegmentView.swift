@@ -42,6 +42,8 @@ class SegmentView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .white
+        self.heroID = "mainSegment"
+        self.heroModifiers = [.beginWith([.zPosition(20), .useGlobalCoordinateSpace])]
         addSubview(recentButton)
         addSubview(popularButton)
         addSubview(bottomView)

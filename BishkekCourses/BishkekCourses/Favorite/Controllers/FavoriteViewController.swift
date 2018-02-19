@@ -14,6 +14,7 @@ class FavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        
         // Do any additional setup after loading the view.
     }
 
@@ -57,6 +58,12 @@ extension FavoriteViewController: PlaceholderDelegate {
     
     func view(_ view: Any, actionButtonTappedFor placeholder: Placeholder) {
         //(view as? CollectionView)?.showDefault()
+        let alert = UIAlertController(title: "hello", message: "world", preferredStyle: .actionSheet)
+        let action = UIAlertAction(title: "category", style: .default, handler: nil)
+        let cancel = UIAlertAction(title: "cancel", style: .cancel, handler: nil)
+        alert.addAction(action)
+        alert.addAction(cancel)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.5.1)
   - Cosmos (12.0.1)
+  - Hero (1.0.1)
   - HGPlaceholders (0.2.6)
   - ImageSlideshow/Core (1.4.1)
   - ImageSlideshow/Kingfisher (1.4.1):
@@ -38,6 +39,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - Cosmos
+  - Hero (from `https://github.com/lkzhao/Hero.git`, commit `a5bec96`)
   - HGPlaceholders
   - ImageSlideshow/Kingfisher
   - IQKeyboardManagerSwift
@@ -54,9 +56,20 @@ DEPENDENCIES:
   - SDWebImage
   - SwiftyJSON
 
+EXTERNAL SOURCES:
+  Hero:
+    :commit: a5bec96
+    :git: https://github.com/lkzhao/Hero.git
+
+CHECKOUT OPTIONS:
+  Hero:
+    :commit: a5bec96
+    :git: https://github.com/lkzhao/Hero.git
+
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   Cosmos: 4a9f57998a08788a1062c7b8eefbc62d2b590f39
+  Hero: a1a9d96f3174190486984739d7ed5101d39416f1
   HGPlaceholders: b05be87025781e6fe9f7739d3529f2209b92ed80
   ImageSlideshow: 1bb0e610e28a71e8936d57265d882f61714a470b
   IQKeyboardManagerSwift: a0592bb636b10a9a1cf75d2b2c61144226226c84
@@ -75,6 +88,6 @@ SPEC CHECKSUMS:
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: e0ed6e75d0c2ac1785d7cbca86e346bace0ca7ea
+PODFILE CHECKSUM: 7e680ff9b6f48eba17c56792d9d84d54d8a4addb
 
 COCOAPODS: 1.3.1

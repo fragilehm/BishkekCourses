@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="430" height="360.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="English zone, interesting courses!!!!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iPc-bA-bN2">
-                                <rect key="frame" x="58" y="22.5" width="362" height="17"/>
+                                <rect key="frame" x="60" y="24.5" width="358" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -32,7 +32,7 @@
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="wLD-TS-wL3">
-                                <rect key="frame" x="10" y="10.5" width="40" height="40"/>
+                                <rect key="frame" x="12" y="12.5" width="40" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="40" id="pOH-qm-1L1"/>
@@ -40,11 +40,17 @@
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="q4e-ra-ZdZ">
-                                <rect key="frame" x="0.0" y="61" width="430" height="138"/>
+                                <rect key="frame" x="12" y="63" width="406" height="134"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Xd-L9-ob5">
-                                <rect key="frame" x="10" y="300" width="410" height="50.5"/>
+                                <rect key="frame" x="12" y="298" width="406" height="50.5"/>
                                 <string key="text">This is the first english course in bihskek which will be teached by native english speaker and also not expensive for students, this course is planning to be the most effective and helpful for students</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
@@ -54,7 +60,7 @@
                                 </variation>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1h-ls-DxL">
-                                <rect key="frame" x="0.0" y="60.5" width="430" height="0.5"/>
+                                <rect key="frame" x="0.0" y="62.5" width="430" height="0.5"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" id="hYK-uA-HHV"/>
@@ -68,7 +74,7 @@
                                 </constraints>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsVerticalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wvY-GR-lbj">
-                                <rect key="frame" x="10" y="209" width="410" height="83"/>
+                                <rect key="frame" x="10" y="207" width="410" height="83"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">This is the first english course in bihskek which will be teached by native english speaker and also not expensive for students, this course is planning to be the most effective and helpful for students</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -77,24 +83,24 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="q4e-ra-ZdZ" firstAttribute="leading" secondItem="Knl-SW-DWO" secondAttribute="leading" id="4fV-zN-iii"/>
+                            <constraint firstItem="q4e-ra-ZdZ" firstAttribute="leading" secondItem="Knl-SW-DWO" secondAttribute="leading" constant="12" id="4fV-zN-iii"/>
                             <constraint firstItem="g1h-ls-DxL" firstAttribute="leading" secondItem="Knl-SW-DWO" secondAttribute="leading" id="AIM-UR-qjP"/>
                             <constraint firstAttribute="trailing" secondItem="g1h-ls-DxL" secondAttribute="trailing" id="Drt-m8-tci"/>
                             <constraint firstItem="g1h-ls-DxL" firstAttribute="top" secondItem="wLD-TS-wL3" secondAttribute="bottom" constant="10" id="E2T-Zl-BQ7"/>
                             <constraint firstItem="cLw-PG-Vis" firstAttribute="leading" secondItem="Knl-SW-DWO" secondAttribute="leading" id="Ffi-gL-TNH"/>
-                            <constraint firstItem="wLD-TS-wL3" firstAttribute="leading" secondItem="Knl-SW-DWO" secondAttribute="leading" constant="10" id="G5T-cy-Jbv"/>
+                            <constraint firstItem="wLD-TS-wL3" firstAttribute="leading" secondItem="Knl-SW-DWO" secondAttribute="leading" constant="12" id="G5T-cy-Jbv"/>
                             <constraint firstItem="q4e-ra-ZdZ" firstAttribute="top" secondItem="g1h-ls-DxL" secondAttribute="bottom" id="HF4-ce-UHc"/>
                             <constraint firstItem="iPc-bA-bN2" firstAttribute="leading" secondItem="wLD-TS-wL3" secondAttribute="trailing" constant="8" id="JfN-hq-V1Z"/>
-                            <constraint firstItem="8Xd-L9-ob5" firstAttribute="leading" secondItem="Knl-SW-DWO" secondAttribute="leading" constant="10" id="UgD-aC-LQm"/>
+                            <constraint firstItem="8Xd-L9-ob5" firstAttribute="leading" secondItem="Knl-SW-DWO" secondAttribute="leading" constant="12" id="UgD-aC-LQm"/>
                             <constraint firstItem="8Xd-L9-ob5" firstAttribute="top" secondItem="wvY-GR-lbj" secondAttribute="bottom" constant="8" id="WYw-Dp-lpS"/>
-                            <constraint firstAttribute="trailing" secondItem="8Xd-L9-ob5" secondAttribute="trailing" constant="10" id="bt2-fj-agX"/>
+                            <constraint firstAttribute="trailing" secondItem="8Xd-L9-ob5" secondAttribute="trailing" constant="12" id="bt2-fj-agX"/>
                             <constraint firstItem="cLw-PG-Vis" firstAttribute="top" secondItem="Knl-SW-DWO" secondAttribute="top" id="fGU-lu-BSl"/>
-                            <constraint firstAttribute="trailing" secondItem="q4e-ra-ZdZ" secondAttribute="trailing" id="jEj-sY-FwX"/>
+                            <constraint firstAttribute="trailing" secondItem="q4e-ra-ZdZ" secondAttribute="trailing" constant="12" id="jEj-sY-FwX"/>
                             <constraint firstAttribute="trailing" secondItem="cLw-PG-Vis" secondAttribute="trailing" id="jhj-72-cCm"/>
-                            <constraint firstItem="wLD-TS-wL3" firstAttribute="top" secondItem="cLw-PG-Vis" secondAttribute="bottom" constant="10" id="kxV-sp-yaS"/>
-                            <constraint firstAttribute="bottom" secondItem="8Xd-L9-ob5" secondAttribute="bottom" constant="10" id="ocn-xJ-oXm"/>
+                            <constraint firstItem="wLD-TS-wL3" firstAttribute="top" secondItem="cLw-PG-Vis" secondAttribute="bottom" constant="12" id="kxV-sp-yaS"/>
+                            <constraint firstAttribute="bottom" secondItem="8Xd-L9-ob5" secondAttribute="bottom" constant="12" id="ocn-xJ-oXm"/>
                             <constraint firstItem="wvY-GR-lbj" firstAttribute="top" secondItem="q4e-ra-ZdZ" secondAttribute="bottom" constant="10" id="pxf-S0-yxn"/>
-                            <constraint firstAttribute="trailing" secondItem="iPc-bA-bN2" secondAttribute="trailing" constant="10" id="qNF-6D-yLU"/>
+                            <constraint firstAttribute="trailing" secondItem="iPc-bA-bN2" secondAttribute="trailing" constant="12" id="qNF-6D-yLU"/>
                             <constraint firstItem="iPc-bA-bN2" firstAttribute="centerY" secondItem="wLD-TS-wL3" secondAttribute="centerY" id="sJp-WT-Q41"/>
                             <constraint firstAttribute="trailing" secondItem="wvY-GR-lbj" secondAttribute="trailing" constant="10" id="vKz-82-Zeb"/>
                             <constraint firstItem="wvY-GR-lbj" firstAttribute="leading" secondItem="Knl-SW-DWO" secondAttribute="leading" constant="10" id="ykA-3f-B6D"/>

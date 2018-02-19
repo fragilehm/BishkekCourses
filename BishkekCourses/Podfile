@@ -21,7 +21,7 @@ target 'BishkekCourses' do
   pod 'Moya-ModelMapper'
   pod 'Moya'
   pod 'ParallaxHeader'
-  # Pods for BishkekCourses
+  pod 'Hero', :git => 'https://github.com/lkzhao/Hero.git', :commit => "a5bec96"  # Pods for BishkekCourses
 
   target 'BishkekCoursesTests' do
     inherit! :search_paths

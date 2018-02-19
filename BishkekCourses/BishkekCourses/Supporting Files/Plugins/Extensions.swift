@@ -25,13 +25,16 @@ extension UIColor {
 }
 
 extension UIViewController {
-    func openCourse(id: Int, name: String, logoUrl: String, backUrl: String){
+    func openCourse(id: Int, name: String, logoUrl: String, backUrl: String, description: String){
         let courseVC = UIStoryboard.init(name: "Course", bundle: nil).instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
         courseVC.courseName = name
         courseVC.courseBackImage = backUrl
         courseVC.courseLogo = logoUrl
         courseVC.course_id = id
+        courseVC.courseDescription = description
+        //courseVC.modalPresentationStyle = .
         self.navigationController?.show(courseVC, sender: self)
+       // self.navigationController?.present(courseVC, animated: true, completion: nil)
     }
     func showErrorAlert(message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
@@ -197,4 +200,5 @@ extension UIColor {
         return image
     }
 }
+
 

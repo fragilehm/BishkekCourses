@@ -9,15 +9,23 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Hero
 class SubCategoriesViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     var category_id = 0
-    var insets: CGFloat = 12
+    var insets: CGFloat = 0
     let disposeBag = DisposeBag()
-    var subcategories: Variable<[Subcategory]> = Variable([])
+    var subcategories = [Subcategory]()
+    //var subcategories: Variable<[Subcategory]> = Variable([])
+    private var backImage: String?
+    private var originFrame: CGRect?
+    private var labelFrame: CGRect?
+    private var labelTitle: String?
+    private var images = [UIImage]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        //Hero.shared.containerColor = .black
         if UIDevice.current.userInterfaceIdiom == .pad {
             insets = 24
         }
@@ -25,57 +33,129 @@ class SubCategoriesViewController: UIViewController {
         setNavigationBarItems()
         configureCollectionView()
         getData()
-        bindCollectionView()
-        bindCollectionViewSelected()
+        //addSwipeLeftAction()
+        //Hero.shared.defaultAnimation = .selectBy(presenting: .auto, dismissing: .pull(direction: .right))
+        self.isHeroEnabled = true
+        //bindCollectionView()
+        //bindCollectionViewSelected()
     }
-   
+    override func viewWillAppear(_ animated: Bool) {
+        ///Hero.shared.finish()
+        self.navigationItem.title = "Подкатегории"
+        print("previouswillappear")
+        print("SubcategoriesViewController resources: \(RxSwift.Resources.total)")
+        
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.heroNavigationAnimationType = .auto
+
+    }
+    func addSwipeLeftAction(){
+        let swipeLeftGR = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipeLeft(swipeRecognizer:)))
+        swipeLeftGR.edges = .left
+        self.view.addGestureRecognizer(swipeLeftGR)
+    }
+    @objc func swipeLeft(swipeRecognizer: UIScreenEdgePanGestureRecognizer){
+        let translation = swipeRecognizer.translation(in: swipeRecognizer.view!.superview!)
+        var progress = translation.x / (swipeRecognizer.view?.bounds.width)!
+        progress = CGFloat(fminf(fmaxf(Float(progress), 0.0), 1.0))
+        switch swipeRecognizer.state {
+        case .began:
+            print(translation.x)
+            //if translation.x >= 0{
+                self.hero_dismissViewController()
+            //}
+        case .changed:
+            let viewPosition = CGPoint(x: (swipeRecognizer.view?.center.x)! + translation.x,
+                                       y: (swipeRecognizer.view?.center.y)!)
+            Hero.shared.update(progress)
+            Hero.shared.apply(modifiers: [.position(viewPosition)], to: view)
+
+            //}
+        default:
+            if progress > 0.5 {
+                Hero.shared.finish()
+            } else {
+                Hero.shared.cancel()
+            }
+        }
+        
+    }
     func getData(){
         ServerAPIManager.sharedAPI.getSubcategories(category_id: self.category_id, setSubcategories, showError: showErrorAlert)
     }
-    func bindCollectionView(){
-        subcategories.asObservable().bind(to: collectionView.rx.items(cellIdentifier: "SubCategoriesCollectionViewCell", cellType: SubCategoriesCollectionViewCell.self)) { row, element, cell in
-            cell.fillCell(subcategory: element)
-        }.disposed(by: disposeBag)
-    }
-    func bindCollectionViewSelected() {
-        collectionView.rx.modelSelected(Subcategory.self).subscribe(onNext: {[weak self] element in
-            guard let strongSelf = self else {return}
-            let courseVC = strongSelf.storyboard?.instantiateViewController(withIdentifier: "CoursesBySubcategoryViewController") as! CoursesBySubcategoryViewController
-            courseVC.backImage = element.subcategory_image_url
-            courseVC.subcategoryName = element.title
-            courseVC.subcategory_id = element.id
-            //strongSelf.navigationController?.present(courseVC, animated: true, completion: nil)
-            //strongSelf.navigationController?.pushViewController(courseVC, animated: true)
-            strongSelf.navigationController?.show(courseVC, sender: self)
-            
-        }).disposed(by: disposeBag)
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = "Подкатегории"
-        print("SubcategoriesViewController resources: \(RxSwift.Resources.total)")
-
-    }
+//    func bindCollectionView(){
+//        subcategories.asObservable().bind(to: collectionView.rx.items(cellIdentifier: "SubCategoriesCollectionViewCell", cellType: SubCategoriesCollectionViewCell.self)) { row, element, cell in
+//            cell.fillCell(subcategory: element)
+//        }.disposed(by: disposeBag)
+//    }
+//    func bindCollectionViewSelected() {
+//        collectionView.rx.modelSelected(Subcategory.self).subscribe(onNext: {[weak self] element in
+//            guard let strongSelf = self else {return}
+//            let courseVC = strongSelf.storyboard?.instantiateViewController(withIdentifier: "CoursesBySubcategoryViewController") as! CoursesBySubcategoryViewController
+//            courseVC.modalPresentationStyle = .overCurrentContext
+//            courseVC.backImage = element.subcategory_image_url
+//            courseVC.subcategoryName = element.title
+//            courseVC.subcategory_id = element.id
+//            //strongSelf.present(courseVC, animated: true, completion: nil)
+//            //strongSelf.navigationController?.present(courseVC, animated: true, completion: nil)
+//            //strongSelf.navigationController?.pushViewController(courseVC, animated: true)
+//            strongSelf.navigationController?.show(courseVC, sender: self)
+//
+//        }).disposed(by: disposeBag)
+//    }
+    
     func setSubcategories(subcategories: [Subcategory]){
-        self.subcategories.value = subcategories
+        self.subcategories = subcategories
+        collectionView.reloadData()
     }
     deinit {
         print("deinit SubcategoriesViewController resources: \(RxSwift.Resources.total)")
     }
     
 }
+
+extension SubCategoriesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return subcategories.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubCategoriesCollectionViewCell", for: indexPath) as! SubCategoriesCollectionViewCell
+        cell.fillCell(subcategory: subcategories[indexPath.item])
+        //let url = URL(string: subcategories[indexPath.item].subcategory_image_url)
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let element = subcategories[indexPath.item]
+        let courseVC = self.storyboard?.instantiateViewController(withIdentifier: "CoursesBySubcategoryViewController") as! CoursesBySubcategoryViewController
+        courseVC.backImage = element.subcategory_image_url
+        courseVC.subcategoryName = element.title
+        courseVC.subcategory_id = element.id
+        self.navigationController?.show(courseVC, sender: self)
+    }
+}
+
 extension SubCategoriesViewController {
     func configureCollectionView(){
+        collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(UINib(nibName: "SubCategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SubCategoriesCollectionViewCell")
         collectionView?.contentInset = UIEdgeInsets(top: insets, left: insets, bottom: insets, right: insets)
-        collectionView.rx.setDelegate(self as UIScrollViewDelegate).disposed(by: disposeBag)
+        //collectionView.rx.setDelegate(self as UIScrollViewDelegate).disposed(by: disposeBag)
     }
 }
 extension SubCategoriesViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemSize = (collectionView.frame.width - (collectionView.contentInset.left + collectionView.contentInset.right + insets)) / 2
+        let itemSize = (collectionView.frame.width - 2) / 2
         return CGSize(width: itemSize, height: itemSize * 3 / 4)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 2
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return insets
     }
 }

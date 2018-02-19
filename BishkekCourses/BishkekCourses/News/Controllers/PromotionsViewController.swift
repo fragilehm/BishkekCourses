@@ -73,7 +73,7 @@ extension PromotionsViewController: UITableViewDelegate, UITableViewDataSource, 
     }
     func ActionsTableViewCellDidTapCourse(_ row: Int) {
         let course = actions[row].course
-        openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.background_image_url)
+        openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.main_image_url, description: course.description)
 //        let courseVC = UIStoryboard.init(name: "Course", bundle: nil).instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
 //        courseVC.courseName = course.title
 //        courseVC.courseBackImage = course.background_image_url

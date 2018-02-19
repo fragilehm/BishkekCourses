@@ -17,6 +17,7 @@ class MapViewController: UIViewController {
     var branch_title = ""
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBarItems()
         setupMapKit()
     }
     override func viewDidAppear(_ animated: Bool) {

@@ -46,13 +46,21 @@ class PromotionsDetailViewController: UIViewController {
         courseLogoImageView.kf.setImage(with: url)
         actionTitleLabel.text = action.title
         actionDescriptionLabel.text = action.description
-        endDateLabel.text = action.end_date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-mm-dd" //Your date format
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+6:00") //Current time zone
+        let date = dateFormatter.date(from: action.end_date)
+        dateFormatter.dateFormat = "d MMMM"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        let convertedDate = dateFormatter.string(from: date!)
+        endDateLabel.text = convertedDate
+
         let backUrl = URL(string: action.action_image)
         backImageView.kf.setImage(with: backUrl)        // Do any additional setup after loading the view.
     }
     @objc func openCourse(_ sender: UITapGestureRecognizer) {
         let course = action.course
-        openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.background_image_url)
+        openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.main_image_url, description: course.description)
 //        let courseVC = UIStoryboard.init(name: "Course", bundle: nil).instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
 //        let course = action.course
 //        courseVC.courseName = course.title

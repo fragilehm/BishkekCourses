@@ -10,6 +10,7 @@ import UIKit
 import Kingfisher
 import SDWebImage
 import RxSwift
+import Hero
 class MainTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var mainImageView: UIImageView! {
         didSet {
@@ -58,17 +59,26 @@ class MainTableViewCell: UITableViewCell, UITextViewDelegate {
         // Configure the view for the selected state
     }
     func fillCell(course: SimpleCourse){
+        
+        //nameLabel.text = name
+//        nameLabel.heroID = "\(name)_name"
+//        nameLabel.heroModifiers = [.zPosition(4)]
+        //mainImageView.image = city.image
+        mainImageView.heroID = "\(course.title)_image"
+        mainImageView.heroModifiers = [.zPosition(2)]
+//        descriptionLabel.heroID = "\(name)_description"
+//        descriptionLabel.heroModifiers = [.zPosition(4)]
+//        descriptionLabel.text = city.shortDescription
+        
         titleLabel.text = course.title
         decriptionLabel.text = course.description
         let url = URL(string: course.main_image_url)
-        let halfScreenHeight = Constants.SCREEN_HEIGHT / 2
+        let halfScreenHeight = Constants.SCREEN_HEIGHT * 2 / 5
         mainImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil) { (image, error, cache, url) in
         }
         mainImageView.heightAnchor.constraint(equalToConstant: halfScreenHeight).isActive = true
         var subcategories = ""
-        
         for simpleSubcategory in course.subcategories {
-            
             subcategories.append("#")
             subcategories.append(simpleSubcategory.title)
         }
@@ -93,7 +103,15 @@ class MainTableViewCell: UITableViewCell, UITextViewDelegate {
         textView.attributedText = attr
         let logo_url = URL(string: course.logo_image_url)
         logoImageView.kf.setImage(with: logo_url)
+//        decriptionLabel.heroID = "course_decription"
+//        decriptionLabel.heroModifiers = [.beginWith([.zPosition(15), .useGlobalCoordinateSpace])]
         logoImageView.kf.setImage(with: logo_url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
+        mainImageView.heroID = "\(course.title)_image"
+        mainImageView.heroModifiers = [.zPosition(2)]
+        logoImageView.heroID = "\(course.title)_logo"
+        logoImageView.heroModifiers = [.beginWith([.zPosition(5), .useGlobalCoordinateSpace])]
+        titleLabel.heroID = "\(course.title)_name"
+        titleLabel.heroModifiers = [.zPosition(10)]
     }
     
 }

@@ -13,18 +13,24 @@ class SubCategoriesCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var subCategoriesImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var blurView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        cardView.layer.cornerRadius = 5
-        cardView.layer.masksToBounds = true
+//        cardView.layer.cornerRadius = 5
+//        cardView.layer.masksToBounds = true
     }
     func fillCell(subcategory: Subcategory){
         titleLabel.text = subcategory.title
+        titleLabel.heroID = "\(subcategory.title)_name"
+        titleLabel.heroModifiers = [.beginWith([.zPosition(10), .useGlobalCoordinateSpace])]
+        blurView.heroID = "\(subcategory.title)_view"
+        blurView.heroModifiers = [.zPosition(5)]
         let url = URL(string: subcategory.subcategory_image_url)
-         subCategoriesImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
-        //subCategoriesImageView.kf.setImage(with: url)
+        subCategoriesImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
+        subCategoriesImageView.heroID = "\(subcategory.title)_image"
+        subCategoriesImageView.heroModifiers = [.zPosition(2)]
     }
 }
 

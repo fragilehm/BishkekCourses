@@ -51,7 +51,11 @@ struct Constants {
     }
     static let SCREEN_WIDTH = UIScreen.main.bounds.width
     static let SCREEN_HEIGHT = UIScreen.main.bounds.height
+    struct ElementId {
+        static let SUBCATEGORY_IMAGE_ID = 1
+        static let SUBCATEGORY_NAME_ID = 2
 
+    }
 
 }
 

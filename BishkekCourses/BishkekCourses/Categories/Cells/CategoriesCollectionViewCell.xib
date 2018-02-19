@@ -29,10 +29,13 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Computer Architecture &amp; Organization" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGC-xo-jj0">
+                    <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eeb-Ia-A2f">
                         <rect key="frame" x="0.0" y="0.0" width="246" height="220"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Computer Architecture &amp; Organization" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BGC-xo-jj0">
+                        <rect key="frame" x="8" y="87.5" width="230" height="45.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                         <variation key="heightClass=regular-widthClass=regular">
@@ -44,12 +47,15 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="6nz-ff-tYs" secondAttribute="trailing" id="0t5-de-JWl"/>
                 <constraint firstItem="6nz-ff-tYs" firstAttribute="top" secondItem="vUN-0f-mN2" secondAttribute="top" id="24x-OA-5DB"/>
-                <constraint firstItem="BGC-xo-jj0" firstAttribute="leading" secondItem="vUN-0f-mN2" secondAttribute="leading" id="8Ag-qE-g8N"/>
+                <constraint firstAttribute="trailing" secondItem="Eeb-Ia-A2f" secondAttribute="trailing" id="7Lj-g5-8h5"/>
+                <constraint firstItem="BGC-xo-jj0" firstAttribute="leading" secondItem="vUN-0f-mN2" secondAttribute="leading" constant="8" id="8Ag-qE-g8N"/>
                 <constraint firstItem="6nz-ff-tYs" firstAttribute="leading" secondItem="vUN-0f-mN2" secondAttribute="leading" id="BHV-yA-oOq"/>
-                <constraint firstItem="BGC-xo-jj0" firstAttribute="top" secondItem="vUN-0f-mN2" secondAttribute="top" id="HAn-w4-dzJ"/>
+                <constraint firstItem="Eeb-Ia-A2f" firstAttribute="leading" secondItem="vUN-0f-mN2" secondAttribute="leading" id="MH5-VT-KfJ"/>
+                <constraint firstItem="BGC-xo-jj0" firstAttribute="centerY" secondItem="vUN-0f-mN2" secondAttribute="centerY" id="QiA-Ao-uCh"/>
                 <constraint firstAttribute="bottom" secondItem="6nz-ff-tYs" secondAttribute="bottom" id="idn-mb-JoY"/>
-                <constraint firstAttribute="bottom" secondItem="BGC-xo-jj0" secondAttribute="bottom" id="u4z-Ys-6nK"/>
-                <constraint firstAttribute="trailing" secondItem="BGC-xo-jj0" secondAttribute="trailing" id="zyB-sL-scY"/>
+                <constraint firstItem="Eeb-Ia-A2f" firstAttribute="top" secondItem="vUN-0f-mN2" secondAttribute="top" id="opB-t4-euN"/>
+                <constraint firstAttribute="bottom" secondItem="Eeb-Ia-A2f" secondAttribute="bottom" id="xLC-rn-2y4"/>
+                <constraint firstAttribute="trailing" secondItem="BGC-xo-jj0" secondAttribute="trailing" constant="8" id="zyB-sL-scY"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="QMW-Rd-cgl"/>
             <size key="customSize" width="246" height="220"/>

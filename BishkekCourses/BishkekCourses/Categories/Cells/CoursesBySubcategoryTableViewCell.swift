@@ -40,10 +40,19 @@ class CoursesBySubcategoryTableViewCell: CustomCell {
         // Configure the view for the selected state
     }
     func fillCell(course: SimpleCourse){
+        
+        
+        
         titleLabel.text = course.title
+        titleLabel.heroID = "\(course.title)_name"
+        titleLabel.heroModifiers = [.beginWith([.zPosition(10), .useGlobalCoordinateSpace])]
         let logoUrl = URL(string: course.logo_image_url)
+        logoImageView.heroID = "\(course.title)_logo"
+        logoImageView.heroModifiers = [.beginWith([.zPosition(5), .useGlobalCoordinateSpace])]
         logoImageView.kf.setImage(with: logoUrl, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
-        let backUrl = URL(string: course.background_image_url)
+        let backUrl = URL(string: course.main_image_url)
+        backImageView.heroID = "\(course.title)_image"
+        backImageView.heroModifiers = [.zPosition(2)]
         backImageView.kf.setImage(with: backUrl, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
         descriptionLabel.text = course.description
         //subCategoriesImageView.kf.setImage(with: url)
