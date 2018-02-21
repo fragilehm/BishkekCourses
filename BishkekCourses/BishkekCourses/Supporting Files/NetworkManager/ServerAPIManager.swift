@@ -54,7 +54,6 @@ class ServerAPIManager: NetworkAdapter  {
     func getCourseDetails(course_id: Int,_ completion: @escaping (DetailedCourse)-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.courseDetails(courseId: course_id), success: { (response) in
             do {
-                print(JSON(response.data))
                 let course: DetailedCourse = try response.map(to: DetailedCourse.self)
                 completion(course)
             }

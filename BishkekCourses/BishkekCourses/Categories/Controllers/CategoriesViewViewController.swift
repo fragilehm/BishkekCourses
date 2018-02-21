@@ -21,6 +21,9 @@ class CategoriesViewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        self.navigationController?.hidesBarsOnSwipe = true
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        navigationController?.view.backgroundColor = .white
         //self.hero =
 //        self.navigationController?.heroNavigationAnimationType  = .selectBy(presenting:.zoom, dismissing:.zoomOut)
         getData()
@@ -45,13 +48,10 @@ class CategoriesViewViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Категории"
-        print("CategoriesViewController resources: \(RxSwift.Resources.total)")
+        //print("CategoriesViewController resources: \(RxSwift.Resources.total)")
     }
     func setCategories(categories: [Category]){
         self.categories.value = categories
-    }
-    deinit {
-        print("deinit CategoriesViewController resources: \(RxSwift.Resources.total)")
     }
 }
 extension CategoriesViewViewController {

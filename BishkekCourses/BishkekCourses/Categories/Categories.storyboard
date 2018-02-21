@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PYU-iV-os5">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="iJf-uz-9tv">
                                     <size key="itemSize" width="50" height="50"/>
@@ -44,7 +44,7 @@
                             <constraint firstItem="y9M-JU-Das" firstAttribute="bottom" secondItem="PYU-iV-os5" secondAttribute="bottom" id="BLD-QP-uja"/>
                             <constraint firstItem="PYU-iV-os5" firstAttribute="leading" secondItem="y9M-JU-Das" secondAttribute="leading" id="U9G-LJ-Jh2"/>
                             <constraint firstItem="y9M-JU-Das" firstAttribute="trailing" secondItem="PYU-iV-os5" secondAttribute="trailing" id="aIg-Yf-GLO"/>
-                            <constraint firstItem="PYU-iV-os5" firstAttribute="top" secondItem="y9M-JU-Das" secondAttribute="top" id="kiP-xk-0hf"/>
+                            <constraint firstItem="PYU-iV-os5" firstAttribute="top" secondItem="Zo0-GN-gGo" secondAttribute="top" id="f2u-rN-h17"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y9M-JU-Das"/>
                     </view>
@@ -63,7 +63,7 @@
         <!--Sub Categories View Controller-->
         <scene sceneID="w6K-22-r6L">
             <objects>
-                <viewController storyboardIdentifier="SubCategoriesViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="hTf-h4-4o8" customClass="SubCategoriesViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SubCategoriesViewController" automaticallyAdjustsScrollViewInsets="NO" id="hTf-h4-4o8" customClass="SubCategoriesViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="E6U-FK-hmj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

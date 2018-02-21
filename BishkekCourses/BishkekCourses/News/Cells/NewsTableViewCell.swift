@@ -72,17 +72,12 @@ class NewsTableViewCell: UITableViewCell {
         cellIndex = index
         courseTitleLabel.text = action.course.title
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-mm-dd" //Your date format
+        dateFormatter.dateFormat = "yyyy-MM-dd" //Your date format
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT+6:00") //Current time zone
         let date = dateFormatter.date(from: action.end_date)
         dateFormatter.dateFormat = "d MMMM"
         dateFormatter.locale = Locale(identifier: "ru_RU")
         let convertedDate = dateFormatter.string(from: date!)
-        
-        //Your New Date format as per requirement change it own
-
-        //let date = DateFormatter.localizedString(from:  , dateStyle: ., timeStyle: .)
-        
         let url = URL(string: action.course.logo_image_url)
         courseLogoImageView.kf.setImage(with: url)
         promotionsTitleLabel.text = action.title

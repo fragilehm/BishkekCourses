@@ -16,6 +16,11 @@ class PromotionsViewController: UIViewController {
         super.viewDidLoad()
         configureTableView()
         getData()
+        self.isHeroEnabled = true
+        self.navigationController?.isHeroEnabled = true
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        self.navigationController?.view.backgroundColor = .white
+        //self.navigationController?.heroNavigationAnimationType = .fade
         // Do any additional setup after loading the view.
     }
     func getData(){
@@ -50,7 +55,6 @@ class PromotionsViewController: UIViewController {
 }
 extension PromotionsViewController: UITableViewDelegate, UITableViewDataSource, ActionsTableViewCellDelegate {
     
-   
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

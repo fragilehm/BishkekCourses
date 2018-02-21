@@ -10,6 +10,7 @@ import UIKit
 import Moya_ModelMapper
 import Moya
 import PullToRefreshKit
+import Hero
 class DetailedCourseViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
@@ -38,15 +39,15 @@ class DetailedCourseViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setSwipeLeftAction()
+        //setSwipeLeftAction()
         configureTableView()
         setNavBarItems()
         getData()
         addPopupView()
         //setupPanGesture()
+        //addSwipeLeftAction()
         self.isHeroEnabled = true
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -58,6 +59,32 @@ class DetailedCourseViewController: UIViewController {
                                        action: #selector(handlePan(gestureRecognizer:)))
         view.addGestureRecognizer(panGR)
     }
+    func addSwipeLeftAction(){
+        let swipeLeftGR = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipeLeft(swipeRecognizer:)))
+        swipeLeftGR.edges = .left
+        self.view.addGestureRecognizer(swipeLeftGR)
+    }
+    @objc func swipeLeft(swipeRecognizer: UIScreenEdgePanGestureRecognizer){
+        let translation = swipeRecognizer.translation(in: swipeRecognizer.view!.superview!)
+        var progress = (translation.x / 200)
+        progress = CGFloat(fminf(fmaxf(Float(progress), 0.0), 1.0))
+        switch swipeRecognizer.state {
+        case .began:
+            self.hero_dismissViewController()
+        case .changed:
+            let viewPosition = CGPoint(x: view.center.x + translation.x,
+                                       y: view.center.y)
+            Hero.shared.update(progress)
+            Hero.shared.apply(modifiers: [.position(viewPosition)], to: view)
+        default:
+            if progress + swipeRecognizer.velocity(in: nil).x / view.bounds.width > 1 {
+                Hero.shared.finish()
+            } else {
+                Hero.shared.cancel()
+            }
+        }
+    }
+    
     @objc func handlePan(gestureRecognizer:UIPanGestureRecognizer) {
         switch panGR.state {
         case .began:
@@ -273,7 +300,6 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
             UIView.animate(withDuration: 0.5, animations: {
                 self.bottomPopupView.frame.origin.y -= 50
             }, completion: { (completed) in
-                print(completed)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     UIView.animate(withDuration: 0.5, animations: {
                         //self.bottomPopupView.alpha = 0
@@ -288,6 +314,7 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
         }
     }
     private func openLink(link: String){
+        print("open")
         let alertController = UIAlertController(title: "Открыть в браузере?", message: "\(link)", preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
             if let url = URL(string: link) {

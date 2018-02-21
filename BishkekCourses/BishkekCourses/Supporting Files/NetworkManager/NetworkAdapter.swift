@@ -33,7 +33,7 @@ class NetworkAdapter {
                         errorCallback(Constants.Network.ErrorMessage.NO_HTTP_STATUS_CODE)
                         return
                     }
-                    print(statusCode)
+                    print("status code - ", statusCode)
                     switch(statusCode) {
                     case HttpStatusCode.unauthorized.statusCode:
                         errorCallback(Constants.Network.ErrorMessage.UNAUTHORIZED)

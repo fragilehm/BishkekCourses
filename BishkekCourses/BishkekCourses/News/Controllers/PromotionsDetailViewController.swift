@@ -40,23 +40,25 @@ class PromotionsDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBarItems()
-        setSwipeLeftAction()
+        //setSwipeLeftAction()
         courseNameLabel.text = action.course.title
         let url = URL(string: action.course.logo_image_url)
         courseLogoImageView.kf.setImage(with: url)
         actionTitleLabel.text = action.title
         actionDescriptionLabel.text = action.description
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-mm-dd" //Your date format
+        dateFormatter.dateFormat = "yyyy-MM-dd" //Your date format
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT+6:00") //Current time zone
+        dateFormatter.locale = Locale.init(identifier: "en_US")
         let date = dateFormatter.date(from: action.end_date)
-        dateFormatter.dateFormat = "d MMMM"
+        dateFormatter.dateFormat = "dd MMMM"
         dateFormatter.locale = Locale(identifier: "ru_RU")
         let convertedDate = dateFormatter.string(from: date!)
+        print(convertedDate)
         endDateLabel.text = convertedDate
-
         let backUrl = URL(string: action.action_image)
-        backImageView.kf.setImage(with: backUrl)        // Do any additional setup after loading the view.
+        backImageView.kf.setImage(with: backUrl)
+        // Do any additional setup after loading the view.
     }
     @objc func openCourse(_ sender: UITapGestureRecognizer) {
         let course = action.course

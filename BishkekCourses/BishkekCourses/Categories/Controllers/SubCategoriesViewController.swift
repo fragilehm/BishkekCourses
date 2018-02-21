@@ -29,7 +29,7 @@ class SubCategoriesViewController: UIViewController {
         if UIDevice.current.userInterfaceIdiom == .pad {
             insets = 24
         }
-        setSwipeLeftAction()
+        //setSwipeLeftAction()
         setNavigationBarItems()
         configureCollectionView()
         getData()
@@ -42,13 +42,11 @@ class SubCategoriesViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         ///Hero.shared.finish()
         self.navigationItem.title = "Подкатегории"
-        print("previouswillappear")
-        print("SubcategoriesViewController resources: \(RxSwift.Resources.total)")
-        
-    }
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.heroNavigationAnimationType = .auto
 
+        print("previouswillappear")
+        //self.navigationController?.setNavigationBarHidden(false, animated: true)
+       // print("SubcategoriesViewController resources: \(RxSwift.Resources.total)")
+        
     }
     func addSwipeLeftAction(){
         let swipeLeftGR = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipeLeft(swipeRecognizer:)))
@@ -57,30 +55,28 @@ class SubCategoriesViewController: UIViewController {
     }
     @objc func swipeLeft(swipeRecognizer: UIScreenEdgePanGestureRecognizer){
         let translation = swipeRecognizer.translation(in: swipeRecognizer.view!.superview!)
-        var progress = translation.x / (swipeRecognizer.view?.bounds.width)!
+        var progress = (translation.x / 200)
         progress = CGFloat(fminf(fmaxf(Float(progress), 0.0), 1.0))
         switch swipeRecognizer.state {
         case .began:
-            print(translation.x)
-            //if translation.x >= 0{
-                self.hero_dismissViewController()
-            //}
+            self.hero_dismissViewController()
         case .changed:
-            let viewPosition = CGPoint(x: (swipeRecognizer.view?.center.x)! + translation.x,
-                                       y: (swipeRecognizer.view?.center.y)!)
+            let viewPosition = CGPoint(x: view.center.x + translation.x,
+                                       y: view.center.y)
             Hero.shared.update(progress)
             Hero.shared.apply(modifiers: [.position(viewPosition)], to: view)
-
-            //}
         default:
-            if progress > 0.5 {
+            if progress + swipeRecognizer.velocity(in: nil).x / view.bounds.width > 1 {
                 Hero.shared.finish()
             } else {
                 Hero.shared.cancel()
             }
         }
-        
     }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.heroNavigationAnimationType = .auto
+    }
+   
     func getData(){
         ServerAPIManager.sharedAPI.getSubcategories(category_id: self.category_id, setSubcategories, showError: showErrorAlert)
     }
@@ -109,10 +105,6 @@ class SubCategoriesViewController: UIViewController {
         self.subcategories = subcategories
         collectionView.reloadData()
     }
-    deinit {
-        print("deinit SubcategoriesViewController resources: \(RxSwift.Resources.total)")
-    }
-    
 }
 
 extension SubCategoriesViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -134,7 +126,11 @@ extension SubCategoriesViewController: UICollectionViewDelegate, UICollectionVie
         courseVC.backImage = element.subcategory_image_url
         courseVC.subcategoryName = element.title
         courseVC.subcategory_id = element.id
-        self.navigationController?.show(courseVC, sender: self)
+        //self.navigationController?.show(courseVC, sender: self)
+        let navController = UINavigationController(rootViewController: courseVC)
+        navController.isHeroEnabled = true
+        navController.heroNavigationAnimationType = .fade
+        self.navigationController?.present(navController, animated: true, completion: nil)
     }
 }
 

@@ -13,6 +13,7 @@ import RxCocoa
 import RxSwift
 import Moya
 import Hero
+import AMScrollingNavbar
 class MainViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -31,17 +32,20 @@ class MainViewController: UIViewController, UITextViewDelegate {
         configureTabBar()
         configureTableView()
         bindTableView()
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
         getData()
         bindTableViewSelected()
+        tableView.contentInset = UIEdgeInsets(top: 44, left: 0, bottom: 0, right: 0)
+        self.navigationController?.hidesBarsOnSwipe = true
+        self.navigationController?.view.backgroundColor = .white
+        //self.tabBarController?.heroTabBarAnimationType = .none
         self.isHeroEnabled = true
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.navigationController?.heroNavigationAnimationType = .fade
         self.navigationItem.title = "Главная"
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        //self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        print("MainViewController resources: \(RxSwift.Resources.total)")
-        
     }
     override func viewWillDisappear(_ animated: Bool) {
         self.navigationController?.navigationBar.shadowImage = nil
@@ -86,7 +90,6 @@ class MainViewController: UIViewController, UITextViewDelegate {
             segmentView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
         }
         NSLayoutConstraint.activate([
-            segmentView.bottomAnchor.constraint(equalTo: tableView.topAnchor),
             segmentView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             segmentView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             segmentView.heightAnchor.constraint(equalToConstant: 44)
@@ -111,14 +114,9 @@ class MainViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    deinit {
-        print("deinit MainViewController resources: \(RxSwift.Resources.total)")
-    }
     @available(iOS 10.0, *)
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        print(URL.absoluteString)
         let subCategoryVC = UIStoryboard.init(name: "Categories", bundle: nil).instantiateViewController(withIdentifier: "CoursesBySubcategoryViewController") as! CoursesBySubcategoryViewController
-        print(URL.absoluteString.removingPercentEncoding!)
         let seperatedString =  URL.absoluteString.removingPercentEncoding?.components(separatedBy: " ")
         var name = ""
         for index in 2..<seperatedString!.count{
@@ -131,10 +129,43 @@ class MainViewController: UIViewController, UITextViewDelegate {
         subCategoryVC.subcategoryName = name
         subCategoryVC.backImage = seperatedString![1]
         //subCategoryVC.title = seperatedString[1]
-        self.navigationController?.show(subCategoryVC, sender: self)
+        //self.navigationController?.show(subCategoryVC, sender: self)
+        let navController = UINavigationController(rootViewController: subCategoryVC)
+        navController.isHeroEnabled = true
+        navController.heroNavigationAnimationType = .fade
+        self.navigationController?.present(navController, animated: true, completion: nil)
         //UIApplication.shared.open(URL, options: [:])
         return false
     }
+//    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        if(velocity.y>0) {
+//            self.navigationController?.navigationBar.translatesAutoresizingMaskIntoConstraints = false
+//            //Code will work without the animation block.I am using animation block incase if you want to set any delay to it.
+//            UIView.animate(withDuration: 2.5, delay: 0, options: [.beginFromCurrentState], animations: {
+//
+//                self.navigationController?.navigationBar.topAnchor.constraint(equalTo: self.view.topAnchor, constant: -64).isActive = true
+//
+//                print("Hide")
+//            }, completion: nil)
+//
+//        } else {
+//            UIView.animate(withDuration: 2.5, delay: 0, options: .beginFromCurrentState, animations: {
+//                print("Unhide")
+//            }, completion: nil)
+//        }
+//    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let currentOffset = scrollView.contentOffset.y;
+//        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height;
+//        print(maximumOffset, "-", currentOffset)
+//        // Change 10.0 to adjust the distance from bottom
+//        if (maximumOffset - currentOffset <= 10.0) {
+//            self.navigationController?.setNavigationBarHidden(true, animated: true)
+//        }
+//        else{
+//            self.navigationController?.setNavigationBarHidden(false, animated: true)
+//        }
+//    }
     func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
         print(textAttachment)
         return false

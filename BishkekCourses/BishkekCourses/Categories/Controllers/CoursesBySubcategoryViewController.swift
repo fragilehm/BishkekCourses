@@ -26,20 +26,21 @@ class CoursesBySubcategoryViewController: UIViewController {
     public let headerView: SubcategoryHeaderView = {
         let view = SubcategoryHeaderView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.back.addTarget(self, action: #selector(handleNext), for: .touchUpInside)
+        view.back.addTarget(self, action: #selector(handlePrevious), for: .touchUpInside)
         return view
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
         getData()
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
         addSwipeLeftAction()
+        self.navigationController?.heroNavigationAnimationType = .fade
         self.isHeroEnabled = true
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.heroNavigationAnimationType = .fade
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         UIApplication.shared.statusBarStyle = .lightContent
         guard let color = backColor else {
             UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
@@ -51,7 +52,9 @@ class CoursesBySubcategoryViewController: UIViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         UIApplication.shared.statusBarStyle = .default
-        UIApplication.shared.statusBarView?.backgroundColor = nil
+        UIView.animate(withDuration: TimeInterval(UINavigationControllerHideShowBarDuration)) {
+            UIApplication.shared.statusBarView?.backgroundColor = nil
+        }
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -66,28 +69,20 @@ class CoursesBySubcategoryViewController: UIViewController {
         var progress = (translation.x / 200)
         progress = CGFloat(fminf(fmaxf(Float(progress), 0.0), 1.0))
         switch swipeRecognizer.state {
-            
         case .began:
-            print(translation.x)
-            if translation.x >= 0{
-                self.navigationController?.popViewController(animated: true)
-            }
+            self.hero_dismissViewController()
         case .changed:
             let viewPosition = CGPoint(x: view.center.x + translation.x,
                                        y: view.center.y)
-            if  translation.x >= 0 {
-                Hero.shared.update(progress)
-                Hero.shared.apply(modifiers: [.position(viewPosition)], to: view)
-            }
+            Hero.shared.update(progress)
+            Hero.shared.apply(modifiers: [.position(viewPosition)], to: view)
         default:
-            if progress + swipeRecognizer.velocity(in: nil).x / view.bounds.width > 0.5 {
+            if progress + swipeRecognizer.velocity(in: nil).x / view.bounds.width > 1 {
                 Hero.shared.finish()
-                
             } else {
                 Hero.shared.cancel()
             }
         }
-
     }
     func addPanGR(){
         panGR = UIPanGestureRecognizer(target: self,
@@ -173,10 +168,10 @@ class CoursesBySubcategoryViewController: UIViewController {
         self.tableView.tableHeaderView?.layoutIfNeeded()
         self.tableView.tableHeaderView = self.tableView.tableHeaderView
     }
-    @objc private func handleNext(){
-        self.navigationController?.popViewController(animated: true)
+    @objc private func handlePrevious(){
+        self.hero_dismissViewController()
         Hero.shared.defaultAnimation = .auto
-        Hero.shared.finish()
+        //Hero.shared.finish()
     }
     func getData() {
         ServerAPIManager.sharedAPI.getCoursesBySubcategory(subcategory_id: self.subcategory_id, setCourses, showError: showErrorAlert)

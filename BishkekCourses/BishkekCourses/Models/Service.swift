@@ -11,7 +11,7 @@ import Mapper
 struct Service: Mappable {
     var title: String
     var description: String
-    var price: Int
+    var price: String
     
     init(map: Mapper) throws {
         try title = map.from("title")
