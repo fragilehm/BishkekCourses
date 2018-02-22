@@ -17,6 +17,7 @@ class ServerAPIManager: NetworkAdapter  {
         }
         return Static.instance
     }
+    //MARK: Categories
     func getCategories(_ completion: @escaping ([Category])-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.categories, success: { (response) in
             do {
@@ -29,7 +30,6 @@ class ServerAPIManager: NetworkAdapter  {
         }, error: showError)
     }
     func getSubcategories(category_id: Int,_ completion: @escaping ([Subcategory])-> Void, showError: @escaping (String)-> Void) {
-        //print(category_id)
         self.request(target: NetworkManager.subcategories(categoryId: category_id), success: { (response) in
             do {
                 let subcategories: [Subcategory] = try response.map(to: [Subcategory].self)
@@ -40,6 +40,8 @@ class ServerAPIManager: NetworkAdapter  {
             }
         }, error: showError)
     }
+    //MARK: Courses
+
     func getCoursesBySubcategory(subcategory_id: Int,_ completion: @escaping ([SimpleCourse])-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.coursesBySubcategory(subcategoryId: subcategory_id), success: { (response) in
             do {
@@ -73,11 +75,48 @@ class ServerAPIManager: NetworkAdapter  {
             }
         }, error: showError)
     }
+    //MARK: Actions
+
     func getActions(_ completion: @escaping ([Promotion])-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.actions, success: { (response) in
             do {
                 let promotions: [Promotion] = try response.map(to: [Promotion].self)
                 completion(promotions)
+            }
+            catch {
+                showError(Constants.Network.ErrorMessage.CANT_PARSE_DATA)
+            }
+        }, error: showError)
+    }
+    
+    func getActionsBySubcategory(subcategory_id: Int,_ completion: @escaping ([Promotion])-> Void, showError: @escaping (String)-> Void) {
+        self.request(target: NetworkManager.actionsBySubcategory(subcategoryId: subcategory_id), success: { (response) in
+            do {
+                let actions: [Promotion] = try response.map(to: [Promotion].self)
+                completion(actions)
+            }
+            catch {
+                showError(Constants.Network.ErrorMessage.CANT_PARSE_DATA)
+            }
+        }, error: showError)
+    }
+    //MARK: Tutors
+    func getTutors(_ completion: @escaping ([Tutor])-> Void, showError: @escaping (String)-> Void) {
+        self.request(target: NetworkManager.tutors, success: { (response) in
+            do {
+                let tutors: [Tutor] = try response.map(to: [Tutor].self)
+                completion(tutors)
+            }
+            catch {
+                showError(Constants.Network.ErrorMessage.CANT_PARSE_DATA)
+            }
+        }, error: showError)
+    }
+    func getTutorsBySubcategory(subcategory_id: Int,_ completion: @escaping ([Tutor])-> Void, showError: @escaping (String)-> Void) {
+        self.request(target: NetworkManager.tutorsBySubcategory(subcategoryId: subcategory_id), success: { (response) in
+            do {
+                let tutors: [Tutor] = try response.map(to: [Tutor].self)
+                completion(tutors)
             }
             catch {
                 showError(Constants.Network.ErrorMessage.CANT_PARSE_DATA)

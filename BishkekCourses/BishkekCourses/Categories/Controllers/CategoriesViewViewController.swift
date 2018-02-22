@@ -21,11 +21,8 @@ class CategoriesViewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
-        self.navigationController?.hidesBarsOnSwipe = true
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         navigationController?.view.backgroundColor = .white
-        //self.hero =
-//        self.navigationController?.heroNavigationAnimationType  = .selectBy(presenting:.zoom, dismissing:.zoomOut)
         getData()
         bindCollectionView()
         bindCollectionViewSelected()

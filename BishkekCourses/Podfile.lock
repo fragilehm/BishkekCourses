@@ -4,6 +4,7 @@ PODS:
   - Cosmos (12.0.1)
   - Hero (1.0.1)
   - HGPlaceholders (0.2.6)
+  - HidingNavigationBar (2.0.1)
   - ImageSlideshow/Core (1.4.1)
   - ImageSlideshow/Kingfisher (1.4.1):
     - ImageSlideshow/Core
@@ -43,6 +44,7 @@ DEPENDENCIES:
   - Cosmos
   - Hero (from `https://github.com/lkzhao/Hero.git`, commit `a5bec96`)
   - HGPlaceholders
+  - HidingNavigationBar
   - ImageSlideshow/Kingfisher
   - IQKeyboardManagerSwift
   - Kingfisher
@@ -74,6 +76,7 @@ SPEC CHECKSUMS:
   Cosmos: 4a9f57998a08788a1062c7b8eefbc62d2b590f39
   Hero: a1a9d96f3174190486984739d7ed5101d39416f1
   HGPlaceholders: b05be87025781e6fe9f7739d3529f2209b92ed80
+  HidingNavigationBar: 82c06978041080f0e4d97095563414a4367b71c6
   ImageSlideshow: 1bb0e610e28a71e8936d57265d882f61714a470b
   IQKeyboardManagerSwift: a0592bb636b10a9a1cf75d2b2c61144226226c84
   Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
@@ -91,6 +94,6 @@ SPEC CHECKSUMS:
   SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 1d1ad282fdc94483187f5703ed63918a1ac81feb
+PODFILE CHECKSUM: 35a5ed3e3ae2a25875e596c778e0b082c486dd3a
 
 COCOAPODS: 1.3.1

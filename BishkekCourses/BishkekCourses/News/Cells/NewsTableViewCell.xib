@@ -44,7 +44,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="American courses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zDs-hy-TGJ">
-                                <rect key="frame" x="59" y="12.5" width="358" height="35"/>
+                                <rect key="frame" x="59" y="12.5" width="406" height="35"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -57,7 +57,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark" translatesAutoresizingMaskIntoConstraints="NO" id="4fz-b0-gkF">
-                                <rect key="frame" x="417" y="19.5" width="20" height="20"/>
+                                <rect key="frame" x="465" y="19.5" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="20" id="SgW-a6-lWW"/>
                                     <constraint firstAttribute="height" constant="20" id="jey-8y-EuJ"/>
@@ -76,8 +76,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3j-h7-b3Y">
-                                <rect key="frame" x="16" y="77" width="364.5" height="33.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I3j-h7-b3Y">
+                                <rect key="frame" x="16" y="77" width="364.5" height="50.5"/>
                                 <string key="text">Коммуникативная методика обучения - это разговорная практика уже с первого урока, а также ролевые игры, дискуссии, обсуждения и презентации актуальных и современных тем с самыми опытными преподавателями.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.019607843137254902" green="0.094117647058823528" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
@@ -88,13 +88,6 @@
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_filled" translatesAutoresizingMaskIntoConstraints="NO" id="5WV-Eh-oce">
-                                <rect key="frame" x="469" y="22" width="16" height="16"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="eoK-BQ-hAU"/>
-                                    <constraint firstAttribute="height" constant="16" id="pTp-ZC-CRi"/>
-                                </constraints>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 декабря" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2HP-RB-x7t">
                                 <rect key="frame" x="117" y="167.5" width="68" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -112,7 +105,6 @@
                             <constraint firstAttribute="trailing" secondItem="n82-rS-GPt" secondAttribute="trailing" constant="16" id="Ccz-Il-wfd"/>
                             <constraint firstAttribute="trailing" secondItem="bMS-6Y-KeU" secondAttribute="trailing" id="Etk-S8-Cgd"/>
                             <constraint firstItem="n82-rS-GPt" firstAttribute="leading" secondItem="VcU-ii-1q3" secondAttribute="trailing" constant="12" id="K03-Mq-qEb"/>
-                            <constraint firstAttribute="trailing" secondItem="5WV-Eh-oce" secondAttribute="trailing" constant="16" id="Lz8-hl-kaf"/>
                             <constraint firstItem="iwo-Ot-JCc" firstAttribute="top" secondItem="bMS-6Y-KeU" secondAttribute="bottom" constant="12" id="MML-3r-OMw"/>
                             <constraint firstItem="I3j-h7-b3Y" firstAttribute="leading" secondItem="21A-3n-5TA" secondAttribute="leading" constant="16" id="Phg-eH-Fnx"/>
                             <constraint firstItem="P6s-60-pXU" firstAttribute="leading" secondItem="21A-3n-5TA" secondAttribute="leading" constant="16" id="QA2-RB-b0Z"/>
@@ -124,10 +116,9 @@
                             <constraint firstItem="4fz-b0-gkF" firstAttribute="centerY" secondItem="zDs-hy-TGJ" secondAttribute="centerY" id="ddI-XK-kTY"/>
                             <constraint firstItem="2HP-RB-x7t" firstAttribute="leading" secondItem="P6s-60-pXU" secondAttribute="trailing" constant="4" id="f9j-Hy-sCQ"/>
                             <constraint firstAttribute="bottom" secondItem="P6s-60-pXU" secondAttribute="bottom" constant="12" id="gdo-NI-hhp"/>
-                            <constraint firstItem="5WV-Eh-oce" firstAttribute="leading" secondItem="4fz-b0-gkF" secondAttribute="trailing" constant="32" id="h81-in-RlE"/>
                             <constraint firstItem="zDs-hy-TGJ" firstAttribute="leading" secondItem="iwo-Ot-JCc" secondAttribute="trailing" constant="8" id="j9f-HN-uR7"/>
                             <constraint firstItem="zDs-hy-TGJ" firstAttribute="top" secondItem="iwo-Ot-JCc" secondAttribute="top" id="kqt-Fy-QhZ"/>
-                            <constraint firstItem="5WV-Eh-oce" firstAttribute="centerY" secondItem="4fz-b0-gkF" secondAttribute="centerY" id="op3-26-zgZ"/>
+                            <constraint firstAttribute="trailing" secondItem="4fz-b0-gkF" secondAttribute="trailing" constant="16" id="pzk-fY-Gi9"/>
                             <constraint firstItem="iwo-Ot-JCc" firstAttribute="leading" secondItem="21A-3n-5TA" secondAttribute="leading" constant="16" id="qVf-uq-rMp"/>
                             <constraint firstItem="zDs-hy-TGJ" firstAttribute="bottom" secondItem="iwo-Ot-JCc" secondAttribute="bottom" id="uy5-iU-Ejg"/>
                             <constraint firstItem="zDs-hy-TGJ" firstAttribute="centerY" secondItem="iwo-Ot-JCc" secondAttribute="centerY" id="y0y-ot-0TY"/>
@@ -159,6 +150,5 @@
     <resources>
         <image name="bookmark" width="25" height="25"/>
         <image name="logo" width="1024" height="1024"/>
-        <image name="more_filled" width="20" height="20"/>
     </resources>
 </document>

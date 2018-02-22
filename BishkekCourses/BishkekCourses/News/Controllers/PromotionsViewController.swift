@@ -34,7 +34,6 @@ class PromotionsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         //self.navigationController?.title = "Акции"
         self.navigationItem.title = "Акции"
-
     }
     func configureTableView(){
         tableView.tableFooterView = UIView()

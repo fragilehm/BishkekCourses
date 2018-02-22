@@ -31,6 +31,10 @@ enum NetworkManager {
     case actions
     case actionsBySubcategory(subcategoryId: Int)
     case actionDetail(actionId: Int)
+    case tutors
+    case tutorsBySubcategory(subcategoryId: Int)
+    case tutorsDetail(tutorId: Int)
+
 }
 extension NetworkManager: TargetType {
     var baseURL: URL {
@@ -57,6 +61,12 @@ extension NetworkManager: TargetType {
             return "/actions/sub/\(subcategoryId)"
         case .actionDetail(let actionId):
             return "actions/\(actionId)"
+        case .tutors:
+            return "/tutors"
+        case .tutorsBySubcategory(let subcategoryId):
+            return "/tutors/sub/\(subcategoryId)"
+        case .tutorsDetail(let tutorId):
+            return "/tutors/\(tutorId)"
         }
     }
     

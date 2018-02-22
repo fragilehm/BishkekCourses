@@ -126,10 +126,10 @@ extension SubCategoriesViewController: UICollectionViewDelegate, UICollectionVie
         courseVC.backImage = element.subcategory_image_url
         courseVC.subcategoryName = element.title
         courseVC.subcategory_id = element.id
-        //self.navigationController?.show(courseVC, sender: self)
         let navController = UINavigationController(rootViewController: courseVC)
         navController.isHeroEnabled = true
         navController.heroNavigationAnimationType = .fade
+        //self.navigationController?.show(courseVC, sender: self)
         self.navigationController?.present(navController, animated: true, completion: nil)
     }
 }

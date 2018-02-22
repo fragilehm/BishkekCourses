@@ -32,9 +32,7 @@ extension UIViewController {
         courseVC.courseLogo = logoUrl
         courseVC.course_id = id
         courseVC.courseDescription = description
-        //courseVC.modalPresentationStyle = .
         self.navigationController?.show(courseVC, sender: self)
-       // self.navigationController?.present(courseVC, animated: true, completion: nil)
     }
     func showErrorAlert(message: String) {
         let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
@@ -200,5 +198,36 @@ extension UIColor {
         return image
     }
 }
-
+extension UITabBarController {
+    func setTabBarVisible(visible:Bool, animated:Bool) {
+        
+        if (tabBarIsVisible() == visible) { return }
+        let frame = self.tabBar.frame
+        let height = frame.size.height
+        let offsetY = (visible ? -height : height)
+        
+        if visible {
+            self.tabBar.isTranslucent = false
+        } else {
+            self.tabBar.isTranslucent = true
+        }
+        UIView.animate(withDuration: animated ? 0.3 : 0.0) {
+            self.tabBar.frame = frame.offsetBy(dx: 0, dy: offsetY)
+            self.view.frame = CGRect.init(x:0, y:0, width: self.view.frame.width, height: (self.view.frame.height) + offsetY)
+            self.view.setNeedsDisplay()
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func tabBarIsVisible() ->Bool {
+        return self.tabBar.frame.origin.y < Constants.SCREEN_HEIGHT
+    }
+}
+extension UIView {
+    func animateConstraintWithDuration(_ duration: TimeInterval = 0.3, delay: TimeInterval = 0.5, completion: @escaping (Bool) -> Void = {(finished: Bool) -> Void in}) {
+        UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            self.layoutIfNeeded()
+        }, completion: completion)
+    }
+}
 

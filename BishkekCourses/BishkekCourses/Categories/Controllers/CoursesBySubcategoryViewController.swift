@@ -22,6 +22,8 @@ class CoursesBySubcategoryViewController: UIViewController {
     private var isCourse = true
     private var isBeganDismissing = false
     private var simpleCourses = [SimpleCourse]()
+    private var actions = [Promotion]()
+    private var showData = "courses"
     private var backColor: UIColor?
     public let headerView: SubcategoryHeaderView = {
         let view = SubcategoryHeaderView()
@@ -32,15 +34,16 @@ class CoursesBySubcategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
+        setNavBarItems()
         getData()
-        navigationController?.interactivePopGestureRecognizer?.delegate = nil
         addSwipeLeftAction()
         self.navigationController?.heroNavigationAnimationType = .fade
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
         self.isHeroEnabled = true
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         UIApplication.shared.statusBarStyle = .lightContent
         guard let color = backColor else {
             UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
@@ -135,8 +138,10 @@ class CoursesBySubcategoryViewController: UIViewController {
         }
         tableView.tableFooterView = UIView()
         tableView.register(UINib.init(nibName: "CoursesBySubcategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CoursesBySubcategoryTableViewCell")
+        tableView.register(UINib.init(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsTableViewCell")
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
         tableView.bounces = false
+        
 //        let header = DefaultRefreshHeader.header()
 //        header.setText(Constants.Hint.Refresh.pull_to_refresh, mode: .pullToRefresh)
 //        header.setText(Constants.Hint.Refresh.relase_to_refresh, mode: .releaseToRefresh)
@@ -160,6 +165,7 @@ class CoursesBySubcategoryViewController: UIViewController {
         headerView.titleLabel.heroModifiers = [.beginWith([.zPosition(10), .useGlobalCoordinateSpace])]
         headerView.blurView.heroID = "\(subcategoryName)_view"
         headerView.blurView.heroModifiers = [.zPosition(5)]
+        headerView.actionCourseButton.addTarget(self, action: #selector(actionList), for: .touchUpInside)
         self.tableView.tableHeaderView = headerView
         headerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
         headerView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
@@ -168,13 +174,46 @@ class CoursesBySubcategoryViewController: UIViewController {
         self.tableView.tableHeaderView?.layoutIfNeeded()
         self.tableView.tableHeaderView = self.tableView.tableHeaderView
     }
+    @objc private func actionList(){
+        let alertController = UIAlertController(title: "Выберите тип", message: nil, preferredStyle: .actionSheet)
+        let courseButton = UIAlertAction(title: "Курсы", style: .default) { (action) in
+            self.showData = "courses"
+            self.getData()
+            print("courses")
+        }
+        let actionButton = UIAlertAction(title: "Акции", style: .default) { (action) in
+            self.showData = "actions"
+            self.getData()
+            print("actions")
+        }
+        let tutorButton = UIAlertAction(title: "Репетиторы", style: .default) { (action) in
+            self.showData = "tutor"
+            self.getData()
+            print("teatutorches")
+        }
+        let cancelButton = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)
+        alertController.addAction(courseButton)
+        alertController.addAction(actionButton)
+        alertController.addAction(tutorButton)
+        alertController.addAction(cancelButton)
+        self.present(alertController, animated: true, completion: nil)
+        print("actionList")
+    }
     @objc private func handlePrevious(){
         self.hero_dismissViewController()
         Hero.shared.defaultAnimation = .auto
-        //Hero.shared.finish()
     }
     func getData() {
+        switch showData {
+        case "courses":
+            ServerAPIManager.sharedAPI.getCoursesBySubcategory(subcategory_id: self.subcategory_id, setCourses, showError: showErrorAlert)
+        case "actions":
+            ServerAPIManager.sharedAPI.getActionsBySubcategory(subcategory_id: self.subcategory_id, setActions, showError: showErrorAlert)
+        default:
+            ServerAPIManager.sharedAPI.getCoursesBySubcategory(subcategory_id: self.subcategory_id, setCourses, showError: showErrorAlert)
+        }
         ServerAPIManager.sharedAPI.getCoursesBySubcategory(subcategory_id: self.subcategory_id, setCourses, showError: showErrorAlert)
+        self.tableView.reloadData()
         //self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
     }
     func setCourses(courses: [SimpleCourse]){
@@ -182,7 +221,10 @@ class CoursesBySubcategoryViewController: UIViewController {
         self.tableView.reloadData()
         //self.collectionView.switchRefreshHeader(to: .normal(.none, 0.0))
     }
-   
+    func setActions(actions: [Promotion]) {
+        self.actions = actions
+        self.tableView.reloadData()
+    }
     func setNavBarItems(){
         let backButton = UIButton.init(type: .system)
         backButton.setImage(#imageLiteral(resourceName: "back").withRenderingMode(.alwaysOriginal), for: .normal)
@@ -198,33 +240,72 @@ class CoursesBySubcategoryViewController: UIViewController {
 }
 extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return simpleCourses.count
+        switch showData {
+        case "courses":
+            return simpleCourses.count
+        case "actions":
+            return actions.count
+        default:
+            print("tutors")
+            return 0
+        }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CoursesBySubcategoryTableViewCell", for: indexPath) as! CoursesBySubcategoryTableViewCell
-        cell.fillCell(course: self.simpleCourses[indexPath.row])
-        return cell
+        switch showData {
+        case "courses":
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CoursesBySubcategoryTableViewCell", for: indexPath) as! CoursesBySubcategoryTableViewCell
+            cell.fillCell(course: self.simpleCourses[indexPath.row])
+            return cell
+        case "actions":
+            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
+            cell.fillCell(action: self.actions[indexPath.row], index: indexPath.row)
+            cell.delegate = self
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "CoursesBySubcategoryTableViewCell", for: indexPath) as! CoursesBySubcategoryTableViewCell
+            cell.fillCell(course: self.simpleCourses[indexPath.row])
+            return cell
+        }
+        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let course = simpleCourses[indexPath.row]
-        openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.main_image_url, description: course.description)
+        switch showData {
+        case "courses":
+            let course = simpleCourses[indexPath.row]
+            openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.main_image_url, description: course.description)
+        case "actions":
+            let storyboard = UIStoryboard.init(name: "News", bundle: nil)
+            let promotionVC = storyboard.instantiateViewController(withIdentifier: "PromotionsDetailViewController") as! PromotionsDetailViewController
+            promotionVC.action = self.actions[indexPath.row]
+            self.navigationController?.show(promotionVC, sender: self)
+        default:
+            print("tutors")
+        }
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > 84 {
-            UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
+            UIView.animate(withDuration: 0.5, animations: {
+                UIApplication.shared.statusBarView?.backgroundColor = UIColor.black
+            })
             backColor = UIColor.black
         }
         else
         {
-            UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
+            UIView.animate(withDuration: 0.5, animations: {
+                UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
+            })
             backColor = UIColor.clear
         }
     }
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        tableView.reloadData()
+}
+extension CoursesBySubcategoryViewController: ActionsTableViewCellDelegate {
+    func ActionsTableViewCellDidTapCourse(_ row: Int) {
+        let course = actions[row].course
+        openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.main_image_url, description: course.description)
     }
+    
     
 }

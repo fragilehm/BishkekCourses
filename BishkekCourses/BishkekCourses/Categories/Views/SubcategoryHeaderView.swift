@@ -22,16 +22,17 @@ class SubcategoryHeaderView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 12)
         button.setImage(#imageLiteral(resourceName: "back-white").withRenderingMode(.alwaysOriginal), for: .normal)
-        button.heroID = "back_button"
+        //button.heroID = "back_button"
         return button
     }()
     let actionCourseButton: UIButton = {
         let button = UIButton(type: .system)
-        button.frame = CGRect(x: 0, y: 0, width: 80, height: 20)
+        button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Акции", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
+        button.setImage(#imageLiteral(resourceName: "more1").withRenderingMode(.alwaysOriginal), for: .normal)
+//        button.setTitle("Акции", for: .normal)
+//        button.setTitleColor(.white, for: .normal)
+        //button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
 //        button.layer.cornerRadius = 5
 //        button.layer.masksToBounds = true
 //        button.layer.borderColor = UIColor(netHex: Colors.ACTION_BUTTON_COLOR).cgColor

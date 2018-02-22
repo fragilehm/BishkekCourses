@@ -51,8 +51,12 @@ class DetailedCourseViewController: UIViewController {
         self.isHeroEnabled = true
     }
     override func viewWillAppear(_ animated: Bool) {
+      //self.tabBarController?.setTabBarVisible(visible: false, animated: false)
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
         self.navigationItem.title = courseName
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        //self.tabBarController?.setTabBarVisible(visible: true, animated: false)
     }
     func setupPanGesture(){
         panGR = UIPanGestureRecognizer(target: self,

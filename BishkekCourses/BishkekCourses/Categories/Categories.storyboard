@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PYU-iV-os5">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="iJf-uz-9tv">
                                     <size key="itemSize" width="50" height="50"/>
@@ -44,7 +44,7 @@
                             <constraint firstItem="y9M-JU-Das" firstAttribute="bottom" secondItem="PYU-iV-os5" secondAttribute="bottom" id="BLD-QP-uja"/>
                             <constraint firstItem="PYU-iV-os5" firstAttribute="leading" secondItem="y9M-JU-Das" secondAttribute="leading" id="U9G-LJ-Jh2"/>
                             <constraint firstItem="y9M-JU-Das" firstAttribute="trailing" secondItem="PYU-iV-os5" secondAttribute="trailing" id="aIg-Yf-GLO"/>
-                            <constraint firstItem="PYU-iV-os5" firstAttribute="top" secondItem="Zo0-GN-gGo" secondAttribute="top" id="f2u-rN-h17"/>
+                            <constraint firstItem="PYU-iV-os5" firstAttribute="top" secondItem="y9M-JU-Das" secondAttribute="top" id="uG9-60-hS5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y9M-JU-Das"/>
                     </view>
@@ -112,7 +112,7 @@
         <!--Courses By Subcategory View Controller-->
         <scene sceneID="Msp-uT-PTi">
             <objects>
-                <viewController storyboardIdentifier="CoursesBySubcategoryViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="Q0u-6q-ieF" customClass="CoursesBySubcategoryViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CoursesBySubcategoryViewController" automaticallyAdjustsScrollViewInsets="NO" id="Q0u-6q-ieF" customClass="CoursesBySubcategoryViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="we8-F2-WoK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -131,12 +131,11 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="gfS-EE-tII" firstAttribute="trailing" secondItem="kvu-xd-fLa" secondAttribute="trailing" id="2ln-RA-3gr"/>
                             <constraint firstItem="gfS-EE-tII" firstAttribute="bottom" secondItem="kvu-xd-fLa" secondAttribute="bottom" id="PWY-lL-2rn"/>
                             <constraint firstItem="kvu-xd-fLa" firstAttribute="leading" secondItem="gfS-EE-tII" secondAttribute="leading" id="aqo-G0-GyW"/>
-                            <constraint firstItem="kvu-xd-fLa" firstAttribute="top" secondItem="gfS-EE-tII" secondAttribute="top" constant="-20" id="kuV-HG-WgG"/>
+                            <constraint firstItem="kvu-xd-fLa" firstAttribute="top" secondItem="we8-F2-WoK" secondAttribute="top" id="kuV-HG-WgG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gfS-EE-tII"/>
                     </view>
