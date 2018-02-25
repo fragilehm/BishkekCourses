@@ -20,3 +20,4 @@ struct Branch: Mappable{
         try longitude = map.from("longitude")
     }
 }
+

@@ -133,8 +133,8 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="gfS-EE-tII" firstAttribute="trailing" secondItem="kvu-xd-fLa" secondAttribute="trailing" id="2ln-RA-3gr"/>
-                            <constraint firstItem="gfS-EE-tII" firstAttribute="bottom" secondItem="kvu-xd-fLa" secondAttribute="bottom" id="PWY-lL-2rn"/>
                             <constraint firstItem="kvu-xd-fLa" firstAttribute="leading" secondItem="gfS-EE-tII" secondAttribute="leading" id="aqo-G0-GyW"/>
+                            <constraint firstAttribute="bottom" secondItem="kvu-xd-fLa" secondAttribute="bottom" id="fua-DW-hXn"/>
                             <constraint firstItem="kvu-xd-fLa" firstAttribute="top" secondItem="we8-F2-WoK" secondAttribute="top" id="kuV-HG-WgG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gfS-EE-tII"/>

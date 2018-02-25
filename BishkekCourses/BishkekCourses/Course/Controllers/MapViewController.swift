@@ -15,11 +15,14 @@ class MapViewController: UIViewController {
     var branches = [Branch]()
     var branch_id = 0
     var branch_title = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBarItems()
+        self.navigationItem.title = branch_title
         setupMapKit()
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         enableLocationServices()
     }

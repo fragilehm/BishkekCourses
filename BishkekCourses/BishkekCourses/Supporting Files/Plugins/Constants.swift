@@ -56,6 +56,7 @@ struct Constants {
         static let SUBCATEGORY_NAME_ID = 2
 
     }
+    static let TUTOR_HEADERS = ["ОБО МНЕ", "ГРАФИК РАБОТЫ", "КОНТАКТЫ", "АДРЕС"]
 
 }
 

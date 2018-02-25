@@ -100,6 +100,17 @@ class ServerAPIManager: NetworkAdapter  {
             }
         }, error: showError)
     }
+    func getDetailedAction(action_id: Int,_ completion: @escaping (Promotion)-> Void, showError: @escaping (String)-> Void) {
+        self.request(target: NetworkManager.actionDetail(actionId: action_id), success: { (response) in
+            do {
+                let action: Promotion = try response.map(to: Promotion.self)
+                completion(action)
+            }
+            catch {
+                showError(Constants.Network.ErrorMessage.CANT_PARSE_DATA)
+            }
+        }, error: showError)
+    }
     //MARK: Tutors
     func getTutors(_ completion: @escaping ([Tutor])-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.tutors, success: { (response) in
@@ -117,6 +128,17 @@ class ServerAPIManager: NetworkAdapter  {
             do {
                 let tutors: [Tutor] = try response.map(to: [Tutor].self)
                 completion(tutors)
+            }
+            catch {
+                showError(Constants.Network.ErrorMessage.CANT_PARSE_DATA)
+            }
+        }, error: showError)
+    }
+    func getDetailedTutor(tutor_id: Int,_ completion: @escaping (DetailedTutor)-> Void, showError: @escaping (String)-> Void) {
+        self.request(target: NetworkManager.tutorsDetail(tutorId: tutor_id), success: { (response) in
+            do {
+                let tutor: DetailedTutor = try response.map(to: DetailedTutor.self)
+                completion(tutor)
             }
             catch {
                 showError(Constants.Network.ErrorMessage.CANT_PARSE_DATA)

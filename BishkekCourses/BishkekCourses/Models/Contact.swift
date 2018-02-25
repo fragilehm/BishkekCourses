@@ -18,3 +18,4 @@ struct Contact: Mappable {
         try contact = map.from("contact")
     }
 }
+

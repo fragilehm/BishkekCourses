@@ -16,6 +16,7 @@ class TutorViewController: UIViewController {
         super.viewDidLoad()
         configureTableView()
         getData()
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +49,7 @@ extension TutorViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tutorVC = storyboard?.instantiateViewController(withIdentifier: "TutorDetailViewController") as! TutorDetailViewController
+        tutorVC.tutor = self.tutors[indexPath.row]
         self.navigationController?.show(tutorVC, sender: self)
     }
 }

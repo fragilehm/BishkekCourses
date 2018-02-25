@@ -65,9 +65,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="USR-bR-g4E" firstAttribute="leading" secondItem="2Va-pN-2wg" secondAttribute="leading" id="6Sy-X3-iQB"/>
+                            <constraint firstAttribute="bottom" secondItem="USR-bR-g4E" secondAttribute="bottom" id="OLL-GR-MBM"/>
                             <constraint firstItem="USR-bR-g4E" firstAttribute="top" secondItem="2Va-pN-2wg" secondAttribute="top" id="WBz-iY-6fd"/>
                             <constraint firstItem="2Va-pN-2wg" firstAttribute="trailing" secondItem="USR-bR-g4E" secondAttribute="trailing" id="msV-uQ-HIc"/>
-                            <constraint firstItem="2Va-pN-2wg" firstAttribute="bottom" secondItem="USR-bR-g4E" secondAttribute="bottom" id="mx0-aq-Y9E"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2Va-pN-2wg"/>
                     </view>

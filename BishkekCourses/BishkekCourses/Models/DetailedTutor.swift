@@ -1,47 +1,47 @@
 //
-//  DetailedCourse.swift
+//  DetailedTutor.swift
 //  BishkekCourses
 //
-//  Created by Khasanza on 2/4/18.
+//  Created by Khasanza on 2/23/18.
 //  Copyright © 2018 Khasanza. All rights reserved.
 //
 
 import Foundation
 import Mapper
-struct DetailedCourse: Mappable {
+struct DetailedTutor: Mappable {
     var id: Int
     var subcategories: [SimpleSubcategory]
-    var title: String
+    var name: String
     var description: String
     var contacts: [Contact]
     var branches: [Branch]
-    var services: [Service]
-    var actions: [SimplePromotion]
-    var main_image_url: String
-    var logo_image_url: String
+    var start_date: String
+    var price: String
+    var tutor_image: String
+    var timetable: String
+
     init() {
         id = 0
-        title = ""
+        name = ""
         description = ""
-        main_image_url = ""
-        logo_image_url = ""
+        start_date = ""
+        price = ""
+        tutor_image = ""
+        timetable = ""
         contacts = [Contact]()
         branches = [Branch]()
-        services = [Service]()
         subcategories = [SimpleSubcategory]()
-        actions = [SimplePromotion]()
     }
     init(map: Mapper) throws {
         try id = map.from("id")
-        try title = map.from("title")
+        try name = map.from("name")
         try description = map.from("description")
-        try main_image_url = map.from("main_image_url")
-        try logo_image_url = map.from("logo_image_url")
+        try start_date = map.from("start_date")
+        try price = map.from("price")
+        try tutor_image = map.from("tutor_image")
+        try timetable = map.from("timetable")
         subcategories = map.optionalFrom("subcategories") ?? []
         contacts = map.optionalFrom("contacts") ?? []
         branches = map.optionalFrom("branches") ?? []
-        services = map.optionalFrom("services") ?? []
-        actions = map.optionalFrom("actions") ?? []
-
     }
 }

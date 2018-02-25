@@ -206,14 +206,15 @@ extension UITabBarController {
         let height = frame.size.height
         let offsetY = (visible ? -height : height)
         
-        if visible {
-            self.tabBar.isTranslucent = false
-        } else {
-            self.tabBar.isTranslucent = true
-        }
+//        if visible {
+//            self.tabBar.isTranslucent = false
+//        } else {
+//            self.tabBar.isTranslucent = true
+//        }
+        print(visible, "-", offsetY, "-", self.view.frame.height)
         UIView.animate(withDuration: animated ? 0.3 : 0.0) {
             self.tabBar.frame = frame.offsetBy(dx: 0, dy: offsetY)
-            self.view.frame = CGRect.init(x:0, y:0, width: self.view.frame.width, height: (self.view.frame.height) + offsetY)
+            //self.view.frame = CGRect.init(x:0, y:0, width: self.view.frame.width, height: (self.view.frame.height) + offsetY)
             self.view.setNeedsDisplay()
             self.view.layoutIfNeeded()
         }
@@ -228,6 +229,75 @@ extension UIView {
         UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions.curveEaseIn, animations: {
             self.layoutIfNeeded()
         }, completion: completion)
+    }
+}
+extension String {
+    func getExperience() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone(abbreviation: "GTM+6:00")
+        let date = dateFormatter.date(from: self)
+        let currentDate = Date()
+        let years = Calendar.current.dateComponents([.year], from: date!, to: currentDate).year
+        return years == 0 ? "1 год" : "\(years!) лет"
+    }
+    func callToPhone(){
+        let temp = self.returnNumber(number: self)
+        if let url = NSURL(string: "telprompt:\(temp)"){
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+            } else {
+                
+            }
+        }
+    }
+    func returnNumber(number: String) -> String {
+        var ans = [Character]()
+        for char in number {
+            if ((String(char).rangeOfCharacter(from: CharacterSet.alphanumerics.inverted)) == nil) {
+                ans.append(char)
+            }
+            else if (String(char) == "+"){
+                ans.append(char)
+            }
+        }
+        return String(ans)
+    }
+    func mailTo(controller: UIViewController){
+        let alertController = UIAlertController(title: "Написать на почту?", message: "\(self)", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            if let url = URL(string: "mailto:\(self)") {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
+                } else {
+                    // Fallback on earlier versions
+                }
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        controller.present(alertController, animated: true, completion: nil)
+        
+    }
+    func openLink(controller: UIViewController){
+        print("open")
+        let alertController = UIAlertController(title: "Открыть в браузере?", message: "\(self)", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            if let url = URL(string: self) {
+                if #available(iOS 10.0, *) {
+                    UIApplication.shared.open(url, options: [:])
+                } else {
+                    // Fallback on earlier versions
+                }
+            }
+        }
+        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+    
+        controller.present(alertController, animated: true, completion: nil)
+        
     }
 }
 

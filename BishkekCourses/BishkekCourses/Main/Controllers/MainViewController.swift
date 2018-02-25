@@ -39,9 +39,13 @@ class MainViewController: UIViewController, UITextViewDelegate {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.setTabBarVisible(visible: true, animated: false)
-        self.navigationController?.heroNavigationAnimationType = .fade
+        self.tabBarController?.setTabBarVisible(visible:true, animated: true)
+        //self.navigationController?.heroNavigationAnimationType = .fade
         self.navigationItem.title = "Главная"
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.setTabBarVisible(visible: true, animated: false)
     }
     func bindTableView(){
         viewModel.simpleCourses.asObservable().bind(to: tableView.rx.items(cellIdentifier: "MainTableViewCell", cellType: MainTableViewCell.self)) { row, element, cell in
@@ -64,6 +68,7 @@ class MainViewController: UIViewController, UITextViewDelegate {
             courseVC.courseName = course.title
             courseVC.courseLogo = course.logo_image_url
             courseVC.courseBackImage = course.main_image_url
+            //strongSelf.tabBarController?.setTabBarVisible(visible: false, animated: false)
             strongSelf.navigationController?.show(courseVC, sender: self)
         }).disposed(by: disposeBag)
     }
@@ -122,18 +127,19 @@ class MainViewController: UIViewController, UITextViewDelegate {
         let navController = UINavigationController(rootViewController: subCategoryVC)
         navController.isHeroEnabled = true
         navController.heroNavigationAnimationType = .fade
-        self.navigationController?.present(navController, animated: true, completion: nil)
+        self.navigationController?.show(subCategoryVC, sender: self)
+        //self.navigationController?.present(navController, animated: true, completion: nil)
         return false
     }
-
+//
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if(velocity.y>0){
-            self.segmentView.heightAnchor.constraint(equalToConstant: 0).isActive = true
-            self.segmentView.animateConstraintWithDuration()
+            //self.segmentView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            //self.segmentView.animateConstraintWithDuration()
             self.tabBarController?.setTabBarVisible(visible:false, animated: true)
         }else{
-            self.segmentView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-            self.segmentView.animateConstraintWithDuration()
+            //self.segmentView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+            //self.segmentView.animateConstraintWithDuration()
             self.tabBarController?.setTabBarVisible(visible: true, animated: true)
         }
     }
@@ -162,6 +168,8 @@ extension MainViewController {
             bar.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         }
         self.tabBarController?.tabBar.tintColor = UIColor.black
+        //let image = UIImage()
+        //self.tabBarController?.tabBar.backgroundImage = UIImage()
     }
     func configureTableView(){
         tableView.tableFooterView = UIView()

@@ -23,6 +23,7 @@ class CoursesBySubcategoryViewController: UIViewController {
     private var isBeganDismissing = false
     private var simpleCourses = [SimpleCourse]()
     private var actions = [Promotion]()
+    private var tutors = [Tutor]()
     private var showData = "courses"
     private var backColor: UIColor?
     public let headerView: SubcategoryHeaderView = {
@@ -34,16 +35,16 @@ class CoursesBySubcategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        setNavBarItems()
+        //setNavBarItems()
         getData()
-        addSwipeLeftAction()
-        self.navigationController?.heroNavigationAnimationType = .fade
-        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        //addSwipeLeftAction()
+        //Hero.shared.defaultAnimation = .selectBy(presenting: .fade, dismissing: .fade)
         self.isHeroEnabled = true
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.tabBarController?.setTabBarVisible(visible: true, animated: false)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         UIApplication.shared.statusBarStyle = .lightContent
         guard let color = backColor else {
             UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
@@ -53,6 +54,7 @@ class CoursesBySubcategoryViewController: UIViewController {
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.tabBarController?.setTabBarVisible(visible: true, animated: true)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         UIApplication.shared.statusBarStyle = .default
         UIView.animate(withDuration: TimeInterval(UINavigationControllerHideShowBarDuration)) {
@@ -139,6 +141,7 @@ class CoursesBySubcategoryViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.register(UINib.init(nibName: "CoursesBySubcategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CoursesBySubcategoryTableViewCell")
         tableView.register(UINib.init(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsTableViewCell")
+        tableView.register(UINib.init(nibName: "TutorTableViewCell", bundle: nil), forCellReuseIdentifier: "TutorTableViewCell")
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
         tableView.bounces = false
         
@@ -158,13 +161,14 @@ class CoursesBySubcategoryViewController: UIViewController {
     func addHeaderView() {
         let url = URL(string: backImage)
         headerView.backImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
-        headerView.backImageView.heroID = "\(subcategoryName)_image"
-        headerView.backImageView.heroModifiers = [.zPosition(2)]
+//        headerView.backImageView.heroID = "\(subcategoryName)_image"
+//        headerView.backImageView.heroModifiers = [.zPosition(2)]
+//        headerView.titleLabel.heroID = "\(subcategoryName)_name"
+//        headerView.titleLabel.heroModifiers = [.beginWith([.zPosition(10), .useGlobalCoordinateSpace])]
+//        headerView.blurView.heroID = "\(subcategoryName)_view"
+//        headerView.blurView.heroModifiers = [.zPosition(5)]
         headerView.titleLabel.text = subcategoryName
-        headerView.titleLabel.heroID = "\(subcategoryName)_name"
-        headerView.titleLabel.heroModifiers = [.beginWith([.zPosition(10), .useGlobalCoordinateSpace])]
-        headerView.blurView.heroID = "\(subcategoryName)_view"
-        headerView.blurView.heroModifiers = [.zPosition(5)]
+
         headerView.actionCourseButton.addTarget(self, action: #selector(actionList), for: .touchUpInside)
         self.tableView.tableHeaderView = headerView
         headerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
@@ -210,11 +214,15 @@ class CoursesBySubcategoryViewController: UIViewController {
         case "actions":
             ServerAPIManager.sharedAPI.getActionsBySubcategory(subcategory_id: self.subcategory_id, setActions, showError: showErrorAlert)
         default:
-            ServerAPIManager.sharedAPI.getCoursesBySubcategory(subcategory_id: self.subcategory_id, setCourses, showError: showErrorAlert)
+            ServerAPIManager.sharedAPI.getTutorsBySubcategory(subcategory_id: self.subcategory_id, setTutors, showError: showErrorAlert)
         }
         ServerAPIManager.sharedAPI.getCoursesBySubcategory(subcategory_id: self.subcategory_id, setCourses, showError: showErrorAlert)
         self.tableView.reloadData()
         //self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
+    }
+    func setTutors(tutors: [Tutor]) {
+        self.tutors = tutors
+        self.tableView.reloadData()
     }
     func setCourses(courses: [SimpleCourse]){
         self.simpleCourses = courses
@@ -246,8 +254,7 @@ extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDa
         case "actions":
             return actions.count
         default:
-            print("tutors")
-            return 0
+            return tutors.count
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -262,11 +269,10 @@ extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDa
             cell.delegate = self
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CoursesBySubcategoryTableViewCell", for: indexPath) as! CoursesBySubcategoryTableViewCell
-            cell.fillCell(course: self.simpleCourses[indexPath.row])
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TutorTableViewCell", for: indexPath) as! TutorTableViewCell
+            cell.fillCell(tutor: self.tutors[indexPath.row])
             return cell
         }
-        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
@@ -279,10 +285,17 @@ extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDa
         case "actions":
             let storyboard = UIStoryboard.init(name: "News", bundle: nil)
             let promotionVC = storyboard.instantiateViewController(withIdentifier: "PromotionsDetailViewController") as! PromotionsDetailViewController
-            promotionVC.action = self.actions[indexPath.row]
+            let action = self.actions[indexPath.row]
+            let simpleAction = SimplePromotion(id: action.id, title: action.title, description: action.description, end_date: action.end_date, action_image: action.action_image)
+            promotionVC.courseHeader = self.actions[indexPath.row].course
+            promotionVC.simpleAction = simpleAction
             self.navigationController?.show(promotionVC, sender: self)
         default:
-            print("tutors")
+            let storyboard = UIStoryboard.init(name: "Tutor", bundle: nil)
+            let tutorVC = storyboard.instantiateViewController(withIdentifier: "TutorDetailViewController") as! TutorDetailViewController
+            tutorVC.tutor = self.tutors[indexPath.row]
+            self.navigationController?.show(tutorVC, sender: self)
+            
         }
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -298,6 +311,17 @@ extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDa
                 UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
             })
             backColor = UIColor.clear
+        }
+    }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if(velocity.y>0){
+            //self.segmentView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            //self.segmentView.animateConstraintWithDuration()
+            self.tabBarController?.setTabBarVisible(visible:false, animated: true)
+        }else{
+            //self.segmentView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+            //self.segmentView.animateConstraintWithDuration()
+            self.tabBarController?.setTabBarVisible(visible: true, animated: true)
         }
     }
 }

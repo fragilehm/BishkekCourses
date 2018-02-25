@@ -9,8 +9,6 @@
 import UIKit
 
 class StartingPageViewController: UIViewController {
-
-    
     let mainImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
         imageView.contentMode = .scaleAspectFit

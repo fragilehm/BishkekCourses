@@ -46,17 +46,19 @@ class DetailedCourseViewController: UIViewController {
         setNavBarItems()
         getData()
         addPopupView()
+        //Hero.shared.defaultAnimation = .selectBy(presenting: .fade, dismissing: .fade)
+        self.navigationController?.heroNavigationAnimationType = .fade
         //setupPanGesture()
         //addSwipeLeftAction()
         self.isHeroEnabled = true
     }
     override func viewWillAppear(_ animated: Bool) {
-      //self.tabBarController?.setTabBarVisible(visible: false, animated: false)
+        self.tabBarController?.setTabBarVisible(visible: true, animated: false)
         UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
         self.navigationItem.title = courseName
     }
     override func viewWillDisappear(_ animated: Bool) {
-        //self.tabBarController?.setTabBarVisible(visible: true, animated: false)
+        self.tabBarController?.setTabBarVisible(visible: true, animated: true)
     }
     func setupPanGesture(){
         panGR = UIPanGestureRecognizer(target: self,
@@ -108,7 +110,7 @@ class DetailedCourseViewController: UIViewController {
         bottomPopupView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         bottomPopupView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         bottomPopupView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        
+        //bottomPopupView.isHidden = true
         
         //view.bringSubview(toFront: bottomPopupView)
         //self.view.layoutSubviews()
@@ -165,6 +167,7 @@ extension DetailedCourseViewController {
        
         tableView.tableFooterView = UIView()
         registerCell(nibName: "HeaderTableViewCell")
+        registerCell(nibName: "CourseActionTableViewCell")
         registerCell(nibName: "CommentsTableViewCell")
         registerCell(nibName: "ServicesTableViewCell")
         registerCell(nibName: "BranchesTableViewCell")
@@ -225,8 +228,8 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
         switch cellId {
         case "DescriptionTableViewCell":
             return 1
-        case "CommentsTableViewCell":
-            return 0
+        case "CourseActionTableViewCell":
+            return course.actions.count
         case "BranchesTableViewCell":
             return course.branches.count
         case "ContactsTableViewCell":
@@ -243,9 +246,10 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
             cell.fillCell(description: courseDescription)
             return cell
             //tableView.separatorStyle = .none
-        case "CommentsTableViewCell":
+        case "CourseActionTableViewCell":
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as!
-            CommentsTableViewCell
+            CourseActionTableViewCell
+            cell.fillCell(action: course.actions[indexPath.row])
             //cell.fillCell(course: course)
             return cell
         case "BranchesTableViewCell":
@@ -272,8 +276,13 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
             switch cellId {
             case "DescriptionTableViewCell":
                 print("description")
-            case "CommentsTableViewCell":
-                print("comments")
+            case "CourseActionTableViewCell":
+                let promotionVC = UIStoryboard.init(name: "News", bundle: nil).instantiateViewController(withIdentifier: "PromotionsDetailViewController") as! PromotionsDetailViewController
+                let courseHeader = CourseHeader(id: course_id, title: courseName, logo_image_url: courseLogo, main_image_url: courseBackImage, description: courseDescription)
+                promotionVC.courseHeader = courseHeader
+                promotionVC.simpleAction = course.actions[indexPath.row]
+                promotionVC.isFromCourse = true
+                self.navigationController?.show(promotionVC, sender: self)
             case "BranchesTableViewCell":
                 print("branches")
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
@@ -282,18 +291,20 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
                 vc.branch_title = self.course.title
                 self.navigationController?.show(vc, sender: self)
             case "ContactsTableViewCell":
-                let contactType: ContactTypes = ContactTypes(rawValue: course.contacts[indexPath.row].type)!
-                let contactValue = course.contacts[indexPath.row].contact
-                switch contactType {
-                case .EMAIL:
-                    mailTo(mail: contactValue)
-                case .PHONE:
-                    callToPhone(number: contactValue)
-                case .FACEBOOK, .WEBSITE:
-                    openLink(link: contactValue)
-                case .WHATSAPP:
-                    copyNumber()
-                }
+                DispatchQueue.main.async(execute: {
+                    let contactType: ContactTypes = ContactTypes(rawValue: self.course.contacts[indexPath.row].type)!
+                    let contactValue = self.course.contacts[indexPath.row].contact
+                    switch contactType {
+                    case .EMAIL:
+                        contactValue.mailTo(controller: self)
+                    case .PHONE:
+                       contactValue.callToPhone()
+                    case .FACEBOOK, .WEBSITE:
+                        contactValue.openLink(controller: self)
+                    case .WHATSAPP:
+                        self.copyNumber()
+                    }
+                })
             default:
                 print("services")
             }
@@ -301,74 +312,36 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
     }
     private func copyNumber(){
         if isBottomPopupCompleted {
+            //self.bottomPopupView.isHidden = false
+            let offset = self.view.frame.height - (self.tabBarController?.tabBar.frame.origin.y)!
+            print(offset)
+
             UIView.animate(withDuration: 0.5, animations: {
-                self.bottomPopupView.frame.origin.y -= 50
+                self.bottomPopupView.frame.origin.y -= (50 + offset)
             }, completion: { (completed) in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     UIView.animate(withDuration: 0.5, animations: {
                         //self.bottomPopupView.alpha = 0
-                        self.bottomPopupView.frame.origin.y += 50
+                        self.bottomPopupView.frame.origin.y += (50 + offset)
                         //self.view.layoutIfNeeded()
                     }, completion: { (completed) in
                         self.isBottomPopupCompleted = true
+                        //self.bottomPopupView.isHidden = true
+
                     })
                 })
             })
             isBottomPopupCompleted = false
         }
     }
-    private func openLink(link: String){
-        print("open")
-        let alertController = UIAlertController(title: "Открыть в браузере?", message: "\(link)", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            if let url = URL(string: link) {
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(url, options: [:])
-                } else {
-                    // Fallback on earlier versions
-                }
-            }
-        }
-        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
-        
-    }
-    private func mailTo(mail: String){
-        let alertController = UIAlertController(title: "Написать на почту?", message: "\(mail)", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
-            if let url = URL(string: "mailto:\(mail)") {
-                if #available(iOS 10.0, *) {
-                    UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
-                } else {
-                    // Fallback on earlier versions
-                }
-            }
-        }
-        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)
-        alertController.addAction(okAction)
-        alertController.addAction(cancelAction)
-        self.present(alertController, animated: true, completion: nil)
-        
-    }
     
-    private func callToPhone(number: String){
-        let temp = self.returnNumber(number: number)
-        if let url = NSURL(string: "telprompt:\(temp)"){
-            if #available(iOS 10.0, *) {
-                UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
-            } else {
-                
-            }
-        }
-    }
+    
     func iconPressed(_ index: Int) {
         switch index {
         case 0:
             cellId = "DescriptionTableViewCell"
         case 1:
-            cellId = "CommentsTableViewCell"
+            cellId = "CourseActionTableViewCell"
         case 2:
             cellId = "BranchesTableViewCell"
         case 3:
@@ -378,17 +351,16 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
         }
         tableView.reloadSections(IndexSet.init(integer: 0), with: .fade)
     }
-    private func returnNumber(number: String) -> String {
-        var ans = [Character]()
-        for char in number {
-            if ((String(char).rangeOfCharacter(from: CharacterSet.alphanumerics.inverted)) == nil) {
-                ans.append(char)
-            }
-            else if (String(char) == "+"){
-                ans.append(char)
-            }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if(velocity.y>0){
+            //self.segmentView.heightAnchor.constraint(equalToConstant: 0).isActive = true
+            //self.segmentView.animateConstraintWithDuration()
+            self.tabBarController?.setTabBarVisible(visible:false, animated: true)
+        }else{
+            //self.segmentView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+            //self.segmentView.animateConstraintWithDuration()
+            self.tabBarController?.setTabBarVisible(visible: true, animated: true)
         }
-        return String(ans)
     }
 }
 

@@ -32,6 +32,29 @@ struct Promotion: Mappable {
         try action_image = map.from("action_image")
     }
 }
+struct SimplePromotion: Mappable {
+    var id: Int
+    var title: String
+    var description: String
+    var end_date: String
+    var action_image: String
+    
+    init(id: Int, title: String, description: String, end_date: String, action_image: String) {
+        self.id = id
+        self.title = title
+        self.action_image = action_image
+        self.end_date = end_date
+        self.description = description
+    }
+    
+    init(map: Mapper) throws {
+        try id = map.from("id")
+        try title = map.from("title")
+        try description = map.from("description")
+        try end_date = map.from("end_date")
+        try action_image = map.from("action_image")
+    }
+}
 struct CourseHeader: Mappable {
    
     var id: Int
@@ -39,6 +62,13 @@ struct CourseHeader: Mappable {
     var logo_image_url: String
     var main_image_url: String
     var description: String
+    init(id: Int, title: String, logo_image_url: String, main_image_url: String, description: String) {
+        self.id = id
+        self.title = title
+        self.main_image_url = main_image_url
+        self.logo_image_url = logo_image_url
+        self.description = description
+    }
     init(map: Mapper) throws {
         try id = map.from("id")
         try title = map.from("title")

@@ -34,7 +34,7 @@ class SubCategoriesViewController: UIViewController {
         configureCollectionView()
         getData()
         //addSwipeLeftAction()
-        //Hero.shared.defaultAnimation = .selectBy(presenting: .auto, dismissing: .pull(direction: .right))
+//        Hero.shared.defaultAnimation = .selectBy(presenting: .auto, dismissing: .pull(direction: .right))
         self.isHeroEnabled = true
         //bindCollectionView()
         //bindCollectionViewSelected()
@@ -129,8 +129,8 @@ extension SubCategoriesViewController: UICollectionViewDelegate, UICollectionVie
         let navController = UINavigationController(rootViewController: courseVC)
         navController.isHeroEnabled = true
         navController.heroNavigationAnimationType = .fade
-        //self.navigationController?.show(courseVC, sender: self)
-        self.navigationController?.present(navController, animated: true, completion: nil)
+        self.navigationController?.show(courseVC, sender: self)
+        //self.navigationController?.present(navController, animated: true, completion: nil)
     }
 }
 

@@ -11,57 +11,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--News View Controller-->
-        <scene sceneID="1i2-Ef-SuN">
-            <objects>
-                <viewController storyboardIdentifier="NewsViewController" id="LBN-QV-iVT" customClass="NewsViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="sT5-Yy-eAS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="s5O-Hz-S6b" customClass="CollectionView" customModule="HGPlaceholders">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="7Oh-dU-4K7">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5C4-ep-z34">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="LBN-QV-iVT" id="M2U-j5-TGv"/>
-                                    <outlet property="delegate" destination="LBN-QV-iVT" id="f39-AM-VMM"/>
-                                </connections>
-                            </collectionView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="s5O-Hz-S6b" firstAttribute="top" secondItem="gpe-ga-4XQ" secondAttribute="top" id="Imz-CF-suR"/>
-                            <constraint firstItem="s5O-Hz-S6b" firstAttribute="leading" secondItem="gpe-ga-4XQ" secondAttribute="leading" id="bhq-JN-KxL"/>
-                            <constraint firstItem="gpe-ga-4XQ" firstAttribute="trailing" secondItem="s5O-Hz-S6b" secondAttribute="trailing" id="l4H-Y0-iEL"/>
-                            <constraint firstItem="gpe-ga-4XQ" firstAttribute="bottom" secondItem="s5O-Hz-S6b" secondAttribute="bottom" id="wnx-wL-dyZ"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="gpe-ga-4XQ"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="dv4-wQ-nOE"/>
-                    <connections>
-                        <outlet property="collectionView" destination="s5O-Hz-S6b" id="kyP-iO-EH9"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sGT-U8-pxB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="407" y="537"/>
-        </scene>
         <!--Promotions View Controller-->
         <scene sceneID="HWF-pv-QqX">
             <objects>
@@ -95,12 +44,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRU-WB-QOg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1209" y="113"/>
+            <point key="canvasLocation" x="687" y="113"/>
         </scene>
         <!--Promotions Detail View Controller-->
         <scene sceneID="4cG-0D-82V">
             <objects>
-                <viewController storyboardIdentifier="PromotionsDetailViewController" hidesBottomBarWhenPushed="YES" id="F0m-hr-9Su" customClass="PromotionsDetailViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PromotionsDetailViewController" id="F0m-hr-9Su" customClass="PromotionsDetailViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RtO-uk-0qB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -126,9 +75,8 @@
                                         <color key="textColor" red="0.76078431372549016" green="0.16078431372549018" blue="0.25098039215686274" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6k-Kg-L7U">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS 11 задаёт новый стандарт самой передовой мобильной опербя" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u6k-Kg-L7U">
                                         <rect key="frame" x="12" y="349" width="351" height="20.5"/>
-                                        <string key="text">iOS 11 задаёт новый стандарт самой передовой мобильной операционной системы в мире. С ней iPhone становится ещё лучше, чем прежде. iPad превосходит самого себя. И для обоих устройств iOS 11 открывает потрясающие новые возможности по использованию дополненной реальности в играх и приложениях. Это самые быстрые, продуманные и удобные iPhone и iPad в истории — благодаря iOS 11.iOS 11 задаёт новый стандарт самой передовой мобильной операционной системы в мире. С ней iPhone становится ещё лучше, чем прежде. iPad превосходит самого себя. И для обоих устройств iOS 11 открывает потрясающие новые возможности по использованию дополненной реальности в играх и приложениях. Это самые быстрые, продуманные и удобные iPhone и iPad в истории — благодаря iOS 11.</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -223,7 +171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Skf-XM-jGP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2108" y="126.38680659670166"/>
+            <point key="canvasLocation" x="1618" y="113"/>
         </scene>
         <!--Hash Tag View Controller-->
         <scene sceneID="9Ky-87-Hjp">
@@ -258,7 +206,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u8C-Pn-Uec" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3096" y="127"/>
+            <point key="canvasLocation" x="2463" y="113"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E4J-hO-W8D">
@@ -280,8 +228,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="bookmark" width="25" height="25"/>
-        <image name="coding" width="960" height="640"/>
+        <image name="bookmark" width="20" height="20"/>
+        <image name="coding" width="50" height="33"/>
         <image name="logo" width="1024" height="1024"/>
     </resources>
 </document>

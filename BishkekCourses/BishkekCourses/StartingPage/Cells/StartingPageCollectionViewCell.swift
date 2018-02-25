@@ -23,7 +23,6 @@ class StartingPageCollectionViewCell: UICollectionViewCell {
             descriptionTextView.textAlignment = .center
         }
     }
-    
     private let mainImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "logo"))
         imageView.contentMode = .scaleAspectFit
@@ -32,7 +31,6 @@ class StartingPageCollectionViewCell: UICollectionViewCell {
     }()
     private let descriptionTextView: UITextView = {
         let textView = UITextView()
-        
         let attributetText = NSMutableAttributedString(string: "Hello my dear friends", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
         attributetText.append(NSMutableAttributedString(string: "\n\n\nthis is my first practice to impalement constraints in ios programatically!", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor: UIColor.gray]))
         

@@ -13,7 +13,7 @@
         <!--Detailed Course View Controller-->
         <scene sceneID="hiF-u8-xdc">
             <objects>
-                <viewController storyboardIdentifier="DetailedCourseViewController" automaticallyAdjustsScrollViewInsets="NO" hidesBottomBarWhenPushed="YES" id="q0b-fs-gtN" customClass="DetailedCourseViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailedCourseViewController" automaticallyAdjustsScrollViewInsets="NO" id="q0b-fs-gtN" customClass="DetailedCourseViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fNz-Xg-HY4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,8 +32,8 @@
                         <constraints>
                             <constraint firstItem="xA3-sX-ZDc" firstAttribute="trailing" secondItem="Ueu-nU-aed" secondAttribute="trailing" id="203-kh-BNq"/>
                             <constraint firstItem="Ueu-nU-aed" firstAttribute="leading" secondItem="xA3-sX-ZDc" secondAttribute="leading" id="bhm-ix-R6O"/>
-                            <constraint firstItem="xA3-sX-ZDc" firstAttribute="bottom" secondItem="Ueu-nU-aed" secondAttribute="bottom" id="blH-fm-qnG"/>
                             <constraint firstItem="Ueu-nU-aed" firstAttribute="top" secondItem="xA3-sX-ZDc" secondAttribute="top" id="hKT-62-Pjr"/>
+                            <constraint firstAttribute="bottom" secondItem="Ueu-nU-aed" secondAttribute="bottom" id="w50-eP-6P0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xA3-sX-ZDc"/>
                     </view>

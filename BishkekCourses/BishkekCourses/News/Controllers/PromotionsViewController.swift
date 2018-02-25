@@ -71,7 +71,10 @@ extension PromotionsViewController: UITableViewDelegate, UITableViewDataSource, 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let promotionVC = storyboard?.instantiateViewController(withIdentifier: "PromotionsDetailViewController") as! PromotionsDetailViewController
-        promotionVC.action = self.actions[indexPath.row]
+        let action = self.actions[indexPath.row]
+        let simpleAction = SimplePromotion(id: action.id, title: action.title, description: action.description, end_date: action.end_date, action_image: action.action_image)
+        promotionVC.courseHeader = self.actions[indexPath.row].course
+        promotionVC.simpleAction = simpleAction
         self.navigationController?.show(promotionVC, sender: self)
     }
     func ActionsTableViewCellDidTapCourse(_ row: Int) {

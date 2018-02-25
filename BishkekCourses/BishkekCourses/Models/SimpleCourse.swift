@@ -18,7 +18,6 @@ struct SimpleCourse: Mappable {
     var description: String
     var main_image_url: String
     var logo_image_url: String
-    var background_image_url: String
     init(map: Mapper) throws {
         subcategories = map.optionalFrom("subcategories") ?? []
         try id = map.from("id")
@@ -26,7 +25,6 @@ struct SimpleCourse: Mappable {
         try description = map.from("description")
         try main_image_url = map.from("main_image_url")
         try logo_image_url = map.from("logo_image_url")
-        try background_image_url = map.from("background_image_url")
     }
 }
 struct SimpleSubcategory: Mappable {

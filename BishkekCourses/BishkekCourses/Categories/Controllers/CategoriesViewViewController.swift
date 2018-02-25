@@ -45,6 +45,7 @@ class CategoriesViewViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = "Категории"
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         //print("CategoriesViewController resources: \(RxSwift.Resources.total)")
     }
     func setCategories(categories: [Category]){
