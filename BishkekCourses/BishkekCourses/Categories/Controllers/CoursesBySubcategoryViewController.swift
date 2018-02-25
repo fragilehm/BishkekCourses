@@ -168,7 +168,7 @@ class CoursesBySubcategoryViewController: UIViewController {
 //        headerView.blurView.heroID = "\(subcategoryName)_view"
 //        headerView.blurView.heroModifiers = [.zPosition(5)]
         headerView.titleLabel.text = subcategoryName
-
+        
         headerView.actionCourseButton.addTarget(self, action: #selector(actionList), for: .touchUpInside)
         self.tableView.tableHeaderView = headerView
         headerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
@@ -183,25 +183,22 @@ class CoursesBySubcategoryViewController: UIViewController {
         let courseButton = UIAlertAction(title: "Курсы", style: .default) { (action) in
             self.showData = "courses"
             self.getData()
-            print("courses")
         }
         let actionButton = UIAlertAction(title: "Акции", style: .default) { (action) in
             self.showData = "actions"
             self.getData()
-            print("actions")
         }
         let tutorButton = UIAlertAction(title: "Репетиторы", style: .default) { (action) in
             self.showData = "tutor"
             self.getData()
-            print("teatutorches")
         }
         let cancelButton = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)
         alertController.addAction(courseButton)
         alertController.addAction(actionButton)
         alertController.addAction(tutorButton)
         alertController.addAction(cancelButton)
+        alertController.popoverPresentationController?.sourceView = self.view
         self.present(alertController, animated: true, completion: nil)
-        print("actionList")
     }
     @objc private func handlePrevious(){
         self.hero_dismissViewController()

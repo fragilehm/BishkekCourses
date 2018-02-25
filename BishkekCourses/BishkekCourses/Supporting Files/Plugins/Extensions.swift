@@ -206,20 +206,17 @@ extension UITabBarController {
         let frame = self.tabBar.frame
         let height = frame.size.height
         let offsetY = (visible ? -height : height)
-        
 //        if visible {
 //            self.tabBar.isTranslucent = false
 //        } else {
 //            self.tabBar.isTranslucent = true
 //        }
         tabBar.isHidden = false
-        print(visible, "-", offsetY, "-", self.view.frame.height)
         UIView.animate(withDuration: animated ? 0.3 : 0.0, animations: {
             self.tabBar.frame = frame.offsetBy(dx: 0, dy: offsetY)
             self.view.setNeedsDisplay()
             self.view.layoutIfNeeded()
         }) { (finished) in
-            print(finished, "-", visible)
             if finished {
                 self.tabBar.isHidden = !visible
             }

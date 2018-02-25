@@ -31,9 +31,7 @@ class TutorDetailViewController: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.navigationItem.title = tutor?.name
         self.navigationController?.view.backgroundColor = .white
-        //self.tabBarController?.tabBar.isTranslucent = false
         setNavBarItems()
         addHeaderView()
         configureTableView()

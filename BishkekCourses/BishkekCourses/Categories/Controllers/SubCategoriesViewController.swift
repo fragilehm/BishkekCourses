@@ -27,7 +27,7 @@ class SubCategoriesViewController: UIViewController {
         super.viewDidLoad()
         //Hero.shared.containerColor = .black
         if UIDevice.current.userInterfaceIdiom == .pad {
-            insets = 24
+            insets = 0
         }
         //setSwipeLeftAction()
         setNavigationBarItems()
