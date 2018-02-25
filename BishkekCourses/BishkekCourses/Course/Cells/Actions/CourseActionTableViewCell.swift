@@ -35,16 +35,9 @@ class CourseActionTableViewCell: UITableViewCell {
         // Initialization code
     }
     func fillCell(action: SimplePromotion) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd" //Your date format
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+6:00") //Current time zone
-        let date = dateFormatter.date(from: action.end_date)
-        dateFormatter.dateFormat = "d MMMM"
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        let convertedDate = dateFormatter.string(from: date!)
         promotionsTitleLabel.text = action.title
         promotionsDescriptionLabel.text = action.description
-        promotionsEndDateLabel.text = convertedDate
+        promotionsEndDateLabel.text = action.end_date.getConvertedDate()
         let backUrl = URL(string: action.action_image)
         backImageView.kf.setImage(with: backUrl)
     }

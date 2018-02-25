@@ -8,7 +8,6 @@
 
 import UIKit
 import Kingfisher
-import SDWebImage
 import RxSwift
 import Hero
 class MainTableViewCell: UITableViewCell, UITextViewDelegate {

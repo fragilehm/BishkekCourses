@@ -200,8 +200,9 @@ extension UIColor {
 }
 extension UITabBarController {
     func setTabBarVisible(visible:Bool, animated:Bool) {
-        
-        if (tabBarIsVisible() == visible) { return }
+        print(visible, "-", self.tabBar.isHidden)
+        if self.tabBar.isHidden != visible { return }
+        //if (tabBarIsVisible() == visible) { return }
         let frame = self.tabBar.frame
         let height = frame.size.height
         let offsetY = (visible ? -height : height)
@@ -211,13 +212,23 @@ extension UITabBarController {
 //        } else {
 //            self.tabBar.isTranslucent = true
 //        }
+        tabBar.isHidden = false
         print(visible, "-", offsetY, "-", self.view.frame.height)
-        UIView.animate(withDuration: animated ? 0.3 : 0.0) {
+        UIView.animate(withDuration: animated ? 0.3 : 0.0, animations: {
             self.tabBar.frame = frame.offsetBy(dx: 0, dy: offsetY)
-            //self.view.frame = CGRect.init(x:0, y:0, width: self.view.frame.width, height: (self.view.frame.height) + offsetY)
             self.view.setNeedsDisplay()
             self.view.layoutIfNeeded()
+        }) { (finished) in
+            print(finished, "-", visible)
+            if finished {
+                self.tabBar.isHidden = !visible
+            }
         }
+//        UIView.animate(withDuration: animated ? 0.3 : 0.0) {
+//            self.tabBar.frame = frame.offsetBy(dx: 0, dy: offsetY)
+//            self.view.setNeedsDisplay()
+//            self.view.layoutIfNeeded()
+//        }
     }
     
     func tabBarIsVisible() ->Bool {
@@ -298,6 +309,15 @@ extension String {
     
         controller.present(alertController, animated: true, completion: nil)
         
+    }
+    func getConvertedDate() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd" //Your date format
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+6:00") //Current time zone
+        let date = dateFormatter.date(from: self)
+        dateFormatter.dateFormat = "d MMMM"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        return dateFormatter.string(from: date!)
     }
 }
 

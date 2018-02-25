@@ -59,15 +59,7 @@ class PromotionsDetailViewController: UIViewController {
         courseLogoImageView.kf.setImage(with: url)
         actionTitleLabel.text = simpleAction.title
         actionDescriptionLabel.text = simpleAction.description
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd" //Your date format
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+6:00") //Current time zone
-        dateFormatter.locale = Locale.init(identifier: "en_US")
-        let date = dateFormatter.date(from: simpleAction.end_date)
-        dateFormatter.dateFormat = "dd MMMM"
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        let convertedDate = dateFormatter.string(from: date!)
-        endDateLabel.text = convertedDate
+        endDateLabel.text = simpleAction.end_date.getConvertedDate()
         let backUrl = URL(string: simpleAction.action_image)
         backImageView.kf.setImage(with: backUrl)
     }

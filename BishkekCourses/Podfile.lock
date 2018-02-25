@@ -1,10 +1,8 @@
 PODS:
   - Alamofire (4.5.1)
-  - AMScrollingNavbar (4.2.1)
   - Cosmos (12.0.1)
   - Hero (1.0.1)
   - HGPlaceholders (0.2.6)
-  - HidingNavigationBar (2.0.1)
   - ImageSlideshow/Core (1.4.1)
   - ImageSlideshow/Kingfisher (1.4.1):
     - ImageSlideshow/Core
@@ -23,7 +21,6 @@ PODS:
   - Moya/Core (10.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
-  - ParallaxHeader (2.0.0)
   - PKHUD (5.0.0)
   - PullToRefreshKit (0.8.2)
   - Result (3.2.4)
@@ -33,31 +30,24 @@ PODS:
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
   - RxSwift (4.0.0)
-  - SDWebImage (4.2.2):
-    - SDWebImage/Core (= 4.2.2)
-  - SDWebImage/Core (4.2.2)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
-  - AMScrollingNavbar
   - Cosmos
   - Hero (from `https://github.com/lkzhao/Hero.git`, commit `a5bec96`)
   - HGPlaceholders
-  - HidingNavigationBar
   - ImageSlideshow/Kingfisher
   - IQKeyboardManagerSwift
   - Kingfisher
   - M13Checkbox
   - Moya
   - Moya-ModelMapper
-  - ParallaxHeader
   - PKHUD
   - PullToRefreshKit
   - RxCocoa
   - RxOptional
   - RxSwift
-  - SDWebImage
   - SwiftyJSON
 
 EXTERNAL SOURCES:
@@ -72,11 +62,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
-  AMScrollingNavbar: 84d998ea885809d61bbc886053115ec3f2a64f41
   Cosmos: 4a9f57998a08788a1062c7b8eefbc62d2b590f39
   Hero: a1a9d96f3174190486984739d7ed5101d39416f1
   HGPlaceholders: b05be87025781e6fe9f7739d3529f2209b92ed80
-  HidingNavigationBar: 82c06978041080f0e4d97095563414a4367b71c6
   ImageSlideshow: 1bb0e610e28a71e8936d57265d882f61714a470b
   IQKeyboardManagerSwift: a0592bb636b10a9a1cf75d2b2c61144226226c84
   Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
@@ -84,16 +72,14 @@ SPEC CHECKSUMS:
   ModelMapper: 467f49f6f187b4e6cde2599e7cc5968cefa3f19b
   Moya: 9e621707ff754eeb51ff3ec51a3d54e517c0733a
   Moya-ModelMapper: c59c0bbd042cf9d1d9b0acf38c5f930956bebed8
-  ParallaxHeader: fb6ee97915626454f3c029a97b424f79a777c642
   PKHUD: 3c001512c6e002091184197a8de7a20420786e3b
   PullToRefreshKit: 0a2a019bf094b8beba18c8a1bedfb1fb67ee70fd
   Result: d2d07204ce72856f1fd9130bbe42c35a7b0fea10
   RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
   RxOptional: e5448d3e21024489e07c31f6a262f2b50c975367
   RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
-  SDWebImage: 89a9d32cd520bbb46eb14e541d5109b3564af198
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 35a5ed3e3ae2a25875e596c778e0b082c486dd3a
+PODFILE CHECKSUM: a7db0d960cce34ae7c62b662812b839b68b3fc0f
 
 COCOAPODS: 1.3.1

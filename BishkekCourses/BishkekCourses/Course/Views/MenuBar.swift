@@ -23,7 +23,7 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     }()
     var cellId = "cellId"
     weak var cellDelegate: MenuBarDelegate?
-    let images = ["description", "comments", "locations", "contacts", "services"]
+    let images = ["description", "promotion", "locations", "contacts", "services"]
     override init(frame: CGRect) {
         super.init(frame: frame)
         let indexPath = IndexPath(item: 0, section: 0)
