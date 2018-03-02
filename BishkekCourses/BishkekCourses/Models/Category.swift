@@ -20,3 +20,4 @@ class Category: Mappable {
         try category_image_url = map.from("category_image_url")
     }
 }
+

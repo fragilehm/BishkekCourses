@@ -57,6 +57,43 @@ struct Constants {
 
     }
     static let TUTOR_HEADERS = ["ОБО МНЕ", "ГРАФИК РАБОТЫ", "КОНТАКТЫ", "АДРЕС"]
+    static let SETTINGS_TITLES = ["Сохраненные", "Добавить свой курс", "Связаться с нами"]
+    static let SETTINGS_IMAGES = ["bookmark_settings", "add", "help"]
+    
+    struct Identifier {
+        struct Main {
+            struct ControllerID {
+                static let MAIN_ROOT_CONTROLLER = "MainRootViewController"
+                static let MAIN_CONTROLLER = "MainViewController"
+            }
+            struct CellID {
+                static let MAIN_TABLE_VIEW_CELL = "MainTableViewCell"
+            }
+            
+        }
+        struct Categories {
+            struct ControllerID {
+                static let CATEGORIES_CONTROLLER = "CategoriesViewController"
+                static let SUB_CATEGORIES_CONTROLLER = "SubCategoriesViewController"
+                static let COURSES_BY_SUBCATEGORY_CONTROLLER = "CoursesBySubCategoryViewController"
 
+            }
+            struct CellID {
+                static let MAIN_TABLE_VIEW_CELL = "MainTableViewCell"
+            }
+            
+        }
+//        struct Main {
+//            struct ControllerID {
+//                static let MAIN_ROOT_CONTROLLER = "MainRootViewController"
+//                static let MAIN_CONTROLLER = "MainViewController"
+//            }
+//            struct CellID {
+//                static let MAIN_TABLE_VIEW_CELL = "MainTableViewCell"
+//            }
+//
+//        }
+    }
+    
 }
 

@@ -21,5 +21,7 @@ struct Colors {
     static let LINE_COLOR = 0xCBCBCB
     static let ACTION_BUTTON_COLOR = 0x38EEFF
     static let DARK_GRAY_TEXT_COLOR = 0x484F59
+    static let PURPLE_BUTTON_COLOR = 0x214365
+
 }
 

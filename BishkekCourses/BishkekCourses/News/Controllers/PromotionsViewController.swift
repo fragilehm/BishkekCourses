@@ -39,17 +39,9 @@ class PromotionsViewController: UIViewController {
         tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 44
         tableView.register(UINib.init(nibName: "NewsTableViewCell", bundle: nil) , forCellReuseIdentifier: "NewsTableViewCell")
-        let header = DefaultRefreshHeader.header()
-        header.setText(Constants.Hint.Refresh.pull_to_refresh, mode: .pullToRefresh)
-        header.setText(Constants.Hint.Refresh.relase_to_refresh, mode: .releaseToRefresh)
-        header.setText(Constants.Hint.Refresh.success, mode: .refreshSuccess)
-        header.setText(Constants.Hint.Refresh.refreshing, mode: .refreshing)
-        header.setText(Constants.Hint.Refresh.failed, mode: .refreshFailure)
-        header.imageRenderingWithTintColor = true
-        header.durationWhenHide = 0.4
-        tableView.configRefreshHeader(with: getRefreshHeader(), action: { [weak self] in
-            self?.getData()
-        })
+        tableView.configureRefreshHeader {
+            self.getData()
+        }
     }
 }
 extension PromotionsViewController: UITableViewDelegate, UITableViewDataSource, ActionsTableViewCellDelegate {
@@ -80,12 +72,5 @@ extension PromotionsViewController: UITableViewDelegate, UITableViewDataSource, 
     func ActionsTableViewCellDidTapCourse(_ row: Int) {
         let course = actions[row].course
         openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.main_image_url, description: course.description)
-//        let courseVC = UIStoryboard.init(name: "Course", bundle: nil).instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
-//        courseVC.courseName = course.title
-//        courseVC.courseBackImage = course.background_image_url
-//        courseVC.courseLogo = course.logo_image_url
-//        courseVC.course_id = course.id
-//        self.navigationController?.show(courseVC, sender: self)
-        //print(actions[courseId].course.title)
     }
 }

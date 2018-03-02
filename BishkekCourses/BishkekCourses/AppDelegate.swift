@@ -10,9 +10,20 @@ import UIKit
 import CoreData
 import IQKeyboardManagerSwift
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CAAnimationDelegate {
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        self.window!.backgroundColor = UIColor(red: 241/255, green: 196/255, blue: 15/255, alpha: 1)
+//        self.window!.makeKeyAndVisible()
+        
+        // rootViewController from StoryBoard
+//        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        let tabbarController = mainStoryboard.instantiateViewController(withIdentifier: "MainRootViewController")
+//        self.window!.rootViewController = tabbarController
+        
+        
+        
         IQKeyboardManager.sharedManager().enable = true
 //        window = UIWindow()
 //        window?.makeKeyAndVisible()
@@ -22,7 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        
 //        let swipingController = SwipingController(collectionViewLayout: layout)
         //window?.rootViewController = swipingController
-    
         let navigationBarAppearace = UINavigationBar.appearance()
         //application.statusBarStyle = .lightContent
         navigationBarAppearace.tintColor = UIColor(netHex: Colors.darkPurple)
@@ -32,7 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         return true
     }
-
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

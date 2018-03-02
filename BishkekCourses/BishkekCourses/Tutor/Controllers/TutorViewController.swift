@@ -29,6 +29,7 @@ class TutorViewController: UIViewController {
     func setTutors(tutors: [Tutor]){
         self.tutors = tutors
         self.tableView.reloadData()
+        self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
     }
 }
 
@@ -57,5 +58,8 @@ extension TutorViewController {
     func configureTableView() {
         tableView.tableFooterView = UIView()
         tableView.register(UINib.init(nibName: "TutorTableViewCell", bundle: nil) , forCellReuseIdentifier: "TutorTableViewCell")
+        tableView.configureRefreshHeader {
+            self.getData()
+        }
     }
 }

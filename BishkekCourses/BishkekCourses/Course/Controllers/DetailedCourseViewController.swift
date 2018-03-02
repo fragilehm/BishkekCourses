@@ -53,18 +53,26 @@ class DetailedCourseViewController: UIViewController {
         self.isHeroEnabled = true
     }
     override func viewWillAppear(_ animated: Bool) {
+        //self.navigationController?.setNavigationBarHidden(true, animated: true)
+//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationController?.navigationBar.shadowImage = UIImage()
         self.tabBarController?.setTabBarVisible(visible: true, animated: false)
-        UIApplication.shared.statusBarView?.backgroundColor = UIColor.white
+//        UIApplication.shared.statusBarStyle = .lightContent
+//        UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 0, alpha: 0.6)
+        //UIApplication.shared.statusBarView.opa
+        //UIApplication.shared.statusBarView?.alpha = 0.5
         self.navigationItem.title = courseName
     }
     override func viewWillDisappear(_ animated: Bool) {
         self.tabBarController?.setTabBarVisible(visible: true, animated: true)
     }
+   
     func setupPanGesture(){
         panGR = UIPanGestureRecognizer(target: self,
                                        action: #selector(handlePan(gestureRecognizer:)))
         view.addGestureRecognizer(panGR)
     }
+    
     func addSwipeLeftAction(){
         let swipeLeftGR = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipeLeft(swipeRecognizer:)))
         swipeLeftGR.edges = .left

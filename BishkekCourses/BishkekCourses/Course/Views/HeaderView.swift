@@ -56,6 +56,8 @@ class HeaderView: UIView {
         let label = UILabel()
         label.text = "American University"
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
+        label.numberOfLines = 2
         return label
     }()
     let menuBarView: MenuBar = {
@@ -93,26 +95,35 @@ class HeaderView: UIView {
         lineView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         lineView.bottomAnchor.constraint(equalTo: menuBarView.topAnchor).isActive = true
         lineView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
+        
+//        titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+//        titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        
+        addSubview(raitingTitleLabel)
+        addSubview(savesTitleLabel)
         addSubview(titleLabel)
-        titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        //titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         titleLabel.bottomAnchor.constraint(equalTo: lineView.topAnchor, constant: -12).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: savesTitleLabel.leadingAnchor).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: raitingTitleLabel.trailingAnchor).isActive = true
         addSubview(logoImageView)
         logoImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -12).isActive = true
         logoImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25).isActive = true
         logoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor).isActive = true
-        addSubview(raitingTitleLabel)
         raitingTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
         raitingTitleLabel.bottomAnchor.constraint(equalTo: logoImageView.bottomAnchor).isActive = true
-        addSubview(savesTitleLabel)
         savesTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
         savesTitleLabel.bottomAnchor.constraint(equalTo: logoImageView.bottomAnchor).isActive = true
         addSubview(raitingValueLabel)
         raitingValueLabel.centerXAnchor.constraint(equalTo: raitingTitleLabel.centerXAnchor).isActive = true
-        raitingValueLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
+        raitingValueLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
+        //raitingValueLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
         addSubview(savesValueLabel)
         savesValueLabel.centerXAnchor.constraint(equalTo: savesTitleLabel.centerXAnchor).isActive = true
-        savesValueLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
+        //savesValueLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
+        savesValueLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
+        //savesValueLabel.trailingAnchor.constraint(equalTo: savesTitleLabel.trailingAnchor).
         addSubview(mainImageView)
         mainImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         mainImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true

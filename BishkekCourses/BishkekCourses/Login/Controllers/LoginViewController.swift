@@ -23,7 +23,7 @@ class LoginViewController: UIViewController {
             //rememberCheckbox.boxLineWidth = 1
             rememberCheckbox?.boxType = .square
             rememberCheckbox?.markType = .checkmark
-            rememberCheckbox?.tintColor = UIColor(netHex: Colors.darkPurple)
+            rememberCheckbox?.tintColor = UIColor(netHex: Colors.PURPLE_BUTTON_COLOR)
         }
     }
     @IBOutlet weak var passwordTextField: CustomTextField! {
@@ -39,18 +39,19 @@ class LoginViewController: UIViewController {
             loginButton.layer.cornerRadius = 4
         }
     }
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.navigationController?.setNavigationBarHidden(true, animated: false)
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Авторизация"
+        //self.title = "Авторизация"
         // Do any additional setup after loading the view.
     }
-    override func viewWillAppear(_ animated: Bool) {
-        self.title = "Авторизация"
-    }
     @IBAction func registratePressed(_ sender: Any) {
-        let storyboard = UIStoryboard.init(name: "Registration", bundle: nil)
-        let registrationVC = storyboard.instantiateViewController(withIdentifier: "RegistrationViewController")
-        self.navigationController?.show(registrationVC, sender: self)
+//        let storyboard = UIStoryboard.init(name: "Login", bundle: nil)
+//        let loginVC = storyboard.instantiateViewController(withIdentifier: "LoginMainViewController")
+//        let nav = UINavigationController(rootViewController: loginVC)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     @IBAction func loginPressed(_ sender: Any) {
         let storyboard = UIStoryboard.init(name: "Main", bundle: nil)

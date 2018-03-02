@@ -201,8 +201,8 @@ extension UIColor {
 extension UITabBarController {
     func setTabBarVisible(visible:Bool, animated:Bool) {
         print(visible, "-", self.tabBar.isHidden)
-        if self.tabBar.isHidden != visible { return }
-        //if (tabBarIsVisible() == visible) { return }
+        //if !self.tabBar.isHidden == visible { return }
+        if (tabBarIsVisible() == visible) { return }
         let frame = self.tabBar.frame
         let height = frame.size.height
         let offsetY = (visible ? -height : height)
@@ -211,25 +211,59 @@ extension UITabBarController {
 //        } else {
 //            self.tabBar.isTranslucent = true
 //        }
-        tabBar.isHidden = false
+        //tabBar.isHidden = false
         UIView.animate(withDuration: animated ? 0.3 : 0.0, animations: {
             self.tabBar.frame = frame.offsetBy(dx: 0, dy: offsetY)
             self.view.setNeedsDisplay()
             self.view.layoutIfNeeded()
         }) { (finished) in
             if finished {
-                self.tabBar.isHidden = !visible
+                //self.tabBar.isHidden = !visible
             }
         }
+        print(visible, "-", self.tabBar.isHidden)
+
 //        UIView.animate(withDuration: animated ? 0.3 : 0.0) {
 //            self.tabBar.frame = frame.offsetBy(dx: 0, dy: offsetY)
 //            self.view.setNeedsDisplay()
 //            self.view.layoutIfNeeded()
 //        }
     }
-    
     func tabBarIsVisible() ->Bool {
+        let offset = Constants.SCREEN_HEIGHT - self.tabBar.frame.height
+
+        print(self.tabBar.frame.origin.y, " tabbar")
         return self.tabBar.frame.origin.y < Constants.SCREEN_HEIGHT
+    }
+}
+extension UINavigationController {
+    func setNavigationBarVisible(visible:Bool, animated:Bool) {
+        print(visible, "-", self.navigationBar.isHidden)
+        if self.navigationBar.isHidden != visible { return }
+        //if (tabBarIsVisible() == visible) { return }
+        let frame = self.navigationBar.frame
+        let height = frame.size.height
+        let offsetY = (visible ? -height : height)
+        //        if visible {
+        //            self.tabBar.isTranslucent = false
+        //        } else {
+        //            self.tabBar.isTranslucent = true
+        //        }
+        navigationBar.isHidden = false
+        UIView.animate(withDuration: animated ? 0.3 : 0.0, animations: {
+            self.navigationBar.frame = frame.offsetBy(dx: 0, dy: offsetY)
+            self.view.setNeedsDisplay()
+            self.view.layoutIfNeeded()
+        }) { (finished) in
+            if finished {
+                self.navigationBar.isHidden = !visible
+            }
+        }
+        //        UIView.animate(withDuration: animated ? 0.3 : 0.0) {
+        //            self.tabBar.frame = frame.offsetBy(dx: 0, dy: offsetY)
+        //            self.view.setNeedsDisplay()
+        //            self.view.layoutIfNeeded()
+        //        }
     }
 }
 extension UIView {
@@ -247,7 +281,7 @@ extension String {
         let date = dateFormatter.date(from: self)
         let currentDate = Date()
         let years = Calendar.current.dateComponents([.year], from: date!, to: currentDate).year
-        return years == 0 ? "1 год" : "\(years!) лет"
+        return years! <= 1 ? "1 год" : "\(years!) лет"
     }
     func callToPhone(){
         let temp = self.returnNumber(number: self)
@@ -317,4 +351,21 @@ extension String {
         return dateFormatter.string(from: date!)
     }
 }
-
+extension UITableView {
+    func configureRefreshHeader(_ completion: @escaping ()-> Void) {
+        let header = DefaultRefreshHeader.header()
+        header.setText(Constants.Hint.Refresh.pull_to_refresh, mode: .pullToRefresh)
+        header.setText(Constants.Hint.Refresh.relase_to_refresh, mode: .releaseToRefresh)
+        header.setText(Constants.Hint.Refresh.success, mode: .refreshSuccess)
+        header.setText(Constants.Hint.Refresh.refreshing, mode: .refreshing)
+        header.setText(Constants.Hint.Refresh.failed, mode: .refreshFailure)
+        header.imageRenderingWithTintColor = true
+        header.durationWhenHide = 0.4
+        self.configRefreshHeader(with: header) {
+            completion()
+        }
+//        self.configRefreshHeader(with: header, action: { [weak _ ] in
+//        })
+    }
+    
+}

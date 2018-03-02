@@ -9,12 +9,6 @@
 import Foundation
 import Moya
 
-//static let Token_auth = "api/token-auth"
-//static let Categories = "categories"
-//static let SubCategories = "categories"
-//static let CoursesBySubcategory = "subcategories"
-//static let CourseDetails = "courses"
-//static let CoursesRecent = "courses/recent"
 private extension String {
     var URLEscapedString: String {
         return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!

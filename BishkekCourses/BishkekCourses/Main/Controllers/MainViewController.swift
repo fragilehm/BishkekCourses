@@ -13,6 +13,7 @@ import RxCocoa
 import RxSwift
 import Moya
 import Hero
+
 class MainViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -68,7 +69,6 @@ class MainViewController: UIViewController, UITextViewDelegate {
             courseVC.courseName = course.title
             courseVC.courseLogo = course.logo_image_url
             courseVC.courseBackImage = course.main_image_url
-            //strongSelf.tabBarController?.setTabBarVisible(visible: false, animated: false)
             strongSelf.navigationController?.show(courseVC, sender: self)
         }).disposed(by: disposeBag)
     }
@@ -134,13 +134,14 @@ class MainViewController: UIViewController, UITextViewDelegate {
 //
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if(velocity.y>0){
-            //self.segmentView.heightAnchor.constraint(equalToConstant: 0).isActive = true
-            //self.segmentView.animateConstraintWithDuration()
             self.tabBarController?.setTabBarVisible(visible:false, animated: true)
+            //self.navigationController?.setNavigationBarHidden(true, animated: true)
+            //self.navigationController?.setNavigationBarVisible(visible: false, animated: true)
         }else{
-            //self.segmentView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-            //self.segmentView.animateConstraintWithDuration()
             self.tabBarController?.setTabBarVisible(visible: true, animated: true)
+            //self.navigationController?.setNavigationBarHidden(false, animated: true)
+
+            //self.navigationController?.setNavigationBarVisible(visible: true, animated: true)
         }
     }
     func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
@@ -156,7 +157,7 @@ extension MainViewController: UITableViewDelegate {
 extension MainViewController {
     func configureBasics() {
         self.navigationController?.view.backgroundColor = .white
-        self.navigationController?.navigationBar.backgroundColor = .white
+        //self.navigationController?.navigationBar.backgroundColor = .white
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         self.isHeroEnabled = true
     }
@@ -168,24 +169,14 @@ extension MainViewController {
             bar.imageInsets = UIEdgeInsets(top: 6, left: 0, bottom: -6, right: 0)
         }
         self.tabBarController?.tabBar.tintColor = UIColor.black
-        //let image = UIImage()
-        //self.tabBarController?.tabBar.backgroundImage = UIImage()
     }
     func configureTableView(){
         tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 100
         tableView.rx.setDelegate(self as UIScrollViewDelegate).disposed(by: disposeBag)
         tableView.register(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
-        let header = DefaultRefreshHeader.header()
-        header.setText(Constants.Hint.Refresh.pull_to_refresh, mode: .pullToRefresh)
-        header.setText(Constants.Hint.Refresh.relase_to_refresh, mode: .releaseToRefresh)
-        header.setText(Constants.Hint.Refresh.success, mode: .refreshSuccess)
-        header.setText(Constants.Hint.Refresh.refreshing, mode: .refreshing)
-        header.setText(Constants.Hint.Refresh.failed, mode: .refreshFailure)
-        header.imageRenderingWithTintColor = true
-        header.durationWhenHide = 0.4
-        tableView.configRefreshHeader(with: getRefreshHeader(), action: { [weak self] in
-            self?.getData()
-        })
+        tableView.configureRefreshHeader {
+            self.getData()
+        }
     }
 }
