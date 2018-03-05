@@ -35,10 +35,7 @@ class CoursesBySubcategoryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
-        //setNavBarItems()
         getData()
-        //addSwipeLeftAction()
-        //Hero.shared.defaultAnimation = .selectBy(presenting: .fade, dismissing: .fade)
         self.isHeroEnabled = true
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -132,16 +129,16 @@ class CoursesBySubcategoryViewController: UIViewController {
         }
     }
     func configureTableView(){
-        if getDeviceName() == "iPhone 5.8" {
+        if getDeviceName() == Constants.Devices.IPHONE_5_8 {
             self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: -44).isActive = true
         }
         else {
             self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: -20).isActive = true
         }
         tableView.tableFooterView = UIView()
-        tableView.register(UINib.init(nibName: "CoursesBySubcategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "CoursesBySubcategoryTableViewCell")
-        tableView.register(UINib.init(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: "NewsTableViewCell")
-        tableView.register(UINib.init(nibName: "TutorTableViewCell", bundle: nil), forCellReuseIdentifier: "TutorTableViewCell")
+        tableView.register(UINib.init(nibName: Constants.Categories.CellID.COURSES_BY_SUBCATEGORY_TABLEVIEW_CELL, bundle: nil), forCellReuseIdentifier: Constants.Categories.CellID.COURSES_BY_SUBCATEGORY_TABLEVIEW_CELL)
+        tableView.register(UINib.init(nibName: Constants.Promotions.CellID.NEWS_TABLEVIEW_CELL, bundle: nil), forCellReuseIdentifier: Constants.Promotions.CellID.NEWS_TABLEVIEW_CELL)
+        tableView.register(UINib.init(nibName: Constants.Tutor.CellID.TUTOR_TABLEVIEW_CELL, bundle: nil), forCellReuseIdentifier: Constants.Tutor.CellID.TUTOR_TABLEVIEW_CELL)
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
         tableView.bounces = false
         
@@ -160,7 +157,7 @@ class CoursesBySubcategoryViewController: UIViewController {
     }
     func addHeaderView() {
         let url = URL(string: backImage)
-        headerView.backImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
+        headerView.backImageView.kf.setImage(with: url, placeholder: Constants.PLACEHOLDER_IMAGE, options: [], progressBlock: nil, completionHandler: nil)
 //        headerView.backImageView.heroID = "\(subcategoryName)_image"
 //        headerView.backImageView.heroModifiers = [.zPosition(2)]
 //        headerView.titleLabel.heroID = "\(subcategoryName)_name"
@@ -257,16 +254,16 @@ extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch showData {
         case "courses":
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CoursesBySubcategoryTableViewCell", for: indexPath) as! CoursesBySubcategoryTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Categories.CellID.COURSES_BY_SUBCATEGORY_TABLEVIEW_CELL, for: indexPath) as! CoursesBySubcategoryTableViewCell
             cell.fillCell(course: self.simpleCourses[indexPath.row])
             return cell
         case "actions":
-            let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Promotions.CellID.NEWS_TABLEVIEW_CELL, for: indexPath) as! NewsTableViewCell
             cell.fillCell(action: self.actions[indexPath.row], index: indexPath.row)
             cell.delegate = self
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TutorTableViewCell", for: indexPath) as! TutorTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Tutor.CellID.TUTOR_TABLEVIEW_CELL, for: indexPath) as! TutorTableViewCell
             cell.fillCell(tutor: self.tutors[indexPath.row])
             return cell
         }
@@ -280,16 +277,16 @@ extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDa
             let course = simpleCourses[indexPath.row]
             openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.main_image_url, description: course.description)
         case "actions":
-            let storyboard = UIStoryboard.init(name: "News", bundle: nil)
-            let promotionVC = storyboard.instantiateViewController(withIdentifier: "PromotionsDetailViewController") as! PromotionsDetailViewController
+            let storyboard = UIStoryboard.init(name: Constants.Storyboards.NEWS, bundle: nil)
+            let promotionVC = storyboard.instantiateViewController(withIdentifier: Constants.Promotions.ControllerID.PROMOTIONS_DETAIL_VIEWCONTROLLER) as! PromotionsDetailViewController
             let action = self.actions[indexPath.row]
             let simpleAction = SimplePromotion(id: action.id, title: action.title, description: action.description, end_date: action.end_date, action_image: action.action_image)
             promotionVC.courseHeader = self.actions[indexPath.row].course
             promotionVC.simpleAction = simpleAction
             self.navigationController?.show(promotionVC, sender: self)
         default:
-            let storyboard = UIStoryboard.init(name: "Tutor", bundle: nil)
-            let tutorVC = storyboard.instantiateViewController(withIdentifier: "TutorDetailViewController") as! TutorDetailViewController
+            let storyboard = UIStoryboard.init(name: Constants.Storyboards.TUTOR, bundle: nil)
+            let tutorVC = storyboard.instantiateViewController(withIdentifier: Constants.Tutor.ControllerID.TUTOR_DETAIL_VIEWCONTROLLER) as! TutorDetailViewController
             tutorVC.tutor = self.tutors[indexPath.row]
             self.navigationController?.show(tutorVC, sender: self)
             
@@ -312,12 +309,8 @@ extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDa
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if(velocity.y>0){
-            //self.segmentView.heightAnchor.constraint(equalToConstant: 0).isActive = true
-            //self.segmentView.animateConstraintWithDuration()
             self.tabBarController?.setTabBarVisible(visible:false, animated: true)
         }else{
-            //self.segmentView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-            //self.segmentView.animateConstraintWithDuration()
             self.tabBarController?.setTabBarVisible(visible: true, animated: true)
         }
     }

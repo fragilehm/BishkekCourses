@@ -1,14 +1,51 @@
 PODS:
   - Alamofire (4.5.1)
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
   - Cosmos (12.0.1)
+  - FacebookCore (0.3.0):
+    - Bolts (~> 1.8)
+    - FBSDKCoreKit (~> 4.27)
+  - FacebookLogin (0.3.0):
+    - Bolts (~> 1.8)
+    - FacebookCore (~> 0.3)
+    - FBSDKCoreKit (~> 4.27)
+    - FBSDKLoginKit (~> 4.27)
+  - FBSDKCoreKit (4.29.0):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.29.0):
+    - FBSDKCoreKit
+  - GoogleSignIn (4.1.1):
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GoogleToolboxForMac/NSString+URLArguments (~> 2.1)
+    - GTMOAuth2 (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GoogleToolboxForMac/Defines (2.1.3)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.3):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.3)
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
+  - GTMOAuth2 (1.1.6):
+    - GTMSessionFetcher (~> 1.1)
+  - GTMSessionFetcher (1.1.12):
+    - GTMSessionFetcher/Full (= 1.1.12)
+  - GTMSessionFetcher/Core (1.1.12)
+  - GTMSessionFetcher/Full (1.1.12):
+    - GTMSessionFetcher/Core (= 1.1.12)
   - Hero (1.0.1)
   - HGPlaceholders (0.2.6)
-  - ImageSlideshow/Core (1.4.1)
-  - ImageSlideshow/Kingfisher (1.4.1):
-    - ImageSlideshow/Core
-    - Kingfisher (> 3.0)
   - IQKeyboardManagerSwift (5.0.4)
   - Kingfisher (4.2.0)
+  - KRActivityIndicatorView (2.1.1)
+  - KRProgressHUD (3.1.2):
+    - KRActivityIndicatorView (= 2.1.1)
   - M13Checkbox (3.2.1)
   - ModelMapper (7.4.0)
   - Moya (10.0.1):
@@ -35,11 +72,14 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - Cosmos
+  - FacebookCore
+  - FacebookLogin
+  - GoogleSignIn
   - Hero (from `https://github.com/lkzhao/Hero.git`, commit `a5bec96`)
   - HGPlaceholders
-  - ImageSlideshow/Kingfisher
   - IQKeyboardManagerSwift
   - Kingfisher
+  - KRProgressHUD
   - M13Checkbox
   - Moya
   - Moya-ModelMapper
@@ -62,12 +102,22 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Cosmos: 4a9f57998a08788a1062c7b8eefbc62d2b590f39
+  FacebookCore: 3ffa190a3f1f96cec0e44d3fc221bc322c595ffa
+  FacebookLogin: 0af839ea858faef99550d16596b87b4a8e8906e6
+  FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
+  FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
+  GoogleSignIn: 3fdaa34a2ba04dbd7a25d7db39aecb0da98d5bdc
+  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
+  GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   Hero: a1a9d96f3174190486984739d7ed5101d39416f1
   HGPlaceholders: b05be87025781e6fe9f7739d3529f2209b92ed80
-  ImageSlideshow: 1bb0e610e28a71e8936d57265d882f61714a470b
   IQKeyboardManagerSwift: a0592bb636b10a9a1cf75d2b2c61144226226c84
   Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
+  KRActivityIndicatorView: fa5df9f4cf039651ad8b0f9c11c3159d1e19299f
+  KRProgressHUD: 6e23870531f8e854c8cba430b0f5a61074865250
   M13Checkbox: 12376f5b128189432508c240e4a36dc945ab7e4e
   ModelMapper: 467f49f6f187b4e6cde2599e7cc5968cefa3f19b
   Moya: 9e621707ff754eeb51ff3ec51a3d54e517c0733a
@@ -80,6 +130,6 @@ SPEC CHECKSUMS:
   RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: a7db0d960cce34ae7c62b662812b839b68b3fc0f
+PODFILE CHECKSUM: 5f42b20a3a8f22d8c270836f27b05c93ea35170e
 
 COCOAPODS: 1.3.1

@@ -13,7 +13,6 @@ class BranchesTableViewCell: CustomCell {
     @IBOutlet weak var addressLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     func fillCell(branch: Branch) {
         addressLabel.text = branch.address

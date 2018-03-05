@@ -20,8 +20,6 @@ class PromotionsViewController: UIViewController {
         self.navigationController?.isHeroEnabled = true
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         self.navigationController?.view.backgroundColor = .white
-        //self.navigationController?.heroNavigationAnimationType = .fade
-        // Do any additional setup after loading the view.
     }
     func getData(){
         ServerAPIManager.sharedAPI.getActions(setActions, showError: showErrorAlert)
@@ -32,13 +30,12 @@ class PromotionsViewController: UIViewController {
         self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
     }
     override func viewWillAppear(_ animated: Bool) {
-        //self.navigationController?.title = "Акции"
-        self.navigationItem.title = "Акции"
+        self.navigationItem.title = Constants.Titles.NEWS
     }
     func configureTableView(){
         tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 44
-        tableView.register(UINib.init(nibName: "NewsTableViewCell", bundle: nil) , forCellReuseIdentifier: "NewsTableViewCell")
+        tableView.register(UINib.init(nibName: Constants.Promotions.CellID.NEWS_TABLEVIEW_CELL, bundle: nil) , forCellReuseIdentifier: Constants.Promotions.CellID.NEWS_TABLEVIEW_CELL)
         tableView.configureRefreshHeader {
             self.getData()
         }
@@ -53,7 +50,7 @@ extension PromotionsViewController: UITableViewDelegate, UITableViewDataSource, 
         return actions.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath) as! NewsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Promotions.CellID.NEWS_TABLEVIEW_CELL, for: indexPath) as! NewsTableViewCell
         cell.fillCell(action: actions[indexPath.row], index: indexPath.row)
         cell.delegate = self
         return cell
@@ -62,7 +59,7 @@ extension PromotionsViewController: UITableViewDelegate, UITableViewDataSource, 
         return UITableViewAutomaticDimension
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let promotionVC = storyboard?.instantiateViewController(withIdentifier: "PromotionsDetailViewController") as! PromotionsDetailViewController
+        let promotionVC = storyboard?.instantiateViewController(withIdentifier: Constants.Promotions.ControllerID.PROMOTIONS_DETAIL_VIEWCONTROLLER) as! PromotionsDetailViewController
         let action = self.actions[indexPath.row]
         let simpleAction = SimplePromotion(id: action.id, title: action.title, description: action.description, end_date: action.end_date, action_image: action.action_image)
         promotionVC.courseHeader = self.actions[indexPath.row].course

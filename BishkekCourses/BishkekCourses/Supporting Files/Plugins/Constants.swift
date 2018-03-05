@@ -11,7 +11,7 @@ import UIKit
 struct Constants {
     
     static var lang: String?
-    
+    static let PLACEHOLDER_IMAGE = UIImage(named: "placeholder-image")
     static var shared: Constants {
         struct Static {
             static let instance = Constants()
@@ -60,29 +60,125 @@ struct Constants {
     static let SETTINGS_TITLES = ["Сохраненные", "Добавить свой курс", "Связаться с нами"]
     static let SETTINGS_IMAGES = ["bookmark_settings", "add", "help"]
     
-    struct Identifier {
-        struct Main {
-            struct ControllerID {
-                static let MAIN_ROOT_CONTROLLER = "MainRootViewController"
-                static let MAIN_CONTROLLER = "MainViewController"
-            }
-            struct CellID {
-                static let MAIN_TABLE_VIEW_CELL = "MainTableViewCell"
-            }
-            
+    struct Main {
+        struct ControllerID {
+            static let MAIN_ROOT_VIEWCONTROLLER = "MainRootViewController"
+            static let MAIN_VIEWCONTROLLER = "MainViewController"
         }
-        struct Categories {
-            struct ControllerID {
-                static let CATEGORIES_CONTROLLER = "CategoriesViewController"
-                static let SUB_CATEGORIES_CONTROLLER = "SubCategoriesViewController"
-                static let COURSES_BY_SUBCATEGORY_CONTROLLER = "CoursesBySubCategoryViewController"
+        struct CellID {
+            static let MAIN_TABLEVIEW_CELL = "MainTableViewCell"
+        }
+        
+    }
+    struct Categories {
+        struct ControllerID {
+            static let CATEGORIES_VIEWCONTROLLER = "CategoriesViewController"
+            static let SUB_CATEGORIES_VIEWCONTROLLER = "SubCategoriesViewController"
+            static let COURSES_BY_SUBCATEGORY_VIEWCONTROLLER = "CoursesBySubcategoryViewController"
 
-            }
-            struct CellID {
-                static let MAIN_TABLE_VIEW_CELL = "MainTableViewCell"
-            }
-            
         }
+        struct CellID {
+            static let CATEGORIES_COLLECTIONVIEW_CELL = "CategoriesCollectionViewCell"
+            static let SUBCATEGORIES_COLLECTIONVIEW_CELL = "SubCategoriesCollectionViewCell"
+            static let COURSES_BY_SUBCATEGORY_TABLEVIEW_CELL = "CoursesBySubcategoryTableViewCell"
+        }
+        
+    }
+    struct DetailedCourse {
+        static let INSTAGRAM_LINK = "https://www.instagram.com/"
+        struct ControllerID {
+            static let DETAILED_COURSE_VIEWCONTROLLER = "DetailedCourseViewController"
+            static let MAP_VIEWCONTROLLER = "MapViewController"
+        }
+        struct CellID {
+            static let COURSE_ACTION_TABLEVIEW_CELL = "CourseActionTableViewCell"
+            static let COMMENTS_TABLEVIEW_CELL = "CommentsTableViewCell"
+            static let BRANCHES_TABLEVIEW_CELL = "BranchesTableViewCell"
+            static let SERVICES_TABLEVIEW_CELL = "ServicesTableViewCell"
+            static let CONTATCS_TABLEVIEW_CELL = "ContactsTableViewCell"
+            static let DESCRIPTION_TABLEVIEW_CELL = "DescriptionTableViewCell"
+            static let HEADER_TABLEVIEW_CELL = "HeaderTableViewCell"
+            static let MENU_COLLECTIONVIEW_CELL = "MenuCollectionViewCell"
+
+
+        }
+        static var CONTACT_TYPE = ""
+        static let MENU_IMAGES = ["description", "promotion", "locations", "contacts", "services"]
+
+    }
+    struct Login {
+        struct ControllerID {
+            static let LOGIN_MAIN_VIEWCONTROLLER = "LoginMainViewController"
+            static let SIGNUP_VIEWCONTROLLER = "SignUpViewController"
+            static let LOGIN_VIEWCONTROLLER = "LoginViewController"
+
+        }
+        struct CellID {
+        }
+    }
+    struct Settings {
+        static let LOGOUT_TEXT = "Выйти"
+        struct ControllerID {
+            static let SETTINGS_VIEWCONTROLLER = "SettingsViewController"
+        }
+        struct CellID {
+            static let SETTINGS_TABLEVIEW_CELL = "SettingsTableViewCell"
+            static let PROFILE_TABLEVIEW_CELL = "ProfileTableViewCell"
+            static let LOGOUT_TABLEVIEW_CELL = "LogoutTableViewCell"
+        }
+        
+    }
+    struct Tutor {
+        struct ControllerID {
+            static let TUTOR_VIEWCONTROLLER = "TutorViewController"
+            static let TUTOR_DETAIL_VIEWCONTROLLER = "TutorDetailViewController"
+        }
+        struct CellID {
+            static let TUTOR_TABLEVIEW_CELL = "TutorTableViewCell"
+        }
+    }
+    struct Promotions {
+        struct ControllerID {
+            static let PROMOTIONS_VIEWCONTROLLER = "PromotionsViewController"
+            static let PROMOTIONS_DETAIL_VIEWCONTROLLER = "PromotionsDetailViewController"
+        }
+        struct CellID {
+            static let NEWS_TABLEVIEW_CELL = "NewsTableViewCell"
+        }
+    }
+    struct Storyboards {
+        static let MAIN = "Main"
+        static let LOGIN = "Login"
+        static let CATEGORIES = "Categories"
+        static let FAVORITE = "Favorite"
+        static let COURSE = "Course"
+        static let TUTOR = "Tutor"
+        static let SETTINGS = "Settings"
+        static let STARTING_PAGE = "StartingPage"
+        static let SEARCH = "Search"
+        static let NEWS = "News"
+    }
+    struct Titles {
+        static let MAIN = "Главная"
+        static let LOGIN = "Логин"
+        static let CATEGORIES = "Категории"
+        static let SUBCATEGORIES = "Подкатегории"
+        static let FAVORITE = "Избранные"
+        static let TUTOR = "Репетиторы"
+        static let SETTINGS = "Настройки"
+        static let SEARCH = "Поиск"
+        static let NEWS = "Акции"
+    }
+    struct Devices {
+        static let IPHONE_4 = "iPhone 4"
+        static let IPHONE_4_7 = "iPhone 4.7"
+        static let IPHONE_5_5 = "iPhone 5.5"
+        static let IPHONE_5_8 = "iPhone 5.8"
+        static let IPAD_12_9 = "ipad 12.9"
+        static let IPAD_10_5 = "ipad 10.5"
+        static let IPAD_9_7 = "ipad 9.7"
+        static let UNKNOWN = "unknown"
+    }
 //        struct Main {
 //            struct ControllerID {
 //                static let MAIN_ROOT_CONTROLLER = "MainRootViewController"
@@ -93,7 +189,7 @@ struct Constants {
 //            }
 //
 //        }
-    }
+    
     
 }
 

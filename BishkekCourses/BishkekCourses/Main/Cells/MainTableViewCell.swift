@@ -14,15 +14,12 @@ class MainTableViewCell: UITableViewCell, UITextViewDelegate {
     @IBOutlet weak var mainImageView: UIImageView! {
         didSet {
             mainImageView.translatesAutoresizingMaskIntoConstraints = false
-            //print(mainImageView.frame.height)
         }
     }
     @IBOutlet weak var textView: UITextView! {
         didSet {
             textView.contentMode = .left
-            //textView.textContainer.lineBreakMode = .
             textView.textContainerInset = UIEdgeInsets.zero
-            //textView.delegate = self
         }
     }
     @IBOutlet weak var topViewHeight: NSLayoutConstraint!
@@ -48,14 +45,9 @@ class MainTableViewCell: UITableViewCell, UITextViewDelegate {
             cardView.layer.masksToBounds = true
             cardView.layer.cornerRadius = 10
         }
-        
-
-        // Initialization code
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     func fillCell(course: SimpleCourse){
         
@@ -73,7 +65,7 @@ class MainTableViewCell: UITableViewCell, UITextViewDelegate {
         decriptionLabel.text = course.description
         let url = URL(string: course.main_image_url)
         let halfScreenHeight = Constants.SCREEN_HEIGHT * 2 / 5
-        mainImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil) { (image, error, cache, url) in
+        mainImageView.kf.setImage(with: url, placeholder: Constants.PLACEHOLDER_IMAGE, options: [], progressBlock: nil) { (image, error, cache, url) in
         }
         mainImageView.heightAnchor.constraint(equalToConstant: halfScreenHeight).isActive = true
         var subcategories = ""
@@ -87,10 +79,8 @@ class MainTableViewCell: UITableViewCell, UITextViewDelegate {
         let attributedString = NSMutableAttributedString(string: subcategories, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.black])
         let attr = NSMutableAttributedString(string: "Категори\(course.subcategories.count > 1 ? "и" : "я"): ", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.paragraphStyle: paragraph])
         attr.append(attributedString)
-        //let a = kCTFontAttributeName
         var indexCount = 11
         for simpleSubcategory in course.subcategories {
-            print(simpleSubcategory.title)
             let url = NSURL(string: "\(simpleSubcategory.id) \(simpleSubcategory.subcategory_image_url) \(simpleSubcategory.title)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
             attr.addAttribute(.link, value: url ?? "", range: NSRange(location: indexCount, length: simpleSubcategory.title.count + 1))
             indexCount += simpleSubcategory.title.count + 1
@@ -102,9 +92,7 @@ class MainTableViewCell: UITableViewCell, UITextViewDelegate {
         textView.attributedText = attr
         let logo_url = URL(string: course.logo_image_url)
         logoImageView.kf.setImage(with: logo_url)
-//        decriptionLabel.heroID = "course_decription"
-//        decriptionLabel.heroModifiers = [.beginWith([.zPosition(15), .useGlobalCoordinateSpace])]
-        logoImageView.kf.setImage(with: logo_url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
+        logoImageView.kf.setImage(with: logo_url, placeholder: Constants.PLACEHOLDER_IMAGE, options: [], progressBlock: nil, completionHandler: nil)
         mainImageView.heroID = "\(course.title)_image"
         mainImageView.heroModifiers = [.zPosition(2)]
         logoImageView.heroID = "\(course.title)_logo"

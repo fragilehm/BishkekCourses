@@ -48,7 +48,6 @@
 		846FBA58202559D2001A4773 /* CoursesBySubcategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 846FBA56202559D2001A4773 /* CoursesBySubcategoryTableViewCell.xib */; };
 		846FDD5720345A9F002E530C /* CustomAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FDD5620345A9F002E530C /* CustomAnimator.swift */; };
 		846FDD602034CD57002E530C /* CustomPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846FDD5F2034CD57002E530C /* CustomPresentAnimationController.swift */; };
-		84712F2B2030B5A6001ED992 /* HashTagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84712F2A2030B5A6001ED992 /* HashTagViewController.swift */; };
 		847869112012FF5D00B6BE0D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847869102012FF5D00B6BE0D /* MainViewController.swift */; };
 		847869142013015800B6BE0D /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847869122013015800B6BE0D /* MainTableViewCell.swift */; };
 		847869152013015800B6BE0D /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847869132013015800B6BE0D /* MainTableViewCell.xib */; };
@@ -71,6 +70,7 @@
 		84A6C534203801D4007DF020 /* LabelPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84A6C533203801D4007DF020 /* LabelPadding.swift */; };
 		84AA85A22041B2E600D9E4B2 /* CourseActionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AA85A02041B2E600D9E4B2 /* CourseActionTableViewCell.swift */; };
 		84AA85A32041B2E600D9E4B2 /* CourseActionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AA85A12041B2E600D9E4B2 /* CourseActionTableViewCell.xib */; };
+		84AD2382204AE077006D1EF0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84AD2381204AE077006D1EF0 /* GoogleService-Info.plist */; };
 		84AD4D4B202AC25000AEAF1D /* SubcategoryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AD4D4A202AC25000AEAF1D /* SubcategoryHeaderView.swift */; };
 		84B0EDED20113748000F2670 /* CourseAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B0EDEC20113748000F2670 /* CourseAddress.swift */; };
 		84B4DB4F2036AC000012FD36 /* SwipeInteractionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B4DB4E2036AC000012FD36 /* SwipeInteractionController.swift */; };
@@ -185,7 +185,6 @@
 		846FBA56202559D2001A4773 /* CoursesBySubcategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoursesBySubcategoryTableViewCell.xib; sourceTree = "<group>"; };
 		846FDD5620345A9F002E530C /* CustomAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimator.swift; sourceTree = "<group>"; };
 		846FDD5F2034CD57002E530C /* CustomPresentAnimationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPresentAnimationController.swift; sourceTree = "<group>"; };
-		84712F2A2030B5A6001ED992 /* HashTagViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashTagViewController.swift; sourceTree = "<group>"; };
 		847869102012FF5D00B6BE0D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		847869122013015800B6BE0D /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		847869132013015800B6BE0D /* MainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
@@ -208,6 +207,7 @@
 		84A6C533203801D4007DF020 /* LabelPadding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelPadding.swift; sourceTree = "<group>"; };
 		84AA85A02041B2E600D9E4B2 /* CourseActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseActionTableViewCell.swift; sourceTree = "<group>"; };
 		84AA85A12041B2E600D9E4B2 /* CourseActionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CourseActionTableViewCell.xib; sourceTree = "<group>"; };
+		84AD2381204AE077006D1EF0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84AD4D4A202AC25000AEAF1D /* SubcategoryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubcategoryHeaderView.swift; sourceTree = "<group>"; };
 		84B0EDEC20113748000F2670 /* CourseAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseAddress.swift; sourceTree = "<group>"; };
 		84B4DB4E2036AC000012FD36 /* SwipeInteractionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeInteractionController.swift; sourceTree = "<group>"; };
@@ -514,7 +514,6 @@
 			children = (
 				84EFF6DE202E00ED00358043 /* PromotionsViewController.swift */,
 				84582C78202F1C190079F319 /* PromotionsDetailViewController.swift */,
-				84712F2A2030B5A6001ED992 /* HashTagViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -806,6 +805,7 @@
 				84C714521FD00BB6007E640F /* Assets.xcassets */,
 				84C714541FD00BB6007E640F /* LaunchScreen.storyboard */,
 				84C714571FD00BB6007E640F /* Info.plist */,
+				84AD2381204AE077006D1EF0 /* GoogleService-Info.plist */,
 				84C7144F1FD00BB6007E640F /* BishkekCourses.xcdatamodeld */,
 			);
 			path = BishkekCourses;
@@ -1035,6 +1035,7 @@
 				84FA47972046C29A000A3730 /* ProfileTableViewCell.xib in Resources */,
 				8454AC3B1FD1D12D0064689C /* News.storyboard in Resources */,
 				846FBA58202559D2001A4773 /* CoursesBySubcategoryTableViewCell.xib in Resources */,
+				84AD2382204AE077006D1EF0 /* GoogleService-Info.plist in Resources */,
 				84B88A53203EC5F300C8B664 /* Tutor.storyboard in Resources */,
 				84FA47932046B848000A3730 /* SettingsTableViewCell.xib in Resources */,
 				849D8DD31FD488FA00F507A4 /* SubCategoriesCollectionViewCell.xib in Resources */,
@@ -1109,9 +1110,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-BishkekCourses/Pods-BishkekCourses-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1126,11 +1130,20 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-BishkekCourses/Pods-BishkekCourses-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookCore/FacebookCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FacebookLogin/FacebookLogin.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/HGPlaceholders/HGPlaceholders.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/ImageSlideshow/ImageSlideshow.framework",
+				"${BUILT_PRODUCTS_DIR}/KRActivityIndicatorView/KRActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/KRProgressHUD/KRProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/M13Checkbox/M13Checkbox.framework",
 				"${BUILT_PRODUCTS_DIR}/ModelMapper/Mapper.framework",
@@ -1147,11 +1160,20 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FacebookLogin.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HGPlaceholders.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImageSlideshow.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KRActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KRProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13Checkbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapper.framework",
@@ -1283,7 +1305,6 @@
 				84B4DB4F2036AC000012FD36 /* SwipeInteractionController.swift in Sources */,
 				84BE8F1C201F14D600844F55 /* NetworkManager.swift in Sources */,
 				84C399F01FD3081500DD5D66 /* ServerManager.swift in Sources */,
-				84712F2B2030B5A6001ED992 /* HashTagViewController.swift in Sources */,
 				8413803F1FD9BDE900710969 /* Category.swift in Sources */,
 				84C399EA1FD3080400DD5D66 /* ApiAddress.swift in Sources */,
 				843DC3E8201C63F70048CA3D /* CustomCell.swift in Sources */,

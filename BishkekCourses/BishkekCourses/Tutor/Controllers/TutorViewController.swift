@@ -21,7 +21,7 @@ class TutorViewController: UIViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationItem.title = "Репетиторы"
+        self.navigationItem.title = Constants.Titles.TUTOR
     }
     func getData() {
         ServerAPIManager.sharedAPI.getTutors(setTutors, showError: showErrorAlert)
@@ -41,7 +41,7 @@ extension TutorViewController: UITableViewDataSource, UITableViewDelegate {
         return tutors.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TutorTableViewCell", for: indexPath) as! TutorTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Tutor.CellID.TUTOR_TABLEVIEW_CELL, for: indexPath) as! TutorTableViewCell
         cell.fillCell(tutor: tutors[indexPath.row])
         return cell
     }
@@ -49,7 +49,7 @@ extension TutorViewController: UITableViewDataSource, UITableViewDelegate {
         return UITableViewAutomaticDimension
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tutorVC = storyboard?.instantiateViewController(withIdentifier: "TutorDetailViewController") as! TutorDetailViewController
+        let tutorVC = storyboard?.instantiateViewController(withIdentifier: Constants.Tutor.ControllerID.TUTOR_DETAIL_VIEWCONTROLLER) as! TutorDetailViewController
         tutorVC.tutor = self.tutors[indexPath.row]
         self.navigationController?.show(tutorVC, sender: self)
     }
@@ -57,7 +57,7 @@ extension TutorViewController: UITableViewDataSource, UITableViewDelegate {
 extension TutorViewController {
     func configureTableView() {
         tableView.tableFooterView = UIView()
-        tableView.register(UINib.init(nibName: "TutorTableViewCell", bundle: nil) , forCellReuseIdentifier: "TutorTableViewCell")
+        tableView.register(UINib.init(nibName: Constants.Tutor.CellID.TUTOR_TABLEVIEW_CELL, bundle: nil) , forCellReuseIdentifier: Constants.Tutor.CellID.TUTOR_TABLEVIEW_CELL)
         tableView.configureRefreshHeader {
             self.getData()
         }

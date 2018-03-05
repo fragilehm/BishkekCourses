@@ -36,4 +36,5 @@ enum ContactTypes: String {
     case EMAIL
     case WHATSAPP
     case FACEBOOK
+    case INSTAGRAM
 }

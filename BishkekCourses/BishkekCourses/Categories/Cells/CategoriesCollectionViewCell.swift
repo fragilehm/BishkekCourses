@@ -16,7 +16,6 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     func fillCell(category: Category){
         titleLabel.text = category.title
         let url = URL(string: category.category_image_url)
-        categoriesImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
-        //categoriesImageView.kf.setImage(with: url)
+        categoriesImageView.kf.setImage(with: url, placeholder: Constants.PLACEHOLDER_IMAGE, options: [], progressBlock: nil, completionHandler: nil)
     }
 }

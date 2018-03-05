@@ -28,14 +28,14 @@ class CategoriesViewViewController: UIViewController {
         bindCollectionViewSelected()
     }
     func bindCollectionView(){
-        categories.asObservable().bind(to: collectionView.rx.items(cellIdentifier: "CategoriesCollectionViewCell", cellType: CategoriesCollectionViewCell.self)) { row, element, cell in
+        categories.asObservable().bind(to: collectionView.rx.items(cellIdentifier: Constants.Categories.CellID.CATEGORIES_COLLECTIONVIEW_CELL, cellType: CategoriesCollectionViewCell.self)) { row, element, cell in
             cell.fillCell(category: element)
             }.disposed(by: disposeBag)
     }
     func bindCollectionViewSelected(){
         collectionView.rx.modelSelected(Category.self).subscribe(onNext: {[weak self] element in
             guard let strongSelf = self else {return}
-            let subCategoryVC = strongSelf.storyboard?.instantiateViewController(withIdentifier: "SubCategoriesViewController") as! SubCategoriesViewController
+            let subCategoryVC = strongSelf.storyboard?.instantiateViewController(withIdentifier: Constants.Categories.ControllerID.SUB_CATEGORIES_VIEWCONTROLLER) as! SubCategoriesViewController
             subCategoryVC.category_id = element.id
             strongSelf.navigationController?.show(subCategoryVC, sender: self)
         }).disposed(by: disposeBag)
@@ -44,7 +44,8 @@ class CategoriesViewViewController: UIViewController {
         ServerAPIManager.sharedAPI.getCategories(setCategories, showError: showErrorAlert)
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = "Категории"
+        self.navigationItem.title =
+            Constants.Titles.CATEGORIES
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         //print("CategoriesViewController resources: \(RxSwift.Resources.total)")
     }
@@ -55,7 +56,7 @@ class CategoriesViewViewController: UIViewController {
 extension CategoriesViewViewController {
     func configureCollectionView(){
         collectionView.rx.setDelegate(self as UIScrollViewDelegate).disposed(by: disposeBag)
-        collectionView.register(UINib(nibName: "CategoriesCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
+        collectionView.register(UINib(nibName: Constants.Categories.CellID.CATEGORIES_COLLECTIONVIEW_CELL, bundle: nil), forCellWithReuseIdentifier: Constants.Categories.CellID.CATEGORIES_COLLECTIONVIEW_CELL)
         collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }

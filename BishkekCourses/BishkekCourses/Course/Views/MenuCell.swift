@@ -17,12 +17,12 @@ class MenuCell: UICollectionViewCell {
     }()
     override var isHighlighted: Bool {
         didSet {
-            imageView.tintColor = isHighlighted ? UIColor(netHex: Colors.lightBlue) : UIColor.lightGray
+            imageView.tintColor = isHighlighted ? UIColor(netHex: Colors.LIGHT_BLUE) : UIColor.lightGray
         }
     }
     override var isSelected: Bool {
         didSet {
-            imageView.tintColor = isSelected ? UIColor(netHex: Colors.lightBlue) : UIColor.lightGray
+            imageView.tintColor = isSelected ? UIColor(netHex: Colors.LIGHT_BLUE) : UIColor.lightGray
         }
     }
     override init(frame: CGRect) {

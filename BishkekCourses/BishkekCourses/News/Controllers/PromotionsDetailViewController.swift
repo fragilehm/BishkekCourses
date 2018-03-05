@@ -43,16 +43,7 @@ class PromotionsDetailViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBarItems()
         fillData()
-        //getDetailAction()
-        // Do any additional setup after loading the view.
     }
-//    func getDetailAction(){
-//        ServerAPIManager.sharedAPI.getDetailedAction(action_id: actionId, setAction, showError: showErrorAlert)
-//    }
-//    func setAction(action: Promotion){
-//        detailedAction = action
-//        fillData()
-//    }
     func fillData() {
         courseNameLabel.text = courseHeader.title
         let url = URL(string: courseHeader.logo_image_url)
@@ -61,7 +52,7 @@ class PromotionsDetailViewController: UIViewController {
         actionDescriptionLabel.text = simpleAction.description
         endDateLabel.text = simpleAction.end_date.getConvertedDate()
         let backUrl = URL(string: simpleAction.action_image)
-        backImageView.kf.setImage(with: backUrl)
+        backImageView.kf.setImage(with: backUrl, placeholder: Constants.PLACEHOLDER_IMAGE, options: nil, progressBlock: nil, completionHandler: nil)
     }
     @objc func openCourse(_ sender: UITapGestureRecognizer) {
         if isFromCourse {

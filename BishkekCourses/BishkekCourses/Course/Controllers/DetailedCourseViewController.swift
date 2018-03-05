@@ -16,7 +16,7 @@ class DetailedCourseViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var panGR: UIPanGestureRecognizer!
 
-    private var cellId = "DescriptionTableViewCell"
+    private var cellId = Constants.DetailedCourse.CellID.DESCRIPTION_TABLEVIEW_CELL
     private var isFavorite = false
     private var course = DetailedCourse()
     private var isBottomPopupCompleted = true
@@ -35,32 +35,21 @@ class DetailedCourseViewController: UIViewController {
     }()
     private let bottomPopupView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(netHex: Colors.darkPurple)
+        view.backgroundColor = UIColor(netHex: Colors.DARK_PURPLE)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-        //setSwipeLeftAction()
         configureTableView()
         setNavBarItems()
         getData()
         addPopupView()
-        //Hero.shared.defaultAnimation = .selectBy(presenting: .fade, dismissing: .fade)
         self.navigationController?.heroNavigationAnimationType = .fade
-        //setupPanGesture()
-        //addSwipeLeftAction()
         self.isHeroEnabled = true
     }
     override func viewWillAppear(_ animated: Bool) {
-        //self.navigationController?.setNavigationBarHidden(true, animated: true)
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
         self.tabBarController?.setTabBarVisible(visible: true, animated: false)
-//        UIApplication.shared.statusBarStyle = .lightContent
-//        UIApplication.shared.statusBarView?.backgroundColor = UIColor(white: 0, alpha: 0.6)
-        //UIApplication.shared.statusBarView.opa
-        //UIApplication.shared.statusBarView?.alpha = 0.5
         self.navigationItem.title = courseName
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -113,16 +102,10 @@ class DetailedCourseViewController: UIViewController {
         popupLabel.centerXAnchor.constraint(equalTo: bottomPopupView.centerXAnchor).isActive = true
         popupLabel.centerYAnchor.constraint(equalTo: bottomPopupView.centerYAnchor).isActive = true
         self.view.addSubview(bottomPopupView)
-        //self.view.insertSubview(bottomPopupView, aboveSubview: tableView)
         bottomPopupView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         bottomPopupView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         bottomPopupView.heightAnchor.constraint(equalToConstant: 50).isActive = true
         bottomPopupView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-        //bottomPopupView.isHidden = true
-        
-        //view.bringSubview(toFront: bottomPopupView)
-        //self.view.layoutSubviews()
-
     }
     func getData(){
         ServerAPIManager.sharedAPI.getCourseDetails(course_id: course_id, setCourse, showError: showErrorAlert)
@@ -145,8 +128,7 @@ class DetailedCourseViewController: UIViewController {
         backButton.addTarget(self, action: #selector(dissmis(_:)), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: getRightItem(image: #imageLiteral(resourceName: "bookmark")))
-        //self.navigationItem.
-        //self.navBar.setItems([navigationItem], animated: false)
+
     }
     @objc func dissmis(_ button: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -174,20 +156,19 @@ extension DetailedCourseViewController {
     func configureTableView(){
        
         tableView.tableFooterView = UIView()
-        registerCell(nibName: "HeaderTableViewCell")
-        registerCell(nibName: "CourseActionTableViewCell")
-        registerCell(nibName: "CommentsTableViewCell")
-        registerCell(nibName: "ServicesTableViewCell")
-        registerCell(nibName: "BranchesTableViewCell")
-        registerCell(nibName: "ContactsTableViewCell")
-        registerCell(nibName: "DescriptionTableViewCell")
+        registerCell(nibName: Constants.DetailedCourse.CellID.HEADER_TABLEVIEW_CELL)
+        registerCell(nibName: Constants.DetailedCourse.CellID.COURSE_ACTION_TABLEVIEW_CELL)
+        registerCell(nibName: Constants.DetailedCourse.CellID.COMMENTS_TABLEVIEW_CELL)
+        registerCell(nibName: Constants.DetailedCourse.CellID.SERVICES_TABLEVIEW_CELL)
+        registerCell(nibName: Constants.DetailedCourse.CellID.BRANCHES_TABLEVIEW_CELL)
+        registerCell(nibName: Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL)
+        registerCell(nibName: Constants.DetailedCourse.CellID.DESCRIPTION_TABLEVIEW_CELL)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
-        tableView.reloadData()
         addHeaderView()
-        //tableView.configRefreshHeader(with: getRefreshHeader(), action: { [weak self] in
-//            self?.getData()
-//        })
+        tableView.configureRefreshHeader {
+            self.getData()
+        }
         
     }
     func addHeaderView(){
@@ -234,13 +215,13 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         switch cellId {
-        case "DescriptionTableViewCell":
+        case Constants.DetailedCourse.CellID.DESCRIPTION_TABLEVIEW_CELL:
             return 1
-        case "CourseActionTableViewCell":
+        case Constants.DetailedCourse.CellID.COURSE_ACTION_TABLEVIEW_CELL:
             return course.actions.count
-        case "BranchesTableViewCell":
+        case Constants.DetailedCourse.CellID.BRANCHES_TABLEVIEW_CELL:
             return course.branches.count
-        case "ContactsTableViewCell":
+        case Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL:
             return course.contacts.count
         default:
             return course.services.count
@@ -248,23 +229,21 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch cellId {
-        case "DescriptionTableViewCell":
+        case Constants.DetailedCourse.CellID.DESCRIPTION_TABLEVIEW_CELL:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as!
             DescriptionTableViewCell
             cell.fillCell(description: courseDescription)
             return cell
-            //tableView.separatorStyle = .none
-        case "CourseActionTableViewCell":
+        case Constants.DetailedCourse.CellID.COURSE_ACTION_TABLEVIEW_CELL:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as!
             CourseActionTableViewCell
             cell.fillCell(action: course.actions[indexPath.row])
-            //cell.fillCell(course: course)
             return cell
-        case "BranchesTableViewCell":
+        case Constants.DetailedCourse.CellID.BRANCHES_TABLEVIEW_CELL:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! BranchesTableViewCell
             cell.fillCell(branch: course.branches[indexPath.row])
             return cell
-        case "ContactsTableViewCell":
+        case Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ContactsTableViewCell
             cell.fillCell(contact: course.contacts[indexPath.row])
             return cell
@@ -282,23 +261,20 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             switch cellId {
-            case "DescriptionTableViewCell":
-                print("description")
-            case "CourseActionTableViewCell":
-                let promotionVC = UIStoryboard.init(name: "News", bundle: nil).instantiateViewController(withIdentifier: "PromotionsDetailViewController") as! PromotionsDetailViewController
+            case Constants.DetailedCourse.CellID.COURSE_ACTION_TABLEVIEW_CELL:
+                let promotionVC = UIStoryboard.init(name: Constants.Storyboards.NEWS, bundle: nil).instantiateViewController(withIdentifier: Constants.Promotions.ControllerID.PROMOTIONS_DETAIL_VIEWCONTROLLER) as! PromotionsDetailViewController
                 let courseHeader = CourseHeader(id: course_id, title: courseName, logo_image_url: courseLogo, main_image_url: courseBackImage, description: courseDescription)
                 promotionVC.courseHeader = courseHeader
                 promotionVC.simpleAction = course.actions[indexPath.row]
                 promotionVC.isFromCourse = true
                 self.navigationController?.show(promotionVC, sender: self)
-            case "BranchesTableViewCell":
-                print("branches")
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: "MapViewController") as! MapViewController
+            case Constants.DetailedCourse.CellID.BRANCHES_TABLEVIEW_CELL:
+                let vc = self.storyboard?.instantiateViewController(withIdentifier: Constants.DetailedCourse.ControllerID.MAP_VIEWCONTROLLER) as! MapViewController
                 vc.branches = self.course.branches
                 vc.branch_id = indexPath.row
                 vc.branch_title = self.course.title
                 self.navigationController?.show(vc, sender: self)
-            case "ContactsTableViewCell":
+            case Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL:
                 DispatchQueue.main.async(execute: {
                     let contactType: ContactTypes = ContactTypes(rawValue: self.course.contacts[indexPath.row].type)!
                     let contactValue = self.course.contacts[indexPath.row].contact
@@ -310,32 +286,31 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
                     case .FACEBOOK, .WEBSITE:
                         contactValue.openLink(controller: self)
                     case .WHATSAPP:
-                        self.copyNumber()
+                        self.copyNumber(number: contactValue)
+                    case .INSTAGRAM:
+                        var profileLogin = contactValue
+                        profileLogin.remove(at: profileLogin.startIndex)
+                        let fullLink = "\(Constants.DetailedCourse.INSTAGRAM_LINK)\(profileLogin)"
+                        fullLink.openLink(controller: self)
                     }
                 })
             default:
-                print("services")
+                print("services and decription")
             }
         }
     }
-    private func copyNumber(){
+    private func copyNumber(number: String){
         if isBottomPopupCompleted {
-            //self.bottomPopupView.isHidden = false
             let offset = self.view.frame.height - (self.tabBarController?.tabBar.frame.origin.y)!
-            print(offset)
-
+            UIPasteboard.general.string = number.returnNumber()
             UIView.animate(withDuration: 0.5, animations: {
                 self.bottomPopupView.frame.origin.y -= (50 + offset)
             }, completion: { (completed) in
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                     UIView.animate(withDuration: 0.5, animations: {
-                        //self.bottomPopupView.alpha = 0
                         self.bottomPopupView.frame.origin.y += (50 + offset)
-                        //self.view.layoutIfNeeded()
                     }, completion: { (completed) in
                         self.isBottomPopupCompleted = true
-                        //self.bottomPopupView.isHidden = true
-
                     })
                 })
             })
@@ -347,26 +322,22 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
     func iconPressed(_ index: Int) {
         switch index {
         case 0:
-            cellId = "DescriptionTableViewCell"
+            cellId = Constants.DetailedCourse.CellID.DESCRIPTION_TABLEVIEW_CELL
         case 1:
-            cellId = "CourseActionTableViewCell"
+            cellId = Constants.DetailedCourse.CellID.COURSE_ACTION_TABLEVIEW_CELL
         case 2:
-            cellId = "BranchesTableViewCell"
+            cellId = Constants.DetailedCourse.CellID.BRANCHES_TABLEVIEW_CELL
         case 3:
-            cellId = "ContactsTableViewCell"
+            cellId = Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL
         default:
-            cellId = "ServicesTableViewCell"
+            cellId = Constants.DetailedCourse.CellID.SERVICES_TABLEVIEW_CELL
         }
         tableView.reloadSections(IndexSet.init(integer: 0), with: .fade)
     }
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if(velocity.y>0){
-            //self.segmentView.heightAnchor.constraint(equalToConstant: 0).isActive = true
-            //self.segmentView.animateConstraintWithDuration()
             self.tabBarController?.setTabBarVisible(visible:false, animated: true)
         }else{
-            //self.segmentView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-            //self.segmentView.animateConstraintWithDuration()
             self.tabBarController?.setTabBarVisible(visible: true, animated: true)
         }
     }

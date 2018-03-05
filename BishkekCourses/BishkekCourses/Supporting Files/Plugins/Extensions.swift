@@ -63,30 +63,30 @@ extension UIViewController {
         if UIDevice().userInterfaceIdiom == .phone {
             switch UIScreen.main.nativeBounds.height {
             case 1136:
-                return "iPhone 4"
+                return Constants.Devices.IPHONE_4
             case 1334:
-                return "iPhone 4.7"
+                return Constants.Devices.IPHONE_4_7
             case 2208:
-                return "iPhone 5.5"
+                return Constants.Devices.IPHONE_5_5
             case 2436:
-                return "iPhone 5.8"
+                return Constants.Devices.IPHONE_5_8
             default:
-                return "unknown"
+                return Constants.Devices.UNKNOWN
             }
         }
         else if UIDevice().userInterfaceIdiom == .pad {
             switch UIScreen.main.nativeBounds.height {
             case 2732:
-                return "ipad 12.9"
+                return Constants.Devices.IPAD_12_9
             case 2224:
-                return "ipad 10.5"
+                return Constants.Devices.IPAD_10_5
             case 2048:
-                return "ipad 9.7"
+                return Constants.Devices.IPAD_9_7
             default:
-                return "unknown"
+                return Constants.Devices.UNKNOWN
             }
         }
-        return "unknown"
+        return Constants.Devices.UNKNOWN
     }
     func getRefreshHeader() -> DefaultRefreshHeader {
         let header = DefaultRefreshHeader.header()
@@ -200,55 +200,33 @@ extension UIColor {
 }
 extension UITabBarController {
     func setTabBarVisible(visible:Bool, animated:Bool) {
-        print(visible, "-", self.tabBar.isHidden)
-        //if !self.tabBar.isHidden == visible { return }
         if (tabBarIsVisible() == visible) { return }
         let frame = self.tabBar.frame
         let height = frame.size.height
         let offsetY = (visible ? -height : height)
-//        if visible {
-//            self.tabBar.isTranslucent = false
-//        } else {
-//            self.tabBar.isTranslucent = true
-//        }
-        //tabBar.isHidden = false
+
         UIView.animate(withDuration: animated ? 0.3 : 0.0, animations: {
             self.tabBar.frame = frame.offsetBy(dx: 0, dy: offsetY)
             self.view.setNeedsDisplay()
             self.view.layoutIfNeeded()
-        }) { (finished) in
-            if finished {
-                //self.tabBar.isHidden = !visible
-            }
-        }
-        print(visible, "-", self.tabBar.isHidden)
+        })
 
-//        UIView.animate(withDuration: animated ? 0.3 : 0.0) {
-//            self.tabBar.frame = frame.offsetBy(dx: 0, dy: offsetY)
-//            self.view.setNeedsDisplay()
-//            self.view.layoutIfNeeded()
-//        }
     }
-    func tabBarIsVisible() ->Bool {
-        let offset = Constants.SCREEN_HEIGHT - self.tabBar.frame.height
-
-        print(self.tabBar.frame.origin.y, " tabbar")
-        return self.tabBar.frame.origin.y < Constants.SCREEN_HEIGHT
+    func tabBarIsVisible() -> Bool {
+        var offset: CGFloat = 0
+        if UIDevice().userInterfaceIdiom == .phone {
+            offset = UIScreen.main.nativeBounds.height == 2436 ? (UIApplication.shared.statusBarView?.frame.height)! > CGFloat(40) ? 20 : 0 : (UIApplication.shared.statusBarView?.frame.height)! > CGFloat(20) ? 20 : 0
+        }
+        return self.tabBar.frame.origin.y + offset < Constants.SCREEN_HEIGHT
     }
 }
 extension UINavigationController {
     func setNavigationBarVisible(visible:Bool, animated:Bool) {
         print(visible, "-", self.navigationBar.isHidden)
         if self.navigationBar.isHidden != visible { return }
-        //if (tabBarIsVisible() == visible) { return }
         let frame = self.navigationBar.frame
         let height = frame.size.height
         let offsetY = (visible ? -height : height)
-        //        if visible {
-        //            self.tabBar.isTranslucent = false
-        //        } else {
-        //            self.tabBar.isTranslucent = true
-        //        }
         navigationBar.isHidden = false
         UIView.animate(withDuration: animated ? 0.3 : 0.0, animations: {
             self.navigationBar.frame = frame.offsetBy(dx: 0, dy: offsetY)
@@ -259,11 +237,6 @@ extension UINavigationController {
                 self.navigationBar.isHidden = !visible
             }
         }
-        //        UIView.animate(withDuration: animated ? 0.3 : 0.0) {
-        //            self.tabBar.frame = frame.offsetBy(dx: 0, dy: offsetY)
-        //            self.view.setNeedsDisplay()
-        //            self.view.layoutIfNeeded()
-        //        }
     }
 }
 extension UIView {
@@ -296,6 +269,18 @@ extension String {
     func returnNumber(number: String) -> String {
         var ans = [Character]()
         for char in number {
+            if ((String(char).rangeOfCharacter(from: CharacterSet.alphanumerics.inverted)) == nil) {
+                ans.append(char)
+            }
+            else if (String(char) == "+"){
+                ans.append(char)
+            }
+        }
+        return String(ans)
+    }
+    func returnNumber() -> String {
+        var ans = [Character]()
+        for char in self {
             if ((String(char).rangeOfCharacter(from: CharacterSet.alphanumerics.inverted)) == nil) {
                 ans.append(char)
             }

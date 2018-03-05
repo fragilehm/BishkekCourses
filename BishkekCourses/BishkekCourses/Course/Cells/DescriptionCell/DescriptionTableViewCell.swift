@@ -17,8 +17,6 @@ class DescriptionTableViewCell: CustomCell {
         // Initialization code
     }
     func fillCell(description: String){
-//        descriptionLabel.heroID = "course_decription"
-//        descriptionLabel.heroModifiers = [.beginWith([.zPosition(15), .useGlobalCoordinateSpace])]
         descriptionLabel.text = description
     }
 }

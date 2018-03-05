@@ -32,6 +32,7 @@ extension FavoriteViewController {
         collectionView.placeholdersProvider = .summer
         let key = PlaceholderKey.custom(key: "starWars")
         collectionView?.showCustomPlaceholder(with: key)
+        
     }
 }
 extension FavoriteViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {

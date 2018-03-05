@@ -29,7 +29,7 @@ struct Promotion: Mappable {
         try start_date = map.from("start_date")
         try end_date = map.from("end_date")
         try isActual = map.from("isActual")
-        try action_image = map.from("action_image")
+        action_image = map.optionalFrom("action_image") ?? ""
     }
 }
 struct SimplePromotion: Mappable {
@@ -52,7 +52,7 @@ struct SimplePromotion: Mappable {
         try title = map.from("title")
         try description = map.from("description")
         try end_date = map.from("end_date")
-        try action_image = map.from("action_image")
+        action_image = map.optionalFrom("action_image") ?? ""
     }
 }
 struct CourseHeader: Mappable {

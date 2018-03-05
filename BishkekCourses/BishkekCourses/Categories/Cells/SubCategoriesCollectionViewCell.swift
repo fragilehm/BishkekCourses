@@ -17,9 +17,6 @@ class SubCategoriesCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-//        cardView.layer.cornerRadius = 5
-//        cardView.layer.masksToBounds = true
     }
     func fillCell(subcategory: Subcategory){
         titleLabel.text = subcategory.title
@@ -28,7 +25,7 @@ class SubCategoriesCollectionViewCell: UICollectionViewCell {
         blurView.heroID = "\(subcategory.title)_view"
         blurView.heroModifiers = [.zPosition(5)]
         let url = URL(string: subcategory.subcategory_image_url)
-        subCategoriesImageView.kf.setImage(with: url, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
+        subCategoriesImageView.kf.setImage(with: url, placeholder: Constants.PLACEHOLDER_IMAGE, options: [], progressBlock: nil, completionHandler: nil)
         subCategoriesImageView.heroID = "\(subcategory.title)_image"
         subCategoriesImageView.heroModifiers = [.zPosition(2)]
     }

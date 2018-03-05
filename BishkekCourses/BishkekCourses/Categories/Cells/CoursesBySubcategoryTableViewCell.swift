@@ -24,10 +24,6 @@ class CoursesBySubcategoryTableViewCell: CustomCell {
     @IBOutlet weak var backImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-//        let labelHeight = descriptionLabel.frame.height
-//        backImageView.translatesAutoresizingMaskIntoConstraints = false
-//        backImageView.heightAnchor.constraint(equalToConstant: labelHeight + 4).isActive = true
-        // Initialization code
         if UIDevice.current.userInterfaceIdiom == .pad {
             topViewheightConstraint.constant = 0
             cardViewTopConstraint.constant = 24
@@ -49,12 +45,11 @@ class CoursesBySubcategoryTableViewCell: CustomCell {
         let logoUrl = URL(string: course.logo_image_url)
         logoImageView.heroID = "\(course.title)_logo"
         logoImageView.heroModifiers = [.beginWith([.zPosition(5), .useGlobalCoordinateSpace])]
-        logoImageView.kf.setImage(with: logoUrl, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
+        logoImageView.kf.setImage(with: logoUrl, placeholder: Constants.PLACEHOLDER_IMAGE, options: [], progressBlock: nil, completionHandler: nil)
         let backUrl = URL(string: course.main_image_url)
         backImageView.heroID = "\(course.title)_image"
         backImageView.heroModifiers = [.zPosition(2)]
-        backImageView.kf.setImage(with: backUrl, placeholder: UIImage(named: "placeholder-image"), options: [], progressBlock: nil, completionHandler: nil)
+        backImageView.kf.setImage(with: backUrl, placeholder: Constants.PLACEHOLDER_IMAGE, options: [], progressBlock: nil, completionHandler: nil)
         descriptionLabel.text = course.description
-        //subCategoriesImageView.kf.setImage(with: url)
     }
 }

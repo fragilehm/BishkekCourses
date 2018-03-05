@@ -9,8 +9,12 @@
 import UIKit
 import CoreData
 import IQKeyboardManagerSwift
+import FBSDKLoginKit
+import GoogleSignIn
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CAAnimationDelegate {
+    
+    
     var window: UIWindow?
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 //        self.window = UIWindow(frame: UIScreen.main.bounds)
@@ -35,18 +39,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CAAnimationDelegate {
         //window?.rootViewController = swipingController
         let navigationBarAppearace = UINavigationBar.appearance()
         //application.statusBarStyle = .lightContent
-        navigationBarAppearace.tintColor = UIColor(netHex: Colors.darkPurple)
-        navigationBarAppearace.barTintColor = UIColor(netHex: Colors.darkBlue)
+        navigationBarAppearace.tintColor = UIColor(netHex: Colors.DARK_PURPLE)
+        navigationBarAppearace.barTintColor = UIColor(netHex: Colors.DARK_BLUE)
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         navigationBarAppearace.titleTextAttributes = textAttributes
+        
+        //Google SignIn
+        GIDSignIn.sharedInstance().clientID = "356072123586-7u0llt1uhbrvh70330q9g9au7j6rtmiq.apps.googleusercontent.com"        
         // Override point for customization after application launch.
-        return true
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+
     }
     func applicationWillResignActive(_ application: UIApplication) {
+        FBSDKAppEvents.activateApp()
+
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
-
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        let fbHandler = FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
+        let gooleHandler = GIDSignIn.sharedInstance().handle(url,
+                                                             sourceApplication: sourceApplication,
+                                                             annotation: annotation)
+        return fbHandler && gooleHandler
+    }
+    @available(iOS 9.0, *)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        return GIDSignIn.sharedInstance().handle(url,
+                                                 sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                                                 annotation: options[UIApplicationOpenURLOptionsKey.annotation])
+    }
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.

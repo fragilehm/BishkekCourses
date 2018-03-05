@@ -10,7 +10,7 @@ import UIKit
 
 class SubcategoryHeaderView: UIView {
     let backImageView: UIImageView = {
-        let imageView = UIImageView(image: #imageLiteral(resourceName: "coding").withRenderingMode(.alwaysOriginal))
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false

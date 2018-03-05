@@ -10,9 +10,12 @@ import UIKit
 
 class ContactsTableViewCell: CustomCell {
 
-    @IBOutlet weak var contactLabel: UILabel!
+    @IBOutlet weak var contactLabel: UILabel! {
+        didSet {
+            contactLabel.textColor = UIColor.init(netHex: Colors.INSTAGRAM_BLUE)
+        }
+    }
     @IBOutlet weak var contactImageView: UIImageView!
-    @IBOutlet weak var contactTypeLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,13 +23,12 @@ class ContactsTableViewCell: CustomCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     func fillCell(contact: Contact){
+      
         contactLabel.text = contact.contact
         contactImageView.image = getContactIcon(type: contact.type)
-        //contactTypeLabel.text = contact.type.lowercased()
+        
     }
     func getContactIcon(type: String) -> UIImage {
         return UIImage.init(named: type)!

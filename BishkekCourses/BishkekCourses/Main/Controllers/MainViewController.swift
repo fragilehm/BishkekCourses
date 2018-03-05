@@ -13,7 +13,8 @@ import RxCocoa
 import RxSwift
 import Moya
 import Hero
-
+import PKHUD
+import KRProgressHUD
 class MainViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -26,11 +27,9 @@ class MainViewController: UIViewController, UITextViewDelegate {
         segmentView.translatesAutoresizingMaskIntoConstraints = false
         return segmentView
     }()
-    
     private var viewModel =  SimpleCourseViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-        //addSegmetView()
         configureTabBar()
         configureTableView()
         configureBasics()
@@ -41,15 +40,14 @@ class MainViewController: UIViewController, UITextViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.setTabBarVisible(visible:true, animated: true)
-        //self.navigationController?.heroNavigationAnimationType = .fade
-        self.navigationItem.title = "Главная"
+        self.navigationItem.title = Constants.Titles.MAIN
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.setTabBarVisible(visible: true, animated: false)
     }
     func bindTableView(){
-        viewModel.simpleCourses.asObservable().bind(to: tableView.rx.items(cellIdentifier: "MainTableViewCell", cellType: MainTableViewCell.self)) { row, element, cell in
+        viewModel.simpleCourses.asObservable().bind(to: tableView.rx.items(cellIdentifier: Constants.Main.CellID.MAIN_TABLEVIEW_CELL, cellType: MainTableViewCell.self)) { row, element, cell in
             cell.fillCell(course: element)
             cell.textView.delegate = self
             }.disposed(by: disposeBag)
@@ -63,7 +61,7 @@ class MainViewController: UIViewController, UITextViewDelegate {
     func bindTableViewSelected(){
         tableView.rx.modelSelected(SimpleCourse.self).subscribe(onNext: {[weak self] course in
             guard let strongSelf = self else {return}
-            let courseVC = UIStoryboard.init(name: "Course", bundle: nil).instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
+            let courseVC = UIStoryboard.init(name: Constants.Storyboards.COURSE, bundle: nil).instantiateViewController(withIdentifier: Constants.DetailedCourse.ControllerID.DETAILED_COURSE_VIEWCONTROLLER) as! DetailedCourseViewController
             courseVC.course_id = course.id
             courseVC.courseDescription = course.description
             courseVC.courseName = course.title
@@ -72,7 +70,11 @@ class MainViewController: UIViewController, UITextViewDelegate {
             strongSelf.navigationController?.show(courseVC, sender: self)
         }).disposed(by: disposeBag)
     }
-    func getData(){
+    func getData(isRefresh: Bool = false){
+        if !isRefresh {
+            KRProgressHUD.show()
+            //HUD.show(.progress)
+        }
         viewModel.fetchData()
     }
     func addSegmetView(){
@@ -112,7 +114,7 @@ class MainViewController: UIViewController, UITextViewDelegate {
     }
     @available(iOS 10.0, *)
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-        let subCategoryVC = UIStoryboard.init(name: "Categories", bundle: nil).instantiateViewController(withIdentifier: "CoursesBySubcategoryViewController") as! CoursesBySubcategoryViewController
+        let subCategoryVC = UIStoryboard.init(name: Constants.Storyboards.CATEGORIES, bundle: nil).instantiateViewController(withIdentifier: Constants.Categories.ControllerID.COURSES_BY_SUBCATEGORY_VIEWCONTROLLER) as! CoursesBySubcategoryViewController
         let seperatedString =  URL.absoluteString.removingPercentEncoding?.components(separatedBy: " ")
         var name = ""
         for index in 2..<seperatedString!.count{
@@ -128,24 +130,16 @@ class MainViewController: UIViewController, UITextViewDelegate {
         navController.isHeroEnabled = true
         navController.heroNavigationAnimationType = .fade
         self.navigationController?.show(subCategoryVC, sender: self)
-        //self.navigationController?.present(navController, animated: true, completion: nil)
         return false
     }
-//
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         if(velocity.y>0){
             self.tabBarController?.setTabBarVisible(visible:false, animated: true)
-            //self.navigationController?.setNavigationBarHidden(true, animated: true)
-            //self.navigationController?.setNavigationBarVisible(visible: false, animated: true)
         }else{
             self.tabBarController?.setTabBarVisible(visible: true, animated: true)
-            //self.navigationController?.setNavigationBarHidden(false, animated: true)
-
-            //self.navigationController?.setNavigationBarVisible(visible: true, animated: true)
         }
     }
     func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
-        print(textAttachment)
         return false
     }
 }
@@ -157,7 +151,6 @@ extension MainViewController: UITableViewDelegate {
 extension MainViewController {
     func configureBasics() {
         self.navigationController?.view.backgroundColor = .white
-        //self.navigationController?.navigationBar.backgroundColor = .white
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         self.isHeroEnabled = true
     }
@@ -174,9 +167,9 @@ extension MainViewController {
         tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 100
         tableView.rx.setDelegate(self as UIScrollViewDelegate).disposed(by: disposeBag)
-        tableView.register(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "MainTableViewCell")
+        tableView.register(UINib(nibName: Constants.Main.CellID.MAIN_TABLEVIEW_CELL, bundle: nil), forCellReuseIdentifier: Constants.Main.CellID.MAIN_TABLEVIEW_CELL)
         tableView.configureRefreshHeader {
-            self.getData()
+            self.getData(isRefresh: true)
         }
     }
 }

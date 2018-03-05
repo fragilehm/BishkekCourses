@@ -308,6 +308,11 @@
                         <viewLayoutGuide key="safeArea" id="atd-Qb-s1x"/>
                     </view>
                     <navigationItem key="navigationItem" id="AJA-oN-oXz"/>
+                    <connections>
+                        <outlet property="fbLoginView" destination="L7E-w4-lHx" id="iUu-17-x0P"/>
+                        <outlet property="googleLoginView" destination="k2L-uJ-uHP" id="TcR-9E-TbM"/>
+                        <outlet property="signUpWithEmail" destination="iha-eO-wge" id="WC4-Yd-DwM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iOC-no-8PM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -322,31 +327,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Имя" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="04J-yq-cqz" customClass="CustomTextField" customModule="BishkekCourses" customModuleProvider="target">
-                                <rect key="frame" x="37.5" y="88" width="300" height="18"/>
+                                <rect key="frame" x="37.5" y="132.5" width="300" height="18"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Почта" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="OUi-YI-qdF" customClass="CustomTextField" customModule="BishkekCourses" customModuleProvider="target">
-                                <rect key="frame" x="37.5" y="118" width="300" height="18"/>
+                                <rect key="frame" x="37.5" y="162.5" width="300" height="18"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Пароль" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="cKT-t5-cJ5" customClass="CustomTextField" customModule="BishkekCourses" customModuleProvider="target">
-                                <rect key="frame" x="38" y="148" width="300" height="18"/>
+                                <rect key="frame" x="38" y="192.5" width="300" height="18"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Повторить пароль" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="YaI-DO-1CP" customClass="CustomTextField" customModule="BishkekCourses" customModuleProvider="target">
-                                <rect key="frame" x="37.5" y="178" width="300" height="18"/>
+                                <rect key="frame" x="37.5" y="222.5" width="300" height="18"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gid-VM-ejl">
-                                <rect key="frame" x="37.5" y="208" width="300" height="42"/>
+                                <rect key="frame" x="37.5" y="252.5" width="300" height="42"/>
                                 <color key="backgroundColor" red="0.12941176469999999" green="0.26274509800000001" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="42" id="jhh-QL-D59"/>
@@ -382,12 +387,19 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Регистрация" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7G-bR-9pj">
+                                <rect key="frame" x="136.5" y="88" width="102.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.12941176469999999" green="0.26274509800000001" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="cKT-t5-cJ5" firstAttribute="top" secondItem="OUi-YI-qdF" secondAttribute="bottom" constant="12" id="5sB-hF-wvZ"/>
+                            <constraint firstItem="W7G-bR-9pj" firstAttribute="top" secondItem="J1M-Xd-NgT" secondAttribute="top" constant="24" id="A56-hd-xba"/>
+                            <constraint firstItem="W7G-bR-9pj" firstAttribute="centerX" secondItem="xd9-J6-2Rh" secondAttribute="centerX" id="AoX-bj-j5X"/>
                             <constraint firstItem="04J-yq-cqz" firstAttribute="centerX" secondItem="xd9-J6-2Rh" secondAttribute="centerX" id="FtX-yO-R6C"/>
-                            <constraint firstItem="04J-yq-cqz" firstAttribute="top" secondItem="J1M-Xd-NgT" secondAttribute="top" constant="24" id="GiS-93-aan"/>
                             <constraint firstItem="YaI-DO-1CP" firstAttribute="top" secondItem="cKT-t5-cJ5" secondAttribute="bottom" constant="12" id="M3c-ld-D4E"/>
                             <constraint firstItem="cKT-t5-cJ5" firstAttribute="centerX" secondItem="xd9-J6-2Rh" secondAttribute="centerX" id="OvR-zK-QlH"/>
                             <constraint firstItem="OUi-YI-qdF" firstAttribute="top" secondItem="04J-yq-cqz" secondAttribute="bottom" constant="12" id="P69-eQ-uxd"/>
@@ -401,6 +413,7 @@
                             <constraint firstItem="04J-yq-cqz" firstAttribute="centerX" secondItem="xd9-J6-2Rh" secondAttribute="centerX" id="okd-DM-11i"/>
                             <constraint firstItem="YaI-DO-1CP" firstAttribute="centerX" secondItem="xd9-J6-2Rh" secondAttribute="centerX" id="re8-3Q-n87"/>
                             <constraint firstItem="J1M-Xd-NgT" firstAttribute="bottom" secondItem="GCm-ep-bcB" secondAttribute="bottom" constant="12" id="roW-Q0-dxW"/>
+                            <constraint firstItem="04J-yq-cqz" firstAttribute="top" secondItem="W7G-bR-9pj" secondAttribute="bottom" constant="24" id="rtt-Ny-9zD"/>
                             <constraint firstItem="gid-VM-ejl" firstAttribute="centerX" secondItem="xd9-J6-2Rh" secondAttribute="centerX" id="vun-DT-p5v"/>
                             <constraint firstItem="YaI-DO-1CP" firstAttribute="width" secondItem="xd9-J6-2Rh" secondAttribute="width" multiplier="4:5" id="wfb-NQ-b6r"/>
                         </constraints>
@@ -443,6 +456,6 @@
         <image name="mind-skills" width="418" height="400"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XjA-0k-cpW"/>
+        <segue reference="1M6-eC-YeF"/>
     </inferredMetricsTieBreakers>
 </document>

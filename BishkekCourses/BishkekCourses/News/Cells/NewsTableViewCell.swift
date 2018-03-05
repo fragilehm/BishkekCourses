@@ -46,27 +46,16 @@ class NewsTableViewCell: UITableViewCell {
     private var cellIndex: Int?
     override func awakeFromNib() {
         super.awakeFromNib()
-//        let labelHeight = promotionsTitleLabel.frame.height + 8 + promotionsDescriptionLabel.frame.height
-//        backImageView.translatesAutoresizingMaskIntoConstraints = false
-//        backImageView.widthAnchor.constraint(equalTo: backImageView.heightAnchor, multiplier: 1)
-//        backImageView.heightAnchor.constraint(equalToConstant: labelHeight + 4).isActive = true
-        // Initialization code
         if UIDevice.current.userInterfaceIdiom == .pad {
             topViewheightConstraint.constant = 0
             cardViewTopConstraint.constant = 24
             cardView.layer.masksToBounds = true
             cardView.layer.cornerRadius = 10
         }
-        
-        // Initialization code
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    @IBAction func tapped(_ sender: Any) {
-        print("tapped")
+        
     }
     func fillCell(action: Promotion, index: Int) {
         cellIndex = index
@@ -77,7 +66,7 @@ class NewsTableViewCell: UITableViewCell {
         promotionsDescriptionLabel.text = action.description
         promotionsEndDateLabel.text = action.end_date.getConvertedDate()
         let backUrl = URL(string: action.action_image)
-        backImageView.kf.setImage(with: backUrl)
+        backImageView.kf.setImage(with: backUrl, placeholder: Constants.PLACEHOLDER_IMAGE, options: nil, progressBlock: nil, completionHandler: nil)
     }
     @objc func openCourse(_ sender: UITapGestureRecognizer) {
         delegate?.ActionsTableViewCellDidTapCourse(cellIndex!)

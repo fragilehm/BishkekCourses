@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="376" height="84.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="0553005355" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zqx-Zf-kPk">
-                                <rect key="frame" x="16" y="12" width="294" height="60.5"/>
+                                <rect key="frame" x="16" y="12" width="292" height="60.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=regular">
@@ -31,10 +31,10 @@
                                 </variation>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone" translatesAutoresizingMaskIntoConstraints="NO" id="2DZ-Fi-JqZ">
-                                <rect key="frame" x="340" y="32.5" width="20" height="20"/>
+                                <rect key="frame" x="338" y="31.5" width="22" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="20" id="N28-rI-uEm"/>
-                                    <constraint firstAttribute="height" constant="20" id="dXF-TZ-unu"/>
+                                    <constraint firstAttribute="width" constant="22" id="N28-rI-uEm"/>
+                                    <constraint firstAttribute="height" constant="22" id="dXF-TZ-unu"/>
                                 </constraints>
                             </imageView>
                         </subviews>

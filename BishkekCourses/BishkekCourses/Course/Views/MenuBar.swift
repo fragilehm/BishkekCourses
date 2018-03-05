@@ -21,14 +21,12 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         collectionView.delegate = self
         return collectionView
     }()
-    var cellId = "cellId"
     weak var cellDelegate: MenuBarDelegate?
-    let images = ["description", "promotion", "locations", "contacts", "services"]
     override init(frame: CGRect) {
         super.init(frame: frame)
         let indexPath = IndexPath(item: 0, section: 0)
         collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .bottom)
-        collectionView.register(MenuCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(MenuCell.self, forCellWithReuseIdentifier: Constants.DetailedCourse.CellID.MENU_COLLECTIONVIEW_CELL)
         addSubview(collectionView)
         collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
@@ -46,8 +44,8 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         return 5
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! MenuCell
-        cell.imageView.image = UIImage(named: images[indexPath.item])?.withRenderingMode(.alwaysTemplate)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.DetailedCourse.CellID.MENU_COLLECTIONVIEW_CELL, for: indexPath) as! MenuCell
+        cell.imageView.image = UIImage(named: Constants.DetailedCourse.MENU_IMAGES[indexPath.item])?.withRenderingMode(.alwaysTemplate)
         cell.tintColor = UIColor.lightGray
         return cell
     }

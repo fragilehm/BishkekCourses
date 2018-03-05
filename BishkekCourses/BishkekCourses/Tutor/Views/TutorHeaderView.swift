@@ -23,7 +23,6 @@ class TutorHeaderView: UIView {
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.cornerRadius = Constants.SCREEN_HEIGHT * 7 / 40
-        image.image = #imageLiteral(resourceName: "coding").withRenderingMode(.alwaysOriginal)
         return image
     }()
     let nameLabel: UILabel = {

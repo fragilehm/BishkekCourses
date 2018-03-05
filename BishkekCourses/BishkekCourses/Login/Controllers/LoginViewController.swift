@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginTextField: CustomTextField! {
         didSet {
             loginTextField.layer.borderWidth = 0.5
-            loginTextField.layer.borderColor = UIColor.init(netHex: Colors.lightGray).cgColor
+            loginTextField.layer.borderColor = UIColor.init(netHex: Colors.LIGHT_GRAY).cgColor
             loginTextField.layer.cornerRadius = 4
         }
     }
@@ -29,7 +29,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: CustomTextField! {
         didSet {
             passwordTextField.layer.borderWidth = 0.5
-            passwordTextField.layer.borderColor = UIColor.init(netHex: Colors.lightGray).cgColor
+            passwordTextField.layer.borderColor = UIColor.init(netHex: Colors.LIGHT_GRAY).cgColor
             passwordTextField.layer.cornerRadius = 4
 
         }
@@ -54,8 +54,8 @@ class LoginViewController: UIViewController {
         self.navigationController?.popToRootViewController(animated: true)
     }
     @IBAction func loginPressed(_ sender: Any) {
-        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-        let mainVC = storyboard.instantiateViewController(withIdentifier: "MainRootViewController")
+        let storyboard = UIStoryboard.init(name: Constants.Storyboards.MAIN, bundle: nil)
+        let mainVC = storyboard.instantiateViewController(withIdentifier: Constants.Main.ControllerID.MAIN_ROOT_VIEWCONTROLLER)
         self.navigationController?.present(mainVC, animated: false, completion: nil)
         
     }
