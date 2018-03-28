@@ -15,6 +15,8 @@ import Moya
 import Hero
 import PKHUD
 import KRProgressHUD
+import Alamofire
+import SwiftyJSON
 class MainViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -30,6 +32,12 @@ class MainViewController: UIViewController, UITextViewDelegate {
     private var viewModel =  SimpleCourseViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //let apiUrl = "http://46.101.146.101:8081/courses/recent"
+//        Alamofire.request(apiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
+//            print(JSON(response.data))
+//        }
+        
         configureTabBar()
         configureTableView()
         configureBasics()

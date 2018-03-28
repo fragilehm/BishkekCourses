@@ -9,6 +9,7 @@
 import Foundation
 import Moya_ModelMapper
 import SwiftyJSON
+import Moya
 class ServerAPIManager: NetworkAdapter  {
 
     class var sharedAPI: ServerAPIManager {
@@ -20,6 +21,17 @@ class ServerAPIManager: NetworkAdapter  {
     //MARK: Categories
     func getCategories(_ completion: @escaping ([Category])-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.categories, success: { (response) in
+            do {
+                let categories: [Category] = try response.map(to: [Category].self)
+                completion(categories)
+            }
+            catch {
+                showError(Constants.Network.ErrorMessage.CANT_PARSE_DATA)
+            }
+        }, error: showError)
+    }
+    func getUniversityCategories(_ completion: @escaping ([Category])-> Void, showError: @escaping (String)-> Void) {
+        self.request(target: NetworkManager.univesityCategories, success: { (response) in
             do {
                 let categories: [Category] = try response.map(to: [Category].self)
                 completion(categories)
@@ -53,6 +65,18 @@ class ServerAPIManager: NetworkAdapter  {
             }
         }, error: showError)
     }
+    func getUniversitiesByCategory(category_id: Int,_ completion: @escaping ([SimpleUniversity])-> Void, showError: @escaping (String)-> Void) {
+        self.request(target: NetworkManager.universitiesByCategory(categoryId: category_id), success: { (response) in
+            do {
+                let simpleUniversity: [SimpleUniversity] = try response.map(to: [SimpleUniversity].self)
+                completion(simpleUniversity)
+            }
+            catch {
+                showError(Constants.Network.ErrorMessage.CANT_PARSE_DATA)
+            }
+        }, error: showError)
+    }
+    
     func getCourseDetails(course_id: Int,_ completion: @escaping (DetailedCourse)-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.courseDetails(courseId: course_id), success: { (response) in
             do {
@@ -64,7 +88,27 @@ class ServerAPIManager: NetworkAdapter  {
             }
         }, error: showError)
     }
+    func getUniversityDetails(university_id: Int,_ completion: @escaping (DetailedCourse)-> Void, showError: @escaping (String)-> Void) {
+        self.request(target: NetworkManager.universityDetails(universityId: university_id), success: { (response) in
+            do {
+                let university: DetailedCourse = try response.map(to: DetailedCourse.self)
+                completion(university)
+            }
+            catch {
+                showError(Constants.Network.ErrorMessage.CANT_PARSE_DATA)
+            }
+        }, error: showError)
+    }
     func getRecentCourses(_ completion: @escaping ([SimpleCourse])-> Void, showError: @escaping (String)-> Void) {
+//        let provider = MoyaProvider<NetworkManager>()
+//        provider.request(NetworkManager.courseRecent) { (response) in
+//            switch response {
+//            case .success(let response):
+//                print(response.statusCode)
+//            case .failure(let error):
+//                print(error.errorDescription)
+//            }
+//        }
         self.request(target: NetworkManager.courseRecent, success: { (response) in
             do {
                 let simpleCourses: [SimpleCourse] = try response.map(to: [SimpleCourse].self)

@@ -9,18 +9,15 @@
 import Foundation
 import Moya
 
-private extension String {
-    var URLEscapedString: String {
-        return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-    }
-}
-
 enum NetworkManager {
     case token_auth
     case categories
+    case univesityCategories
     case subcategories(categoryId: Int)
     case coursesBySubcategory(subcategoryId: Int)
+    case universitiesByCategory(categoryId: Int)
     case courseDetails(courseId: Int)
+    case universityDetails(universityId: Int)
     case courseRecent
     case actions
     case actionsBySubcategory(subcategoryId: Int)
@@ -32,7 +29,7 @@ enum NetworkManager {
 }
 extension NetworkManager: TargetType {
     var baseURL: URL {
-        return URL(string: "http://46.101.146.101:8000")!
+        return URL(string: "http://46.101.146.101:8081")!
     }
     
     var path: String {
@@ -41,12 +38,18 @@ extension NetworkManager: TargetType {
             return "/api/token-auth"
         case .categories:
             return "/categories"
+        case .univesityCategories:
+            return "/universities/categories"
         case .subcategories(let categoryId):
             return "/categories/\(categoryId)"
         case .coursesBySubcategory(let subcategoryId):
             return "/subcategories/\(subcategoryId)"
+        case .universitiesByCategory(let categoryId):
+            return "/universities/categories/\(categoryId)"
         case .courseDetails(let courseId):
             return "/courses/\(courseId)"
+        case .universityDetails(let universityId):
+            return "/universities/\(universityId)"
         case .courseRecent:
             return "/courses/recent"
         case .actions:
@@ -77,14 +80,13 @@ extension NetworkManager: TargetType {
     }
     
     var task: Task {
-        var parameters: [String: Any]?
         switch self {
-        case .token_auth:
-            parameters = [String: Any]()
+        case .courseRecent:
+            return .requestPlain
+            //return .requestParameters(parameters: [:], encoding: JSONEncoding.default)
         default:
-            parameters = nil
+            return .requestPlain
         }
-        return .requestParameters(parameters: [:], encoding: JSONEncoding.default)
     }
     
     var headers: [String : String]? {
@@ -93,6 +95,7 @@ extension NetworkManager: TargetType {
             return nil
         default:
             return nil
+            //return ["Content-type": "application/json"]
         }
     }
     

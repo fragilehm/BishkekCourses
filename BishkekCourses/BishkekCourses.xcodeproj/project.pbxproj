@@ -54,6 +54,10 @@
 		848E985620491353001C1916 /* LoginMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E985520491353001C1916 /* LoginMainViewController.swift */; };
 		848E985820491364001C1916 /* SighUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E985720491364001C1916 /* SighUpViewController.swift */; };
 		848F5E192032DB1100880621 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F5E182032DB1100880621 /* Promotion.swift */; };
+		8491261E206BEBD600ECD7FC /* SimpleUniversity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491261D206BEBD600ECD7FC /* SimpleUniversity.swift */; };
+		84912620206BF8B500ECD7FC /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491261F206BF8B500ECD7FC /* Department.swift */; };
+		84912624206BFB6700ECD7FC /* DepartmentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84912622206BFB6700ECD7FC /* DepartmentTableViewCell.swift */; };
+		84912625206BFB6700ECD7FC /* DepartmentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84912623206BFB6700ECD7FC /* DepartmentTableViewCell.xib */; };
 		8491F86B2011E63400E29292 /* StartingPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8491F86A2011E63400E29292 /* StartingPage.storyboard */; };
 		8491F86E2011E64A00E29292 /* StartingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F86D2011E64A00E29292 /* StartingPageViewController.swift */; };
 		8491F8712011EF8900E29292 /* StartingPageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F8702011EF8900E29292 /* StartingPageCollectionViewCell.swift */; };
@@ -191,6 +195,10 @@
 		848E985520491353001C1916 /* LoginMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainViewController.swift; sourceTree = "<group>"; };
 		848E985720491364001C1916 /* SighUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SighUpViewController.swift; sourceTree = "<group>"; };
 		848F5E182032DB1100880621 /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
+		8491261D206BEBD600ECD7FC /* SimpleUniversity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleUniversity.swift; sourceTree = "<group>"; };
+		8491261F206BF8B500ECD7FC /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
+		84912622206BFB6700ECD7FC /* DepartmentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartmentTableViewCell.swift; sourceTree = "<group>"; };
+		84912623206BFB6700ECD7FC /* DepartmentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartmentTableViewCell.xib; sourceTree = "<group>"; };
 		8491F86A2011E63400E29292 /* StartingPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StartingPage.storyboard; sourceTree = "<group>"; };
 		8491F86D2011E64A00E29292 /* StartingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingPageViewController.swift; sourceTree = "<group>"; };
 		8491F8702011EF8900E29292 /* StartingPageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingPageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -380,6 +388,7 @@
 		844E78111FD691ED00368CFA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				84912621206BFB4700ECD7FC /* DepartmentsCell */,
 				84AA859B2041A6EE00D9E4B2 /* Actions */,
 				844E78191FD7257E00368CFA /* CommentsCell */,
 				844E78181FD7255300368CFA /* ServicesCell */,
@@ -541,6 +550,8 @@
 				848F5E182032DB1100880621 /* Promotion.swift */,
 				84B88A5C203EDEFD00C8B664 /* Tutor.swift */,
 				84D1D132203F7A4C00A5FEB8 /* DetailedTutor.swift */,
+				8491261D206BEBD600ECD7FC /* SimpleUniversity.swift */,
+				8491261F206BF8B500ECD7FC /* Department.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -553,6 +564,15 @@
 				84B4DB4E2036AC000012FD36 /* SwipeInteractionController.swift */,
 			);
 			path = "Animation Controllers";
+			sourceTree = "<group>";
+		};
+		84912621206BFB4700ECD7FC /* DepartmentsCell */ = {
+			isa = PBXGroup;
+			children = (
+				84912622206BFB6700ECD7FC /* DepartmentTableViewCell.swift */,
+				84912623206BFB6700ECD7FC /* DepartmentTableViewCell.xib */,
+			);
+			path = DepartmentsCell;
 			sourceTree = "<group>";
 		};
 		8491F8692011E62100E29292 /* StartingPage */ = {
@@ -1023,6 +1043,7 @@
 				84C399FB1FD3213A00DD5D66 /* Login.storyboard in Resources */,
 				841C91F11FD7CFD30040C2A8 /* ServicesTableViewCell.xib in Resources */,
 				841C91FD1FD7D3DD0040C2A8 /* DescriptionTableViewCell.xib in Resources */,
+				84912625206BFB6700ECD7FC /* DepartmentTableViewCell.xib in Resources */,
 				841C91F91FD7D2430040C2A8 /* ContactsTableViewCell.xib in Resources */,
 				841C91F51FD7D1D00040C2A8 /* BranchesTableViewCell.xib in Resources */,
 				84C39A011FD33AEF00DD5D66 /* Registration.storyboard in Resources */,
@@ -1293,6 +1314,7 @@
 				84F5D5EB202331FC00EA2995 /* SubCategory.swift in Sources */,
 				8497BAA92027191F001A7C76 /* DetailedCourse.swift in Sources */,
 				84EFF6DF202E00ED00358043 /* PromotionsViewController.swift in Sources */,
+				8491261E206BEBD600ECD7FC /* SimpleUniversity.swift in Sources */,
 				84BE8F1E201F1A1A00844F55 /* NetworkAdapter.swift in Sources */,
 				84C399F41FD3082B00DD5D66 /* DataManager.swift in Sources */,
 				84B88A5D203EDEFD00C8B664 /* Tutor.swift in Sources */,
@@ -1322,6 +1344,7 @@
 				847869142013015800B6BE0D /* MainTableViewCell.swift in Sources */,
 				841C91F81FD7D2430040C2A8 /* ContactsTableViewCell.swift in Sources */,
 				841C91F41FD7D1D00040C2A8 /* BranchesTableViewCell.swift in Sources */,
+				84912620206BF8B500ECD7FC /* Department.swift in Sources */,
 				846FDD602034CD57002E530C /* CustomPresentAnimationController.swift in Sources */,
 				8419BC7F202A3A2A00285ECD /* MenuBar.swift in Sources */,
 				84C399F21FD3082400DD5D66 /* Extensions.swift in Sources */,
@@ -1353,6 +1376,7 @@
 				8491F8782012306C00E29292 /* SwipingController+Extension.swift in Sources */,
 				84FFD1621FD27FCF00F9E5C3 /* MainPageEnum.swift in Sources */,
 				8491F8732012116700E29292 /* SwipingController.swift in Sources */,
+				84912624206BFB6700ECD7FC /* DepartmentTableViewCell.swift in Sources */,
 				84582C79202F1C190079F319 /* PromotionsDetailViewController.swift in Sources */,
 				849D8DCF1FD4888D00F507A4 /* SubCategoriesViewController.swift in Sources */,
 				844A7CA0202C2B11004DC6BA /* SegmentView.swift in Sources */,

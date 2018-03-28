@@ -18,10 +18,12 @@ class NetworkAdapter {
     }
     let provider = MoyaProvider<NetworkManager>()
     func request(target: NetworkManager, success successCallback: @escaping (Response) -> Void, error errorCallback: @escaping (String) -> Void) {
+        print("hey")
         if !self.isConnectedToNetwork() {
             errorCallback(Constants.Network.ErrorMessage.NO_INTERNET_CONNECTION)
         }
         else {
+            print("here")
             provider.request(target) { (result) in
                 switch result {
                 case .success(let response):
@@ -51,8 +53,9 @@ class NetworkAdapter {
     //                    }
                         break
                     default:
-                        errorCallback(Constants.Network.ErrorMessage.NOT_FOUND_ERROR)
                         print("Some error")
+
+                        errorCallback(Constants.Network.ErrorMessage.NOT_FOUND_ERROR)
     //                    let json = JSON(data: response.data!)
     //                    if !json.isEmpty {
     //                        let message = json["error"].stringValue
@@ -67,6 +70,7 @@ class NetworkAdapter {
     //                    }
                     }
                 case .failure(let error):
+                    print("failure")
                     errorCallback(error.errorDescription!)
                 }
             }

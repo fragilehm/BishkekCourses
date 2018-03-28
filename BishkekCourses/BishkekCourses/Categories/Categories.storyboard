@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PYU-iV-os5">
-                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="103" width="414" height="633"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="iJf-uz-9tv">
                                     <size key="itemSize" width="50" height="50"/>
@@ -38,13 +38,27 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VBb-u9-0XL">
+                                <rect key="frame" x="4" y="64" width="406" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="ncY-UP-GZE"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Курсы"/>
+                                    <segment title="Университеты"/>
+                                </segments>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="y9M-JU-Das" firstAttribute="bottom" secondItem="PYU-iV-os5" secondAttribute="bottom" id="BLD-QP-uja"/>
+                            <constraint firstItem="y9M-JU-Das" firstAttribute="trailing" secondItem="VBb-u9-0XL" secondAttribute="trailing" constant="4" id="Hfp-kQ-Lzo"/>
+                            <constraint firstItem="VBb-u9-0XL" firstAttribute="top" secondItem="y9M-JU-Das" secondAttribute="top" id="MwQ-l2-PSv"/>
                             <constraint firstItem="PYU-iV-os5" firstAttribute="leading" secondItem="y9M-JU-Das" secondAttribute="leading" id="U9G-LJ-Jh2"/>
+                            <constraint firstItem="VBb-u9-0XL" firstAttribute="leading" secondItem="y9M-JU-Das" secondAttribute="leading" constant="4" id="UZb-TM-QZj"/>
                             <constraint firstItem="y9M-JU-Das" firstAttribute="trailing" secondItem="PYU-iV-os5" secondAttribute="trailing" id="aIg-Yf-GLO"/>
-                            <constraint firstItem="PYU-iV-os5" firstAttribute="top" secondItem="y9M-JU-Das" secondAttribute="top" id="uG9-60-hS5"/>
+                            <constraint firstItem="PYU-iV-os5" firstAttribute="top" secondItem="VBb-u9-0XL" secondAttribute="bottom" constant="4" id="ey8-Zz-hfj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="y9M-JU-Das"/>
                     </view>
@@ -54,11 +68,12 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="collectionView" destination="PYU-iV-os5" id="Rj3-aD-NPb"/>
+                        <outlet property="segmentControl" destination="VBb-u9-0XL" id="tJ4-mC-EjS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QRt-7g-n8V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="288.80000000000001" y="146.17691154422789"/>
+            <point key="canvasLocation" x="288.40579710144931" y="145.92391304347828"/>
         </scene>
         <!--Sub Categories View Controller-->
         <scene sceneID="w6K-22-r6L">

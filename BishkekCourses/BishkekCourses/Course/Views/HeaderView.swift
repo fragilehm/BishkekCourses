@@ -36,7 +36,8 @@ class HeaderView: UIView {
     }()
     let raitingValueLabel: UILabel = {
         let label = UILabel()
-        label.text = "-"
+        label.text = "4.7"
+        label.textColor = UIColor(netHex: Colors.LIGHT_BLUE)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -48,7 +49,8 @@ class HeaderView: UIView {
     }()
     let savesValueLabel: UILabel = {
         let label = UILabel()
-        label.text = "-"
+        label.textColor = UIColor(netHex: Colors.LIGHT_BLUE)
+        label.text = "169"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

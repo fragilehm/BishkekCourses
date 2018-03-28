@@ -17,6 +17,7 @@ struct DetailedCourse: Mappable {
     var branches: [Branch]
     var services: [Service]
     var actions: [SimplePromotion]
+    var departments: [Department]
     var main_image_url: String
     var logo_image_url: String
     init() {
@@ -30,6 +31,8 @@ struct DetailedCourse: Mappable {
         services = [Service]()
         subcategories = [SimpleSubcategory]()
         actions = [SimplePromotion]()
+        departments = [Department]()
+
     }
     init(map: Mapper) throws {
         try id = map.from("id")
@@ -42,6 +45,8 @@ struct DetailedCourse: Mappable {
         branches = map.optionalFrom("branches") ?? []
         services = map.optionalFrom("services") ?? []
         actions = map.optionalFrom("actions") ?? []
+        departments = map.optionalFrom("departments") ?? []
+
 
     }
 }

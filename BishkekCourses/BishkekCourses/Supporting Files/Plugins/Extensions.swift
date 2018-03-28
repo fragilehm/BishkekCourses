@@ -247,6 +247,9 @@ extension UIView {
     }
 }
 extension String {
+    var URLEscapedString: String {
+        return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    }
     func getExperience() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -349,8 +352,15 @@ extension UITableView {
         self.configRefreshHeader(with: header) {
             completion()
         }
-//        self.configRefreshHeader(with: header, action: { [weak _ ] in
-//        })
     }
-    
+    func configureRefreshFooter(_ completion: @escaping ()-> Void) {
+        let footer = DefaultRefreshFooter.footer()
+        footer.setText(Constants.Hint.Refresh.pull_to_refresh, mode: .pullToRefresh)
+        //footer.setText(Constants.Hint.Refresh.relase_to_refresh, mode: .refreshing)
+        footer.setText(Constants.Hint.Refresh.refreshing, mode: .refreshing)
+        footer.refreshMode = .scroll
+        self.configRefreshFooter(with: footer) {
+            completion()
+        }
+    }
 }

@@ -99,7 +99,7 @@ struct Constants {
             static let DESCRIPTION_TABLEVIEW_CELL = "DescriptionTableViewCell"
             static let HEADER_TABLEVIEW_CELL = "HeaderTableViewCell"
             static let MENU_COLLECTIONVIEW_CELL = "MenuCollectionViewCell"
-
+            static let DEPARTMENT_TABLEVIEW_CELL = "DepartmentTableViewCell"
 
         }
         static var CONTACT_TYPE = ""

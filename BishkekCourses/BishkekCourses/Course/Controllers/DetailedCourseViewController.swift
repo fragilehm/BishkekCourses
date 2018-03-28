@@ -25,6 +25,7 @@ class DetailedCourseViewController: UIViewController {
     var courseBackImage = ""
     var courseLogo = ""
     var courseDescription = ""
+    var cameFrom = "courseSubcategories"
     private let headerView = HeaderView()
     private let popupLabel: UILabel = {
         let label = UILabel()
@@ -108,16 +109,26 @@ class DetailedCourseViewController: UIViewController {
         bottomPopupView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
     }
     func getData(){
-        ServerAPIManager.sharedAPI.getCourseDetails(course_id: course_id, setCourse, showError: showErrorAlert)
+        if cameFrom == "courseSubcategories" {
+            ServerAPIManager.sharedAPI.getCourseDetails(course_id: course_id, setCourse, showError: showErrorAlert)
+
+        } else {
+            ServerAPIManager.sharedAPI.getUniversityDetails(university_id: course_id, setUniversity, showError: showErrorAlert)
+
+        }
+    }
+    func setUniversity(university: DetailedCourse){
+        self.course = university
+        self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
+        tableView.reloadData()
     }
     func setCourse(course: DetailedCourse){
-        
         self.course = course
         self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
         tableView.reloadData()
     }
     func setHeaderData(main: String, logo: String, title: String){
-        
+                
     }
     func setNavBarItems(){
         let backButton = UIButton.init(type: .system)
@@ -163,6 +174,8 @@ extension DetailedCourseViewController {
         registerCell(nibName: Constants.DetailedCourse.CellID.BRANCHES_TABLEVIEW_CELL)
         registerCell(nibName: Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL)
         registerCell(nibName: Constants.DetailedCourse.CellID.DESCRIPTION_TABLEVIEW_CELL)
+        registerCell(nibName: Constants.DetailedCourse.CellID.DEPARTMENT_TABLEVIEW_CELL)
+
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
         addHeaderView()
@@ -224,7 +237,7 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
         case Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL:
             return course.contacts.count
         default:
-            return course.services.count
+            return cameFrom == "courseSubcategories" ? course.services.count : course.departments.count
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -248,9 +261,16 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
             cell.fillCell(contact: course.contacts[indexPath.row])
             return cell
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ServicesTableViewCell
-            cell.fillCell(service: course.services[indexPath.row])
-            return cell
+            if cameFrom == "courseSubcategories" {
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ServicesTableViewCell
+                cell.fillCell(service: course.services[indexPath.row])
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! DepartmentTableViewCell
+                cell.fillCell(department: course.departments[indexPath.row])
+                return cell
+            }
+            
         }
         
     }
@@ -330,7 +350,11 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
         case 3:
             cellId = Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL
         default:
-            cellId = Constants.DetailedCourse.CellID.SERVICES_TABLEVIEW_CELL
+            if cameFrom == "courseSubcategories" {
+                cellId = Constants.DetailedCourse.CellID.SERVICES_TABLEVIEW_CELL
+            } else {
+                cellId = Constants.DetailedCourse.CellID.DEPARTMENT_TABLEVIEW_CELL
+            }
         }
         tableView.reloadSections(IndexSet.init(integer: 0), with: .fade)
     }
