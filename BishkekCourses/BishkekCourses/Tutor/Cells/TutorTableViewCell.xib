@@ -38,7 +38,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSp-S0-6vy">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DSp-S0-6vy">
                         <rect key="frame" x="16" y="63" width="349" height="100.5"/>
                         <string key="text">Сти́вен Пол Джобс — американский предприниматель, изобретатель и промышленный дизайнер, получивший широкое признание в качестве пионера эры IT-технологий. Один из основателей, председатель совета директоров и CEO корпорации Apple.</string>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>

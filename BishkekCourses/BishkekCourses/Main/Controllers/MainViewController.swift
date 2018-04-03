@@ -30,20 +30,13 @@ class MainViewController: UIViewController, UITextViewDelegate {
         return segmentView
     }()
     private var viewModel =  SimpleCourseViewModel()
+    private var paginatedCourse: PaginatedCourse?
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //let apiUrl = "http://46.101.146.101:8081/courses/recent"
-//        Alamofire.request(apiUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!, method: .get, parameters: nil, encoding: JSONEncoding.default , headers: nil).responseJSON { (response:DataResponse<Any>) in
-//            print(JSON(response.data))
-//        }
-        
         configureTabBar()
         configureTableView()
         configureBasics()
-        bindTableView()
         getData()
-        bindTableViewSelected()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -54,36 +47,18 @@ class MainViewController: UIViewController, UITextViewDelegate {
         super.viewWillDisappear(animated)
         self.tabBarController?.setTabBarVisible(visible: true, animated: false)
     }
-    func bindTableView(){
-        viewModel.simpleCourses.asObservable().bind(to: tableView.rx.items(cellIdentifier: Constants.Main.CellID.MAIN_TABLEVIEW_CELL, cellType: MainTableViewCell.self)) { row, element, cell in
-            cell.fillCell(course: element)
-            cell.textView.delegate = self
-            }.disposed(by: disposeBag)
-        viewModel.error.asObservable().subscribe(onNext: { [weak self] (message) in            self?.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
-            self?.showErrorAlert(message: message)
-        }).disposed(by: disposeBag)
-        viewModel.simpleCourses.asObservable().subscribe(onNext: { [weak self] (message) in
-            self?.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
-        }).disposed(by: disposeBag)
-    }
-    func bindTableViewSelected(){
-        tableView.rx.modelSelected(SimpleCourse.self).subscribe(onNext: {[weak self] course in
-            guard let strongSelf = self else {return}
-            let courseVC = UIStoryboard.init(name: Constants.Storyboards.COURSE, bundle: nil).instantiateViewController(withIdentifier: Constants.DetailedCourse.ControllerID.DETAILED_COURSE_VIEWCONTROLLER) as! DetailedCourseViewController
-            courseVC.course_id = course.id
-            courseVC.courseDescription = course.description
-            courseVC.courseName = course.title
-            courseVC.courseLogo = course.logo_image_url
-            courseVC.courseBackImage = course.main_image_url
-            strongSelf.navigationController?.show(courseVC, sender: self)
-        }).disposed(by: disposeBag)
-    }
     func getData(isRefresh: Bool = false){
         if !isRefresh {
             KRProgressHUD.show()
             //HUD.show(.progress)
         }
-        viewModel.fetchData()
+        ServerAPIManager.sharedAPI.getRecentCourses(setPaginatedCourse, showError: showErrorAlert)
+    }
+    func setPaginatedCourse(paginatedCourse: PaginatedCourse) {
+        KRProgressHUD.dismiss()
+        self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
+        self.paginatedCourse = paginatedCourse
+        self.tableView.reloadData()
     }
     func addSegmetView(){
         segmentView.popularButton.addTarget(self, action: #selector(popularPressed), for: .touchUpInside)
@@ -147,13 +122,35 @@ class MainViewController: UIViewController, UITextViewDelegate {
             self.tabBarController?.setTabBarVisible(visible: true, animated: true)
         }
     }
-    func textView(_ textView: UITextView, shouldInteractWith textAttachment: NSTextAttachment, in characterRange: NSRange) -> Bool {
-        return false
-    }
 }
-extension MainViewController: UITableViewDelegate {
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        guard let paginatedCourse = paginatedCourse else {
+            return 0
+        }
+        return paginatedCourse.results.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Main.CellID.MAIN_TABLEVIEW_CELL, for: indexPath) as! MainTableViewCell
+        cell.fillCell(course: paginatedCourse!.results[indexPath.row])
+        cell.textView.delegate = self
+        return cell
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let courseVC = UIStoryboard.init(name: Constants.Storyboards.COURSE, bundle: nil).instantiateViewController(withIdentifier: Constants.DetailedCourse.ControllerID.DETAILED_COURSE_VIEWCONTROLLER) as! DetailedCourseViewController
+        let course = paginatedCourse!.results[indexPath.row]
+        courseVC.course_id = course.id
+        courseVC.courseDescription = course.description
+        courseVC.courseName = course.title
+        courseVC.courseLogo = course.logo_image_url
+        courseVC.courseBackImage = course.main_image_url
+        self.navigationController?.show(courseVC, sender: self)
     }
 }
 extension MainViewController {
@@ -174,7 +171,7 @@ extension MainViewController {
     func configureTableView(){
         tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 100
-        tableView.rx.setDelegate(self as UIScrollViewDelegate).disposed(by: disposeBag)
+        //tableView.rx.setDelegate(self as UIScrollViewDelegate).disposed(by: disposeBag)
         tableView.register(UINib(nibName: Constants.Main.CellID.MAIN_TABLEVIEW_CELL, bundle: nil), forCellReuseIdentifier: Constants.Main.CellID.MAIN_TABLEVIEW_CELL)
         tableView.configureRefreshHeader {
             self.getData(isRefresh: true)

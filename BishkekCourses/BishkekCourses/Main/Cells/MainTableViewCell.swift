@@ -60,7 +60,6 @@ class MainTableViewCell: UITableViewCell, UITextViewDelegate {
         //        descriptionLabel.heroID = "\(name)_description"
         //        descriptionLabel.heroModifiers = [.zPosition(4)]
         //        descriptionLabel.text = city.shortDescription
-        
         titleLabel.text = course.title
         decriptionLabel.text = course.description
         let url = URL(string: course.main_image_url)
@@ -82,6 +81,7 @@ class MainTableViewCell: UITableViewCell, UITextViewDelegate {
         var indexCount = 11
         for simpleSubcategory in course.subcategories {
             let url = NSURL(string: "\(simpleSubcategory.id) \(simpleSubcategory.subcategory_image_url) \(simpleSubcategory.title)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+            print(url)
             attr.addAttribute(.link, value: url ?? "", range: NSRange(location: indexCount, length: simpleSubcategory.title.count + 1))
             indexCount += simpleSubcategory.title.count + 1
         }

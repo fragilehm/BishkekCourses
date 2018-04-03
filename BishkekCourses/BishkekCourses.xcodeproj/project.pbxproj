@@ -15,6 +15,7 @@
 		840DC218200F681200C87994 /* FavoriteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DC216200F681200C87994 /* FavoriteCollectionViewCell.swift */; };
 		840DC219200F681200C87994 /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 840DC217200F681200C87994 /* FavoriteCollectionViewCell.xib */; };
 		840DC21B200FBB7400C87994 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840DC21A200FBB7400C87994 /* MapViewController.swift */; };
+		840FD89C20737E1C00FEA19D /* PaginatedCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840FD89B20737E1C00FEA19D /* PaginatedCourse.swift */; };
 		8413803F1FD9BDE900710969 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8413803E1FD9BDE900710969 /* Category.swift */; };
 		841380431FD9BFD000710969 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841380421FD9BFD000710969 /* Contact.swift */; };
 		841380451FD9C04000710969 /* Branch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841380441FD9C04000710969 /* Branch.swift */; };
@@ -51,6 +52,8 @@
 		847869112012FF5D00B6BE0D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847869102012FF5D00B6BE0D /* MainViewController.swift */; };
 		847869142013015800B6BE0D /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847869122013015800B6BE0D /* MainTableViewCell.swift */; };
 		847869152013015800B6BE0D /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 847869132013015800B6BE0D /* MainTableViewCell.xib */; };
+		848CAB2B2073951700DD0A79 /* PaginatedPromotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CAB2A2073951700DD0A79 /* PaginatedPromotion.swift */; };
+		848CAB2D20739CC000DD0A79 /* PaginatedTutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848CAB2C20739CC000DD0A79 /* PaginatedTutor.swift */; };
 		848E985620491353001C1916 /* LoginMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E985520491353001C1916 /* LoginMainViewController.swift */; };
 		848E985820491364001C1916 /* SighUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848E985720491364001C1916 /* SighUpViewController.swift */; };
 		848F5E192032DB1100880621 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848F5E182032DB1100880621 /* Promotion.swift */; };
@@ -156,6 +159,7 @@
 		840DC216200F681200C87994 /* FavoriteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCollectionViewCell.swift; sourceTree = "<group>"; };
 		840DC217200F681200C87994 /* FavoriteCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCollectionViewCell.xib; sourceTree = "<group>"; };
 		840DC21A200FBB7400C87994 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		840FD89B20737E1C00FEA19D /* PaginatedCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedCourse.swift; sourceTree = "<group>"; };
 		8413803E1FD9BDE900710969 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		841380421FD9BFD000710969 /* Contact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contact.swift; sourceTree = "<group>"; };
 		841380441FD9C04000710969 /* Branch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branch.swift; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 		847869102012FF5D00B6BE0D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		847869122013015800B6BE0D /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		847869132013015800B6BE0D /* MainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
+		848CAB2A2073951700DD0A79 /* PaginatedPromotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedPromotion.swift; sourceTree = "<group>"; };
+		848CAB2C20739CC000DD0A79 /* PaginatedTutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginatedTutor.swift; sourceTree = "<group>"; };
 		848E985520491353001C1916 /* LoginMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMainViewController.swift; sourceTree = "<group>"; };
 		848E985720491364001C1916 /* SighUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SighUpViewController.swift; sourceTree = "<group>"; };
 		848F5E182032DB1100880621 /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
@@ -552,6 +558,9 @@
 				84D1D132203F7A4C00A5FEB8 /* DetailedTutor.swift */,
 				8491261D206BEBD600ECD7FC /* SimpleUniversity.swift */,
 				8491261F206BF8B500ECD7FC /* Department.swift */,
+				840FD89B20737E1C00FEA19D /* PaginatedCourse.swift */,
+				848CAB2A2073951700DD0A79 /* PaginatedPromotion.swift */,
+				848CAB2C20739CC000DD0A79 /* PaginatedTutor.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1336,6 +1345,7 @@
 				841C91FC1FD7D3DD0040C2A8 /* DescriptionTableViewCell.swift in Sources */,
 				8419BC81202A499000285ECD /* MenuCell.swift in Sources */,
 				84B88A5A203ECA0900C8B664 /* TutorTableViewCell.swift in Sources */,
+				848CAB2B2073951700DD0A79 /* PaginatedPromotion.swift in Sources */,
 				840DC213200F668E00C87994 /* SearchCollectionViewCell.swift in Sources */,
 				84FA47962046C29A000A3730 /* ProfileTableViewCell.swift in Sources */,
 				847869112012FF5D00B6BE0D /* MainViewController.swift in Sources */,
@@ -1373,8 +1383,10 @@
 				8419BC7D202A351C00285ECD /* HeaderView.swift in Sources */,
 				84BE8F22201F2CC200844F55 /* SimpleCourse.swift in Sources */,
 				842CA5851FD7C0070051C610 /* DetailedCourseViewController.swift in Sources */,
+				840FD89C20737E1C00FEA19D /* PaginatedCourse.swift in Sources */,
 				8491F8782012306C00E29292 /* SwipingController+Extension.swift in Sources */,
 				84FFD1621FD27FCF00F9E5C3 /* MainPageEnum.swift in Sources */,
+				848CAB2D20739CC000DD0A79 /* PaginatedTutor.swift in Sources */,
 				8491F8732012116700E29292 /* SwipingController.swift in Sources */,
 				84912624206BFB6700ECD7FC /* DepartmentTableViewCell.swift in Sources */,
 				84582C79202F1C190079F319 /* PromotionsDetailViewController.swift in Sources */,

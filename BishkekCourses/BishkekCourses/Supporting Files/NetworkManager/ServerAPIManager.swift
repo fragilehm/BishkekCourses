@@ -99,7 +99,7 @@ class ServerAPIManager: NetworkAdapter  {
             }
         }, error: showError)
     }
-    func getRecentCourses(_ completion: @escaping ([SimpleCourse])-> Void, showError: @escaping (String)-> Void) {
+    func getRecentCourses(_ completion: @escaping (PaginatedCourse)-> Void, showError: @escaping (String)-> Void) {
 //        let provider = MoyaProvider<NetworkManager>()
 //        provider.request(NetworkManager.courseRecent) { (response) in
 //            switch response {
@@ -111,7 +111,7 @@ class ServerAPIManager: NetworkAdapter  {
 //        }
         self.request(target: NetworkManager.courseRecent, success: { (response) in
             do {
-                let simpleCourses: [SimpleCourse] = try response.map(to: [SimpleCourse].self)
+                let simpleCourses: PaginatedCourse = try response.map(to: PaginatedCourse.self)
                 completion(simpleCourses)
             }
             catch {
@@ -121,10 +121,10 @@ class ServerAPIManager: NetworkAdapter  {
     }
     //MARK: Actions
 
-    func getActions(_ completion: @escaping ([Promotion])-> Void, showError: @escaping (String)-> Void) {
+    func getActions(_ completion: @escaping (PaginatedPromotion)-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.actions, success: { (response) in
             do {
-                let promotions: [Promotion] = try response.map(to: [Promotion].self)
+                let promotions: PaginatedPromotion = try response.map(to: PaginatedPromotion.self)
                 completion(promotions)
             }
             catch {
@@ -156,10 +156,10 @@ class ServerAPIManager: NetworkAdapter  {
         }, error: showError)
     }
     //MARK: Tutors
-    func getTutors(_ completion: @escaping ([Tutor])-> Void, showError: @escaping (String)-> Void) {
+    func getTutors(_ completion: @escaping (PaginatedTutor)-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.tutors, success: { (response) in
             do {
-                let tutors: [Tutor] = try response.map(to: [Tutor].self)
+                let tutors: PaginatedTutor = try response.map(to: PaginatedTutor.self)
                 completion(tutors)
             }
             catch {

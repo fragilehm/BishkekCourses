@@ -11,7 +11,7 @@ import UIKit
 class TutorViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var tutors = [Tutor]()
+    var paginatedTutor: PaginatedTutor?
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -26,8 +26,8 @@ class TutorViewController: UIViewController {
     func getData() {
         ServerAPIManager.sharedAPI.getTutors(setTutors, showError: showErrorAlert)
     }
-    func setTutors(tutors: [Tutor]){
-        self.tutors = tutors
+    func setTutors(tutor: PaginatedTutor){
+        self.paginatedTutor = tutor
         self.tableView.reloadData()
         self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
     }
@@ -38,11 +38,14 @@ extension TutorViewController: UITableViewDataSource, UITableViewDelegate {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tutors.count
+        guard let paginatedTutor = paginatedTutor else {
+            return 0
+        }
+        return paginatedTutor.results.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Tutor.CellID.TUTOR_TABLEVIEW_CELL, for: indexPath) as! TutorTableViewCell
-        cell.fillCell(tutor: tutors[indexPath.row])
+        cell.fillCell(tutor: paginatedTutor!.results[indexPath.row])
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -50,7 +53,7 @@ extension TutorViewController: UITableViewDataSource, UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tutorVC = storyboard?.instantiateViewController(withIdentifier: Constants.Tutor.ControllerID.TUTOR_DETAIL_VIEWCONTROLLER) as! TutorDetailViewController
-        tutorVC.tutor = self.tutors[indexPath.row]
+        tutorVC.tutor = self.paginatedTutor!.results[indexPath.row]
         self.navigationController?.show(tutorVC, sender: self)
     }
 }

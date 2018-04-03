@@ -51,7 +51,7 @@ extension NetworkManager: TargetType {
         case .universityDetails(let universityId):
             return "/universities/\(universityId)"
         case .courseRecent:
-            return "/courses/recent"
+            return "/courses/recent/"
         case .actions:
             return "/actions"
         case .actionsBySubcategory(let subcategoryId):

@@ -15,12 +15,12 @@ import PKHUD
 import KRProgressHUD
 
 class SimpleCourseViewModel {
-    let simpleCourses = Variable<[SimpleCourse]>([])
+   // let simpleCourses = Variable<PaginatedCourse>(PaginatedCourse(map: <#Mapper#>))
     let error = PublishSubject<String>()
     func fetchData () {
         ServerAPIManager.sharedAPI.getRecentCourses({ [weak self] (recentCourses) in
             KRProgressHUD.dismiss()
-            self?.simpleCourses.value = recentCourses
+            //self?.simpleCourses?.value = recentCourses
         }) { (errorMessage) in
             KRProgressHUD.dismiss()
             self.error.onNext(errorMessage)

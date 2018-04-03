@@ -11,7 +11,7 @@ import PullToRefreshKit
 class PromotionsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    private var actions = [Promotion]()
+    private var paginatedPromotion: PaginatedPromotion?
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -24,8 +24,8 @@ class PromotionsViewController: UIViewController {
     func getData(){
         ServerAPIManager.sharedAPI.getActions(setActions, showError: showErrorAlert)
     }
-    func setActions(actions: [Promotion]){
-        self.actions = actions
+    func setActions(actions: PaginatedPromotion){
+        self.paginatedPromotion = actions
         tableView.reloadData()
         self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
     }
@@ -47,11 +47,15 @@ extension PromotionsViewController: UITableViewDelegate, UITableViewDataSource, 
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return actions.count
+        guard let paginatedPromotion = paginatedPromotion else {
+            return 0
+        }
+        return paginatedPromotion.results.count
+        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Promotions.CellID.NEWS_TABLEVIEW_CELL, for: indexPath) as! NewsTableViewCell
-        cell.fillCell(action: actions[indexPath.row], index: indexPath.row)
+        cell.fillCell(action: paginatedPromotion!.results[indexPath.row], index: indexPath.row)
         cell.delegate = self
         return cell
     }
@@ -60,14 +64,14 @@ extension PromotionsViewController: UITableViewDelegate, UITableViewDataSource, 
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let promotionVC = storyboard?.instantiateViewController(withIdentifier: Constants.Promotions.ControllerID.PROMOTIONS_DETAIL_VIEWCONTROLLER) as! PromotionsDetailViewController
-        let action = self.actions[indexPath.row]
+        let action = self.paginatedPromotion!.results[indexPath.row]
         let simpleAction = SimplePromotion(id: action.id, title: action.title, description: action.description, end_date: action.end_date, action_image: action.action_image)
-        promotionVC.courseHeader = self.actions[indexPath.row].course
+        promotionVC.courseHeader = self.paginatedPromotion!.results[indexPath.row].course
         promotionVC.simpleAction = simpleAction
         self.navigationController?.show(promotionVC, sender: self)
     }
     func ActionsTableViewCellDidTapCourse(_ row: Int) {
-        let course = actions[row].course
+        let course = self.paginatedPromotion!.results[row].course
         openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.main_image_url, description: course.description)
     }
 }
