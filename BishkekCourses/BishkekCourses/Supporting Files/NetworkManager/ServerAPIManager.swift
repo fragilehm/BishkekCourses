@@ -99,7 +99,7 @@ class ServerAPIManager: NetworkAdapter  {
             }
         }, error: showError)
     }
-    func getRecentCourses(_ completion: @escaping (PaginatedCourse)-> Void, showError: @escaping (String)-> Void) {
+    func getRecentCourses(pageNumber: Int, _ completion: @escaping (PaginatedCourse)-> Void, showError: @escaping (String)-> Void) {
 //        let provider = MoyaProvider<NetworkManager>()
 //        provider.request(NetworkManager.courseRecent) { (response) in
 //            switch response {
@@ -109,7 +109,7 @@ class ServerAPIManager: NetworkAdapter  {
 //                print(error.errorDescription)
 //            }
 //        }
-        self.request(target: NetworkManager.courseRecent, success: { (response) in
+        self.request(target: NetworkManager.courseRecent(pageNumber: pageNumber), success: { (response) in
             do {
                 let simpleCourses: PaginatedCourse = try response.map(to: PaginatedCourse.self)
                 completion(simpleCourses)

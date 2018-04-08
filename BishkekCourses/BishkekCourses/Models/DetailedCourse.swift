@@ -10,7 +10,6 @@ import Foundation
 import Mapper
 struct DetailedCourse: Mappable {
     var id: Int
-    var subcategories: [SimpleSubcategory]
     var title: String
     var description: String
     var contacts: [Contact]
@@ -29,18 +28,15 @@ struct DetailedCourse: Mappable {
         contacts = [Contact]()
         branches = [Branch]()
         services = [Service]()
-        subcategories = [SimpleSubcategory]()
         actions = [SimplePromotion]()
         departments = [Department]()
-
     }
     init(map: Mapper) throws {
         try id = map.from("id")
-        try title = map.from("title")
+        title = map.optionalFrom("title") ?? ""
         try description = map.from("description")
         try main_image_url = map.from("main_image_url")
         try logo_image_url = map.from("logo_image_url")
-        subcategories = map.optionalFrom("subcategories") ?? []
         contacts = map.optionalFrom("contacts") ?? []
         branches = map.optionalFrom("branches") ?? []
         services = map.optionalFrom("services") ?? []

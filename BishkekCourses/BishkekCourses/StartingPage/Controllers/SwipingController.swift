@@ -55,7 +55,6 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         pc.pageIndicatorTintColor = .gray
         return pc
     }()
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.showsHorizontalScrollIndicator = false

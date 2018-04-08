@@ -18,7 +18,7 @@ enum NetworkManager {
     case universitiesByCategory(categoryId: Int)
     case courseDetails(courseId: Int)
     case universityDetails(universityId: Int)
-    case courseRecent
+    case courseRecent(pageNumber: Int)
     case actions
     case actionsBySubcategory(subcategoryId: Int)
     case actionDetail(actionId: Int)
@@ -81,9 +81,9 @@ extension NetworkManager: TargetType {
     
     var task: Task {
         switch self {
-        case .courseRecent:
-            return .requestPlain
-            //return .requestParameters(parameters: [:], encoding: JSONEncoding.default)
+        case .courseRecent(let pageNumber):
+            //return .requestPlain
+            return .requestParameters(parameters: ["page": "\(pageNumber)"], encoding: URLEncoding.default)
         default:
             return .requestPlain
         }
@@ -98,6 +98,7 @@ extension NetworkManager: TargetType {
             //return ["Content-type": "application/json"]
         }
     }
+
     
     
 }

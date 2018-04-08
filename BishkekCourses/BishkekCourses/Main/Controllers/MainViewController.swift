@@ -52,7 +52,7 @@ class MainViewController: UIViewController, UITextViewDelegate {
             KRProgressHUD.show()
             //HUD.show(.progress)
         }
-        ServerAPIManager.sharedAPI.getRecentCourses(setPaginatedCourse, showError: showErrorAlert)
+        ServerAPIManager.sharedAPI.getRecentCourses(pageNumber: 1, setPaginatedCourse, showError: showErrorAlert)
     }
     func setPaginatedCourse(paginatedCourse: PaginatedCourse) {
         KRProgressHUD.dismiss()
@@ -151,6 +151,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         courseVC.courseLogo = course.logo_image_url
         courseVC.courseBackImage = course.main_image_url
         self.navigationController?.show(courseVC, sender: self)
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
     }
 }
 extension MainViewController {

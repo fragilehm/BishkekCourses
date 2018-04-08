@@ -43,6 +43,7 @@ class NetworkAdapter {
                     case HttpStatusCode.ok.statusCode,
                          HttpStatusCode.accepted.statusCode,
                          HttpStatusCode.created.statusCode:
+                        
                         successCallback(response)
     //                    let json = JSON(data: response.data!)
     //
