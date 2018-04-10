@@ -17,17 +17,14 @@ class CategoriesViewViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
-    var categories = [Category]()
-    var univerityCategories = [Category]()
-    var courseCategories = [Category]()
+    private var categories = [Category]()
+    private var univerityCategories = [Category]()
+    private var courseCategories = [Category]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureBasics()
         configureCollectionView()
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        navigationController?.interactivePopGestureRecognizer?.delegate = nil
-        navigationController?.view.backgroundColor = .white
         getData()
         configureSegmentControl()
     }
@@ -35,20 +32,7 @@ class CategoriesViewViewController: UIViewController {
         self.navigationItem.title =
             Constants.Titles.CATEGORIES
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        //print("CategoriesViewController resources: \(RxSwift.Resources.total)")
     }
-    func configureSegmentControl() {
-        segmentControl.addTarget(self, action: #selector(segmentControlValueChanged), for: .valueChanged)
-    }
-    @objc func segmentControlValueChanged(segment: UISegmentedControl) {
-        if segment.selectedSegmentIndex == 0 {
-            categories = courseCategories
-        } else {
-            categories = univerityCategories
-        }
-        self.collectionView.reloadData()
-    }
-    
     func getData(){
         ServerAPIManager.sharedAPI.getCategories(setCategories, showError: showErrorAlert)
         ServerAPIManager.sharedAPI.getUniversityCategories(setUniversityCategories, showError: showErrorAlert)
@@ -66,8 +50,25 @@ class CategoriesViewViewController: UIViewController {
 }
 extension CategoriesViewViewController {
     func configureCollectionView(){
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.register(UINib(nibName: Constants.Categories.CellID.CATEGORIES_COLLECTIONVIEW_CELL, bundle: nil), forCellWithReuseIdentifier: Constants.Categories.CellID.CATEGORIES_COLLECTIONVIEW_CELL)
         collectionView?.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    func configureBasics() {
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        navigationController?.view.backgroundColor = .white
+    }
+    func configureSegmentControl() {
+        segmentControl.addTarget(self, action: #selector(segmentControlValueChanged), for: .valueChanged)
+    }
+    @objc func segmentControlValueChanged(segment: UISegmentedControl) {
+        if segment.selectedSegmentIndex == 0 {
+            categories = courseCategories
+        } else {
+            categories = univerityCategories
+        }
+        self.collectionView.reloadData()
     }
 }
 extension CategoriesViewViewController:  UICollectionViewDelegateFlowLayout, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -94,7 +95,7 @@ extension CategoriesViewViewController:  UICollectionViewDelegateFlowLayout, UIC
             let courseVC = self.storyboard?.instantiateViewController(withIdentifier: Constants.Categories.ControllerID.COURSES_BY_SUBCATEGORY_VIEWCONTROLLER) as! CoursesBySubcategoryViewController
             courseVC.backImage = element.category_image_url
             courseVC.subcategoryName = element.title
-            courseVC.cameFrom = "categories"
+            courseVC.cameFrom = CoursesBySubcategoryCameFrom.university
             courseVC.subcategory_id = element.id
             let navController = UINavigationController(rootViewController: courseVC)
             navController.isHeroEnabled = true

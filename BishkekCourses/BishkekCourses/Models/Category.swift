@@ -9,15 +9,9 @@
 import Foundation
 import Mapper
 
-class Category: Mappable {
+class Category: Decodable {
     var id: Int
     var title: String
     var category_image_url: String
-    
-    required init(map: Mapper) throws {
-        try id = map.from("id")
-        try title = map.from("title")
-        try category_image_url = map.from("category_image_url")
-    }
 }
 

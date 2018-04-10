@@ -30,6 +30,9 @@ enum MainPageItems: Int {
         }
     }
 }
+//enum DetailedCourseCellId: Int {
+//    case
+//}
 enum ContactTypes: String {
     case PHONE
     case WEBSITE

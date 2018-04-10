@@ -72,7 +72,6 @@ class SegmentView: UIView {
             bottomLineView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             bottomLineView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 0.7)
             ])
-
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -86,7 +86,6 @@ class TutorDetailViewController: UIViewController {
     }
     func configureTableView(){
         tableView.tableHeaderView = header
-        //tableView.sectionFooterHeight = 0
         tableView.tableFooterView = UIView()
         tableView.register(UINib.init(nibName: Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL, bundle: nil) , forCellReuseIdentifier: Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL)
         tableView.register(UINib.init(nibName: Constants.DetailedCourse.CellID.DESCRIPTION_TABLEVIEW_CELL, bundle: nil) , forCellReuseIdentifier: Constants.DetailedCourse.CellID.DESCRIPTION_TABLEVIEW_CELL)
@@ -120,42 +119,45 @@ extension TutorDetailViewController: UITableViewDataSource, UITableViewDelegate 
         return 4
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
+        let tutorTitle: TutorSectionTitle = TutorSectionTitle(rawValue: section)!
+
+        switch tutorTitle {
+        case .description, .timetable:
             return 1
-        case 1:
-            return 1
-        case 2:
+        case .contacts:
             return self.detailedTutor.contacts.count
-        default:
+        case .branches:
             return self.detailedTutor.branches.count
         }
        
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
+        let tutorTitle: TutorSectionTitle = TutorSectionTitle(rawValue: indexPath.section)!
+        switch tutorTitle {
+        case .description:
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.DetailedCourse.CellID.DESCRIPTION_TABLEVIEW_CELL, for: indexPath) as! DescriptionTableViewCell
             cell.descriptionLabel.text = tutor?.description
             return cell
-        case 1:
+        case .timetable:
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.DetailedCourse.CellID.DESCRIPTION_TABLEVIEW_CELL, for: indexPath) as! DescriptionTableViewCell
             cell.descriptionLabel.text = tutor?.timetable
             return cell
-        case 2:
+        case .contacts:
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL, for: indexPath) as! ContactsTableViewCell
             cell.contactLabel.text = detailedTutor.contacts[indexPath.row].contact
             cell.contactImageView.image = cell.getContactIcon(type: detailedTutor.contacts[indexPath.row].type)
             return cell
-        default:
+        case .branches:
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.DetailedCourse.CellID.BRANCHES_TABLEVIEW_CELL, for: indexPath) as! BranchesTableViewCell
             cell.addressLabel.text = detailedTutor.branches[indexPath.row].address
             return cell
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 2:
+        let tutorTitle: TutorSectionTitle = TutorSectionTitle(rawValue: indexPath.section)!
+
+        switch tutorTitle {
+        case .contacts:
             DispatchQueue.main.async(execute: {
                 let contactType: ContactTypes = ContactTypes(rawValue: self.detailedTutor.contacts[indexPath.row].type)!
                 let contactValue = self.detailedTutor.contacts[indexPath.row].contact
@@ -175,7 +177,7 @@ extension TutorDetailViewController: UITableViewDataSource, UITableViewDelegate 
                     fullLink.openLink(controller: self)
                 }
             })
-        case 3:
+        case .branches:
             let storyboard = UIStoryboard.init(name: Constants.Storyboards.COURSE, bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: Constants.DetailedCourse.ControllerID.MAP_VIEWCONTROLLER) as! MapViewController
             vc.branches = detailedTutor.branches

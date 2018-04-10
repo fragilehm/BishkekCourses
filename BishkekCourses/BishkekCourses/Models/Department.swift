@@ -6,12 +6,7 @@
 //  Copyright © 2018 Khasanza. All rights reserved.
 //
 import Mapper
-struct Department: Mappable {
+struct Department: Decodable {
     var title: String
     var description: String
-    
-    init(map: Mapper) throws {
-        try title = map.from("title")
-        try description = map.from("description")
-    }
 }

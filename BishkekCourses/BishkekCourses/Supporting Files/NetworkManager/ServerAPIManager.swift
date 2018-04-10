@@ -22,7 +22,7 @@ class ServerAPIManager: NetworkAdapter  {
     func getCategories(_ completion: @escaping ([Category])-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.categories, success: { (response) in
             do {
-                let categories: [Category] = try response.map(to: [Category].self)
+                let categories = try JSONDecoder().decode([Category].self, from: response.data)
                 completion(categories)
             }
             catch {
@@ -33,7 +33,7 @@ class ServerAPIManager: NetworkAdapter  {
     func getUniversityCategories(_ completion: @escaping ([Category])-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.univesityCategories, success: { (response) in
             do {
-                let categories: [Category] = try response.map(to: [Category].self)
+                let categories = try JSONDecoder().decode([Category].self, from: response.data)
                 completion(categories)
             }
             catch {
@@ -44,7 +44,7 @@ class ServerAPIManager: NetworkAdapter  {
     func getSubcategories(category_id: Int,_ completion: @escaping ([Subcategory])-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.subcategories(categoryId: category_id), success: { (response) in
             do {
-                let subcategories: [Subcategory] = try response.map(to: [Subcategory].self)
+                let subcategories = try JSONDecoder().decode([Subcategory].self, from: response.data)
                 completion(subcategories)
             }
             catch {
@@ -57,7 +57,7 @@ class ServerAPIManager: NetworkAdapter  {
     func getCoursesBySubcategory(subcategory_id: Int,_ completion: @escaping ([SimpleCourse])-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.coursesBySubcategory(subcategoryId: subcategory_id), success: { (response) in
             do {
-                let simpleCourses: [SimpleCourse] = try response.map(to: [SimpleCourse].self)
+                let simpleCourses = try JSONDecoder().decode([SimpleCourse].self, from: response.data)
                 completion(simpleCourses)
             }
             catch {
@@ -68,7 +68,7 @@ class ServerAPIManager: NetworkAdapter  {
     func getUniversitiesByCategory(category_id: Int,_ completion: @escaping ([SimpleUniversity])-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.universitiesByCategory(categoryId: category_id), success: { (response) in
             do {
-                let simpleUniversity: [SimpleUniversity] = try response.map(to: [SimpleUniversity].self)
+                let simpleUniversity = try JSONDecoder().decode([SimpleUniversity].self, from: response.data)
                 completion(simpleUniversity)
             }
             catch {
@@ -80,7 +80,7 @@ class ServerAPIManager: NetworkAdapter  {
     func getCourseDetails(course_id: Int,_ completion: @escaping (DetailedCourse)-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.courseDetails(courseId: course_id), success: { (response) in
             do {
-                let course: DetailedCourse = try response.map(to: DetailedCourse.self)
+                let course = try JSONDecoder().decode(DetailedCourse.self, from: response.data)
                 completion(course)
             }
             catch {
@@ -91,7 +91,7 @@ class ServerAPIManager: NetworkAdapter  {
     func getUniversityDetails(university_id: Int,_ completion: @escaping (DetailedCourse)-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.universityDetails(universityId: university_id), success: { (response) in
             do {
-                let university: DetailedCourse = try response.map(to: DetailedCourse.self)
+                let university = try JSONDecoder().decode(DetailedCourse.self, from: response.data)
                 completion(university)
             }
             catch {
@@ -111,7 +111,7 @@ class ServerAPIManager: NetworkAdapter  {
 //        }
         self.request(target: NetworkManager.courseRecent(pageNumber: pageNumber), success: { (response) in
             do {
-                let simpleCourses: PaginatedCourse = try response.map(to: PaginatedCourse.self)
+                let simpleCourses = try JSONDecoder().decode(PaginatedCourse.self, from: response.data)
                 completion(simpleCourses)
             }
             catch {
@@ -124,7 +124,7 @@ class ServerAPIManager: NetworkAdapter  {
     func getActions(_ completion: @escaping (PaginatedPromotion)-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.actions, success: { (response) in
             do {
-                let promotions: PaginatedPromotion = try response.map(to: PaginatedPromotion.self)
+                let promotions = try JSONDecoder().decode(PaginatedPromotion.self, from: response.data)
                 completion(promotions)
             }
             catch {
@@ -136,7 +136,7 @@ class ServerAPIManager: NetworkAdapter  {
     func getActionsBySubcategory(subcategory_id: Int,_ completion: @escaping ([Promotion])-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.actionsBySubcategory(subcategoryId: subcategory_id), success: { (response) in
             do {
-                let actions: [Promotion] = try response.map(to: [Promotion].self)
+                let actions = try JSONDecoder().decode([Promotion].self, from: response.data)
                 completion(actions)
             }
             catch {
@@ -147,7 +147,7 @@ class ServerAPIManager: NetworkAdapter  {
     func getDetailedAction(action_id: Int,_ completion: @escaping (Promotion)-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.actionDetail(actionId: action_id), success: { (response) in
             do {
-                let action: Promotion = try response.map(to: Promotion.self)
+                let action = try JSONDecoder().decode(Promotion.self, from: response.data)
                 completion(action)
             }
             catch {
@@ -159,7 +159,7 @@ class ServerAPIManager: NetworkAdapter  {
     func getTutors(_ completion: @escaping (PaginatedTutor)-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.tutors, success: { (response) in
             do {
-                let tutors: PaginatedTutor = try response.map(to: PaginatedTutor.self)
+                let tutors = try JSONDecoder().decode(PaginatedTutor.self, from: response.data)
                 completion(tutors)
             }
             catch {
@@ -170,7 +170,7 @@ class ServerAPIManager: NetworkAdapter  {
     func getTutorsBySubcategory(subcategory_id: Int,_ completion: @escaping ([Tutor])-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.tutorsBySubcategory(subcategoryId: subcategory_id), success: { (response) in
             do {
-                let tutors: [Tutor] = try response.map(to: [Tutor].self)
+                let tutors = try JSONDecoder().decode([Tutor].self, from: response.data)
                 completion(tutors)
             }
             catch {
@@ -181,7 +181,7 @@ class ServerAPIManager: NetworkAdapter  {
     func getDetailedTutor(tutor_id: Int,_ completion: @escaping (DetailedTutor)-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.tutorsDetail(tutorId: tutor_id), success: { (response) in
             do {
-                let tutor: DetailedTutor = try response.map(to: DetailedTutor.self)
+                let tutor = try JSONDecoder().decode(DetailedTutor.self, from: response.data)
                 completion(tutor)
             }
             catch {

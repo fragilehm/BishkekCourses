@@ -27,11 +27,16 @@ class MenuCell: UICollectionViewCell {
     }
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.setupCell()
+    }
+    func setupCell() {
         addSubview(imageView)
-        imageView.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        imageView.widthAnchor.constraint(equalToConstant: 25).isActive = true
-        imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            imageView.heightAnchor.constraint(equalToConstant: 25),
+            imageView.widthAnchor.constraint(equalToConstant: 25),
+            imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            ])
     }
     
     required init?(coder aDecoder: NSCoder) {

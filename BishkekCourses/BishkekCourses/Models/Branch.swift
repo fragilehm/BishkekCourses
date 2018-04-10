@@ -9,15 +9,9 @@
 import Foundation
 import Mapper
 
-struct Branch: Mappable{
+struct Branch: Decodable {
     var address: String
     var latitude: String
     var longitude: String
-
-    init(map: Mapper) throws {
-        try address = map.from("address")
-        try latitude = map.from("latitude")
-        try longitude = map.from("longitude")
-    }
 }
 

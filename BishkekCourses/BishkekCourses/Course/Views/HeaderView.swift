@@ -88,63 +88,83 @@ class HeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.white
+        setupMenuBar()
+        setupLabelsAndImages()
+        setupLines()
+        self.bringSubview(toFront: logoImageView)
+    }
+    func setupMenuBar() {
         addSubview(menuBarView)
-        menuBarView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        menuBarView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        menuBarView.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        NSLayoutConstraint.activate([
+            menuBarView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            menuBarView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            menuBarView.heightAnchor.constraint(equalToConstant: 50)
+            ])
         addSubview(lineView)
-        lineView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        lineView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        lineView.bottomAnchor.constraint(equalTo: menuBarView.topAnchor).isActive = true
-        lineView.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        
-//        titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-//        titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        
+        NSLayoutConstraint.activate([
+            lineView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            lineView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            lineView.bottomAnchor.constraint(equalTo: menuBarView.topAnchor),
+            lineView.heightAnchor.constraint(equalToConstant: 0.5)
+            ])
+    }
+    func setupLabelsAndImages() {
         addSubview(raitingTitleLabel)
         addSubview(savesTitleLabel)
         addSubview(titleLabel)
-        //titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: lineView.topAnchor, constant: -12).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: savesTitleLabel.leadingAnchor).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: raitingTitleLabel.trailingAnchor).isActive = true
         addSubview(logoImageView)
-        logoImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -12).isActive = true
-        logoImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25).isActive = true
-        logoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor).isActive = true
-        raitingTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
-        raitingTitleLabel.bottomAnchor.constraint(equalTo: logoImageView.bottomAnchor).isActive = true
-        savesTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
-        savesTitleLabel.bottomAnchor.constraint(equalTo: logoImageView.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            titleLabel.bottomAnchor.constraint(equalTo: lineView.topAnchor, constant: -12),
+            titleLabel.trailingAnchor.constraint(equalTo: savesTitleLabel.leadingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: raitingTitleLabel.trailingAnchor),
+            titleLabel.centerXAnchor.constraint(equalTo: logoImageView.centerXAnchor)
+            ])
+        NSLayoutConstraint.activate([
+            logoImageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -12),
+            logoImageView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.25),
+            logoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor)
+            ])
+        NSLayoutConstraint.activate([
+            raitingTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            raitingTitleLabel.bottomAnchor.constraint(equalTo: logoImageView.bottomAnchor),
+            savesTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            savesTitleLabel.bottomAnchor.constraint(equalTo: logoImageView.bottomAnchor)
+            ])
         addSubview(raitingValueLabel)
-        raitingValueLabel.centerXAnchor.constraint(equalTo: raitingTitleLabel.centerXAnchor).isActive = true
-        raitingValueLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
-        //raitingValueLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
         addSubview(savesValueLabel)
-        savesValueLabel.centerXAnchor.constraint(equalTo: savesTitleLabel.centerXAnchor).isActive = true
-        //savesValueLabel.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
-        savesValueLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
-        //savesValueLabel.trailingAnchor.constraint(equalTo: savesTitleLabel.trailingAnchor).
+        NSLayoutConstraint.activate([
+            raitingValueLabel.centerXAnchor.constraint(equalTo: raitingTitleLabel.centerXAnchor),
+            raitingValueLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
+            savesValueLabel.centerXAnchor.constraint(equalTo: savesTitleLabel.centerXAnchor),
+            savesValueLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor)
+            ])
         addSubview(mainImageView)
-        mainImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        mainImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        mainImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        mainImageView.bottomAnchor.constraint(equalTo: logoImageView.topAnchor, constant: Constants.SCREEN_HEIGHT / 16).isActive = true
-        addSubview(lineView1)
-        lineView1.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        lineView1.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        lineView1.topAnchor.constraint(equalTo: mainImageView.bottomAnchor).isActive = true
-        lineView1.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        addSubview(lineView2)
-        lineView2.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        lineView2.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        lineView2.topAnchor.constraint(equalTo: menuBarView.bottomAnchor).isActive = true
-        lineView2.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        lineView2.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
-        self.bringSubview(toFront: logoImageView)
+        NSLayoutConstraint.activate([
+            mainImageView.topAnchor.constraint(equalTo: self.topAnchor),
+            mainImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            mainImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            mainImageView.bottomAnchor.constraint(equalTo: logoImageView.topAnchor, constant: Constants.SCREEN_HEIGHT / 16)
+            ])
     }
-    
+    func setupLines() {
+        addSubview(lineView1)
+        NSLayoutConstraint.activate([
+            lineView1.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            lineView1.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            lineView1.topAnchor.constraint(equalTo: mainImageView.bottomAnchor),
+            lineView1.heightAnchor.constraint(equalToConstant: 0.5)
+            ])
+        addSubview(lineView2)
+        NSLayoutConstraint.activate([
+            lineView2.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            lineView2.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            lineView2.topAnchor.constraint(equalTo: menuBarView.bottomAnchor),
+            lineView2.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            lineView2.heightAnchor.constraint(equalToConstant: 0.5)
+            ])
+        
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

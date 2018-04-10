@@ -1,5 +1,5 @@
 //
-//  PaginatedTutor.swift
+//  PaginatedCourse.swift
 //  BishkekCourses
 //
 //  Created by Khasanza on 4/3/18.
@@ -8,7 +8,7 @@
 
 import Mapper
 
-struct PaginatedTutor: Decodable {
+struct PaginatedCourse: Decodable {
     var count: Int
-    var results: [Tutor]
+    var results: [SimpleCourse]
 }

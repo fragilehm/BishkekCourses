@@ -61,11 +61,5 @@ class PromotionsDetailViewController: UIViewController {
         else {
              openCourse(id: courseHeader.id, name: courseHeader.title, logoUrl: courseHeader.logo_image_url, backUrl: courseHeader.main_image_url, description: courseHeader.description)
         }
-       
-        
     }
-    
-    
-
-
 }

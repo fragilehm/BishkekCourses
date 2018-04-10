@@ -22,7 +22,6 @@ class SubcategoryHeaderView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 12)
         button.setImage(#imageLiteral(resourceName: "back-white").withRenderingMode(.alwaysOriginal), for: .normal)
-        //button.heroID = "back_button"
         return button
     }()
     let actionCourseButton: UIButton = {
@@ -30,20 +29,6 @@ class SubcategoryHeaderView: UIView {
         button.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(#imageLiteral(resourceName: "more1").withRenderingMode(.alwaysOriginal), for: .normal)
-//        button.setTitle("Акции", for: .normal)
-//        button.setTitleColor(.white, for: .normal)
-        //button.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .medium)
-//        button.layer.cornerRadius = 5
-//        button.layer.masksToBounds = true
-//        button.layer.borderColor = UIColor(netHex: Colors.ACTION_BUTTON_COLOR).cgColor
-//        button.layer.borderWidth = 2
-//        button.contentEdgeInsets  = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10)
-        //button.titleEdgeInsets =
-        
-        //button.currentTitle.
-        //button.titleLabel?.textColor = UIColor.white
-        //button.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 12)
-        //button.setImage(#imageLiteral(resourceName: "back-white").withRenderingMode(.alwaysOriginal), for: .normal)
         return button
     }()
     let blurView: UIView = {
@@ -58,7 +43,7 @@ class SubcategoryHeaderView: UIView {
         label.font = UIFont.systemFont(ofSize: 19, weight: .medium)
         label.textColor = .white
         label.textAlignment = .left
-        label.numberOfLines = 1
+        label.numberOfLines = 0
         return label
     }()
     override init(frame: CGRect) {
@@ -68,28 +53,30 @@ class SubcategoryHeaderView: UIView {
         addSubview(back)
         addSubview(titleLabel)
         addSubview(actionCourseButton)
-        blurView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        blurView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        blurView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        blurView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: blurView.leadingAnchor, constant: 16).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: blurView.trailingAnchor, constant: 16).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: blurView.bottomAnchor, constant: -16).isActive = true
+        NSLayoutConstraint.activate([
+            blurView.topAnchor.constraint(equalTo: self.topAnchor),
+            blurView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            blurView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            blurView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: blurView.leadingAnchor, constant: 16),
+            titleLabel.trailingAnchor.constraint(equalTo: blurView.trailingAnchor, constant: -16),
+            titleLabel.bottomAnchor.constraint(equalTo: blurView.bottomAnchor, constant: -16)
+            ])
         var backButtonTopConstraint = 32
-        if UIDevice().userInterfaceIdiom == .phone && UIScreen.main.nativeBounds.height == 2436{
+        if UIDevice().userInterfaceIdiom == .phone && UIScreen.main.nativeBounds.height == 2436 {
             backButtonTopConstraint = 56
         }
-        back.topAnchor.constraint(equalTo: self.topAnchor, constant: CGFloat(backButtonTopConstraint)).isActive = true
-        back.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16).isActive = true
-        actionCourseButton.topAnchor.constraint(equalTo: self.topAnchor, constant: CGFloat(backButtonTopConstraint)).isActive = true
-        actionCourseButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16).isActive = true
-        
-        backImageView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        backImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        backImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        backImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            back.topAnchor.constraint(equalTo: self.topAnchor, constant: CGFloat(backButtonTopConstraint)),
+            back.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+            actionCourseButton.topAnchor.constraint(equalTo: self.topAnchor, constant: CGFloat(backButtonTopConstraint)),
+            actionCourseButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+            backImageView.topAnchor.constraint(equalTo: self.topAnchor),
+            backImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            backImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            backImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
+            ])
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

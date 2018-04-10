@@ -8,14 +8,8 @@
 import Foundation
 import Mapper
 
-struct Service: Mappable {
+struct Service: Decodable {
     var title: String
     var description: String
     var price: String
-    
-    init(map: Mapper) throws {
-        try title = map.from("title")
-        try description = map.from("description")
-        try price = map.from("price")
-    }
 }

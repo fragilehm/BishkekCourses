@@ -23,13 +23,11 @@ class MainViewController: UIViewController, UITextViewDelegate {
     private let refreshControl = UIRefreshControl()
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     private let disposeBag = DisposeBag()
-    private var yBeginOffset: CGFloat = 0
-    let segmentView: SegmentView = {
+    private let segmentView: SegmentView = {
         let segmentView = SegmentView()
         segmentView.translatesAutoresizingMaskIntoConstraints = false
         return segmentView
     }()
-    private var viewModel =  SimpleCourseViewModel()
     private var paginatedCourse: PaginatedCourse?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,12 +45,11 @@ class MainViewController: UIViewController, UITextViewDelegate {
         super.viewWillDisappear(animated)
         self.tabBarController?.setTabBarVisible(visible: true, animated: false)
     }
-    func getData(isRefresh: Bool = false){
+    func getData(pageNumber: Int = 1, isRefresh: Bool = false){
         if !isRefresh {
             KRProgressHUD.show()
-            //HUD.show(.progress)
         }
-        ServerAPIManager.sharedAPI.getRecentCourses(pageNumber: 1, setPaginatedCourse, showError: showErrorAlert)
+        ServerAPIManager.sharedAPI.getRecentCourses(pageNumber: pageNumber, setPaginatedCourse, showError: showErrorAlert)
     }
     func setPaginatedCourse(paginatedCourse: PaginatedCourse) {
         KRProgressHUD.dismiss()
@@ -153,7 +150,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         self.navigationController?.show(courseVC, sender: self)
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
+        if indexPath.row == (self.paginatedCourse?.results.count)! - 1 && indexPath.row < (paginatedCourse?.count)! - 1 {
+            ServerAPIManager.sharedAPI.getRecentCourses(pageNumber: (self.paginatedCourse?.results.count)! / 20 + 1, appentRecentCourses, showError: showErrorAlert)
+        }
+    }
+    func appentRecentCourses(courses: PaginatedCourse){
+        self.paginatedCourse?.results.append(contentsOf: courses.results)
+        self.tableView.reloadData()
     }
 }
 extension MainViewController {
@@ -174,7 +177,7 @@ extension MainViewController {
     func configureTableView(){
         tableView.tableFooterView = UIView()
         tableView.estimatedRowHeight = 100
-        //tableView.rx.setDelegate(self as UIScrollViewDelegate).disposed(by: disposeBag)
+        tableView.estimatedRowHeight = UITableViewAutomaticDimension
         tableView.register(UINib(nibName: Constants.Main.CellID.MAIN_TABLEVIEW_CELL, bundle: nil), forCellReuseIdentifier: Constants.Main.CellID.MAIN_TABLEVIEW_CELL)
         tableView.configureRefreshHeader {
             self.getData(isRefresh: true)

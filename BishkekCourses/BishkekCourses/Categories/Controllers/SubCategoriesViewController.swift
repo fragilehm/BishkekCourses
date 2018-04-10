@@ -30,10 +30,14 @@ class SubCategoriesViewController: UIViewController {
         setNavigationBarItems()
         configureCollectionView()
         getData()
+        //addSwipeLeftAction()
         self.isHeroEnabled = true
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.title = Constants.Titles.SUBCATEGORIES
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.heroNavigationAnimationType = .auto
     }
     func addSwipeLeftAction(){
         let swipeLeftGR = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipeLeft(swipeRecognizer:)))
@@ -60,10 +64,6 @@ class SubCategoriesViewController: UIViewController {
             }
         }
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.heroNavigationAnimationType = .auto
-    }
-   
     func getData(){
         ServerAPIManager.sharedAPI.getSubcategories(category_id: self.category_id, setSubcategories, showError: showErrorAlert)
     }

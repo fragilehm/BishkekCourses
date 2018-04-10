@@ -14,19 +14,18 @@ import Hero
 class CoursesBySubcategoryViewController: UIViewController {
     
     var panGR: UIPanGestureRecognizer!
-    
     @IBOutlet weak var tableView: UITableView!
-    var subcategory_id = 0
-    var cameFrom = "subcategories"
-    var subcategoryName = ""
-    var backImage = ""
+    var subcategory_id: Int?
+    var cameFrom = CoursesBySubcategoryCameFrom.course
+    var subcategoryName: String?
+    var backImage: String?
     private var isCourse = true
     private var isBeganDismissing = false
     private var simpleCourses = [SimpleCourse]()
     private var simpleUniversities = [SimpleUniversity]()
     private var actions = [Promotion]()
     private var tutors = [Tutor]()
-    private var typeOfDataToShow = "courses"
+    private var typeOfDataToShow = CoursesBySubcategoryDataToShow.courses
     private var backColor: UIColor?
     private var isStatusBarClear = true
     public let headerView: SubcategoryHeaderView = {
@@ -133,7 +132,7 @@ class CoursesBySubcategoryViewController: UIViewController {
         }
     }
     func configureTableView(){
-        if getDeviceName() == Constants.Devices.IPHONE_5_8 {
+        if getDeviceName() == Devices.IPHONE_5_8 {
             self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: -44).isActive = true
         }
         else {
@@ -148,16 +147,10 @@ class CoursesBySubcategoryViewController: UIViewController {
         addHeaderView()
     }
     func addHeaderView() {
-        let url = URL(string: backImage)
+        let url = URL(string: backImage!)
         headerView.backImageView.kf.setImage(with: url, placeholder: Constants.PLACEHOLDER_IMAGE, options: [], progressBlock: nil, completionHandler: nil)
-        //        headerView.backImageView.heroID = "\(subcategoryName)_image"
-        //        headerView.backImageView.heroModifiers = [.zPosition(2)]
-        //        headerView.titleLabel.heroID = "\(subcategoryName)_name"
-        //        headerView.titleLabel.heroModifiers = [.beginWith([.zPosition(10), .useGlobalCoordinateSpace])]
-        //        headerView.blurView.heroID = "\(subcategoryName)_view"
-        //        headerView.blurView.heroModifiers = [.zPosition(5)]
         headerView.titleLabel.text = subcategoryName
-        if cameFrom == "categories" {
+        if cameFrom == .university {
             headerView.actionCourseButton.isHidden = true
         }
         headerView.actionCourseButton.addTarget(self, action: #selector(actionList), for: .touchUpInside)
@@ -171,20 +164,20 @@ class CoursesBySubcategoryViewController: UIViewController {
     }
     @objc private func actionList(){
         
-        let alertController = UIAlertController(title: "Выберите тип", message: nil, preferredStyle: .actionSheet)
-        let courseButton = UIAlertAction(title: "Курсы", style: .default) { (action) in
-            self.typeOfDataToShow = "courses"
+        let alertController = UIAlertController(title: Constants.Categories.CoursesBySubcategory.ActionSheetText.TITLE, message: nil, preferredStyle: .actionSheet)
+        let courseButton = UIAlertAction(title: Constants.Categories.CoursesBySubcategory.ActionSheetTitle.COURSES, style: .default) { (action) in
+            self.typeOfDataToShow = CoursesBySubcategoryDataToShow.courses
             self.getData()
         }
-        let actionButton = UIAlertAction(title: "Акции", style: .default) { (action) in
-            self.typeOfDataToShow = "actions"
+        let actionButton = UIAlertAction(title: Constants.Categories.CoursesBySubcategory.ActionSheetTitle.ACTIONS, style: .default) { (action) in
+            self.typeOfDataToShow = CoursesBySubcategoryDataToShow.actions
             self.getData()
         }
-        let tutorButton = UIAlertAction(title: "Репетиторы", style: .default) { (action) in
-            self.typeOfDataToShow = "tutor"
+        let tutorButton = UIAlertAction(title: Constants.Categories.CoursesBySubcategory.ActionSheetTitle.TUTORS, style: .default) { (action) in
+            self.typeOfDataToShow = CoursesBySubcategoryDataToShow.tutors
             self.getData()
         }
-        let cancelButton = UIAlertAction(title: "Отменить", style: .cancel, handler: nil)
+        let cancelButton = UIAlertAction(title: Constants.Categories.CoursesBySubcategory.ActionSheetText.CANCEL, style: .cancel, handler: nil)
         alertController.addAction(courseButton)
         alertController.addAction(actionButton)
         alertController.addAction(tutorButton)
@@ -198,18 +191,17 @@ class CoursesBySubcategoryViewController: UIViewController {
     }
     func getData() {
         switch typeOfDataToShow {
-        case "courses":
-            if cameFrom == "categories" {
-                ServerAPIManager.sharedAPI.getUniversitiesByCategory(category_id: self.subcategory_id, setUniversities, showError: showErrorAlert)
+        case .courses:
+            switch cameFrom {
+            case .university:
+                ServerAPIManager.sharedAPI.getUniversitiesByCategory(category_id: self.subcategory_id!, setUniversities, showError: showErrorAlert)
+            case .course:
+                    ServerAPIManager.sharedAPI.getCoursesBySubcategory(subcategory_id: self.subcategory_id!, setCourses, showError: showErrorAlert)
             }
-            else {
-                ServerAPIManager.sharedAPI.getCoursesBySubcategory(subcategory_id: self.subcategory_id, setCourses, showError: showErrorAlert)
-            }
-
-        case "actions":
-            ServerAPIManager.sharedAPI.getActionsBySubcategory(subcategory_id: self.subcategory_id, setActions, showError: showErrorAlert)
-        default:
-            ServerAPIManager.sharedAPI.getTutorsBySubcategory(subcategory_id: self.subcategory_id, setTutors, showError: showErrorAlert)
+        case .actions:
+            ServerAPIManager.sharedAPI.getActionsBySubcategory(subcategory_id: self.subcategory_id!, setActions, showError: showErrorAlert)
+        case .tutors:
+            ServerAPIManager.sharedAPI.getTutorsBySubcategory(subcategory_id: self.subcategory_id!, setTutors, showError: showErrorAlert)
         }
         //self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
     }
@@ -257,33 +249,33 @@ class CoursesBySubcategoryViewController: UIViewController {
 extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch typeOfDataToShow {
-        case "courses":
-            return cameFrom == "subcategories" ? simpleCourses.count : simpleUniversities.count
-        case "actions":
+        case .courses:
+            return cameFrom == .course ? simpleCourses.count : simpleUniversities.count
+        case .actions:
             return actions.count
-        default:
+        case .tutors:
             return tutors.count
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch typeOfDataToShow {
-        case "courses":
+        case .courses:
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Categories.CellID.COURSES_BY_SUBCATEGORY_TABLEVIEW_CELL, for: indexPath) as! CoursesBySubcategoryTableViewCell
-            if cameFrom == "subcategories" {
+            switch cameFrom {
+            case .course:
                 let course = simpleCourses[indexPath.row]
                 cell.fillCell(title: course.title, description: course.description, logo_image_url: course.logo_image_url, main_image_url: course.main_image_url)
-            }
-            else {
+            case .university:
                 let university = simpleUniversities[indexPath.row]
                 cell.fillCell(title: university.title, description: university.description, logo_image_url: university.logo_image_url, main_image_url: university.main_image_url)
             }
             return cell
-        case "actions":
+        case .actions:
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Promotions.CellID.NEWS_TABLEVIEW_CELL, for: indexPath) as! NewsTableViewCell
             cell.fillCell(action: self.actions[indexPath.row], index: indexPath.row)
             cell.delegate = self
             return cell
-        default:
+        case .tutors:
             let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Tutor.CellID.TUTOR_TABLEVIEW_CELL, for: indexPath) as! TutorTableViewCell
             cell.fillCell(tutor: self.tutors[indexPath.row])
             return cell
@@ -294,24 +286,25 @@ extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDa
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch typeOfDataToShow {
-        case "courses":
-            
-            if cameFrom == "subcategories" {
+        case .courses:
+            switch cameFrom {
+            case .course:
                 let course = simpleCourses[indexPath.row]
                 openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.main_image_url, description: course.description)
-            } else {
+            case .university:
                 let university = simpleUniversities[indexPath.row]
-                let courseVC = UIStoryboard.init(name: "Course", bundle: nil).instantiateViewController(withIdentifier: "DetailedCourseViewController") as! DetailedCourseViewController
+                let courseVC = UIStoryboard.init(name: Constants.Storyboards.COURSE, bundle: nil).instantiateViewController(withIdentifier: Constants.DetailedCourse.ControllerID.DETAILED_COURSE_VIEWCONTROLLER
+                    ) as! DetailedCourseViewController
                 courseVC.courseName = university.title
                 courseVC.courseBackImage = university.main_image_url
                 courseVC.courseLogo = university.logo_image_url
                 courseVC.course_id = university.id
-                courseVC.cameFrom = "universitySubcategories"
+                courseVC.cameFrom = .university
                 courseVC.courseDescription = university.description
                 self.navigationController?.show(courseVC, sender: self)
             }
             
-        case "actions":
+        case .actions:
             let storyboard = UIStoryboard.init(name: Constants.Storyboards.NEWS, bundle: nil)
             let promotionVC = storyboard.instantiateViewController(withIdentifier: Constants.Promotions.ControllerID.PROMOTIONS_DETAIL_VIEWCONTROLLER) as! PromotionsDetailViewController
             let action = self.actions[indexPath.row]
@@ -319,7 +312,7 @@ extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDa
             promotionVC.courseHeader = self.actions[indexPath.row].course
             promotionVC.simpleAction = simpleAction
             self.navigationController?.show(promotionVC, sender: self)
-        default:
+        case .tutors:
             let storyboard = UIStoryboard.init(name: Constants.Storyboards.TUTOR, bundle: nil)
             let tutorVC = storyboard.instantiateViewController(withIdentifier: Constants.Tutor.ControllerID.TUTOR_DETAIL_VIEWCONTROLLER) as! TutorDetailViewController
             tutorVC.tutor = self.tutors[indexPath.row]

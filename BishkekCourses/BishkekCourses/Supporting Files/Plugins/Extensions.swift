@@ -59,34 +59,34 @@ extension UIViewController {
     @objc func backPressed(_ button: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
-    func getDeviceName() -> String {
+    func getDeviceName() -> Devices {
         if UIDevice().userInterfaceIdiom == .phone {
             switch UIScreen.main.nativeBounds.height {
             case 1136:
-                return Constants.Devices.IPHONE_4
+                return Devices.IPHONE_4
             case 1334:
-                return Constants.Devices.IPHONE_4_7
+                return Devices.IPHONE_4_7
             case 2208:
-                return Constants.Devices.IPHONE_5_5
+                return Devices.IPHONE_5_5
             case 2436:
-                return Constants.Devices.IPHONE_5_8
+                return Devices.IPHONE_5_8
             default:
-                return Constants.Devices.UNKNOWN
+                return Devices.UNKNOWN
             }
         }
         else if UIDevice().userInterfaceIdiom == .pad {
             switch UIScreen.main.nativeBounds.height {
             case 2732:
-                return Constants.Devices.IPAD_12_9
+                return Devices.IPAD_12_9
             case 2224:
-                return Constants.Devices.IPAD_10_5
+                return Devices.IPAD_10_5
             case 2048:
-                return Constants.Devices.IPAD_9_7
+                return Devices.IPAD_9_7
             default:
-                return Constants.Devices.UNKNOWN
+                return Devices.UNKNOWN
             }
         }
-        return Constants.Devices.UNKNOWN
+        return Devices.UNKNOWN
     }
     func getRefreshHeader() -> DefaultRefreshHeader {
         let header = DefaultRefreshHeader.header()

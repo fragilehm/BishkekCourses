@@ -8,17 +8,18 @@
 
 import Foundation
 import Mapper
-struct DetailedCourse: Mappable {
+struct DetailedCourse: Decodable {
     var id: Int
     var title: String
     var description: String
     var contacts: [Contact]
     var branches: [Branch]
-    var services: [Service]
-    var actions: [SimplePromotion]
-    var departments: [Department]
-    var main_image_url: String
+    var services: [Service]?
+    var actions: [SimplePromotion]?
+    var departments: [Department]?
     var logo_image_url: String
+    var main_image_url: String
+    
     init() {
         id = 0
         title = ""
@@ -30,19 +31,5 @@ struct DetailedCourse: Mappable {
         services = [Service]()
         actions = [SimplePromotion]()
         departments = [Department]()
-    }
-    init(map: Mapper) throws {
-        try id = map.from("id")
-        title = map.optionalFrom("title") ?? ""
-        try description = map.from("description")
-        try main_image_url = map.from("main_image_url")
-        try logo_image_url = map.from("logo_image_url")
-        contacts = map.optionalFrom("contacts") ?? []
-        branches = map.optionalFrom("branches") ?? []
-        services = map.optionalFrom("services") ?? []
-        actions = map.optionalFrom("actions") ?? []
-        departments = map.optionalFrom("departments") ?? []
-
-
     }
 }

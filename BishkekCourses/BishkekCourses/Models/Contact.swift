@@ -9,13 +9,8 @@
 import Foundation
 import Mapper
 
-struct Contact: Mappable {
+struct Contact: Decodable {
     var type: String
     var contact: String
-    
-    init(map: Mapper) throws {
-        try type = map.from("type")
-        try contact = map.from("contact")
-    }
 }
 

@@ -16,10 +16,10 @@ class PromotionsViewController: UIViewController {
         super.viewDidLoad()
         configureTableView()
         getData()
-        self.isHeroEnabled = true
-        self.navigationController?.isHeroEnabled = true
-        navigationController?.interactivePopGestureRecognizer?.delegate = nil
-        self.navigationController?.view.backgroundColor = .white
+        configureBasics()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.title = Constants.Titles.NEWS
     }
     func getData(){
         ServerAPIManager.sharedAPI.getActions(setActions, showError: showErrorAlert)
@@ -29,8 +29,12 @@ class PromotionsViewController: UIViewController {
         tableView.reloadData()
         self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
     }
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = Constants.Titles.NEWS
+   
+    func configureBasics() {
+        self.isHeroEnabled = true
+        self.navigationController?.isHeroEnabled = true
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
+        self.navigationController?.view.backgroundColor = .white
     }
     func configureTableView(){
         tableView.tableFooterView = UIView()

@@ -16,16 +16,16 @@ class DetailedCourseViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var panGR: UIPanGestureRecognizer!
 
-    private var cellId = Constants.DetailedCourse.CellID.DESCRIPTION_TABLEVIEW_CELL
+    private var cellId = DetailedCourseCellId.description
     private var isFavorite = false
     private var course = DetailedCourse()
     private var isBottomPopupCompleted = true
-    var course_id = 0
-    var courseName = ""
-    var courseBackImage = ""
-    var courseLogo = ""
-    var courseDescription = ""
-    var cameFrom = "courseSubcategories"
+    var course_id: Int?
+    var courseName: String?
+    var courseBackImage: String?
+    var courseLogo: String?
+    var courseDescription: String?
+    var cameFrom = CoursesBySubcategoryCameFrom.course
     private let headerView = HeaderView()
     private let popupLabel: UILabel = {
         let label = UILabel()
@@ -45,7 +45,7 @@ class DetailedCourseViewController: UIViewController {
         configureTableView()
         setNavBarItems()
         getData()
-        addPopupView()
+        setupPopupView()
         self.navigationController?.heroNavigationAnimationType = .fade
         self.isHeroEnabled = true
     }
@@ -98,23 +98,24 @@ class DetailedCourseViewController: UIViewController {
             break
         }
     }
-    func addPopupView() {
+    func setupPopupView() {
         bottomPopupView.addSubview(popupLabel)
-        popupLabel.centerXAnchor.constraint(equalTo: bottomPopupView.centerXAnchor).isActive = true
-        popupLabel.centerYAnchor.constraint(equalTo: bottomPopupView.centerYAnchor).isActive = true
         self.view.addSubview(bottomPopupView)
-        bottomPopupView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        bottomPopupView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        bottomPopupView.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        bottomPopupView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+        NSLayoutConstraint.activate([
+            popupLabel.centerXAnchor.constraint(equalTo: bottomPopupView.centerXAnchor),
+            popupLabel.centerYAnchor.constraint(equalTo: bottomPopupView.centerYAnchor),
+            bottomPopupView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            bottomPopupView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bottomPopupView.heightAnchor.constraint(equalToConstant: 50),
+            bottomPopupView.topAnchor.constraint(equalTo: view.bottomAnchor, constant: 0)
+            ])
     }
     func getData(){
-        if cameFrom == "courseSubcategories" {
-            ServerAPIManager.sharedAPI.getCourseDetails(course_id: course_id, setCourse, showError: showErrorAlert)
-
-        } else {
-            ServerAPIManager.sharedAPI.getUniversityDetails(university_id: course_id, setUniversity, showError: showErrorAlert)
-
+        switch cameFrom {
+        case .course:
+            ServerAPIManager.sharedAPI.getCourseDetails(course_id: course_id!, setCourse, showError: showErrorAlert)
+        case .university:
+            ServerAPIManager.sharedAPI.getUniversityDetails(university_id: course_id!, setUniversity, showError: showErrorAlert)
         }
     }
     func setUniversity(university: DetailedCourse){
@@ -185,36 +186,31 @@ extension DetailedCourseViewController {
         
     }
     func addHeaderView(){
-        headerView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.tableHeaderView = headerView
-        headerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor).isActive = true
-        headerView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor).isActive = true
-        headerView.topAnchor.constraint(equalTo: self.tableView.topAnchor).isActive = true
-        headerView.heightAnchor.constraint(equalToConstant: Constants.SCREEN_HEIGHT * 1 / 2).isActive = true
+        setupHeaderView()
         tableView.layoutIfNeeded()
         headerView.menuBarView.cellDelegate = self
         tableView.tableHeaderView = tableView.tableHeaderView
-        let mainImageUrl = URL(string: courseBackImage)
+        let mainImageUrl = URL(string: courseBackImage!)
         headerView.mainImageView.kf.setImage(with: mainImageUrl)
-        headerView.mainImageView.heroID = "\(courseName)_image"
+        headerView.mainImageView.heroID = "\(courseName!)_image"
         headerView.mainImageView.heroModifiers = [.zPosition(2)]
-        headerView.logoImageView.heroID = "\(courseName)_logo"
+        headerView.logoImageView.heroID = "\(courseName!)_logo"
         headerView.logoImageView.heroModifiers = [.beginWith([.zPosition(5), .useGlobalCoordinateSpace])]
-        headerView.titleLabel.heroID = "\(courseName)_name"
+        headerView.titleLabel.heroID = "\(courseName!)_name"
         headerView.titleLabel.heroModifiers = [.zPosition(10)]
-//        nameLabel.text = name
-//        nameLabel.heroID = "\(name)_name"
-//        nameLabel.heroModifiers = [.zPosition(4)]
-//        imageView.image = city.image
-//        imageView.heroID = "\(name)_image"
-//        imageView.heroModifiers = [.zPosition(2)]
-//        descriptionLabel.heroID = "\(name)_description"
-//        descriptionLabel.heroModifiers = [.zPosition(4)]
-//        descriptionLabel.text = city.description
-        
-        let logoImageUrl = URL(string: courseLogo)
+        let logoImageUrl = URL(string: courseLogo!)
         headerView.logoImageView.kf.setImage(with: logoImageUrl)
         headerView.titleLabel.text = courseName
+    }
+    func setupHeaderView() {
+        headerView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.tableHeaderView = headerView
+        NSLayoutConstraint.activate([
+            headerView.centerXAnchor.constraint(equalTo: self.tableView.centerXAnchor),
+            headerView.widthAnchor.constraint(equalTo: self.tableView.widthAnchor),
+            headerView.topAnchor.constraint(equalTo: self.tableView.topAnchor),
+            headerView.heightAnchor.constraint(equalToConstant: Constants.SCREEN_HEIGHT * 1 / 2)
+            ])
     }
     func registerCell(nibName: String){
         tableView.register(UINib.init(nibName: nibName, bundle: nil), forCellReuseIdentifier: nibName)
@@ -226,51 +222,54 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
+        
         switch cellId {
-        case Constants.DetailedCourse.CellID.DESCRIPTION_TABLEVIEW_CELL:
+        case .description:
             return 1
-        case Constants.DetailedCourse.CellID.COURSE_ACTION_TABLEVIEW_CELL:
-            return course.actions.count
-        case Constants.DetailedCourse.CellID.BRANCHES_TABLEVIEW_CELL:
+        case .actions:
+            guard let actions = course.actions else {
+                return 0
+            }
+            return actions.count
+        case .branches:
             return course.branches.count
-        case Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL:
+        case .contacts:
             return course.contacts.count
         default:
-            return cameFrom == "courseSubcategories" ? course.services.count : course.departments.count
+            return cameFrom == .course ? course.services!.count : course.departments!.count
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch cellId {
-        case Constants.DetailedCourse.CellID.DESCRIPTION_TABLEVIEW_CELL:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as!
+        case .description:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId.rawValue, for: indexPath) as!
             DescriptionTableViewCell
-            cell.fillCell(description: courseDescription)
+            cell.fillCell(description: courseDescription!)
             return cell
-        case Constants.DetailedCourse.CellID.COURSE_ACTION_TABLEVIEW_CELL:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as!
+        case .actions:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId.rawValue, for: indexPath) as!
             CourseActionTableViewCell
-            cell.fillCell(action: course.actions[indexPath.row])
+            cell.fillCell(action: course.actions![indexPath.row])
             return cell
-        case Constants.DetailedCourse.CellID.BRANCHES_TABLEVIEW_CELL:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! BranchesTableViewCell
+        case .branches:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId.rawValue, for: indexPath) as! BranchesTableViewCell
             cell.fillCell(branch: course.branches[indexPath.row])
             return cell
-        case Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ContactsTableViewCell
+        case .contacts:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId.rawValue, for: indexPath) as! ContactsTableViewCell
             cell.fillCell(contact: course.contacts[indexPath.row])
             return cell
         default:
-            if cameFrom == "courseSubcategories" {
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ServicesTableViewCell
-                cell.fillCell(service: course.services[indexPath.row])
+            switch cameFrom {
+            case .course:
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellId.rawValue, for: indexPath) as! ServicesTableViewCell
+                cell.fillCell(service: course.services![indexPath.row])
                 return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! DepartmentTableViewCell
-                cell.fillCell(department: course.departments[indexPath.row])
+            case .university:
+                let cell = tableView.dequeueReusableCell(withIdentifier: cellId.rawValue, for: indexPath) as! DepartmentTableViewCell
+                cell.fillCell(department: course.departments![indexPath.row])
                 return cell
             }
-            
         }
         
     }
@@ -281,45 +280,54 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             switch cellId {
-            case Constants.DetailedCourse.CellID.COURSE_ACTION_TABLEVIEW_CELL:
-                let promotionVC = UIStoryboard.init(name: Constants.Storyboards.NEWS, bundle: nil).instantiateViewController(withIdentifier: Constants.Promotions.ControllerID.PROMOTIONS_DETAIL_VIEWCONTROLLER) as! PromotionsDetailViewController
-                let courseHeader = CourseHeader(id: course_id, title: courseName, logo_image_url: courseLogo, main_image_url: courseBackImage, description: courseDescription)
-                promotionVC.courseHeader = courseHeader
-                promotionVC.simpleAction = course.actions[indexPath.row]
-                promotionVC.isFromCourse = true
-                self.navigationController?.show(promotionVC, sender: self)
-            case Constants.DetailedCourse.CellID.BRANCHES_TABLEVIEW_CELL:
-                let vc = self.storyboard?.instantiateViewController(withIdentifier: Constants.DetailedCourse.ControllerID.MAP_VIEWCONTROLLER) as! MapViewController
-                vc.branches = self.course.branches
-                vc.branch_id = indexPath.row
-                vc.branch_title = self.course.title
-                self.navigationController?.show(vc, sender: self)
-            case Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL:
-                DispatchQueue.main.async(execute: {
-                    let contactType: ContactTypes = ContactTypes(rawValue: self.course.contacts[indexPath.row].type)!
-                    let contactValue = self.course.contacts[indexPath.row].contact
-                    switch contactType {
-                    case .EMAIL:
-                        contactValue.mailTo(controller: self)
-                    case .PHONE:
-                       contactValue.callToPhone()
-                    case .FACEBOOK, .WEBSITE:
-                        contactValue.openLink(controller: self)
-                    case .WHATSAPP:
-                        self.copyNumber(number: contactValue)
-                    case .INSTAGRAM:
-                        var profileLogin = contactValue
-                        profileLogin.remove(at: profileLogin.startIndex)
-                        let fullLink = "\(Constants.DetailedCourse.INSTAGRAM_LINK)\(profileLogin)"
-                        fullLink.openLink(controller: self)
-                    }
-                })
+            case .actions:
+                showActionController(index: indexPath.row)
+            case .branches:
+                showBranchController(index: indexPath.row)
+            case .contacts:
+                contactAction(index: indexPath.row)
             default:
                 print("services and decription")
             }
         }
     }
-    private func copyNumber(number: String){
+    fileprivate func showActionController(index: Int) {
+        let promotionVC = UIStoryboard.init(name: Constants.Storyboards.NEWS, bundle: nil).instantiateViewController(withIdentifier: Constants.Promotions.ControllerID.PROMOTIONS_DETAIL_VIEWCONTROLLER) as! PromotionsDetailViewController
+        let courseHeader = CourseHeader(id: course_id!, title: courseName!, logo_image_url: courseLogo!, main_image_url: courseBackImage!, description: courseDescription!)
+        promotionVC.courseHeader = courseHeader
+        promotionVC.simpleAction = course.actions![index]
+        promotionVC.isFromCourse = true
+        self.navigationController?.show(promotionVC, sender: self)
+    }
+    fileprivate func showBranchController(index: Int) {
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: Constants.DetailedCourse.ControllerID.MAP_VIEWCONTROLLER) as! MapViewController
+        vc.branches = self.course.branches
+        vc.branch_id = index
+        vc.branch_title = self.course.title
+        self.navigationController?.show(vc, sender: self)
+    }
+    fileprivate func contactAction(index: Int) {
+        DispatchQueue.main.async(execute: {
+            let contactType: ContactTypes = ContactTypes(rawValue: self.course.contacts[index].type)!
+            let contactValue = self.course.contacts[index].contact
+            switch contactType {
+            case .EMAIL:
+                contactValue.mailTo(controller: self)
+            case .PHONE:
+                contactValue.callToPhone()
+            case .FACEBOOK, .WEBSITE:
+                contactValue.openLink(controller: self)
+            case .WHATSAPP:
+                self.copyNumber(number: contactValue)
+            case .INSTAGRAM:
+                var profileLogin = contactValue
+                profileLogin.remove(at: profileLogin.startIndex)
+                let fullLink = "\(Constants.DetailedCourse.INSTAGRAM_LINK)\(profileLogin)"
+                fullLink.openLink(controller: self)
+            }
+        })
+    }
+    fileprivate func copyNumber(number: String){
         if isBottomPopupCompleted {
             let offset = self.view.frame.height - (self.tabBarController?.tabBar.frame.origin.y)!
             UIPasteboard.general.string = number.returnNumber()
@@ -340,20 +348,22 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
     
     
     func iconPressed(_ index: Int) {
+        
         switch index {
         case 0:
-            cellId = Constants.DetailedCourse.CellID.DESCRIPTION_TABLEVIEW_CELL
+            cellId = .description
         case 1:
-            cellId = Constants.DetailedCourse.CellID.COURSE_ACTION_TABLEVIEW_CELL
+            cellId = .actions
         case 2:
-            cellId = Constants.DetailedCourse.CellID.BRANCHES_TABLEVIEW_CELL
+            cellId = .branches
         case 3:
-            cellId = Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL
+            cellId = .contacts
         default:
-            if cameFrom == "courseSubcategories" {
-                cellId = Constants.DetailedCourse.CellID.SERVICES_TABLEVIEW_CELL
-            } else {
-                cellId = Constants.DetailedCourse.CellID.DEPARTMENT_TABLEVIEW_CELL
+            switch cameFrom {
+            case .course:
+                cellId = .services
+            case .university:
+                cellId = .departments
             }
         }
         tableView.reloadSections(IndexSet.init(integer: 0), with: .fade)

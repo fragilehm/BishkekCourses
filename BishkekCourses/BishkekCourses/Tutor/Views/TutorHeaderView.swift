@@ -39,16 +39,13 @@ class TutorHeaderView: UIView {
         let label = UILabel()
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
-        //label.font = UIFont.boldSystemFont(ofSize: 17)
         label.textColor = .black
-        
         return label
     }()
     let priceLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 1
         label.translatesAutoresizingMaskIntoConstraints = false
-        //label.font = UIFont.boldSystemFont(ofSize: 17)
         label.textColor = .black
         return label
     }()
@@ -89,29 +86,6 @@ class TutorHeaderView: UIView {
             nameLabel.trailingAnchor.constraint(equalTo: headerBackImageView.trailingAnchor, constant: -12),
             nameLabel.bottomAnchor.constraint(equalTo: headerBackImageView.bottomAnchor, constant: -16)
             ])
-//        addSubview(hiddenView)
-//        NSLayoutConstraint.activate([
-//            hiddenView.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 16),
-//            hiddenView.leadingAnchor.constraint(equalTo: headerBackImageView.leadingAnchor, constant: 0),
-//            hiddenView.trailingAnchor.constraint(equalTo: headerBackImageView.trailingAnchor, constant: 0),
-//            hiddenView.bottomAnchor.constraint(equalTo: headerBackImageView.bottomAnchor, constant: 0),
-//            hiddenView.heightAnchor.constraint(equalToConstant: 50)
-//            ])
-//        addSubview(experienceLabel)
-//        NSLayoutConstraint.activate([
-//            experienceLabel.leadingAnchor.constraint(equalTo: hiddenView.leadingAnchor, constant: 12),
-//            experienceLabel.centerYAnchor.constraint(equalTo: hiddenView.centerYAnchor)
-//            ])
-//        addSubview(priceLabel)
-//        NSLayoutConstraint.activate([
-//            priceLabel.centerYAnchor.constraint(equalTo: experienceLabel.centerYAnchor),
-//            priceLabel.leadingAnchor.constraint(equalTo: experienceLabel.trailingAnchor),
-//            priceLabel.trailingAnchor.constraint(equalTo: hiddenView.trailingAnchor),
-//            priceLabel.widthAnchor.constraint(equalTo: experienceLabel.widthAnchor, multiplier: 1)
-//            ])
-       
-
-       
     }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

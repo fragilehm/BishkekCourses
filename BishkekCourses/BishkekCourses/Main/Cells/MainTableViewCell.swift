@@ -46,27 +46,32 @@ class MainTableViewCell: UITableViewCell, UITextViewDelegate {
             cardView.layer.cornerRadius = 10
         }
     }
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     func fillCell(course: SimpleCourse){
-        
-        //nameLabel.text = name
-        //        nameLabel.heroID = "\(name)_name"
-        //        nameLabel.heroModifiers = [.zPosition(4)]
-        //mainImageView.image = city.image
-        mainImageView.heroID = "\(course.title)_image"
-        mainImageView.heroModifiers = [.zPosition(2)]
-        //        descriptionLabel.heroID = "\(name)_description"
-        //        descriptionLabel.heroModifiers = [.zPosition(4)]
-        //        descriptionLabel.text = city.shortDescription
+        self.setMainData(course: course)
+        self.setHeroId(course: course)
+        self.setHashTagData(course: course)
+    }
+    func setMainData(course: SimpleCourse) {
         titleLabel.text = course.title
         decriptionLabel.text = course.description
         let url = URL(string: course.main_image_url)
         let halfScreenHeight = Constants.SCREEN_HEIGHT * 2 / 5
         mainImageView.kf.setImage(with: url, placeholder: Constants.PLACEHOLDER_IMAGE, options: [], progressBlock: nil) { (image, error, cache, url) in
         }
+        let logo_url = URL(string: course.logo_image_url)
+        logoImageView.kf.setImage(with: logo_url)
+        logoImageView.kf.setImage(with: logo_url, placeholder: Constants.PLACEHOLDER_IMAGE, options: [], progressBlock: nil, completionHandler: nil)
         mainImageView.heightAnchor.constraint(equalToConstant: halfScreenHeight).isActive = true
+    }
+    func setHeroId(course: SimpleCourse) {
+        mainImageView.heroID = "\(course.title)_image"
+        mainImageView.heroModifiers = [.zPosition(2)]
+        logoImageView.heroID = "\(course.title)_logo"
+        logoImageView.heroModifiers = [.beginWith([.zPosition(5), .useGlobalCoordinateSpace])]
+        titleLabel.heroID = "\(course.title)_name"
+        titleLabel.heroModifiers = [.zPosition(10)]
+    }
+    func setHashTagData(course: SimpleCourse) {
         var subcategories = ""
         for simpleSubcategory in course.subcategories {
             subcategories.append("#")
@@ -81,7 +86,6 @@ class MainTableViewCell: UITableViewCell, UITextViewDelegate {
         var indexCount = 11
         for simpleSubcategory in course.subcategories {
             let url = NSURL(string: "\(simpleSubcategory.id) \(simpleSubcategory.subcategory_image_url) \(simpleSubcategory.title)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
-            print(url)
             attr.addAttribute(.link, value: url ?? "", range: NSRange(location: indexCount, length: simpleSubcategory.title.count + 1))
             indexCount += simpleSubcategory.title.count + 1
         }
@@ -90,15 +94,6 @@ class MainTableViewCell: UITableViewCell, UITextViewDelegate {
         ]
         textView.linkTextAttributes = linkAttributes
         textView.attributedText = attr
-        let logo_url = URL(string: course.logo_image_url)
-        logoImageView.kf.setImage(with: logo_url)
-        logoImageView.kf.setImage(with: logo_url, placeholder: Constants.PLACEHOLDER_IMAGE, options: [], progressBlock: nil, completionHandler: nil)
-        mainImageView.heroID = "\(course.title)_image"
-        mainImageView.heroModifiers = [.zPosition(2)]
-        logoImageView.heroID = "\(course.title)_logo"
-        logoImageView.heroModifiers = [.beginWith([.zPosition(5), .useGlobalCoordinateSpace])]
-        titleLabel.heroID = "\(course.title)_name"
-        titleLabel.heroModifiers = [.zPosition(10)]
     }
     
 }

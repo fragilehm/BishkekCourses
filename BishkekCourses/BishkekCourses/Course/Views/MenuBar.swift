@@ -27,11 +27,16 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         let indexPath = IndexPath(item: 0, section: 0)
         collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .bottom)
         collectionView.register(MenuCell.self, forCellWithReuseIdentifier: Constants.DetailedCourse.CellID.MENU_COLLECTIONVIEW_CELL)
+        setupCollectionViewConstraints()
+    }
+    func setupCollectionViewConstraints() {
         addSubview(collectionView)
-        collectionView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            collectionView.topAnchor.constraint(equalTo: self.topAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            ])
     }
     
     required init?(coder aDecoder: NSCoder) {

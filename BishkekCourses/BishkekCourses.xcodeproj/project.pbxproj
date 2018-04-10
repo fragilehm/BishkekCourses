@@ -69,6 +69,7 @@
 		8491F8782012306C00E29292 /* SwipingController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F8772012306C00E29292 /* SwipingController+Extension.swift */; };
 		8491F87A201230C700E29292 /* SwipingController+CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F879201230C700E29292 /* SwipingController+CollectionView.swift */; };
 		8497BAA92027191F001A7C76 /* DetailedCourse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497BAA82027191F001A7C76 /* DetailedCourse.swift */; };
+		84996EC1207C321500AC53AA /* Enumerators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84996EC0207C321500AC53AA /* Enumerators.swift */; };
 		849D8DC21FD429C900F507A4 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D8DC11FD429C900F507A4 /* CategoriesCollectionViewCell.swift */; };
 		849D8DC41FD429E000F507A4 /* CategoriesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849D8DC31FD429E000F507A4 /* CategoriesCollectionViewCell.xib */; };
 		849D8DCF1FD4888D00F507A4 /* SubCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849D8DCE1FD4888D00F507A4 /* SubCategoriesViewController.swift */; };
@@ -213,6 +214,7 @@
 		8491F8772012306C00E29292 /* SwipingController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwipingController+Extension.swift"; sourceTree = "<group>"; };
 		8491F879201230C700E29292 /* SwipingController+CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwipingController+CollectionView.swift"; sourceTree = "<group>"; };
 		8497BAA82027191F001A7C76 /* DetailedCourse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedCourse.swift; sourceTree = "<group>"; };
+		84996EC0207C321500AC53AA /* Enumerators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enumerators.swift; sourceTree = "<group>"; };
 		849D8DC11FD429C900F507A4 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		849D8DC31FD429E000F507A4 /* CategoriesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesCollectionViewCell.xib; sourceTree = "<group>"; };
 		849D8DCE1FD4888D00F507A4 /* SubCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesViewController.swift; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 				84C399F51FD3084E00DD5D66 /* Constants.swift */,
 				84C399F11FD3082400DD5D66 /* Extensions.swift */,
 				846FDD5620345A9F002E530C /* CustomAnimator.swift */,
+				84996EC0207C321500AC53AA /* Enumerators.swift */,
 			);
 			path = Plugins;
 			sourceTree = "<group>";
@@ -1341,6 +1344,7 @@
 				843DC3E8201C63F70048CA3D /* CustomCell.swift in Sources */,
 				84C399EC1FD3080A00DD5D66 /* HTTPRequestManager.swift in Sources */,
 				84A6C534203801D4007DF020 /* LabelPadding.swift in Sources */,
+				84996EC1207C321500AC53AA /* Enumerators.swift in Sources */,
 				840C33CA20358422004EF771 /* PinterestPresentAnimatinController.swift in Sources */,
 				841C91FC1FD7D3DD0040C2A8 /* DescriptionTableViewCell.swift in Sources */,
 				8419BC81202A499000285ECD /* MenuCell.swift in Sources */,

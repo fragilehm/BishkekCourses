@@ -75,12 +75,22 @@ struct Constants {
             static let CATEGORIES_VIEWCONTROLLER = "CategoriesViewController"
             static let SUB_CATEGORIES_VIEWCONTROLLER = "SubCategoriesViewController"
             static let COURSES_BY_SUBCATEGORY_VIEWCONTROLLER = "CoursesBySubcategoryViewController"
-
         }
         struct CellID {
             static let CATEGORIES_COLLECTIONVIEW_CELL = "CategoriesCollectionViewCell"
             static let SUBCATEGORIES_COLLECTIONVIEW_CELL = "SubCategoriesCollectionViewCell"
             static let COURSES_BY_SUBCATEGORY_TABLEVIEW_CELL = "CoursesBySubcategoryTableViewCell"
+        }
+        struct CoursesBySubcategory {
+            struct ActionSheetTitle {
+                static let COURSES = "Курсы"
+                static let ACTIONS = "Акции"
+                static let TUTORS = "Репетиторы"
+            }
+            struct ActionSheetText {
+                static let TITLE = "Выберите тип"
+                static let CANCEL = "Отменить"
+            }
         }
         
     }
@@ -169,27 +179,15 @@ struct Constants {
         static let SEARCH = "Поиск"
         static let NEWS = "Акции"
     }
-    struct Devices {
-        static let IPHONE_4 = "iPhone 4"
-        static let IPHONE_4_7 = "iPhone 4.7"
-        static let IPHONE_5_5 = "iPhone 5.5"
-        static let IPHONE_5_8 = "iPhone 5.8"
-        static let IPAD_12_9 = "ipad 12.9"
-        static let IPAD_10_5 = "ipad 10.5"
-        static let IPAD_9_7 = "ipad 9.7"
-        static let UNKNOWN = "unknown"
-    }
-//        struct Main {
-//            struct ControllerID {
-//                static let MAIN_ROOT_CONTROLLER = "MainRootViewController"
-//                static let MAIN_CONTROLLER = "MainViewController"
-//            }
-//            struct CellID {
-//                static let MAIN_TABLE_VIEW_CELL = "MainTableViewCell"
-//            }
-//
-//        }
-    
-    
+//    struct Devices {
+//        static let IPHONE_4 = "iPhone 4"
+//        static let IPHONE_4_7 = "iPhone 4.7"
+//        static let IPHONE_5_5 = "iPhone 5.5"
+//        static let IPHONE_5_8 = "iPhone 5.8"
+//        static let IPAD_12_9 = "ipad 12.9"
+//        static let IPAD_10_5 = "ipad 10.5"
+//        static let IPAD_9_7 = "ipad 9.7"
+//        static let UNKNOWN = "unknown"
+//    }
 }
 

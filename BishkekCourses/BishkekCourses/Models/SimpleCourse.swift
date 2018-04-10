@@ -10,33 +10,17 @@
 //import RxOptional
 //import RxSwift
 import Mapper
-struct SimpleCourse: Mappable {
-    
+struct SimpleCourse: Decodable {
     var id: Int
     var title: String
     var subcategories: [SimpleSubcategory]
     var description: String
     var main_image_url: String
     var logo_image_url: String
-    init(map: Mapper) throws {
-        subcategories = map.optionalFrom("subcategories") ?? []
-        try id = map.from("id")
-        try title = map.from("title")
-        try description = map.from("description")
-        try main_image_url = map.from("main_image_url")
-        try logo_image_url = map.from("logo_image_url")
-    }
 }
-struct SimpleSubcategory: Mappable {
+struct SimpleSubcategory: Decodable {
     let title: String
     let id: Int
     let subcategory_image_url: String
-    
-    init(map: Mapper) throws {
-        try title = map.from("title")
-        try id = map.from("id")
-        try subcategory_image_url = map.from("subcategory_image_url")
-    }
-    
 }
 
