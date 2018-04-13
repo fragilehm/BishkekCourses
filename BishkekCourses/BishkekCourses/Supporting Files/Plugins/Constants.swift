@@ -195,7 +195,6 @@ struct Constants {
         static let NEWS = "News"
         static let PROMOTION = "Promotion"
         static let GRANTS = "Grant"
-
     }
     struct Titles {
         static let MAIN = "Главная"
@@ -206,7 +205,7 @@ struct Constants {
         static let TUTOR = "Репетиторы"
         static let SETTINGS = "Настройки"
         static let SEARCH = "Поиск"
-        static let NEWS = "Акции"
+        static let NEWS = "Новости"
         static let UNIVERSITIES = "Университеты"
 
     }

@@ -133,8 +133,11 @@ class ServerAPIManager: NetworkAdapter  {
         }, error: showError)
     }
     func getNews(_ completion: @escaping (PaginatedNews)-> Void, showError: @escaping (String)-> Void) {
+        print("getNews")
         self.request(target: NetworkManager.news, success: { (response) in
             do {
+                print(response.data)
+
                 let news = try JSONDecoder().decode(PaginatedNews.self, from: response.data)
                 completion(news)
             }

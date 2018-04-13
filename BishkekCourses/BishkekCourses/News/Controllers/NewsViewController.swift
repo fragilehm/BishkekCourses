@@ -23,9 +23,11 @@ class NewsViewController: UIViewController {
         self.navigationItem.title = Constants.Titles.NEWS
     }
     func getData(){
+        print("here")
         ServerAPIManager.sharedAPI.getNews(setNews, showError: showErrorAlert)
     }
     func setNews(news: PaginatedNews){
+        print(news)
         self.paginatedNews = news
         tableView.reloadData()
         self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))

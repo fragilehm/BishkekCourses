@@ -33,12 +33,12 @@ class NewssTableViewCell: UITableViewCell {
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
     }
     func fillCell(news: News) {
         newsTitleLabel.text = news.title
         newsDescriptionLabel.text = news.description
         let backUrl = URL(string: news.news_image)
+        newsEndDateLabel.text = news.added?.getConvertedDate()
         backImageView.kf.setImage(with: backUrl, placeholder: Constants.PLACEHOLDER_IMAGE, options: nil, progressBlock: nil, completionHandler: nil)
     }
 }
