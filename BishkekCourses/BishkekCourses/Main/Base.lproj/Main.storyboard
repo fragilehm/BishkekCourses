@@ -104,10 +104,10 @@
             </objects>
             <point key="canvasLocation" x="-306" y="650"/>
         </scene>
-        <!--TutorNav-->
+        <!--UniversityNav-->
         <scene sceneID="DKE-Ea-pbg">
             <objects>
-                <viewControllerPlaceholder storyboardName="Tutor" referencedIdentifier="TutorNav" id="cdH-1Z-rW7" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="University" referencedIdentifier="UniversityNav" id="cdH-1Z-rW7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="wZy-Yd-7Zo"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N2L-Zw-7cu" userLabel="First Responder" sceneMemberID="firstResponder"/>

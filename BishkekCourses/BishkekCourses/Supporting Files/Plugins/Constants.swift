@@ -91,6 +91,10 @@ struct Constants {
                 static let TITLE = "Выберите тип"
                 static let CANCEL = "Отменить"
             }
+            struct TipText {
+                static let TITLE = "Подсказка!"
+                static let DESCRIPTION = "Нажав на данную кнопку, вы можете выбрать тип показываемых данных в определенной категории"
+            }
         }
         
     }
@@ -110,6 +114,8 @@ struct Constants {
             static let HEADER_TABLEVIEW_CELL = "HeaderTableViewCell"
             static let MENU_COLLECTIONVIEW_CELL = "MenuCollectionViewCell"
             static let DEPARTMENT_TABLEVIEW_CELL = "DepartmentTableViewCell"
+            static let GRANT_TABLEVIEW_CELL = "GrantTableViewCell"
+
 
         }
         static var CONTACT_TYPE = ""
@@ -153,7 +159,27 @@ struct Constants {
             static let PROMOTIONS_DETAIL_VIEWCONTROLLER = "PromotionsDetailViewController"
         }
         struct CellID {
-            static let NEWS_TABLEVIEW_CELL = "NewsTableViewCell"
+            static let PROMOTION_TABLEVIEW_CELL = "PromotionTableViewCell"
+
+        }
+    }
+    struct News {
+        struct ControllerID {
+            static let NEWS_VIEWCONTROLLER = "NewsViewController"
+            static let NEWS_DETAIL_VIEWCONTROLLER = "NewsDetailViewController"
+        }
+        struct CellID {
+            static let NEWS_TABLEVIEW_CELL = "NewssTableViewCell"
+            
+        }
+    }
+    struct Grants {
+        struct ControllerID {
+            static let GRANT_DETAIL_VIEWCONTROLLER = "GrantDetailViewController"
+        }
+        struct CellID {
+            static let GRANT_TABLEVIEW_CELL = "GrantTableViewCell"
+            
         }
     }
     struct Storyboards {
@@ -167,6 +193,9 @@ struct Constants {
         static let STARTING_PAGE = "StartingPage"
         static let SEARCH = "Search"
         static let NEWS = "News"
+        static let PROMOTION = "Promotion"
+        static let GRANTS = "Grant"
+
     }
     struct Titles {
         static let MAIN = "Главная"
@@ -178,6 +207,8 @@ struct Constants {
         static let SETTINGS = "Настройки"
         static let SEARCH = "Поиск"
         static let NEWS = "Акции"
+        static let UNIVERSITIES = "Университеты"
+
     }
 //    struct Devices {
 //        static let IPHONE_4 = "iPhone 4"

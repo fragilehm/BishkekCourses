@@ -20,6 +20,7 @@ enum NetworkManager {
     case universityDetails(universityId: Int)
     case courseRecent(pageNumber: Int)
     case actions
+    case news
     case actionsBySubcategory(subcategoryId: Int)
     case actionDetail(actionId: Int)
     case tutors
@@ -54,6 +55,8 @@ extension NetworkManager: TargetType {
             return "/courses/recent/"
         case .actions:
             return "/actions"
+        case .news:
+            return "/news"
         case .actionsBySubcategory(let subcategoryId):
             return "/actions/sub/\(subcategoryId)"
         case .actionDetail(let actionId):

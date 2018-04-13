@@ -36,8 +36,10 @@ class LoginMainViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         if let accessToken = FBSDKAccessToken.current() {
+            print(accessToken)
             getFBUserData()
         }
+        print("no token")
     }
     @objc func fbLoginButtonClicked() {
         let loginManager = LoginManager()
@@ -56,7 +58,7 @@ class LoginMainViewController: UIViewController {
     //function is fetching the user data
     func getFBUserData(){
 //        if((FBSDKAccessToken.current()) != nil){
-            print(FBSDKAccessToken.current())
+            print(FBSDKAccessToken.current().tokenString)
             FBSDKGraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"]).start(completionHandler: { (connection, result, error) -> Void in
                 if (error == nil){
                     self.dict = result as! [String : AnyObject]

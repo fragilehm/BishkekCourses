@@ -132,6 +132,17 @@ class ServerAPIManager: NetworkAdapter  {
             }
         }, error: showError)
     }
+    func getNews(_ completion: @escaping (PaginatedNews)-> Void, showError: @escaping (String)-> Void) {
+        self.request(target: NetworkManager.news, success: { (response) in
+            do {
+                let news = try JSONDecoder().decode(PaginatedNews.self, from: response.data)
+                completion(news)
+            }
+            catch {
+                showError(Constants.Network.ErrorMessage.CANT_PARSE_DATA)
+            }
+        }, error: showError)
+    }
     
     func getActionsBySubcategory(subcategory_id: Int,_ completion: @escaping ([Promotion])-> Void, showError: @escaping (String)-> Void) {
         self.request(target: NetworkManager.actionsBySubcategory(subcategoryId: subcategory_id), success: { (response) in

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="191" id="KGk-i7-Jjw" customClass="PromotionTableViewCell" customModule="BishkekCourses" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="397" height="191"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="397" height="190.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCB-P4-eLk">
+                        <rect key="frame" x="0.0" y="0.0" width="397" height="190.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F2k-xN-vdi">
+                                <rect key="frame" x="0.0" y="0.0" width="397" height="0.5"/>
+                                <color key="backgroundColor" red="0.81391004789999999" green="0.81391004789999999" blue="0.81391004789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.69999999999999996" id="BIC-Cr-h5x"/>
+                                </constraints>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="yZ8-gt-epY">
+                                <rect key="frame" x="16" y="12.5" width="35" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="Evr-fE-kky"/>
+                                    <constraint firstAttribute="height" constant="35" id="hEe-Vz-keF"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <real key="value" value="17.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="American courses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Nn-5d-byg">
+                                <rect key="frame" x="59" y="12.5" width="302" height="35"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3E-sa-sbQ">
+                                <rect key="frame" x="16" y="55.5" width="260.5" height="19.5"/>
+                                <string key="text">Коммуникативная методика обучения - это разговорная практика уже с первого урока, а также ролевые игры, дискуссии, обсуждения и презентации актуальных и современных тем с самыми опытными преподавателями.</string>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark" translatesAutoresizingMaskIntoConstraints="NO" id="16T-dM-boz">
+                                <rect key="frame" x="361" y="19.5" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="7MM-oA-8tq"/>
+                                    <constraint firstAttribute="height" constant="20" id="MdN-7L-1Ic"/>
+                                </constraints>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="hw5-WK-u4I">
+                                <rect key="frame" x="288.5" y="55.5" width="92.5" height="74"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="hw5-WK-u4I" secondAttribute="height" multiplier="5:4" id="hn1-i5-rRo"/>
+                                    <constraint firstAttribute="height" constant="74" id="xHn-Vd-gg1"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfu-nk-zMf">
+                                <rect key="frame" x="16" y="77" width="260.5" height="50.5"/>
+                                <string key="text">Коммуникативная методика обучения - это разговорная практика уже с первого урока, а также ролевые игры, дискуссии, обсуждения и презентации актуальных и современных тем с самыми опытными преподавателями.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.019607843140000001" green="0.094117647060000004" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Действует до:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duw-Xq-l2B">
+                                <rect key="frame" x="16" y="141.5" width="97" height="36.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 декабря" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKZ-gC-DVM">
+                                <rect key="frame" x="117" y="151.5" width="68" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.76078431369999999" green="0.16078431369999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yZ8-gt-epY" firstAttribute="top" secondItem="F2k-xN-vdi" secondAttribute="bottom" constant="12" id="37j-iX-AeR"/>
+                            <constraint firstItem="duw-Xq-l2B" firstAttribute="leading" secondItem="MCB-P4-eLk" secondAttribute="leading" constant="16" id="5zW-8d-5PL"/>
+                            <constraint firstItem="3Nn-5d-byg" firstAttribute="centerY" secondItem="yZ8-gt-epY" secondAttribute="centerY" id="7iX-yo-JOi"/>
+                            <constraint firstItem="duw-Xq-l2B" firstAttribute="top" secondItem="hw5-WK-u4I" secondAttribute="bottom" constant="12" id="APz-1L-kp9"/>
+                            <constraint firstItem="d3E-sa-sbQ" firstAttribute="top" secondItem="yZ8-gt-epY" secondAttribute="bottom" constant="8" id="B1M-Lm-zBi"/>
+                            <constraint firstItem="hfu-nk-zMf" firstAttribute="leading" secondItem="MCB-P4-eLk" secondAttribute="leading" constant="16" id="Cnl-4q-mNz"/>
+                            <constraint firstAttribute="trailing" secondItem="hw5-WK-u4I" secondAttribute="trailing" constant="16" id="Egl-fU-bU4"/>
+                            <constraint firstItem="hfu-nk-zMf" firstAttribute="trailing" secondItem="d3E-sa-sbQ" secondAttribute="trailing" id="H10-xc-AGR"/>
+                            <constraint firstItem="F2k-xN-vdi" firstAttribute="leading" secondItem="MCB-P4-eLk" secondAttribute="leading" id="HRi-dL-lkK"/>
+                            <constraint firstItem="hw5-WK-u4I" firstAttribute="leading" secondItem="d3E-sa-sbQ" secondAttribute="trailing" constant="12" id="IfD-B3-Jc9"/>
+                            <constraint firstItem="3Nn-5d-byg" firstAttribute="bottom" secondItem="yZ8-gt-epY" secondAttribute="bottom" id="Lcc-W7-RuN"/>
+                            <constraint firstItem="F2k-xN-vdi" firstAttribute="top" secondItem="MCB-P4-eLk" secondAttribute="top" id="MNn-Gx-Fu1"/>
+                            <constraint firstItem="3Nn-5d-byg" firstAttribute="leading" secondItem="yZ8-gt-epY" secondAttribute="trailing" constant="8" id="Nth-79-zEf"/>
+                            <constraint firstItem="3Nn-5d-byg" firstAttribute="top" secondItem="yZ8-gt-epY" secondAttribute="top" id="VdV-To-Qdz"/>
+                            <constraint firstAttribute="bottom" secondItem="duw-Xq-l2B" secondAttribute="bottom" constant="12" id="VoF-L3-jwk"/>
+                            <constraint firstAttribute="trailing" secondItem="F2k-xN-vdi" secondAttribute="trailing" id="XP8-Q2-q1v"/>
+                            <constraint firstItem="d3E-sa-sbQ" firstAttribute="leading" secondItem="MCB-P4-eLk" secondAttribute="leading" constant="16" id="ajg-wV-NEt"/>
+                            <constraint firstItem="vKZ-gC-DVM" firstAttribute="centerY" secondItem="duw-Xq-l2B" secondAttribute="centerY" id="e1u-k4-dsW"/>
+                            <constraint firstItem="16T-dM-boz" firstAttribute="leading" secondItem="3Nn-5d-byg" secondAttribute="trailing" id="eCa-Oh-R9W"/>
+                            <constraint firstItem="hw5-WK-u4I" firstAttribute="top" secondItem="d3E-sa-sbQ" secondAttribute="top" id="hDN-ZS-Iic"/>
+                            <constraint firstAttribute="trailing" secondItem="16T-dM-boz" secondAttribute="trailing" constant="16" id="oeM-SF-YGA"/>
+                            <constraint firstItem="hfu-nk-zMf" firstAttribute="top" secondItem="d3E-sa-sbQ" secondAttribute="bottom" constant="2" id="phV-b1-5GS"/>
+                            <constraint firstItem="vKZ-gC-DVM" firstAttribute="leading" secondItem="duw-Xq-l2B" secondAttribute="trailing" constant="4" id="uWe-Pt-OPg"/>
+                            <constraint firstItem="16T-dM-boz" firstAttribute="centerY" secondItem="3Nn-5d-byg" secondAttribute="centerY" id="ut0-zf-BgW"/>
+                            <constraint firstItem="yZ8-gt-epY" firstAttribute="leading" secondItem="MCB-P4-eLk" secondAttribute="leading" constant="16" id="w2I-4u-kKQ"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="MCB-P4-eLk" secondAttribute="trailing" id="aZy-mu-VxN"/>
+                    <constraint firstItem="MCB-P4-eLk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="b4P-1N-L45"/>
+                    <constraint firstAttribute="bottom" secondItem="MCB-P4-eLk" secondAttribute="bottom" id="oi9-Bv-ZG2"/>
+                    <constraint firstItem="MCB-P4-eLk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="zN2-YL-k4u"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="backImageView" destination="hw5-WK-u4I" id="uT9-8z-bcC"/>
+                <outlet property="cardView" destination="MCB-P4-eLk" id="8an-Qk-6qn"/>
+                <outlet property="cardViewTopConstraint" destination="b4P-1N-L45" id="MfN-k8-JPR"/>
+                <outlet property="courseLogoImageView" destination="yZ8-gt-epY" id="aif-ir-2ef"/>
+                <outlet property="courseTitleLabel" destination="3Nn-5d-byg" id="dag-MD-988"/>
+                <outlet property="promotionsDescriptionLabel" destination="hfu-nk-zMf" id="aU0-ij-BIc"/>
+                <outlet property="promotionsEndDateLabel" destination="vKZ-gC-DVM" id="6I2-Hf-kYQ"/>
+                <outlet property="promotionsTitleLabel" destination="d3E-sa-sbQ" id="xjI-fc-J2w"/>
+                <outlet property="topViewheightConstraint" destination="MNn-Gx-Fu1" id="Mth-Us-6nD"/>
+            </connections>
+            <point key="canvasLocation" x="94.5" y="132.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="bookmark" width="20" height="20"/>
+        <image name="logo" width="1024" height="1024"/>
+    </resources>
+</document>

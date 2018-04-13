@@ -15,16 +15,16 @@ struct Promotion: Decodable {
     var description: String
     var subcategories: [SimpleSubcategory]
     var course: CourseHeader
-    var start_date: String
-    var end_date: String
-    var isActual: Bool
+    var start_date: String?
+    var end_date: String?
+    var isActual: Bool?
     var action_image: String
 }
 struct SimplePromotion: Decodable {
     var id: Int
     var title: String
     var description: String
-    var end_date: String
+    var end_date: String?
     var action_image: String
     init(id: Int, title: String, description: String, end_date: String, action_image: String) {
         self.id = id

@@ -13,7 +13,7 @@ enum MainPageItems: Int {
     case main = 0
     case categories
     case news
-    case tutor
+    case university
     case settings
     func getImage() -> UIImage {
         switch self {
@@ -23,8 +23,8 @@ enum MainPageItems: Int {
             return #imageLiteral(resourceName: "categories")
         case .news:
             return #imageLiteral(resourceName: "news")
-        case .tutor:
-            return #imageLiteral(resourceName: "tutor")
+        case .university:
+            return #imageLiteral(resourceName: "university")
         case .settings:
             return #imageLiteral(resourceName: "menu")
         }

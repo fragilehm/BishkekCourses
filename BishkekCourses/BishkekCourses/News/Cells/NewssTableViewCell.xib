@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="134" id="KGk-i7-Jjw" customClass="NewssTableViewCell" customModule="BishkekCourses" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="373" height="134"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="373" height="133.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zdS-CD-VjG">
+                        <rect key="frame" x="0.0" y="0.0" width="373" height="133.5"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7O-St-KpX">
+                                <rect key="frame" x="0.0" y="0.0" width="373" height="0.5"/>
+                                <color key="backgroundColor" red="0.81391004789999999" green="0.81391004789999999" blue="0.81391004789999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.69999999999999996" id="jti-S6-zeg"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="1000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8dX-XK-itY">
+                                <rect key="frame" x="16" y="16.5" width="236.5" height="19.5"/>
+                                <string key="text">Коммуникативная методика обучения - это разговорная практика уже с первого урока, а также ролевые игры, дискуссии, обсуждения и презентации актуальных и современных тем с самыми опытными преподавателями.</string>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="OHm-DP-n0T">
+                                <rect key="frame" x="264.5" y="16.5" width="92.5" height="74"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="OHm-DP-n0T" secondAttribute="height" multiplier="5:4" id="mc7-DC-VmJ"/>
+                                    <constraint firstAttribute="height" constant="74" id="zs1-EF-CRt"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSq-gF-lyt">
+                                <rect key="frame" x="16" y="38" width="236.5" height="50.5"/>
+                                <string key="text">Коммуникативная методика обучения - это разговорная практика уже с первого урока, а также ролевые игры, дискуссии, обсуждения и презентации актуальных и современных тем с самыми опытными преподавателями.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.019607843140000001" green="0.094117647060000004" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавлено:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5A8-he-ZAL">
+                                <rect key="frame" x="16" y="102.5" width="80.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 декабря" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v86-mP-9HO">
+                                <rect key="frame" x="100.5" y="101.5" width="68" height="19"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.76078431369999999" green="0.16078431369999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bookmark" translatesAutoresizingMaskIntoConstraints="NO" id="Mhs-ss-xD6">
+                                <rect key="frame" x="337" y="101.5" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="1ed-KY-G14"/>
+                                    <constraint firstAttribute="height" constant="20" id="l5S-Pk-Opp"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8dX-XK-itY" firstAttribute="leading" secondItem="zdS-CD-VjG" secondAttribute="leading" constant="16" id="4A2-qD-5JE"/>
+                            <constraint firstAttribute="trailing" secondItem="g7O-St-KpX" secondAttribute="trailing" id="7GB-mi-4kd"/>
+                            <constraint firstItem="8dX-XK-itY" firstAttribute="top" secondItem="g7O-St-KpX" secondAttribute="bottom" constant="16" id="BUt-8p-OQr"/>
+                            <constraint firstAttribute="trailing" secondItem="OHm-DP-n0T" secondAttribute="trailing" constant="16" id="Esj-IL-cPp"/>
+                            <constraint firstItem="ZSq-gF-lyt" firstAttribute="trailing" secondItem="8dX-XK-itY" secondAttribute="trailing" id="Pcp-cc-sxE"/>
+                            <constraint firstItem="ZSq-gF-lyt" firstAttribute="top" secondItem="8dX-XK-itY" secondAttribute="bottom" constant="2" id="XkI-g5-fE4"/>
+                            <constraint firstItem="OHm-DP-n0T" firstAttribute="leading" secondItem="8dX-XK-itY" secondAttribute="trailing" constant="12" id="aHf-aC-ekG"/>
+                            <constraint firstItem="OHm-DP-n0T" firstAttribute="top" secondItem="8dX-XK-itY" secondAttribute="top" id="aPA-8z-ZyS"/>
+                            <constraint firstAttribute="trailing" secondItem="Mhs-ss-xD6" secondAttribute="trailing" constant="16" id="ail-rp-lzy"/>
+                            <constraint firstItem="5A8-he-ZAL" firstAttribute="top" secondItem="OHm-DP-n0T" secondAttribute="bottom" constant="12" id="beS-uF-67K"/>
+                            <constraint firstItem="Mhs-ss-xD6" firstAttribute="top" secondItem="v86-mP-9HO" secondAttribute="top" id="c7h-wg-PsZ"/>
+                            <constraint firstItem="g7O-St-KpX" firstAttribute="leading" secondItem="zdS-CD-VjG" secondAttribute="leading" id="drM-4h-Vzl"/>
+                            <constraint firstItem="v86-mP-9HO" firstAttribute="centerY" secondItem="5A8-he-ZAL" secondAttribute="centerY" id="emJ-Zx-wID"/>
+                            <constraint firstItem="g7O-St-KpX" firstAttribute="top" secondItem="zdS-CD-VjG" secondAttribute="top" id="fJd-3k-OCg"/>
+                            <constraint firstAttribute="bottom" secondItem="Mhs-ss-xD6" secondAttribute="bottom" constant="12" id="jwp-eA-YP6"/>
+                            <constraint firstItem="v86-mP-9HO" firstAttribute="leading" secondItem="5A8-he-ZAL" secondAttribute="trailing" constant="4" id="k85-a4-CzI"/>
+                            <constraint firstItem="5A8-he-ZAL" firstAttribute="leading" secondItem="zdS-CD-VjG" secondAttribute="leading" constant="16" id="tCN-b5-IX7"/>
+                            <constraint firstItem="ZSq-gF-lyt" firstAttribute="leading" secondItem="zdS-CD-VjG" secondAttribute="leading" constant="16" id="v3x-WU-zc0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="zdS-CD-VjG" secondAttribute="bottom" id="3j2-pj-kCk"/>
+                    <constraint firstItem="zdS-CD-VjG" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="D4d-kL-29w"/>
+                    <constraint firstItem="zdS-CD-VjG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="kZi-Tz-bQL"/>
+                    <constraint firstAttribute="trailing" secondItem="zdS-CD-VjG" secondAttribute="trailing" id="s6E-Re-oTR"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="backImageView" destination="OHm-DP-n0T" id="EuM-vM-Xc0"/>
+                <outlet property="cardView" destination="zdS-CD-VjG" id="KMY-u4-Akd"/>
+                <outlet property="cardViewTopConstraint" destination="kZi-Tz-bQL" id="fkJ-Nx-5JY"/>
+                <outlet property="newsDescriptionLabel" destination="ZSq-gF-lyt" id="e7V-gZ-N5a"/>
+                <outlet property="newsEndDateLabel" destination="v86-mP-9HO" id="Q7q-jj-JGo"/>
+                <outlet property="newsTitleLabel" destination="8dX-XK-itY" id="6ZD-FA-wTH"/>
+                <outlet property="topViewheightConstraint" destination="fJd-3k-OCg" id="i5W-hO-R2F"/>
+            </connections>
+            <point key="canvasLocation" x="51.5" y="85"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="bookmark" width="20" height="20"/>
+    </resources>
+</document>

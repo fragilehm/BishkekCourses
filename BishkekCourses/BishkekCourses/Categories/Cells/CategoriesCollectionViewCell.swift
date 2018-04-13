@@ -12,6 +12,11 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var categoriesImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+//    @IBOutlet weak var containerView: UIView! {
+//        didSet {
+//            containerView.dropShadow()
+//        }
+//    }
     
     func fillCell(category: Category){
         titleLabel.text = category.title

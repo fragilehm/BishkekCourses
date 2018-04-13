@@ -120,6 +120,7 @@ class DetailedCourseViewController: UIViewController {
     }
     func setUniversity(university: DetailedCourse){
         self.course = university
+        print(university)
         self.tableView.switchRefreshHeader(to: .normal(.none, 0.0))
         tableView.reloadData()
     }
@@ -140,7 +141,6 @@ class DetailedCourseViewController: UIViewController {
         backButton.addTarget(self, action: #selector(dissmis(_:)), for: .touchUpInside)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: getRightItem(image: #imageLiteral(resourceName: "bookmark")))
-
     }
     @objc func dissmis(_ button: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -176,6 +176,7 @@ extension DetailedCourseViewController {
         registerCell(nibName: Constants.DetailedCourse.CellID.CONTATCS_TABLEVIEW_CELL)
         registerCell(nibName: Constants.DetailedCourse.CellID.DESCRIPTION_TABLEVIEW_CELL)
         registerCell(nibName: Constants.DetailedCourse.CellID.DEPARTMENT_TABLEVIEW_CELL)
+        registerCell(nibName: Constants.DetailedCourse.CellID.GRANT_TABLEVIEW_CELL)
 
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 44
@@ -231,6 +232,11 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
                 return 0
             }
             return actions.count
+        case .grants:
+            guard let grants = course.grants else {
+                return 0
+            }
+            return grants.count
         case .branches:
             return course.branches.count
         case .contacts:
@@ -250,6 +256,11 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId.rawValue, for: indexPath) as!
             CourseActionTableViewCell
             cell.fillCell(action: course.actions![indexPath.row])
+            return cell
+        case .grants:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellId.rawValue, for: indexPath) as!
+            GrantTableViewCell
+            cell.fillCell(action: course.grants![indexPath.row])
             return cell
         case .branches:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId.rawValue, for: indexPath) as! BranchesTableViewCell
@@ -271,9 +282,7 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
                 return cell
             }
         }
-        
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
@@ -282,6 +291,8 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
             switch cellId {
             case .actions:
                 showActionController(index: indexPath.row)
+            case .grants:
+                showGrantController(index: indexPath.row)
             case .branches:
                 showBranchController(index: indexPath.row)
             case .contacts:
@@ -292,12 +303,20 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
         }
     }
     fileprivate func showActionController(index: Int) {
-        let promotionVC = UIStoryboard.init(name: Constants.Storyboards.NEWS, bundle: nil).instantiateViewController(withIdentifier: Constants.Promotions.ControllerID.PROMOTIONS_DETAIL_VIEWCONTROLLER) as! PromotionsDetailViewController
+        let promotionVC = UIStoryboard.init(name: Constants.Storyboards.PROMOTION, bundle: nil).instantiateViewController(withIdentifier: Constants.Promotions.ControllerID.PROMOTIONS_DETAIL_VIEWCONTROLLER) as! PromotionsDetailViewController
         let courseHeader = CourseHeader(id: course_id!, title: courseName!, logo_image_url: courseLogo!, main_image_url: courseBackImage!, description: courseDescription!)
         promotionVC.courseHeader = courseHeader
         promotionVC.simpleAction = course.actions![index]
         promotionVC.isFromCourse = true
         self.navigationController?.show(promotionVC, sender: self)
+    }
+    fileprivate func showGrantController(index: Int) {
+        let grantVC = UIStoryboard.init(name: Constants.Storyboards.GRANTS, bundle: nil).instantiateViewController(withIdentifier: Constants.Grants.ControllerID.GRANT_DETAIL_VIEWCONTROLLER) as! GrantDetailViewController
+        let universityHeader = CourseHeader(id: course_id!, title: courseName!, logo_image_url: courseLogo!, main_image_url: courseBackImage!, description: courseDescription!)
+        grantVC.universityHeader = universityHeader
+        grantVC.simpleGrant = course.grants![index]
+        grantVC.isFromCourse = true
+        self.navigationController?.show(grantVC, sender: self)
     }
     fileprivate func showBranchController(index: Int) {
         let vc = self.storyboard?.instantiateViewController(withIdentifier: Constants.DetailedCourse.ControllerID.MAP_VIEWCONTROLLER) as! MapViewController
@@ -353,7 +372,12 @@ extension DetailedCourseViewController: UITableViewDelegate, UITableViewDataSour
         case 0:
             cellId = .description
         case 1:
-            cellId = .actions
+            switch cameFrom {
+            case .course:
+                cellId = .actions
+            case .university:
+                cellId = .grants
+            }
         case 2:
             cellId = .branches
         case 3:

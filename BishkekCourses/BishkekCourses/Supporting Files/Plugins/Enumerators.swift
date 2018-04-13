@@ -31,6 +31,7 @@ enum TutorSectionTitle: Int {
 enum DetailedCourseCellId: String {
     case description = "DescriptionTableViewCell"
     case actions = "CourseActionTableViewCell"
+    case grants = "GrantTableViewCell"
     case contacts = "ContactsTableViewCell"
     case branches = "BranchesTableViewCell"
     case services = "ServicesTableViewCell"

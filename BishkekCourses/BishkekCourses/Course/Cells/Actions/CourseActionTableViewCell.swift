@@ -26,7 +26,7 @@ class CourseActionTableViewCell: UITableViewCell {
     func fillCell(action: SimplePromotion) {
         promotionsTitleLabel.text = action.title
         promotionsDescriptionLabel.text = action.description
-        promotionsEndDateLabel.text = action.end_date.getConvertedDate()
+        promotionsEndDateLabel.text = action.end_date?.getConvertedDate()
         let backUrl = URL(string: action.action_image)
         backImageView.kf.setImage(with: backUrl, placeholder: Constants.PLACEHOLDER_IMAGE, options: nil, progressBlock: nil, completionHandler: nil)
     }

@@ -15,6 +15,11 @@ class CoursesBySubcategoryViewController: UIViewController {
     
     var panGR: UIPanGestureRecognizer!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tipTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var tipTitleLabel: UILabel!
+    @IBOutlet weak var tipDescriptionLabel: UILabel!
+    @IBOutlet weak var tipView: UIView!
+    @IBOutlet weak var tipTriangleView: TriangleView!
     var subcategory_id: Int?
     var cameFrom = CoursesBySubcategoryCameFrom.course
     var subcategoryName: String?
@@ -34,11 +39,18 @@ class CoursesBySubcategoryViewController: UIViewController {
         view.back.addTarget(self, action: #selector(handlePrevious), for: .touchUpInside)
         return view
     }()
+    private let tipHideButton: UIButton = {
+        let button = UIButton.init(type: .system)
+        button.backgroundColor = .black
+        button.alpha = 0.5
+        button.addTarget(self, action: #selector(hideTipTap), for: .touchUpInside)
+        return button
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureBasic()
         configureTableView()
         getData()
-        
         self.isHeroEnabled = true
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -60,6 +72,10 @@ class CoursesBySubcategoryViewController: UIViewController {
         UIView.animate(withDuration: TimeInterval(UINavigationControllerHideShowBarDuration)) {
             UIApplication.shared.statusBarView?.backgroundColor = nil
         }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkForTip()
     }
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -131,6 +147,37 @@ class CoursesBySubcategoryViewController: UIViewController {
             }
         }
     }
+    func checkForTip(){
+        let tipModel = TipStorage()
+        if !tipModel.isTipShowed() && cameFrom == .course {
+            tipModel.setTipShowed()
+            tipTitleLabel.text = tipModel.tipTitle
+            tipDescriptionLabel.text = tipModel.tipDescription
+            self.tipTopConstraint.constant = 0
+            self.tipHideButton.alpha = 0.5
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    @objc func hideTipTap(_ sender: UIButton){
+        self.hideTip()
+    }
+    @IBAction func hideTipButtonTap(_ sender: Any) {
+        self.hideTip()
+    }
+    fileprivate func hideTip() {
+        self.tipTopConstraint.constant = -300
+        self.tipHideButton.alpha = 0
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    func configureBasic() {
+        self.tipHideButton.frame = self.view.frame
+        self.tipHideButton.alpha = 0
+        self.view.insertSubview(tipHideButton, aboveSubview: tableView)
+    }
     func configureTableView(){
         if getDeviceName() == Devices.IPHONE_5_8 {
             self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: -44).isActive = true
@@ -140,7 +187,7 @@ class CoursesBySubcategoryViewController: UIViewController {
         }
         tableView.tableFooterView = UIView()
         tableView.register(UINib.init(nibName: Constants.Categories.CellID.COURSES_BY_SUBCATEGORY_TABLEVIEW_CELL, bundle: nil), forCellReuseIdentifier: Constants.Categories.CellID.COURSES_BY_SUBCATEGORY_TABLEVIEW_CELL)
-        tableView.register(UINib.init(nibName: Constants.Promotions.CellID.NEWS_TABLEVIEW_CELL, bundle: nil), forCellReuseIdentifier: Constants.Promotions.CellID.NEWS_TABLEVIEW_CELL)
+        tableView.register(UINib.init(nibName: Constants.Promotions.CellID.PROMOTION_TABLEVIEW_CELL, bundle: nil), forCellReuseIdentifier: Constants.Promotions.CellID.PROMOTION_TABLEVIEW_CELL)
         tableView.register(UINib.init(nibName: Constants.Tutor.CellID.TUTOR_TABLEVIEW_CELL, bundle: nil), forCellReuseIdentifier: Constants.Tutor.CellID.TUTOR_TABLEVIEW_CELL)
         tableView.estimatedRowHeight = UITableViewAutomaticDimension
         tableView.bounces = false
@@ -231,7 +278,6 @@ class CoursesBySubcategoryViewController: UIViewController {
             self.tableView.reloadData()
             //self.tableView.switchRefreshFooter(to: .normal)
         })
-        
     }
     func setNavBarItems(){
         let backButton = UIButton.init(type: .system)
@@ -271,7 +317,7 @@ extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDa
             }
             return cell
         case .actions:
-            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Promotions.CellID.NEWS_TABLEVIEW_CELL, for: indexPath) as! NewsTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Constants.Promotions.CellID.PROMOTION_TABLEVIEW_CELL, for: indexPath) as! PromotionTableViewCell
             cell.fillCell(action: self.actions[indexPath.row], index: indexPath.row)
             cell.delegate = self
             return cell
@@ -305,10 +351,10 @@ extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDa
             }
             
         case .actions:
-            let storyboard = UIStoryboard.init(name: Constants.Storyboards.NEWS, bundle: nil)
+            let storyboard = UIStoryboard.init(name: Constants.Storyboards.PROMOTION, bundle: nil)
             let promotionVC = storyboard.instantiateViewController(withIdentifier: Constants.Promotions.ControllerID.PROMOTIONS_DETAIL_VIEWCONTROLLER) as! PromotionsDetailViewController
             let action = self.actions[indexPath.row]
-            let simpleAction = SimplePromotion(id: action.id, title: action.title, description: action.description, end_date: action.end_date, action_image: action.action_image)
+            let simpleAction = SimplePromotion(id: action.id, title: action.title, description: action.description, end_date: action.end_date!, action_image: action.action_image)
             promotionVC.courseHeader = self.actions[indexPath.row].course
             promotionVC.simpleAction = simpleAction
             self.navigationController?.show(promotionVC, sender: self)

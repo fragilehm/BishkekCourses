@@ -244,7 +244,7 @@ extension TutorDetailViewController: UITableViewDataSource, UITableViewDelegate 
         if(velocity.y>0){
             self.tabBarController?.setTabBarVisible(visible:false, animated: true)
         }else{
-            self.tabBarController?.setTabBarVisible(visible: true, animated: true)
+            self.tabBarController?.setTabBarVisible(visible: false, animated: true)
         }
     }
     

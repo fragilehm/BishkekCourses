@@ -17,6 +17,7 @@ struct DetailedCourse: Decodable {
     var services: [Service]?
     var actions: [SimplePromotion]?
     var departments: [Department]?
+    var grants: [SimpleGrant]?
     var logo_image_url: String
     var main_image_url: String
     
@@ -31,5 +32,7 @@ struct DetailedCourse: Decodable {
         services = [Service]()
         actions = [SimplePromotion]()
         departments = [Department]()
+        grants = [SimpleGrant]()
+
     }
 }
