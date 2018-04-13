@@ -21,12 +21,12 @@ struct Constants {
     struct Network {
         
         struct ErrorMessage {
-            static let NO_INTERNET_CONNECTION = "No internet connection"
-            static let UNABLE_LOAD_DATA = "Unable load data"
+            static let NO_INTERNET_CONNECTION = "Отсутствует интернет соединение"
+            static let UNABLE_LOAD_DATA = "Неудалось загрузить данные, возможно сервер временно недоступен"
             static let NO_HTTP_STATUS_CODE = "Unable to get response HTTP status code"
-            static let UNAUTHORIZED = "Unauthorized error"
-            static let NOT_FOUND_ERROR = "Unable to connect to server"
-            static let CANT_PARSE_DATA = "Unable to parse data"
+            static let UNAUTHORIZED = "Ошибка авторизации"
+            static let NOT_FOUND_ERROR = "Проверьте интернет соединение"
+            static let CANT_PARSE_DATA = "Неудалось загрузить данные, возможно сервер временно недоступен"
 
 
         }

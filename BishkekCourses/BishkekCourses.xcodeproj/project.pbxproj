@@ -128,6 +128,7 @@
 		84C714611FD00BB7007E640F /* BishkekCoursesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C714601FD00BB7007E640F /* BishkekCoursesTests.swift */; };
 		84C7146C1FD00BB7007E640F /* BishkekCoursesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7146B1FD00BB7007E640F /* BishkekCoursesUITests.swift */; };
 		84D1D133203F7A4C00A5FEB8 /* DetailedTutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D1D132203F7A4C00A5FEB8 /* DetailedTutor.swift */; };
+		84DF1CFF20813D0500DAB19A /* LaunchImitationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DF1CFE20813D0500DAB19A /* LaunchImitationViewController.swift */; };
 		84E9CF59207F2AEE00485A3F /* University.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84E9CF58207F2AEE00485A3F /* University.storyboard */; };
 		84E9CF5C207F2BD100485A3F /* UniversitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9CF5B207F2BD100485A3F /* UniversitiesViewController.swift */; };
 		84E9CF5E207F483200485A3F /* CustomUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E9CF5D207F483200485A3F /* CustomUI.swift */; };
@@ -296,6 +297,7 @@
 		84C7146B1FD00BB7007E640F /* BishkekCoursesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BishkekCoursesUITests.swift; sourceTree = "<group>"; };
 		84C7146D1FD00BB7007E640F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84D1D132203F7A4C00A5FEB8 /* DetailedTutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTutor.swift; sourceTree = "<group>"; };
+		84DF1CFE20813D0500DAB19A /* LaunchImitationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchImitationViewController.swift; sourceTree = "<group>"; };
 		84E9CF58207F2AEE00485A3F /* University.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = University.storyboard; sourceTree = "<group>"; };
 		84E9CF5B207F2BD100485A3F /* UniversitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniversitiesViewController.swift; sourceTree = "<group>"; };
 		84E9CF5D207F483200485A3F /* CustomUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUI.swift; sourceTree = "<group>"; };
@@ -554,6 +556,7 @@
 			isa = PBXGroup;
 			children = (
 				847869102012FF5D00B6BE0D /* MainViewController.swift */,
+				84DF1CFE20813D0500DAB19A /* LaunchImitationViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -935,9 +938,9 @@
 				84C399F91FD3211200DD5D66 /* Login */,
 				84C399FF1FD33AC800DD5D66 /* Registration */,
 				846C02751FD3ED280039C085 /* Models */,
-				84C714481FD00BB6007E640F /* AppDelegate.swift */,
 				8454AC301FD1C2950064689C /* Supporting Files */,
 				84C714521FD00BB6007E640F /* Assets.xcassets */,
+				84C714481FD00BB6007E640F /* AppDelegate.swift */,
 				84C714541FD00BB6007E640F /* LaunchScreen.storyboard */,
 				84C714571FD00BB6007E640F /* Info.plist */,
 				84AD2381204AE077006D1EF0 /* GoogleService-Info.plist */,
@@ -1486,6 +1489,7 @@
 				840DC213200F668E00C87994 /* SearchCollectionViewCell.swift in Sources */,
 				84FA47962046C29A000A3730 /* ProfileTableViewCell.swift in Sources */,
 				847869112012FF5D00B6BE0D /* MainViewController.swift in Sources */,
+				84DF1CFF20813D0500DAB19A /* LaunchImitationViewController.swift in Sources */,
 				84B88A5F203F179300C8B664 /* TutorDetailViewController.swift in Sources */,
 				84C399F81FD3085900DD5D66 /* Colors.swift in Sources */,
 				847869142013015800B6BE0D /* MainTableViewCell.swift in Sources */,

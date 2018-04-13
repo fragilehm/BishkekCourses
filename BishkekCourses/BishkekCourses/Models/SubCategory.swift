@@ -9,7 +9,7 @@
 import Foundation
 import Mapper
 
-class Subcategory: Decodable {
+struct Subcategory: Decodable {
     var id: Int
     var title: String
     var parent: Int?

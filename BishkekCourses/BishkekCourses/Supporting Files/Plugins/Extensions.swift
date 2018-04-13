@@ -35,7 +35,7 @@ extension UIViewController {
         self.navigationController?.show(courseVC, sender: self)
     }
     func showErrorAlert(message: String) {
-        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Упссс!", message: message, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(OKAction)
         self.present(alertController, animated: true, completion: nil)

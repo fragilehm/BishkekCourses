@@ -275,7 +275,7 @@ class CoursesBySubcategoryViewController: UIViewController {
     }
     func reloadData(){
         DispatchQueue.main.async(execute: {
-            self.tableView.reloadData()
+            self.tableView.reloadSections([0], with: .middle)
             //self.tableView.switchRefreshFooter(to: .normal)
         })
     }

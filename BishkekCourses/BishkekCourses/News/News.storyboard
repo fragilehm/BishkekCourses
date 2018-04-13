@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,9 +30,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ezj-vh-WFv" secondAttribute="bottom" id="83h-aR-dRr"/>
                             <constraint firstItem="ezj-vh-WFv" firstAttribute="trailing" secondItem="rIg-uK-iPJ" secondAttribute="trailing" id="GTq-fS-bEi"/>
                             <constraint firstItem="ezj-vh-WFv" firstAttribute="top" secondItem="rIg-uK-iPJ" secondAttribute="top" id="JbL-rW-Rh0"/>
-                            <constraint firstItem="rIg-uK-iPJ" firstAttribute="bottom" secondItem="ezj-vh-WFv" secondAttribute="bottom" id="n5z-tF-u0H"/>
                             <constraint firstItem="ezj-vh-WFv" firstAttribute="leading" secondItem="rIg-uK-iPJ" secondAttribute="leading" id="tDN-mS-gf4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rIg-uK-iPJ"/>

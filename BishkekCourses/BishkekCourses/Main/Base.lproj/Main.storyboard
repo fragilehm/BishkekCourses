@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N3b-nx-saj">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="txJ-ac-rrS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -124,6 +124,47 @@
             </objects>
             <point key="canvasLocation" x="446" y="650"/>
         </scene>
+        <!--Launch Imitation View Controller-->
+        <scene sceneID="bPY-Fh-SkQ">
+            <objects>
+                <viewController storyboardIdentifier="LaunchImitationViewController" id="txJ-ac-rrS" customClass="LaunchImitationViewController" customModule="BishkekCourses" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="o2z-b6-HMb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xgg-5E-cTq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rocket" translatesAutoresizingMaskIntoConstraints="NO" id="k9K-PF-NTZ">
+                                        <rect key="frame" x="20" y="488.5" width="335" height="166.5"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="k9K-PF-NTZ" secondAttribute="bottom" constant="12" id="9D9-9H-0JL"/>
+                                    <constraint firstItem="k9K-PF-NTZ" firstAttribute="height" secondItem="xgg-5E-cTq" secondAttribute="height" multiplier="1:4" id="NuL-ff-ijO"/>
+                                    <constraint firstAttribute="trailing" secondItem="k9K-PF-NTZ" secondAttribute="trailing" constant="20" id="mti-bp-9AY"/>
+                                    <constraint firstItem="k9K-PF-NTZ" firstAttribute="leading" secondItem="xgg-5E-cTq" secondAttribute="leading" constant="20" id="p15-XP-G4z"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xgg-5E-cTq" firstAttribute="top" secondItem="o2z-b6-HMb" secondAttribute="top" id="I7U-3j-sHD"/>
+                            <constraint firstItem="xgg-5E-cTq" firstAttribute="trailing" secondItem="uIh-Nn-KDt" secondAttribute="trailing" id="TLV-3Q-k3M"/>
+                            <constraint firstItem="uIh-Nn-KDt" firstAttribute="bottom" secondItem="xgg-5E-cTq" secondAttribute="bottom" id="hBa-GR-1MU"/>
+                            <constraint firstItem="xgg-5E-cTq" firstAttribute="leading" secondItem="uIh-Nn-KDt" secondAttribute="leading" id="yUo-xq-ztn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="uIh-Nn-KDt"/>
+                    </view>
+                    <connections>
+                        <outlet property="rocketButtonConstraint" destination="9D9-9H-0JL" id="386-K6-bkW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vey-io-IA1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1302" y="134"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="E4D-0C-X67">
             <objects>
@@ -176,4 +217,7 @@
             <point key="canvasLocation" x="716" y="116"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="rocket" width="512" height="512"/>
+    </resources>
 </document>

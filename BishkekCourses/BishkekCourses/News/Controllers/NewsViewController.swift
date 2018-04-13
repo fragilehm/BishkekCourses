@@ -20,7 +20,13 @@ class NewsViewController: UIViewController {
         configureBasics()
     }
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.setTabBarVisible(visible:true, animated: true)
         self.navigationItem.title = Constants.Titles.NEWS
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.setTabBarVisible(visible: true, animated: false)
     }
     func getData(){
         print("here")
@@ -44,6 +50,13 @@ class NewsViewController: UIViewController {
         tableView.register(UINib.init(nibName: Constants.News.CellID.NEWS_TABLEVIEW_CELL, bundle: nil) , forCellReuseIdentifier: Constants.News.CellID.NEWS_TABLEVIEW_CELL)
         tableView.configureRefreshHeader {
             self.getData()
+        }
+    }
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        if(velocity.y>0){
+            self.tabBarController?.setTabBarVisible(visible:false, animated: true)
+        }else{
+            self.tabBarController?.setTabBarVisible(visible: true, animated: true)
         }
     }
 }

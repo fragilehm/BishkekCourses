@@ -18,12 +18,10 @@ class NetworkAdapter {
     }
     let provider = MoyaProvider<NetworkManager>()
     func request(target: NetworkManager, success successCallback: @escaping (Response) -> Void, error errorCallback: @escaping (String) -> Void) {
-        print("hey")
         if !self.isConnectedToNetwork() {
             errorCallback(Constants.Network.ErrorMessage.NO_INTERNET_CONNECTION)
         }
         else {
-            print("here")
             provider.request(target) { (result) in
                 switch result {
                 case .success(let response):
@@ -43,35 +41,12 @@ class NetworkAdapter {
                     case HttpStatusCode.ok.statusCode,
                          HttpStatusCode.accepted.statusCode,
                          HttpStatusCode.created.statusCode:
-                        
                         successCallback(response)
-    //                    let json = JSON(data: response.data!)
-    //
-    //                    if !json["error"].stringValue.isEmpty {
-    //                        error(json["error"].stringValue)
-    //                    } else {
-    //                        completion(json)
-    //                    }
                         break
                     default:
-                        print("Some error")
-
                         errorCallback(Constants.Network.ErrorMessage.NOT_FOUND_ERROR)
-    //                    let json = JSON(data: response.data!)
-    //                    if !json.isEmpty {
-    //                        let message = json["error"].stringValue
-    //                        error(message)
-    //                    } else {
-    //                        if let data = response.data {
-    //                            let json = String(data: data, encoding: String.Encoding.utf8)
-    //                            error(json!)
-    //                        } else {
-    //                            error("")
-    //                        }
-    //                    }
                     }
                 case .failure(let error):
-                    print("failure")
                     errorCallback(error.errorDescription!)
                 }
             }

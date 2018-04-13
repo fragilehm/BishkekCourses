@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,24 +15,22 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleToFill" id="NVs-1B-FQH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rocket" translatesAutoresizingMaskIntoConstraints="NO" id="OM4-4T-lrq">
-                                <rect key="frame" x="-0.5" y="145.5" width="375" height="375"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="OM4-4T-lrq" secondAttribute="height" multiplier="1:1" id="gn0-eq-Ju9"/>
-                                </constraints>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rocket" translatesAutoresizingMaskIntoConstraints="NO" id="ud8-8a-U5Q">
+                                <rect key="frame" x="20" y="488.5" width="335" height="166.5"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="OM4-4T-lrq" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="WZX-4m-zVn"/>
-                            <constraint firstItem="OM4-4T-lrq" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="c3d-Ps-1B1"/>
-                            <constraint firstItem="OM4-4T-lrq" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="gFM-VF-QLn"/>
+                            <constraint firstAttribute="bottom" secondItem="ud8-8a-U5Q" secondAttribute="bottom" constant="12" id="5Ak-PK-rk8"/>
+                            <constraint firstItem="ud8-8a-U5Q" firstAttribute="height" secondItem="NVs-1B-FQH" secondAttribute="height" multiplier="1:4" id="Shy-Om-v0X"/>
+                            <constraint firstAttribute="trailing" secondItem="ud8-8a-U5Q" secondAttribute="trailing" constant="20" id="VDb-8o-8Vv"/>
+                            <constraint firstItem="ud8-8a-U5Q" firstAttribute="leading" secondItem="NVs-1B-FQH" secondAttribute="leading" constant="20" id="Vgi-9q-ELs"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <viewLayoutGuide key="safeArea" id="3uZ-Yf-3Cc"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
