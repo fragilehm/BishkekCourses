@@ -57,6 +57,22 @@ class CoursesBySubcategoryViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.setTabBarVisible(visible: true, animated: false)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.tabBarController?.setTabBarVisible(visible: true, animated: true)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        setDefaultContent()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setLightContent()
+        checkForTip()
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    func setLightContent() {
         UIApplication.shared.statusBarStyle = .lightContent
         guard let color = backColor else {
             UIApplication.shared.statusBarView?.backgroundColor = UIColor.clear
@@ -64,21 +80,11 @@ class CoursesBySubcategoryViewController: UIViewController {
         }
         UIApplication.shared.statusBarView?.backgroundColor = color
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.tabBarController?.setTabBarVisible(visible: true, animated: true)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    func setDefaultContent() {
         UIApplication.shared.statusBarStyle = .default
         UIView.animate(withDuration: TimeInterval(UINavigationControllerHideShowBarDuration)) {
             UIApplication.shared.statusBarView?.backgroundColor = nil
         }
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        checkForTip()
-    }
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
     func addSwipeLeftAction(){
         let swipeLeftGR = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swipeLeft(swipeRecognizer:)))
@@ -335,36 +341,47 @@ extension CoursesBySubcategoryViewController: UITableViewDelegate, UITableViewDa
         case .courses:
             switch cameFrom {
             case .course:
-                let course = simpleCourses[indexPath.row]
-                openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.main_image_url, description: course.description)
+                showCourse(index: indexPath.row)
             case .university:
-                let university = simpleUniversities[indexPath.row]
-                let courseVC = UIStoryboard.init(name: Constants.Storyboards.COURSE, bundle: nil).instantiateViewController(withIdentifier: Constants.DetailedCourse.ControllerID.DETAILED_COURSE_VIEWCONTROLLER
-                    ) as! DetailedCourseViewController
-                courseVC.courseName = university.title
-                courseVC.courseBackImage = university.main_image_url
-                courseVC.courseLogo = university.logo_image_url
-                courseVC.course_id = university.id
-                courseVC.cameFrom = .university
-                courseVC.courseDescription = university.description
-                self.navigationController?.show(courseVC, sender: self)
+                showUniversity(index: indexPath.row)
             }
-            
         case .actions:
-            let storyboard = UIStoryboard.init(name: Constants.Storyboards.PROMOTION, bundle: nil)
-            let promotionVC = storyboard.instantiateViewController(withIdentifier: Constants.Promotions.ControllerID.PROMOTIONS_DETAIL_VIEWCONTROLLER) as! PromotionsDetailViewController
-            let action = self.actions[indexPath.row]
-            let simpleAction = SimplePromotion(id: action.id, title: action.title, description: action.description, end_date: action.end_date!, action_image: action.action_image)
-            promotionVC.courseHeader = self.actions[indexPath.row].course
-            promotionVC.simpleAction = simpleAction
-            self.navigationController?.show(promotionVC, sender: self)
+            showAction(index: indexPath.row)
         case .tutors:
-            let storyboard = UIStoryboard.init(name: Constants.Storyboards.TUTOR, bundle: nil)
-            let tutorVC = storyboard.instantiateViewController(withIdentifier: Constants.Tutor.ControllerID.TUTOR_DETAIL_VIEWCONTROLLER) as! TutorDetailViewController
-            tutorVC.tutor = self.tutors[indexPath.row]
-            self.navigationController?.show(tutorVC, sender: self)
+            showTutor(index: indexPath.row)
             
         }
+    }
+    func showCourse(index: Int) {
+        let course = simpleCourses[index]
+        openCourse(id: course.id, name: course.title, logoUrl: course.logo_image_url, backUrl: course.main_image_url, description: course.description)
+    }
+    func showUniversity(index: Int) {
+        let university = simpleUniversities[index]
+        let courseVC = UIStoryboard.init(name: Constants.Storyboards.COURSE, bundle: nil).instantiateViewController(withIdentifier: Constants.DetailedCourse.ControllerID.DETAILED_COURSE_VIEWCONTROLLER
+            ) as! DetailedCourseViewController
+        courseVC.courseName = university.title
+        courseVC.courseBackImage = university.main_image_url
+        courseVC.courseLogo = university.logo_image_url
+        courseVC.course_id = university.id
+        courseVC.cameFrom = .university
+        courseVC.courseDescription = university.description
+        self.navigationController?.show(courseVC, sender: self)
+    }
+    func showAction(index: Int) {
+        let storyboard = UIStoryboard.init(name: Constants.Storyboards.PROMOTION, bundle: nil)
+        let promotionVC = storyboard.instantiateViewController(withIdentifier: Constants.Promotions.ControllerID.PROMOTIONS_DETAIL_VIEWCONTROLLER) as! PromotionsDetailViewController
+        let action = self.actions[index]
+        let simpleAction = SimplePromotion(id: action.id, title: action.title, description: action.description, end_date: action.end_date!, action_image: action.action_image)
+        promotionVC.courseHeader = self.actions[index].course
+        promotionVC.simpleAction = simpleAction
+        self.navigationController?.show(promotionVC, sender: self)
+    }
+    func showTutor(index: Int) {
+        let storyboard = UIStoryboard.init(name: Constants.Storyboards.TUTOR, bundle: nil)
+        let tutorVC = storyboard.instantiateViewController(withIdentifier: Constants.Tutor.ControllerID.TUTOR_DETAIL_VIEWCONTROLLER) as! TutorDetailViewController
+        tutorVC.tutor = self.tutors[index]
+        self.navigationController?.show(tutorVC, sender: self)
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > 84 {

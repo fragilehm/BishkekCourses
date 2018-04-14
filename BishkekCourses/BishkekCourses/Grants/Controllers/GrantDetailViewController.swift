@@ -32,9 +32,11 @@ class GrantDetailViewController: UIViewController {
             courseNameLabel.addGestureRecognizer(titleGesture)
         }
     }
+    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
+
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var grantTitleLabel: UILabel!
-    @IBOutlet weak var grantDescriptionLabel: UILabel!
+    @IBOutlet weak var grantDescriptionTextView: UITextView!
     var universityHeader: CourseHeader!
     var isFromCourse = false
     var simpleGrant: SimpleGrant!
@@ -48,17 +50,19 @@ class GrantDetailViewController: UIViewController {
         let url = URL(string: universityHeader.logo_image_url)
         courseLogoImageView.kf.setImage(with: url)
         grantTitleLabel.text = simpleGrant.title
-        grantDescriptionLabel.text = simpleGrant.description
+        grantDescriptionTextView.text = simpleGrant.description
         let backUrl = URL(string: simpleGrant.grant_image)
-        backImageView.kf.setImage(with: backUrl, placeholder: Constants.PLACEHOLDER_IMAGE, options: nil, progressBlock: nil, completionHandler: nil)
+        backImageView.kf.setImage(with: backUrl, placeholder: Constants.PLACEHOLDER_IMAGE, options: nil, progressBlock: nil) { (image, error, cache, url) in
+            let ratio = Constants.SCREEN_WIDTH / CGFloat((image?.cgImage?.width)!)
+            let height = CGFloat((image?.cgImage?.height)!) * ratio
+            self.imageHeightConstraint.constant = height
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+        }
     }
     @objc func openCourse(_ sender: UITapGestureRecognizer) {
-        //if isFromCourse {
-            self.navigationController?.popViewController(animated: false)
-//        }
-//        else {
-//            openCourse(id: universityHeader.id, name: universityHeader.title, logoUrl: universityHeader.logo_image_url, backUrl: universityHeader.main_image_url, description: universityHeader.description)
-//        }
+        self.navigationController?.popViewController(animated: false)
     }
 }
 

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -23,19 +22,16 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ICo Guide for complete beginners" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y2t-nT-8fc">
-                                        <rect key="frame" x="12" y="273.5" width="351" height="24"/>
+                                        <rect key="frame" x="12" y="275" width="351" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS 11 задаёт новый стандарт самой передовой мобильной опербя" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ub6-uK-8XB">
-                                        <rect key="frame" x="12" y="313.5" width="351" height="33.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coding" translatesAutoresizingMaskIntoConstraints="NO" id="qyL-Tr-a1n">
-                                        <rect key="frame" x="12" y="67" width="351" height="190.5"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coding" translatesAutoresizingMaskIntoConstraints="NO" id="qyL-Tr-a1n">
+                                        <rect key="frame" x="12" y="59" width="351" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="rcG-Lh-orQ"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -44,7 +40,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fft-kN-MGA">
-                                        <rect key="frame" x="12" y="16" width="351" height="35"/>
+                                        <rect key="frame" x="12" y="12" width="351" height="35"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="O5j-3T-IWK">
                                                 <rect key="frame" x="0.0" y="0.0" width="35" height="35"/>
@@ -79,24 +75,31 @@
                                             <constraint firstItem="VuV-Uu-AbN" firstAttribute="centerY" secondItem="O5j-3T-IWK" secondAttribute="centerY" id="ngz-d0-Sym"/>
                                         </constraints>
                                     </view>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wTT-lm-PR4">
+                                        <rect key="frame" x="12" y="311" width="351" height="200"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                    </textView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="fft-kN-MGA" firstAttribute="centerX" secondItem="g2c-8f-JWf" secondAttribute="centerX" id="0Aa-Ow-8v1"/>
+                                    <constraint firstItem="wTT-lm-PR4" firstAttribute="leading" secondItem="g2c-8f-JWf" secondAttribute="leading" constant="12" id="4YN-qa-bjz"/>
                                     <constraint firstAttribute="trailing" secondItem="fft-kN-MGA" secondAttribute="trailing" constant="12" id="7Ge-xe-PIo"/>
                                     <constraint firstItem="y2t-nT-8fc" firstAttribute="leading" secondItem="g2c-8f-JWf" secondAttribute="leading" constant="12" id="A6z-cH-QA5"/>
                                     <constraint firstItem="fft-kN-MGA" firstAttribute="leading" secondItem="g2c-8f-JWf" secondAttribute="leading" constant="12" id="BGG-MO-36t"/>
-                                    <constraint firstItem="qyL-Tr-a1n" firstAttribute="top" secondItem="fft-kN-MGA" secondAttribute="bottom" constant="16" id="JN8-ef-67U"/>
+                                    <constraint firstItem="wTT-lm-PR4" firstAttribute="top" secondItem="y2t-nT-8fc" secondAttribute="bottom" constant="12" id="GMQ-je-MIS"/>
+                                    <constraint firstItem="qyL-Tr-a1n" firstAttribute="top" secondItem="fft-kN-MGA" secondAttribute="bottom" constant="12" id="JN8-ef-67U"/>
+                                    <constraint firstAttribute="bottom" secondItem="wTT-lm-PR4" secondAttribute="bottom" constant="16" id="Qo3-6X-SlA"/>
                                     <constraint firstItem="qyL-Tr-a1n" firstAttribute="centerX" secondItem="g2c-8f-JWf" secondAttribute="centerX" id="RdZ-Wx-FS0"/>
-                                    <constraint firstItem="Ub6-uK-8XB" firstAttribute="top" secondItem="y2t-nT-8fc" secondAttribute="bottom" constant="16" id="Vmp-2g-QRt"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ub6-uK-8XB" secondAttribute="bottom" constant="16" id="Yuq-rX-S1l"/>
-                                    <constraint firstItem="Ub6-uK-8XB" firstAttribute="leading" secondItem="g2c-8f-JWf" secondAttribute="leading" constant="12" id="b3S-p1-tT9"/>
                                     <constraint firstItem="y2t-nT-8fc" firstAttribute="top" secondItem="qyL-Tr-a1n" secondAttribute="bottom" constant="16" id="cPQ-E1-UzM"/>
-                                    <constraint firstAttribute="trailing" secondItem="Ub6-uK-8XB" secondAttribute="trailing" constant="12" id="dRT-P3-Qsw"/>
                                     <constraint firstItem="qyL-Tr-a1n" firstAttribute="leading" secondItem="g2c-8f-JWf" secondAttribute="leading" constant="12" id="h6h-qv-pwO"/>
                                     <constraint firstAttribute="trailing" secondItem="y2t-nT-8fc" secondAttribute="trailing" constant="12" id="jqy-kb-Lmc"/>
+                                    <constraint firstAttribute="trailing" secondItem="wTT-lm-PR4" secondAttribute="trailing" constant="12" id="ma9-6j-Jhk"/>
                                     <constraint firstAttribute="trailing" secondItem="qyL-Tr-a1n" secondAttribute="trailing" constant="12" id="nwz-rf-gk9"/>
-                                    <constraint firstItem="qyL-Tr-a1n" firstAttribute="height" secondItem="g2c-8f-JWf" secondAttribute="height" multiplier="2:7" id="oF4-wW-dha"/>
-                                    <constraint firstItem="fft-kN-MGA" firstAttribute="top" secondItem="g2c-8f-JWf" secondAttribute="top" constant="16" id="uRD-DU-joY"/>
+                                    <constraint firstItem="fft-kN-MGA" firstAttribute="top" secondItem="g2c-8f-JWf" secondAttribute="top" constant="12" id="uRD-DU-joY"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -113,8 +116,9 @@
                         <outlet property="backImageView" destination="qyL-Tr-a1n" id="A1W-iP-VB9"/>
                         <outlet property="courseLogoImageView" destination="O5j-3T-IWK" id="SkF-bw-yai"/>
                         <outlet property="courseNameLabel" destination="DeM-pY-4qV" id="8w0-ai-LhZ"/>
-                        <outlet property="grantDescriptionLabel" destination="Ub6-uK-8XB" id="wlu-Fh-QRe"/>
+                        <outlet property="grantDescriptionTextView" destination="wTT-lm-PR4" id="j3s-WZ-Qo1"/>
                         <outlet property="grantTitleLabel" destination="y2t-nT-8fc" id="GSb-bl-n0d"/>
+                        <outlet property="imageHeightConstraint" destination="rcG-Lh-orQ" id="3Dn-hF-Hf1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CTO-aM-SNT" userLabel="First Responder" sceneMemberID="firstResponder"/>

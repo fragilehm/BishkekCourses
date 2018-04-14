@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,25 +57,22 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавлено:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ahW-YW-dSB">
-                                        <rect key="frame" x="199" y="250.5" width="78.5" height="17"/>
+                                        <rect key="frame" x="206" y="250" width="78.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 Декабря" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctZ-4r-Nmr">
-                                        <rect key="frame" x="289.5" y="250.5" width="69.5" height="17"/>
+                                        <rect key="frame" x="289.5" y="250" width="69.5" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" red="0.76078431369999999" green="0.16078431369999999" blue="0.25098039220000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="iOS 11 задаёт новый стандарт самой передовой мобильной опербя" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WLX-SW-uxM">
-                                        <rect key="frame" x="12" y="279.5" width="351" height="33.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coding" translatesAutoresizingMaskIntoConstraints="NO" id="Muz-Nv-uTu">
-                                        <rect key="frame" x="12" y="48" width="351" height="190.5"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coding" translatesAutoresizingMaskIntoConstraints="NO" id="Muz-Nv-uTu">
+                                        <rect key="frame" x="12" y="48" width="351" height="200"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="200" id="tp8-kz-Um8"/>
+                                        </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -90,24 +86,31 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="062-Y9-qov">
+                                        <rect key="frame" x="12" y="269" width="351" height="200"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                    </textView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Muz-Nv-uTu" secondAttribute="trailing" constant="12" id="11W-oD-Kh7"/>
                                     <constraint firstAttribute="trailing" secondItem="7r2-8y-Sga" secondAttribute="trailing" constant="12" id="1dE-V0-hTf"/>
                                     <constraint firstAttribute="trailing" secondItem="ctZ-4r-Nmr" secondAttribute="trailing" constant="16" id="20h-sO-gbj"/>
-                                    <constraint firstItem="ctZ-4r-Nmr" firstAttribute="leading" secondItem="ahW-YW-dSB" secondAttribute="trailing" constant="12" id="DYs-kH-DaA"/>
-                                    <constraint firstItem="Muz-Nv-uTu" firstAttribute="height" secondItem="HCr-0U-0tu" secondAttribute="height" multiplier="2:7" id="Fgf-Kx-jlV"/>
+                                    <constraint firstAttribute="trailing" secondItem="062-Y9-qov" secondAttribute="trailing" constant="12" id="ATX-tQ-bIn"/>
+                                    <constraint firstItem="ctZ-4r-Nmr" firstAttribute="leading" secondItem="ahW-YW-dSB" secondAttribute="trailing" constant="5" id="DYs-kH-DaA"/>
                                     <constraint firstItem="Muz-Nv-uTu" firstAttribute="top" secondItem="7r2-8y-Sga" secondAttribute="bottom" constant="12" id="Gxo-vm-3zV"/>
-                                    <constraint firstItem="ahW-YW-dSB" firstAttribute="top" secondItem="Muz-Nv-uTu" secondAttribute="bottom" constant="12" id="K0o-l6-V2O"/>
-                                    <constraint firstItem="WLX-SW-uxM" firstAttribute="leading" secondItem="HCr-0U-0tu" secondAttribute="leading" constant="12" id="Ohb-Qr-7sP"/>
+                                    <constraint firstItem="ahW-YW-dSB" firstAttribute="top" secondItem="Muz-Nv-uTu" secondAttribute="bottom" constant="2" id="K0o-l6-V2O"/>
                                     <constraint firstItem="7r2-8y-Sga" firstAttribute="top" secondItem="HCr-0U-0tu" secondAttribute="top" constant="12" id="Utp-d3-mM0"/>
-                                    <constraint firstItem="WLX-SW-uxM" firstAttribute="top" secondItem="ahW-YW-dSB" secondAttribute="bottom" constant="12" id="Yp8-lh-q88"/>
+                                    <constraint firstItem="062-Y9-qov" firstAttribute="top" secondItem="ahW-YW-dSB" secondAttribute="bottom" constant="2" id="WHG-yh-wQx"/>
                                     <constraint firstItem="Muz-Nv-uTu" firstAttribute="centerX" secondItem="HCr-0U-0tu" secondAttribute="centerX" id="Z5R-RD-JjB"/>
-                                    <constraint firstAttribute="bottom" secondItem="WLX-SW-uxM" secondAttribute="bottom" constant="16" id="moE-RD-SKS"/>
+                                    <constraint firstItem="062-Y9-qov" firstAttribute="leading" secondItem="HCr-0U-0tu" secondAttribute="leading" constant="12" id="i4g-51-ecH"/>
+                                    <constraint firstAttribute="bottom" secondItem="062-Y9-qov" secondAttribute="bottom" constant="16" id="iGU-6D-LTP"/>
                                     <constraint firstItem="Muz-Nv-uTu" firstAttribute="leading" secondItem="HCr-0U-0tu" secondAttribute="leading" constant="12" id="rFN-x7-BVd"/>
                                     <constraint firstItem="ctZ-4r-Nmr" firstAttribute="centerY" secondItem="ahW-YW-dSB" secondAttribute="centerY" id="rnO-UZ-UUC"/>
                                     <constraint firstItem="7r2-8y-Sga" firstAttribute="leading" secondItem="HCr-0U-0tu" secondAttribute="leading" constant="12" id="tR0-uH-4QL"/>
-                                    <constraint firstAttribute="trailing" secondItem="WLX-SW-uxM" secondAttribute="trailing" constant="12" id="vqM-Eu-kwK"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -122,8 +125,9 @@
                     </view>
                     <connections>
                         <outlet property="backImageView" destination="Muz-Nv-uTu" id="jCH-2g-wJ9"/>
+                        <outlet property="descriptionTextView" destination="062-Y9-qov" id="8mU-hO-kI7"/>
+                        <outlet property="imageHeightConstraint" destination="tp8-kz-Um8" id="Fjx-BV-fFc"/>
                         <outlet property="newsAddDateLabel" destination="ctZ-4r-Nmr" id="rK2-B8-ACr"/>
-                        <outlet property="newsDescriptionLabel" destination="WLX-SW-uxM" id="CGw-pu-8Bp"/>
                         <outlet property="newsTitleLabel" destination="7r2-8y-Sga" id="BZC-RT-rHy"/>
                     </connections>
                 </viewController>

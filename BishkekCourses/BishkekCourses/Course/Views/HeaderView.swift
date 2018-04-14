@@ -31,6 +31,8 @@ class HeaderView: UIView {
     let raitingTitleLabel: UILabel = {
        let label = UILabel()
         label.text = "Рейтинг"
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -43,7 +45,9 @@ class HeaderView: UIView {
     }()
     let savesTitleLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
         label.text = "Сохранили"
+        label.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -56,6 +60,9 @@ class HeaderView: UIView {
     }()
     let titleLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+       // label.setContentHuggingPriority(UILayoutPriority(rawValue: 500), for: .horizontal)
+
         label.text = "American University"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -126,9 +133,9 @@ class HeaderView: UIView {
             logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor)
             ])
         NSLayoutConstraint.activate([
-            raitingTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            raitingTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
             raitingTitleLabel.bottomAnchor.constraint(equalTo: logoImageView.bottomAnchor),
-            savesTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            savesTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
             savesTitleLabel.bottomAnchor.constraint(equalTo: logoImageView.bottomAnchor)
             ])
         addSubview(raitingValueLabel)

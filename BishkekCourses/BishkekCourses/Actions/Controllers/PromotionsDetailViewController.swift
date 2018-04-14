@@ -32,10 +32,11 @@ class PromotionsDetailViewController: UIViewController {
             courseNameLabel.addGestureRecognizer(titleGesture)
         }
     }
+    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var actionDescriptionTextView: UITextView!
     @IBOutlet weak var endDateLabel: UILabel!
     @IBOutlet weak var backImageView: UIImageView!
     @IBOutlet weak var actionTitleLabel: UILabel!
-    @IBOutlet weak var actionDescriptionLabel: UILabel!
     var isFromCourse = false
     var courseHeader: CourseHeader!
     var simpleAction: SimplePromotion!
@@ -49,10 +50,18 @@ class PromotionsDetailViewController: UIViewController {
         let url = URL(string: courseHeader.logo_image_url)
         courseLogoImageView.kf.setImage(with: url)
         actionTitleLabel.text = simpleAction.title
-        actionDescriptionLabel.text = simpleAction.description
+        actionDescriptionTextView.text = simpleAction.description
         endDateLabel.text = simpleAction.end_date?.getConvertedDate()
         let backUrl = URL(string: simpleAction.action_image)
-        backImageView.kf.setImage(with: backUrl, placeholder: Constants.PLACEHOLDER_IMAGE, options: nil, progressBlock: nil, completionHandler: nil)
+        backImageView.kf.setImage(with: backUrl, placeholder: Constants.PLACEHOLDER_IMAGE, options: nil, progressBlock: nil) { (image, error, cache, url) in
+            let ratio = Constants.SCREEN_WIDTH / CGFloat((image?.cgImage?.width)!)
+            let height = CGFloat((image?.cgImage?.height)!) * ratio
+            self.imageHeightConstraint.constant = height
+            UIView.animate(withDuration: 0.3, animations: {
+                self.view.layoutIfNeeded()
+            })
+            print(height)
+        }
     }
     @objc func openCourse(_ sender: UITapGestureRecognizer) {
         if isFromCourse {
