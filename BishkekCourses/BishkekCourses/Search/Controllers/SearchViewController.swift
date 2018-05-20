@@ -8,12 +8,15 @@
 
 import UIKit
 import HGPlaceholders
+import RxSwift
 class SearchViewController: UIViewController {
 
     @IBOutlet weak var collectionView: CollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         setNavigationBar()
+        setNavigationBarItems()
+
         configureCollectionView()
         // Do any additional setup after loading the view.
     }
@@ -21,13 +24,15 @@ class SearchViewController: UIViewController {
         let searchBar = UISearchBar()
         searchBar.delegate = self
         searchBar.searchBarStyle = .minimal
+//        searchBar.scopeButtonTitles = ["Курсы", "", "Гранты", "Акции"]
+//        searchBar.showsScopeBar = true
         searchBar.placeholder = "Поиск"
         searchBar.returnKeyType = .search
         navigationItem.titleView = searchBar
     }
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.title = "Поиск"
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.navigationItem.title = "Поиск"
+//    }
 
 }
 extension SearchViewController {
@@ -75,6 +80,13 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.text = ""
         searchBar.endEditing(true)
         searchBar.setShowsCancelButton(false, animated: true)
+    }
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+        print("search")
     }
 }
 

@@ -38,8 +38,9 @@ class HeaderView: UIView {
     }()
     let raitingValueLabel: UILabel = {
         let label = UILabel()
-        label.text = "-"
+        label.text = "4.7"
         label.textColor = UIColor(netHex: Colors.LIGHT_BLUE)
+        
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -48,21 +49,22 @@ class HeaderView: UIView {
         label.font = UIFont.systemFont(ofSize: 15)
         label.text = "Сохранили"
         label.setContentHuggingPriority(UILayoutPriority(rawValue: 1000), for: .horizontal)
+        label.setContentCompressionResistancePriority(UILayoutPriority(1000), for: .horizontal)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     let savesValueLabel: UILabel = {
         let label = UILabel()
         label.textColor = UIColor(netHex: Colors.LIGHT_BLUE)
-        label.text = "-"
+        label.text = "16"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     let titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
-       // label.setContentHuggingPriority(UILayoutPriority(rawValue: 500), for: .horizontal)
-
+        label.setContentCompressionResistancePriority(UILayoutPriority(250), for: .horizontal)
+        label.setContentHuggingPriority(UILayoutPriority(rawValue: 250), for: .horizontal)
         label.text = "American University"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center

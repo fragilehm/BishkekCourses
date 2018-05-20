@@ -30,7 +30,7 @@ class NewsViewController: UIViewController {
     }
     func getData(){
         print("here")
-        ServerAPIManager.sharedAPI.getNews(setNews, showError: showErrorAlert)
+        ServerAPIManager.sharedAPI.getNews(pageNumber: 1, setNews, showError: showErrorAlert)
     }
     func setNews(news: PaginatedNews){
         print(news)
@@ -85,7 +85,16 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
         newsVC.news = news
         self.navigationController?.show(newsVC, sender: self)
     }
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == (self.paginatedNews?.results.count)! - 1 && indexPath.row < (paginatedNews?.count)! - 1 {
+            
+            ServerAPIManager.sharedAPI.getNews(pageNumber: (self.paginatedNews?.results.count)! / 20 + 1, appentNews, showError: showErrorAlert)
+        }
+    }
+    func appentNews(news: PaginatedNews){
+        self.paginatedNews?.results.append(contentsOf: news.results)
+        self.tableView.reloadData()
+    }
 }
 
 

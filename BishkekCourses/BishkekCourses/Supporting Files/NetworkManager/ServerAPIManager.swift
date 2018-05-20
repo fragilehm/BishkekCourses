@@ -119,6 +119,26 @@ class ServerAPIManager: NetworkAdapter  {
             }
         }, error: showError)
     }
+    func searchCourses(text: String, _ completion: @escaping ([SimpleCourse])-> Void, showError: @escaping (String)-> Void) {
+        //        let provider = MoyaProvider<NetworkManager>()
+        //        provider.request(NetworkManager.courseRecent) { (response) in
+        //            switch response {
+        //            case .success(let response):
+        //                print(response.statusCode)
+        //            case .failure(let error):
+        //                print(error.errorDescription)
+        //            }
+        //        }
+        self.request(target: NetworkManager.searchCourses(text: text), success: { (response) in
+            do {
+                let simpleCourses = try JSONDecoder().decode([SimpleCourse].self, from: response.data)
+                completion(simpleCourses)
+            }
+            catch {
+                showError(Constants.Network.ErrorMessage.CANT_PARSE_DATA)
+            }
+        }, error: showError)
+    }
     //MARK: Actions
 
     func getActions(_ completion: @escaping (PaginatedPromotion)-> Void, showError: @escaping (String)-> Void) {
@@ -132,9 +152,9 @@ class ServerAPIManager: NetworkAdapter  {
             }
         }, error: showError)
     }
-    func getNews(_ completion: @escaping (PaginatedNews)-> Void, showError: @escaping (String)-> Void) {
+    func getNews(pageNumber: Int, _ completion: @escaping (PaginatedNews)-> Void, showError: @escaping (String)-> Void) {
         print("getNews")
-        self.request(target: NetworkManager.news, success: { (response) in
+        self.request(target: NetworkManager.news(pageNumber: pageNumber), success: { (response) in
             do {
                 print(response.data)
 

@@ -164,6 +164,20 @@ extension MainViewController {
         self.navigationController?.view.backgroundColor = .white
         navigationController?.interactivePopGestureRecognizer?.delegate = nil
         self.isHeroEnabled = true
+        addSearchButton()
+    }
+    func addSearchButton() {
+        let searchButton = UIButton.init(type: .system)
+        searchButton.setImage(#imageLiteral(resourceName: "seacrh").withRenderingMode(.alwaysOriginal), for: .normal)
+        searchButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        searchButton.imageView?.contentMode = .scaleAspectFit
+        searchButton.addTarget(self, action: #selector(searchPressed(_:)), for: .touchUpInside)
+        self.navigationItem.setRightBarButtonItems([UIBarButtonItem(customView: searchButton)], animated: false)
+    }
+    @objc func searchPressed(_ button: UIButton) {
+        let storyboard = UIStoryboard.init(name: "Search", bundle: nil)
+        self.navigationController?.show(storyboard.instantiateViewController(withIdentifier: "SearchCourseViewController"), sender: self)
+        //print("search")
     }
     func configureTabBar(){
         let bars = self.tabBarController?.tabBar.items

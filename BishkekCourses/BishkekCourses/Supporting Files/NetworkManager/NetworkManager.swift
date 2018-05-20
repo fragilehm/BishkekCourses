@@ -20,12 +20,13 @@ enum NetworkManager {
     case universityDetails(universityId: Int)
     case courseRecent(pageNumber: Int)
     case actions
-    case news
+    case news(pageNumber: Int)
     case actionsBySubcategory(subcategoryId: Int)
     case actionDetail(actionId: Int)
     case tutors
     case tutorsBySubcategory(subcategoryId: Int)
     case tutorsDetail(tutorId: Int)
+    case searchCourses(text: String)
 
 }
 extension NetworkManager: TargetType {
@@ -67,6 +68,8 @@ extension NetworkManager: TargetType {
             return "/tutors/sub/\(subcategoryId)"
         case .tutorsDetail(let tutorId):
             return "/tutors/\(tutorId)"
+        case .searchCourses:
+            return "/courses/search/"
         }
     }
     
@@ -84,9 +87,13 @@ extension NetworkManager: TargetType {
     
     var task: Task {
         switch self {
-        case .courseRecent(let pageNumber):
+        case .courseRecent(let pageNumber), .news(let pageNumber):
             //return .requestPlain
             return .requestParameters(parameters: ["page": "\(pageNumber)"], encoding: URLEncoding.default)
+        case .searchCourses(let text):
+            let encodedText = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+            print(encodedText)
+            return .requestParameters(parameters: ["search": text], encoding: URLEncoding.default)
         default:
             return .requestPlain
         }

@@ -12,7 +12,24 @@ import IQKeyboardManagerSwift
 import FBSDKLoginKit
 import GoogleSignIn
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CAAnimationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CAAnimationDelegate, GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+            print("\(error.localizedDescription)")
+        } else {
+            // Perform any operations on signed in user here.
+            let userId = user.userID                  // For client-side use only!
+            let idToken = user.authentication.idToken // Safe to send to the server
+            let fullName = user.profile.name
+            print(fullName)
+            print(idToken)
+            let givenName = user.profile.givenName
+            let familyName = user.profile.familyName
+            let email = user.profile.email
+            //GIDSignIn.sharedInstance().signOut()
+            
+        }
+    }
     
     
     var window: UIWindow?
@@ -45,8 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CAAnimationDelegate {
         navigationBarAppearace.titleTextAttributes = textAttributes
         
         //Google SignIn
-        GIDSignIn.sharedInstance().clientID = "356072123586-7u0llt1uhbrvh70330q9g9au7j6rtmiq.apps.googleusercontent.com"        
+        GIDSignIn.sharedInstance().clientID = "330908432160-uo7gqjqd534bnfkrq4ha009t5cq2n3ma.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().delegate = self
+        //GIDSignIn.sharedInstance().signIn()
         // Override point for customization after application launch.
+        
         return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
     }
@@ -142,4 +162,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CAAnimationDelegate {
     }
 
 }
+//extension AppDelegate: GIDSignInDelegate {
+//    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+//        if let error = error {
+//            print("\(error.localizedDescription)")
+//        } else {
+//            // Perform any operations on signed in user here.
+//            let userId = user.userID                  // For client-side use only!
+//            let idToken = user.authentication.idToken // Safe to send to the server
+//            let fullName = user.profile.name
+//            print(fullName)
+//            print(idToken)
+//            let givenName = user.profile.givenName
+//            let familyName = user.profile.familyName
+//            let email = user.profile.email
+//            //GIDSignIn.sharedInstance().signOut()
+//
+//        }
+//    }
+//    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+//              withError error: Error!) {
+//        // Perform any operations when the user disconnects from app here.
+//        // ...
+//    }
+//}
 

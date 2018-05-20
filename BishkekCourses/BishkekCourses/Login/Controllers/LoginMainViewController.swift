@@ -35,10 +35,13 @@ class LoginMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        //print(GIDSignIn.sharedInstance().currentUser.authentication.accessToken)
+
         if let accessToken = FBSDKAccessToken.current() {
             print(accessToken)
             getFBUserData()
         }
+        
         print("no token")
     }
     @objc func fbLoginButtonClicked() {
@@ -72,10 +75,10 @@ class LoginMainViewController: UIViewController {
     
 }
 extension LoginMainViewController: GIDSignInDelegate, GIDSignInUIDelegate {
-
+    
     @objc func googleLoginButtonClicked() {
         GIDSignIn.sharedInstance().delegate = self
-        GIDSignIn.sharedInstance().uiDelegate=self
+        GIDSignIn.sharedInstance().uiDelegate = self
         GIDSignIn.sharedInstance().signIn()
     }
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
@@ -88,10 +91,12 @@ extension LoginMainViewController: GIDSignInDelegate, GIDSignInUIDelegate {
             let idToken = user.authentication.idToken // Safe to send to the server
             let fullName = user.profile.name
             print(fullName)
+            print(idToken)
             let givenName = user.profile.givenName
             let familyName = user.profile.familyName
             let email = user.profile.email
-            GIDSignIn.sharedInstance().signOut()
+            
+            //GIDSignIn.sharedInstance().signOut()
 
         }
     }

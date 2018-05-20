@@ -28,16 +28,10 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coding" translatesAutoresizingMaskIntoConstraints="NO" id="qyL-Tr-a1n">
-                                        <rect key="frame" x="12" y="59" width="351" height="200"/>
+                                        <rect key="frame" x="0.0" y="59" width="375" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="rcG-Lh-orQ"/>
                                         </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fft-kN-MGA">
                                         <rect key="frame" x="12" y="12" width="351" height="35"/>
@@ -95,10 +89,10 @@
                                     <constraint firstAttribute="bottom" secondItem="wTT-lm-PR4" secondAttribute="bottom" constant="16" id="Qo3-6X-SlA"/>
                                     <constraint firstItem="qyL-Tr-a1n" firstAttribute="centerX" secondItem="g2c-8f-JWf" secondAttribute="centerX" id="RdZ-Wx-FS0"/>
                                     <constraint firstItem="y2t-nT-8fc" firstAttribute="top" secondItem="qyL-Tr-a1n" secondAttribute="bottom" constant="16" id="cPQ-E1-UzM"/>
-                                    <constraint firstItem="qyL-Tr-a1n" firstAttribute="leading" secondItem="g2c-8f-JWf" secondAttribute="leading" constant="12" id="h6h-qv-pwO"/>
+                                    <constraint firstItem="qyL-Tr-a1n" firstAttribute="leading" secondItem="g2c-8f-JWf" secondAttribute="leading" id="h6h-qv-pwO"/>
                                     <constraint firstAttribute="trailing" secondItem="y2t-nT-8fc" secondAttribute="trailing" constant="12" id="jqy-kb-Lmc"/>
                                     <constraint firstAttribute="trailing" secondItem="wTT-lm-PR4" secondAttribute="trailing" constant="12" id="ma9-6j-Jhk"/>
-                                    <constraint firstAttribute="trailing" secondItem="qyL-Tr-a1n" secondAttribute="trailing" constant="12" id="nwz-rf-gk9"/>
+                                    <constraint firstAttribute="trailing" secondItem="qyL-Tr-a1n" secondAttribute="trailing" id="nwz-rf-gk9"/>
                                     <constraint firstItem="fft-kN-MGA" firstAttribute="top" secondItem="g2c-8f-JWf" secondAttribute="top" constant="12" id="uRD-DU-joY"/>
                                 </constraints>
                             </scrollView>
